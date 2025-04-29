@@ -35,5 +35,3 @@
 <{{ $component }} {!! $paramVal1 !!} {!! $paramVal2 !!} {!! $paramVal3 !!} {!! $modeStr !!} {!! $objectIdVal !!} {!! $currentUserId !!} {!! $allPermissions !!}></{{ $component }}>
 
 @endsection
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-multiselect@2.1.6/dist/vue-multiselect.min.css">
