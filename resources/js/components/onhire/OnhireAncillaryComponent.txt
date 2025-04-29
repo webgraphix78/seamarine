@@ -1,0 +1,203 @@
+<template>
+	<div id="onhireancillary-main">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row mb-1">
+					<div class="col-sm-7">
+						<div class="d-flex align-items-center mb-2">
+							<h4 class="m-0 me-4">ONHIRE ANCILLARY</h4>
+							<a id="add_onhireancillary_btn" class="btn btn-success btn-sm" href="#" role="button" data-bs-toggle="modal" data-bs-target="#addOnhireAncillaryModal" v-if="['110', '111'].indexOf(all_permissions) >= 0">ADD</a>
+						</div>
+					</div>
+				</div>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewOnhireAncillary" @edit-object="prepareEditOnhireAncillary" @toggle-object-status="toggleOnhireAncillary"></DataTableComponent>
+			</div>
+		</div>
+		<div class="modal fade" ref="addEditModal" id="addOnhireAncillaryModal" tabindex="-1" aria-labelledby="addOnhireAncillaryModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="addOnhireAncillaryModalLabel">ADD OnhireAncillary</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
+					</div>
+					<div class="modal-body">
+						
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" @click="cancelAddEdit()">CLOSE</button>
+						<button type="button" class="btn btn-dark btn-sm" @click="saveOnhireAncillary()">SAVE CHANGES</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" ref="readModal" id="readOnhireAncillaryModal" tabindex="-1" aria-labelledby="readOnhireAncillaryModalLabel" aria-hidden="true" v-if="readOnhireAncillary">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="readOnhireAncillaryModalLabel">View OnhireAncillary</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">CLOSE</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+<script>
+	import {useVuelidate} from "@vuelidate/core";
+	import {required, minValue, alphaNum, numeric, email, requiredIf, minLength} from "@vuelidate/validators";
+	import * as bootstrap from "bootstrap";
+	/*function initialState() {
+		return {
+			
+		};
+	}
+	function initialStateValidations() {
+		return {
+			onhire_id: {required, numeric, minValueValue: minValue(0)},
+			ancf_1: {minLengthValue: minLength(1)},
+			ancf_1_cladding: {},
+			ancf_2: {minLengthValue: minLength(1)},
+			ancf_2_ladder: {},
+			ancf_2_ladder_type: {},
+			ancf_3: {minLengthValue: minLength(1)},
+			ancf_3_placard: {},
+			ancf_4: {minLengthValue: minLength(1)},
+			ancf_4_decals: {},
+			ancf_5: {minLengthValue: minLength(1)},
+			ancf_5_tgauge: {},
+			ancf_5_other: {minLengthValue: minLength(1)},
+			ancf_5_temperature: {minLengthValue: minLength(1)},
+			ancf_5_ttype: {},
+			ancf_6: {minLengthValue: minLength(1)},
+			ancf_6_doc_tube: {minLengthValue: minLength(1)},
+			ancf_7: {minLengthValue: minLength(1)},
+			ancf_7_steam_tube: {minLengthValue: minLength(1)},
+			ancf_7_steam_tube_value_1: {},
+			ancf_7_steam_tube_value_2: {},
+			ancf_8: {minLengthValue: minLength(1)},
+			ancf_8_steam_acc: {minLengthValue: minLength(1)},
+			ancf_8_steam_acc_value: {},
+			ancf_9: {minLengthValue: minLength(1)},
+			ancf_9_bottom_comp: {},
+			ancf_10: {minLengthValue: minLength(1)},
+			ancf_10_electrical: {},
+			ancf_10_manufacturer: {minLengthValue: minLength(1)}
+		};
+	}*/
+	export default {
+		name: "OnhireAncillarymaster",
+		props: ["current_user_id", "all_permissions"],
+		// setup() {
+		// 	return {
+		// 		v$: useVuelidate()
+		// 	};
+		// },
+		data() {
+			return {
+				dataprops: {
+					id: "onhireancillary-list",
+					class: "a",
+					base_url: "/api/onhireancillary/",
+					columns: [{title: "Onhire Id", property: "onhire_id"}],
+					data_to_send: {current_user_id: this.current_user_id},
+					reload: false,
+					search: "simple"
+				},
+				addEditModal: null,
+				readModal: null,
+				currentUser: siteUserObject,
+				onhireancillaryForAdd: initialState(),
+				readOnhireAncillary: {},
+				allAncf1CladdingList: [],
+				allAncf2LadderList: [],
+				allAncf2LadderTypeList: [],
+				allAncf3PlacardList: [],
+				allAncf4DecalsList: [],
+				allAncf5TgaugeList: [],
+				allAncf5TtypeList: [],
+				allAncf7SteamTubeValue1List: [],
+				allAncf7SteamTubeValue2List: [],
+				allAncf8SteamAccValueList: [],
+				allAncf9BottomCompList: [],
+				allAncf10ElectricalList: []
+			};
+		},
+		validations() {
+			return {
+				onhireancillaryForAdd: initialStateValidations()
+			};
+		},
+		methods: {
+			cancelAddEdit(event) {
+				this.onhireancillaryForAdd = initialState();
+				this.v$.$reset();
+			},
+			async saveOnhireAncillary(event) {
+				var thisVar = this;
+				const result = await this.v$.$validate();
+				if (!result) {
+					this.showToast("Form validation failed. Please check.", "error", "bottom", 2000);
+					console.log(this.v$.$errors);
+					return;
+				}
+				if (!this.onhireancillaryForAdd.action || this.onhireancillaryForAdd.action == "") this.onhireancillaryForAdd.action = "details";
+				this.onhireancillaryForAdd.created_by = this.current_user_id;
+				$("#addOnhireAncillaryModal").modal("hide");
+				this.showLoading("Saving ...");
+				axios
+					.post("/onhireancillary/save", {onhireancillary: this.onhireancillaryForAdd})
+					.then(async function (response) {
+						thisVar.closeSwal();
+						var status = response.data.status;
+						if (status == 1) {
+							// Ajax to submit
+							thisVar.showToast("Onhire Ancillary saved successfully", "success", "bottom", 3000);
+							setTimeout(() => {
+								thisVar.dataprops.reload = true;
+							}, 1500);
+							thisVar.onhireancillaryForAdd = initialState();
+							thisVar.v$.$reset();
+						} else thisVar.showErrors("Onhire Ancillary could not be saved successfully", response.data.messages, "bottom", 3000);
+					})
+					.catch(function (error) {
+						console.log(error);
+						thisVar.closeSwal();
+						thisVar.showToast("Onhire Ancillary could not be saved successfully", "error", "bottom", 3000);
+					});
+			},
+			prepareEditOnhireAncillary(onhireancillary) {
+				this.onhireancillaryForAdd = Object.assign({}, onhireancillary);
+				this.addEditModal.show();
+			},
+			viewOnhireAncillary(onhireancillary) {
+				this.readOnhireAncillary = onhireancillary;
+				this.readModal.show();
+			},
+			toggleOnhireAncillary(onhireancillary, status) {
+				var thisVar = this;
+				Swal.fire({
+					icon: "question",
+					html: "Do you really want to " + (status == 1 ? "reactivate" : "deactivate") + ' the Onhire Ancillary - <br/>"' + onhireancillary.onhire_id + '"?',
+					showCancelButton: true
+				}).then((result) => {
+					if (result.isConfirmed) {
+						thisVar.onhireancillaryForAdd = onhireancillary;
+						thisVar.onhireancillaryForAdd.status = status;
+						thisVar.onhireancillaryForAdd.action = "status";
+						thisVar.saveOnhireAncillary();
+					}
+				});
+			}
+		},
+		async mounted() {
+			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
+			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
+			
+		}
+	};
+</script>

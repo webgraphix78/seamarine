@@ -1,0 +1,28 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+input[type=file]{
+	display: none;
+	+ label{
+		display: inline-block;
+		cursor: pointer;
+		transition: all .2s ease-in-out;
+		padding: 4px 16px;
+		color: white;
+	}
+}
+
+.mandatory{
+	color: red;
+	font-weight: bold;
+}
+
+.form-control, .form-select{
+	border-color: #aaa !important;
+}

@@ -1,0 +1,296 @@
+<template>
+	<div id="onhireunitnr-main">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row mb-1">
+					<div class="col-sm-7">
+						<div class="d-flex align-items-center mb-2">
+							<h4 class="m-0 me-4">ONHIRE UNITNR</h4>
+							<a id="add_onhireunitnr_btn" class="btn btn-success btn-sm" href="#" role="button" data-bs-toggle="modal" data-bs-target="#addOnhireUnitnrModal" v-if="['110', '111'].indexOf(all_permissions) >= 0">ADD</a>
+						</div>
+					</div>
+				</div>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewOnhireUnitnr" @edit-object="prepareEditOnhireUnitnr" @toggle-object-status="toggleOnhireUnitnr"></DataTableComponent>
+			</div>
+		</div>
+		<div class="modal fade" ref="addEditModal" id="addOnhireUnitnrModal" tabindex="-1" aria-labelledby="addOnhireUnitnrModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="addOnhireUnitnrModalLabel">ADD OnhireUnitnr</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" @click="cancelAddEdit()">CLOSE</button>
+						<button type="button" class="btn btn-dark btn-sm" @click="saveOnhireUnitnr()">SAVE CHANGES</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" ref="readModal" id="readOnhireUnitnrModal" tabindex="-1" aria-labelledby="readOnhireUnitnrModalLabel" aria-hidden="true" v-if="readOnhireUnitnr">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="readOnhireUnitnrModalLabel">View OnhireUnitnr</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">CLOSE</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+<script>
+	import {useVuelidate} from "@vuelidate/core";
+	import {required, minValue, alphaNum, numeric, email, requiredIf, minLength} from "@vuelidate/validators";
+	import * as bootstrap from "bootstrap";
+	function initialState() {
+		return {
+			id: 0,
+			onhire_id: 0,
+			unit_nr_1: "",
+			unit_nr_1_calibration: null,
+			unit_nr_1_calibration_value: null,
+			unit_nr_2: "",
+			unit_nr_2_manlid_swing: null,
+			unit_nr_2_manlid_swing_value: null,
+			unit_nr_2_manlid_swing_other: "",
+			unit_nr_3: "",
+			unit_nr_3_collapsible: "",
+			unit_nr_4: "",
+			unit_nr_4_dipstick: null,
+			unit_nr_4_dipstick_value: null,
+			unit_nr_5: "",
+			unit_nr_5_topcover: null,
+			unit_nr_6: "",
+			unit_nr_6_walkway: null,
+			unit_nr_7: "",
+			unit_nr_7_manlid_gasket: null,
+			unit_nr_7_manlid_gasket_other: "",
+			unit_nr_8: "",
+			unit_nr_8_grounding: null,
+			unit_nr_9: "",
+			unit_nr_9_bottomplate: null,
+			unit_nr_10: "",
+			unit_nr_10_pti_date: null,
+
+			action: ""
+		};
+	}
+	function initialStateValidations() {
+		return {
+			onhire_id: {required, numeric, minValueValue: minValue(0)},
+			unit_nr_1: {minLengthValue: minLength(1)},
+			unit_nr_1_calibration: {},
+			unit_nr_1_calibration_value: {},
+			unit_nr_2: {minLengthValue: minLength(1)},
+			unit_nr_2_manlid_swing: {},
+			unit_nr_2_manlid_swing_value: {},
+			unit_nr_2_manlid_swing_other: {minLengthValue: minLength(1)},
+			unit_nr_3: {minLengthValue: minLength(1)},
+			unit_nr_3_collapsible: {minLengthValue: minLength(1)},
+			unit_nr_4: {minLengthValue: minLength(1)},
+			unit_nr_4_dipstick: {},
+			unit_nr_4_dipstick_value: {},
+			unit_nr_5: {minLengthValue: minLength(1)},
+			unit_nr_5_topcover: {},
+			unit_nr_6: {minLengthValue: minLength(1)},
+			unit_nr_6_walkway: {},
+			unit_nr_7: {minLengthValue: minLength(1)},
+			unit_nr_7_manlid_gasket: {},
+			unit_nr_7_manlid_gasket_other: {minLengthValue: minLength(1)},
+			unit_nr_8: {minLengthValue: minLength(1)},
+			unit_nr_8_grounding: {},
+			unit_nr_9: {minLengthValue: minLength(1)},
+			unit_nr_9_bottomplate: {},
+			unit_nr_10: {minLengthValue: minLength(1)},
+			unit_nr_10_pti_date: {}
+		};
+	}
+	export default {
+		name: "OnhireUnitnrmaster",
+		props: ["current_user_id", "all_permissions"],
+		setup() {
+			return {
+				v$: useVuelidate()
+			};
+		},
+		data() {
+			return {
+				dataprops: {
+					id: "onhireunitnr-list",
+					class: "a",
+					base_url: "/api/onhireunitnr/",
+					columns: [{title: "Onhire Id", property: "onhire_id"}],
+					data_to_send: {current_user_id: this.current_user_id},
+					reload: false,
+					search: "simple"
+				},
+				addEditModal: null,
+				readModal: null,
+				currentUser: siteUserObject,
+				onhireunitnrForAdd: initialState(),
+				readOnhireUnitnr: {},
+				allUnitNr1CalibrationList: [],
+				allUnitNr1CalibrationValueList: [],
+				allUnitNr2ManlidSwingList: [],
+				allUnitNr2ManlidSwingValueList: [],
+				allUnitNr4DipstickList: [],
+				allUnitNr4DipstickValueList: [],
+				allUnitNr5TopcoverList: [],
+				allUnitNr6WalkwayList: [],
+				allUnitNr7ManlidGasketList: [],
+				allUnitNr8GroundingList: [],
+				allUnitNr9BottomplateList: [],
+				allUnitNr10PtiDateList: []
+			};
+		},
+		validations() {
+			return {
+				onhireunitnrForAdd: initialStateValidations()
+			};
+		},
+		methods: {
+			cancelAddEdit(event) {
+				this.onhireunitnrForAdd = initialState();
+				this.v$.$reset();
+			},
+			async saveOnhireUnitnr(event) {
+				var thisVar = this;
+				const result = await this.v$.$validate();
+				if (!result) {
+					this.showToast("Form validation failed. Please check.", "error", "bottom", 2000);
+					console.log(this.v$.$errors);
+					return;
+				}
+				if (!this.onhireunitnrForAdd.action || this.onhireunitnrForAdd.action == "") this.onhireunitnrForAdd.action = "details";
+				this.onhireunitnrForAdd.created_by = this.current_user_id;
+				$("#addOnhireUnitnrModal").modal("hide");
+				this.showLoading("Saving ...");
+				axios
+					.post("/onhireunitnr/save", {onhireunitnr: this.onhireunitnrForAdd})
+					.then(async function (response) {
+						thisVar.closeSwal();
+						var status = response.data.status;
+						if (status == 1) {
+							// Ajax to submit
+							thisVar.showToast("Onhire Unitnr saved successfully", "success", "bottom", 3000);
+							setTimeout(() => {
+								thisVar.dataprops.reload = true;
+							}, 1500);
+							thisVar.onhireunitnrForAdd = initialState();
+							thisVar.v$.$reset();
+						} else thisVar.showErrors("Onhire Unitnr could not be saved successfully", response.data.messages, "bottom", 3000);
+					})
+					.catch(function (error) {
+						console.log(error);
+						thisVar.closeSwal();
+						thisVar.showToast("Onhire Unitnr could not be saved successfully", "error", "bottom", 3000);
+					});
+			},
+			prepareEditOnhireUnitnr(onhireunitnr) {
+				this.onhireunitnrForAdd = Object.assign({}, onhireunitnr);
+				this.addEditModal.show();
+			},
+			viewOnhireUnitnr(onhireunitnr) {
+				this.readOnhireUnitnr = onhireunitnr;
+				this.readModal.show();
+			},
+			toggleOnhireUnitnr(onhireunitnr, status) {
+				var thisVar = this;
+				Swal.fire({
+					icon: "question",
+					html: "Do you really want to " + (status == 1 ? "reactivate" : "deactivate") + ' the Onhire Unitnr - <br/>"' + onhireunitnr.onhire_id + '"?',
+					showCancelButton: true
+				}).then((result) => {
+					if (result.isConfirmed) {
+						thisVar.onhireunitnrForAdd = onhireunitnr;
+						thisVar.onhireunitnrForAdd.status = status;
+						thisVar.onhireunitnrForAdd.action = "status";
+						thisVar.saveOnhireUnitnr();
+					}
+				});
+			}
+		},
+		async mounted() {
+			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
+			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
+			this.allUnitNr1CalibrationList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "Stainless Steel"},
+				{id: "2", title: "Paper"}
+			];
+			this.allUnitNr1CalibrationValueList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "In Spillbox"},
+				{id: "2", title: "In Cover"},
+				{id: "3", title: "On Cladding"},
+				{id: "4", title: "On Manlid"}
+			];
+			this.allUnitNr2ManlidSwingList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "4 Bolted"},
+				{id: "2", title: "6 Bolted"},
+				{id: "3", title: "8 Bolted"},
+				{id: "4", title: "16x / 20x"}
+			];
+			this.allUnitNr2ManlidSwingValueList = [
+				{id: "1", title: "Fortvale"},
+				{id: "2", title: "Perolo"},
+				{id: "3", title: "Swift"},
+				{id: "4", title: "X Securing Ring"},
+				{id: "0", title: "Other"}
+			];
+			this.allUnitNr4DipstickList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "Angle"},
+				{id: "2", title: "Flat"}
+			];
+			this.allUnitNr4DipstickValueList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "Legible"},
+				{id: "2", title: "Bracket"}
+			];
+			this.allUnitNr5TopcoverList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "SS"},
+				{id: "2", title: "ALU"},
+				{id: "3", title: "IRON"}
+			];
+			this.allUnitNr6WalkwayList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "SS"},
+				{id: "2", title: "ALU"}
+			];
+			this.allUnitNr7ManlidGasketList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "SWR"},
+				{id: "2", title: "PTFE"},
+				{id: "3", title: "Viton A"},
+				{id: "4", title: "Super Tanktyt"},
+				{id: "0", title: "Other"}
+			];
+			this.allUnitNr8GroundingList = [
+				{id: "1", title: "Yes"},
+				{id: "0", title: "No"}
+			];
+			this.allUnitNr9BottomplateList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "Yes"},
+				{id: "0", title: "No"}
+			];
+			this.allUnitNr10PtiDateList = [
+				{id: "-1", title: "NA"},
+				{id: "1", title: "Cable +/-"},
+				{id: "2", title: "Mtr"},
+				{id: "3", title: "Splice"},
+				{id: "4", title: "Plug"}
+			];
+		}
+	};
+</script>

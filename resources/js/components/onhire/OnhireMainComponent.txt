@@ -1,0 +1,316 @@
+<template>
+	<div id="onhiremain-main">
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="row mb-1">
+					<div class="col-sm-7">
+						<div class="d-flex align-items-center mb-2">
+							<h4 class="m-0 me-4">ONHIRE MAIN</h4>
+							<a id="add_onhiremain_btn" class="btn btn-success btn-sm" href="#" role="button" data-bs-toggle="modal" data-bs-target="#addOnhireMainModal" v-if="['110', '111'].indexOf(all_permissions) >= 0">ADD</a>
+						</div>
+					</div>
+				</div>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewOnhireMain" @edit-object="prepareEditOnhireMain" @toggle-object-status="toggleOnhireMain"></DataTableComponent>
+			</div>
+		</div>
+		<div class="modal fade" ref="addEditModal" id="addOnhireMainModal" tabindex="-1" aria-labelledby="addOnhireMainModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="addOnhireMainModalLabel">ADD OnhireMain</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
+					</div>
+					<div class="modal-body">
+						<onhiremain-add-component v-model="onhiremainForAdd"></onhiremain-add-component>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal" @click="cancelAddEdit()">CLOSE</button>
+						<button type="button" class="btn btn-dark btn-sm" @click="saveOnhireMain()">SAVE CHANGES</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal fade" ref="readModal" id="readOnhireMainModal" tabindex="-1" aria-labelledby="readOnhireMainModalLabel" aria-hidden="true" v-if="readOnhireMain">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="readOnhireMainModalLabel">View OnhireMain</h5>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
+					</div>
+					
+					<div class="modal-footer">
+						<button type="button" class="btn btn-outline-dark btn-sm" data-bs-dismiss="modal">CLOSE</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</template>
+<script>
+	import {useVuelidate} from "@vuelidate/core";
+	// import {required, minValue, alphaNum, numeric, email, requiredIf, minLength} from "@vuelidate/validators";
+	import * as bootstrap from "bootstrap";
+	/*function initialMainState() {
+		return {
+			id: 0,
+			onhire_id: 0,
+			bd_x: "",
+			bd_x_value: null,
+			bd_other: "",
+			bd_butterfly_ball: null,
+			bd_butterfly_ball_sn: "",
+			bd_tir_strip: null,
+			bd_spacers: null,
+			fv_x: "",
+			fv_x_value: null,
+			fv_other: "",
+			fv_option: null,
+			fv_tir_strip: null,
+			bocp_x: "",
+			bocp_x_value: null,
+			bocp_3_bsp: "",
+			bocp_cap: null,
+			rt_x: "",
+			rt_type: null,
+			rt_fusible_link: null,
+			td_x: "",
+			td_dn: "",
+			td_dn_value_1: null,
+			td_dn_value_2: null,
+			td_dn_other: "",
+			td_butterfly_ball: null,
+			td_tir_strip: null,
+			td_siphon_tube: null,
+			tl_x: "",
+			tl_dn: "",
+			tl_dn_value_1: null,
+			tl_dn_value_2: null,
+			tl_dn_other: "",
+			tl_butterfly_ball: null,
+			tl_tir_strip: null,
+			av_x: "",
+			av_value_inch: null,
+			av_value: null,
+			av_other: "",
+			av_butterfly_ball: null,
+			avc_type: null,
+			avc_tir_strip: null,
+			avc_cap_blank_v1: null,
+			avc_cap_blank_v2: null,
+			avc_cap_blank_v3: null,
+			avc_air_pressure_gauge: "",
+			srv1_x: "",
+			srv1_value1: null,
+			srv1_other: "",
+			srv1_value2: null,
+			srv1_value3: null,
+			srv1_pressure: "",
+			srv1_vac: null,
+			srv1_serial: "",
+			srv1_tir_strip: null,
+			srv1_flame_screen: null,
+			srv2_x: "",
+			srv2_value1: null,
+			srv2_other: "",
+			srv2_value2: null,
+			srv2_value3: null,
+			srv2_pressure: "",
+			srv2_vac: null,
+			srv2_serial: "",
+			srv2_tir_strip: null,
+			srv2_flame_screen: null,
+			rd1_x: "",
+			rd1_manufacture: "",
+			rd1_bar: "",
+			rd1_size: "",
+			rd2_x: "",
+			rd2_manufacture: "",
+			rd2_bar: "",
+			rd2_size: "",
+			srv1_mano_x: "",
+			srv1_mano_value1: "",
+			srv1_mano_bar: "",
+			srv2_mano_x: "",
+			srv2_mano_value: "",
+			srv2_mano_bar: "",
+			gps: null,
+			camera: null,
+			action: ""
+		};
+	}
+	function initialStateValidations() {
+		return {
+			onhire_id: {required, numeric, minValueValue: minValue(0)},
+			bd_x: {minLengthValue: minLength(1)},
+			bd_x_value: {},
+			bd_other: {minLengthValue: minLength(1)},
+			bd_butterfly_ball: {},
+			bd_butterfly_ball_sn: {minLengthValue: minLength(1)},
+			bd_tir_strip: {},
+			bd_spacers: {},
+			fv_x: {minLengthValue: minLength(1)},
+			fv_x_value: {},
+			fv_other: {minLengthValue: minLength(1)},
+			fv_option: {},
+			fv_tir_strip: {},
+			bocp_x: {minLengthValue: minLength(1)},
+			bocp_x_value: {},
+			bocp_3_bsp: {minLengthValue: minLength(1)},
+			bocp_cap: {},
+			rt_x: {minLengthValue: minLength(1)},
+			rt_type: {},
+			rt_fusible_link: {},
+			td_x: {minLengthValue: minLength(1)},
+			td_dn: {minLengthValue: minLength(1)},
+			td_dn_value_1: {},
+			td_dn_value_2: {},
+			td_dn_other: {minLengthValue: minLength(1)},
+			td_butterfly_ball: {},
+			td_tir_strip: {},
+			td_siphon_tube: {},
+			tl_x: {minLengthValue: minLength(1)},
+			tl_dn: {minLengthValue: minLength(1)},
+			tl_dn_value_1: {},
+			tl_dn_value_2: {},
+			tl_dn_other: {minLengthValue: minLength(1)},
+			tl_butterfly_ball: {},
+			tl_tir_strip: {},
+			av_x: {minLengthValue: minLength(1)},
+			av_value_inch: {},
+			av_value: {},
+			av_other: {minLengthValue: minLength(1)},
+			av_butterfly_ball: {},
+			avc_type: {},
+			avc_tir_strip: {},
+			avc_cap_blank_v1: {},
+			avc_cap_blank_v2: {},
+			avc_cap_blank_v3: {},
+			avc_air_pressure_gauge: {minLengthValue: minLength(1)},
+			srv1_x: {minLengthValue: minLength(1)},
+			srv1_value1: {},
+			srv1_other: {minLengthValue: minLength(1)},
+			srv1_value2: {},
+			srv1_value3: {},
+			srv1_pressure: {minLengthValue: minLength(1)},
+			srv1_vac: {},
+			srv1_serial: {minLengthValue: minLength(1)},
+			srv1_tir_strip: {},
+			srv1_flame_screen: {},
+			srv2_x: {minLengthValue: minLength(1)},
+			srv2_value1: {},
+			srv2_other: {minLengthValue: minLength(1)},
+			srv2_value2: {},
+			srv2_value3: {},
+			srv2_pressure: {minLengthValue: minLength(1)},
+			srv2_vac: {},
+			srv2_serial: {minLengthValue: minLength(1)},
+			srv2_tir_strip: {},
+			srv2_flame_screen: {},
+			rd1_x: {minLengthValue: minLength(1)},
+			rd1_manufacture: {minLengthValue: minLength(1)},
+			rd1_bar: {minLengthValue: minLength(1)},
+			rd1_size: {minLengthValue: minLength(1)},
+			rd2_x: {minLengthValue: minLength(1)},
+			rd2_manufacture: {minLengthValue: minLength(1)},
+			rd2_bar: {minLengthValue: minLength(1)},
+			rd2_size: {minLengthValue: minLength(1)},
+			srv1_mano_x: {minLengthValue: minLength(1)},
+			srv1_mano_value1: {minLengthValue: minLength(1)},
+			srv1_mano_bar: {minLengthValue: minLength(1)},
+			srv2_mano_x: {minLengthValue: minLength(1)},
+			srv2_mano_value: {minLengthValue: minLength(1)},
+			srv2_mano_bar: {minLengthValue: minLength(1)},
+			gps: {},
+			camera: {}
+		};
+	}*/
+	export default {
+		name: "OnhireMainmaster",
+		props: ["current_user_id", "all_permissions"],
+		data() {
+			return {
+				dataprops: {
+					id: "onhiremain-list",
+					class: "a",
+					base_url: "/api/onhiremain/",
+					columns: [{title: "Onhire Id", property: "onhire_id"}],
+					data_to_send: {current_user_id: this.current_user_id},
+					reload: false,
+					search: "simple"
+				},
+				addEditModal: null,
+				readModal: null,
+				currentUser: siteUserObject,
+				readOnhireMain: {},
+				onhiremainForAdd: {},
+			};
+		},
+		methods: {
+			cancelAddEdit(event) {
+				this.onhiremainForAdd = initialMainState();
+				this.v$.$reset();
+			},
+			async saveOnhireMain(event) {
+				var thisVar = this;
+				const result = await this.v$.$validate();
+				if (!result) {
+					this.showToast("Form validation failed. Please check.", "error", "bottom", 2000);
+					console.log(this.v$.$errors);
+					return;
+				}
+				if (!this.onhiremainForAdd.action || this.onhiremainForAdd.action == "") this.onhiremainForAdd.action = "details";
+				this.onhiremainForAdd.created_by = this.current_user_id;
+				$("#addOnhireMainModal").modal("hide");
+				this.showLoading("Saving ...");
+				axios
+					.post("/onhiremain/save", {onhiremain: this.onhiremainForAdd})
+					.then(async function (response) {
+						thisVar.closeSwal();
+						var status = response.data.status;
+						if (status == 1) {
+							// Ajax to submit
+							thisVar.showToast("Onhire Main saved successfully", "success", "bottom", 3000);
+							setTimeout(() => {
+								thisVar.dataprops.reload = true;
+							}, 1500);
+							thisVar.onhiremainForAdd = initialMainState();
+							thisVar.v$.$reset();
+						} else thisVar.showErrors("Onhire Main could not be saved successfully", response.data.messages, "bottom", 3000);
+					})
+					.catch(function (error) {
+						console.log(error);
+						thisVar.closeSwal();
+						thisVar.showToast("Onhire Main could not be saved successfully", "error", "bottom", 3000);
+					});
+			},
+			prepareEditOnhireMain(onhiremain) {
+				this.onhiremainForAdd = Object.assign({}, onhiremain);
+				this.addEditModal.show();
+			},
+			viewOnhireMain(onhiremain) {
+				this.readOnhireMain = onhiremain;
+				this.readModal.show();
+			},
+			toggleOnhireMain(onhiremain, status) {
+				var thisVar = this;
+				Swal.fire({
+					icon: "question",
+					html: "Do you really want to " + (status == 1 ? "reactivate" : "deactivate") + ' the Onhire Main - <br/>"' + onhiremain.onhire_id + '"?',
+					showCancelButton: true
+				}).then((result) => {
+					if (result.isConfirmed) {
+						thisVar.onhiremainForAdd = onhiremain;
+						thisVar.onhiremainForAdd.status = status;
+						thisVar.onhiremainForAdd.action = "status";
+						thisVar.saveOnhireMain();
+					}
+				});
+			}
+		},
+		async mounted() {
+			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
+			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
+		}
+	};
+</script>
