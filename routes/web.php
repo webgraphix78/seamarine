@@ -190,6 +190,20 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/cscre/delete', [App\Http\Controllers\CscreController::class, 'deleteRecord'])->name('deletecscre');
 	Route::get('/cscre/add', [App\Http\Controllers\CscreController::class, 'add'])->name('add-cscre-page');
 	Route::get('/cscre/view/{id}', [App\Http\Controllers\CscreController::class, 'view'])->name('view-cscre-page');
+
+	// EquipmentInspection
+	Route::get('/equipmentinspection', [App\Http\Controllers\EquipmentInspectionController::class, 'index'])->name('equipmentinspection-list');
+	Route::post('/equipmentinspection/save', [App\Http\Controllers\EquipmentInspectionController::class, 'save'])->name('save-equipmentinspection');
+	Route::post('/selectequipmentinspection', [App\Http\Controllers\EquipmentInspectionController::class, 'loadForSelection'])->name('selectequipmentinspection');
+	Route::get('/equipmentinspection/edit/{id}', [App\Http\Controllers\EquipmentInspectionController::class, 'edit'])->name('edit-equipmentinspection-page');
+	Route::post('/equipmentinspection/duplicate', [App\Http\Controllers\EquipmentInspectionController::class, 'duplicateRecord'])->name('duplicate-equipmentinspection-page');
+	Route::get('/equipmentinspection/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\EquipmentInspectionController::class, 'viewFile'])->name('view-equipmentinspection-file');
+	Route::get('/equipmentinspection/export-to-pdf/{id}', [App\Http\Controllers\EquipmentInspectionController::class, 'exportToPDF'])->name('print-equipmentinspection');
+	Route::post('/equipmentinspection/upload-file', [App\Http\Controllers\EquipmentInspectionController::class, 'uploadFile'])->name('upload-equipmentinspection-file');
+	Route::post('/equipmentinspection/clear-file/{id}/{randomId}', [App\Http\Controllers\EquipmentInspectionController::class, 'clearFile'])->name('clear-equipmentinspection-file');
+	Route::post('/equipmentinspection/delete', [App\Http\Controllers\EquipmentInspectionController::class, 'deleteRecord'])->name('deleteequipmentinspection');
+	Route::get('/equipmentinspection/add', [App\Http\Controllers\EquipmentInspectionController::class, 'add'])->name('add-equipmentinspection-page');
+	Route::get('/equipmentinspection/view/{id}', [App\Http\Controllers\EquipmentInspectionController::class, 'view'])->name('view-equipmentinspection-page');
 });
 // OnhireMain
 Route::get('/onhiremain', [App\Http\Controllers\OnhireMainController::class, 'index'])->name('onhiremain-list');

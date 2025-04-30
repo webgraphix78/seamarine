@@ -89,3 +89,7 @@ Route::post('/referequipment/get-record/{id}', [App\Http\Controllers\ReferEquipm
 // Cscre	
 Route::post('/cscre/get', [App\Http\Controllers\CscreController::class, 'get'])->name('get-cscre-list');
 Route::post('/cscre/get-record/{id}', [App\Http\Controllers\CscreController::class, 'getRecord'])->name('get-cscre-record');
+
+// EquipmentInspection	
+Route::post('/equipmentinspection/get', [App\Http\Controllers\EquipmentInspectionController::class, 'get'])->name('get-equipmentinspection-list');
+Route::post('/equipmentinspection/get-record/{id}', [App\Http\Controllers\EquipmentInspectionController::class, 'getRecord'])->name('get-equipmentinspection-record');

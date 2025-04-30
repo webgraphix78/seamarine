@@ -118,6 +118,14 @@ import CscreComponent from './components/Cscre/CscreComponent.vue';
 import AddEditCscreComponent from './components/Cscre/AddEditCscreComponent.vue';
 import ViewCscreComponent from './components/Cscre/ViewCscreComponent.vue';
 
+//EquipmentInspection
+import EquipmentInspectionComponent from './components/EquipmentInspection/EquipmentInspectionComponent.vue';
+import AddEditEquipmentInspectionComponent from './components/EquipmentInspection/AddEditEquipmentInspectionComponent.vue';
+import ViewEquipmentInspectionComponent from './components/EquipmentInspection/ViewEquipmentInspectionComponent.vue';
+
+
+
+
 
 const app = createApp({})
 
@@ -232,6 +240,14 @@ app.component('view-referequipment-component', ViewReferEquipmentComponent);
 app.component('cscre-component', CscreComponent);
 app.component('addedit-cscre-component', AddEditCscreComponent);
 app.component('view-cscre-component', ViewCscreComponent);
+
+//EquipmentInspection
+app.component('equipmentinspection-component', EquipmentInspectionComponent);
+app.component('addedit-equipmentinspection-component', AddEditEquipmentInspectionComponent);
+app.component('view-equipmentinspection-component', ViewEquipmentInspectionComponent);
+
+
+
 
 // Mixins
 app.mixin(SWAlert);
