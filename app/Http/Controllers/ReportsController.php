@@ -33,20 +33,20 @@ class ReportsController extends Controller{
 			}
 			else if( $input["duration"] == 1 ){
 				// this month
-				$cleaningCount = \App\Models\Cleaning::whereMonth('created_at', date('m'))
-					->whereYear('created_at', date('Y'))
+				$cleaningCount = \App\Models\Cleaning::whereMonth('dt_inspection_date', date('m'))
+					->whereYear('dt_inspection_date', date('Y'))
 					->count();
-				$dryboxCount = \App\Models\Drybox::whereMonth('created_at', date('m'))
-					->whereYear('created_at', date('Y'))
+				$dryboxCount = \App\Models\Drybox::whereMonth('dt_inspection_date', date('m'))
+					->whereYear('dt_inspection_date', date('Y'))
 					->count();
-				$imo1Count = \App\Models\Imo1::whereMonth('created_at', date('m'))
-					->whereYear('created_at', date('Y'))
+				$imo1Count = \App\Models\Imo1::whereMonth('dt_inspection_date', date('m'))
+					->whereYear('dt_inspection_date', date('Y'))
 					->count();
 				$imo5Count = \App\Models\Imo5Condition::whereMonth('created_at', date('m'))
 					->whereYear('created_at', date('Y'))
 					->count();
-				$shipperSurveyCount = \App\Models\ShipperSurvey::whereMonth('created_at', date('m'))
-					->whereYear('created_at', date('Y'))
+				$shipperSurveyCount = \App\Models\ShipperSurvey::whereMonth('dt_inspection_date', date('m'))
+					->whereYear('dt_inspection_date', date('Y'))
 					->count();
 				$weightmentCount = \App\Models\Weightment::whereMonth('created_at', date('m'))
 					->whereYear('created_at', date('Y'))
@@ -58,62 +58,63 @@ class ReportsController extends Controller{
 			else if($input["duration"] == 2){
 				// get last month date
 				$lastMonth = strtotime('-1 month');
+				log::info("last month: ".date('Y-m-d', $lastMonth));
 				// last month
-				$cleaningCount = \App\Models\Cleaning::whereMonth('created_at', date('m', $lastMonth))
+				$cleaningCount = \App\Models\Cleaning::whereMonth('dt_inspection_date', date('m', $lastMonth))
+					->whereYear('dt_inspection_date', date('Y', $lastMonth))
+					->count();
+				$dryboxCount = \App\Models\Drybox::whereMonth('dt_inspection_date', date('m', $lastMonth))
+					->whereYear('dt_inspection_date', date('Y', $lastMonth))
+					->count();
+				$imo1Count = \App\Models\Imo1::whereMonth('dt_inspection_date', date('m', $lastMonth))
+					->whereYear('dt_inspection_date', date('Y', $lastMonth))
+					->count();
+				$imo5Count = \App\Models\Imo5Condition::whereMonth('created_at', date('m', $lastMonth))
 					->whereYear('created_at', date('Y', $lastMonth))
 					->count();
-				$cleaningCount = \App\Models\Drybox::whereMonth('created_at', date('m', $lastMonth))
+				$shipperSurveyCount = \App\Models\ShipperSurvey::whereMonth('dt_inspection_date', date('m', $lastMonth))
+					->whereYear('dt_inspection_date', date('Y', $lastMonth))
+					->count();
+				$weightmentCount = \App\Models\Weightment::whereMonth('created_at', date('m', $lastMonth))
 					->whereYear('created_at', date('Y', $lastMonth))
 					->count();
-				$cleaningCount = \App\Models\Imo1::whereMonth('created_at', date('m', $lastMonth))
-					->whereYear('created_at', date('Y', $lastMonth))
-					->count();
-				$cleaningCount = \App\Models\Imo5Condition::whereMonth('created_at', date('m', $lastMonth))
-					->whereYear('created_at', date('Y', $lastMonth))
-					->count();
-				$cleaningCount = \App\Models\ShipperSurvey::whereMonth('created_at', date('m', $lastMonth))
-					->whereYear('created_at', date('Y', $lastMonth))
-					->count();
-				$cleaningCount = \App\Models\Weightment::whereMonth('created_at', date('m', $lastMonth))
-					->whereYear('created_at', date('Y', $lastMonth))
-					->count();
-				$cleaningCount = \App\Models\Onhire::whereMonth('created_at', date('m', $lastMonth))
+				$onhireCount = \App\Models\Onhire::whereMonth('created_at', date('m', $lastMonth))
 					->whereYear('created_at', date('Y', $lastMonth))
 					->count();
 			}
 			else if($input["duration"] == 10){
 				if( isset($input["startDate"]) && isset($input["endDate"]) ){
 					// get data between startDate and endDate
-					$cleaningCount = \App\Models\Cleaning::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$dryboxCount = \App\Models\Drybox::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$imo1Count = \App\Models\Imo1::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$cleaningCount = \App\Models\Cleaning::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
+					$dryboxCount = \App\Models\Drybox::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
+					$imo1Count = \App\Models\Imo1::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
 					$imo5Count = \App\Models\Imo5Condition::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$shipperSurveyCount = \App\Models\ShipperSurvey::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$shipperSurveyCount = \App\Models\ShipperSurvey::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
 					$weightmentCount = \App\Models\Weightment::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
 					$onhireCount = \App\Models\Onhire::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
 				}
 			}
 		}
 		// get the count of records group by month in the last 6 months
-		$cleaningLastSixMonthsCount = \App\Models\Cleaning::selectRaw( 'DATE_FORMAT(created_at, "%b, %Y") as month, count(*) as count')
-			->where('created_at', '>=', now()->subMonths(6))
+		$cleaningLastSixMonthsCount = \App\Models\Cleaning::selectRaw( 'DATE_FORMAT(dt_inspection_date, "%b, %Y") as month, count(*) as count')
+			->where('dt_inspection_date', '>=', now()->subMonths(6))
 			->groupBy('month')->orderBy('created_at')
 			->pluck('count', 'month');
-		$dryboxLastSixMonthsCount = \App\Models\Drybox::selectRaw( 'DATE_FORMAT(created_at, "%b, %Y") as month, count(*) as count')
-			->where('created_at', '>=', now()->subMonths(6))
+		$dryboxLastSixMonthsCount = \App\Models\Drybox::selectRaw( 'DATE_FORMAT(dt_inspection_date, "%b, %Y") as month, count(*) as count')
+			->where('dt_inspection_date', '>=', now()->subMonths(6))
 			->groupBy('month')->orderBy('created_at')
 			->pluck('count', 'month');
 		
-		$imo1LastSixMonthsCount = \App\Models\Imo1::selectRaw( 'DATE_FORMAT(created_at, "%b, %Y") as month, count(*) as count')
-			->where('created_at', '>=', now()->subMonths(6))
+		$imo1LastSixMonthsCount = \App\Models\Imo1::selectRaw( 'DATE_FORMAT(dt_inspection_date, "%b, %Y") as month, count(*) as count')
+			->where('dt_inspection_date', '>=', now()->subMonths(6))
 			->groupBy('month')->orderBy('created_at')
 			->pluck('count', 'month');
 		$imo5LastSixMonthsCount = \App\Models\Imo5Condition::selectRaw( 'DATE_FORMAT(created_at, "%b, %Y") as month, count(*) as count')
 			->where('created_at', '>=', now()->subMonths(6))
 			->groupBy('month')->orderBy('created_at')
 			->pluck('count', 'month');
-		$shipperSurveyLastSixMonthsCount = \App\Models\ShipperSurvey::selectRaw( 'DATE_FORMAT(created_at, "%b, %Y") as month, count(*) as count')
-			->where('created_at', '>=', now()->subMonths(6))
+		$shipperSurveyLastSixMonthsCount = \App\Models\ShipperSurvey::selectRaw( 'DATE_FORMAT(dt_inspection_date, "%b, %Y") as month, count(*) as count')
+			->where('dt_inspection_date', '>=', now()->subMonths(6))
 			->groupBy('month')->orderBy('created_at')
 			->pluck('count', 'month');
 		$weightmentLastSixMonthsCount = \App\Models\Weightment::selectRaw( 'DATE_FORMAT(created_at, "%b, %Y") as month, count(*) as count')
