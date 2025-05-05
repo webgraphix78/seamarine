@@ -109,19 +109,19 @@ import WidgetComponent from './components/dashboard/WidgetComponent.vue';
 import JointSurveyComponent from "./components/JointSurveyComponent";
 
 //ReferEquipment
-import ReferEquipmentComponent from './components/ReferEquipment/ReferEquipmentComponent.vue';
-import AddEditReferEquipmentComponent from './components/ReferEquipment/AddEditReferEquipmentComponent.vue';
-import ViewReferEquipmentComponent from './components/ReferEquipment/ViewReferEquipmentComponent.vue';
+import ReferEquipmentComponent from './components/referequipment/ReferEquipmentComponent.vue';
+import AddEditReferEquipmentComponent from './components/referequipment/AddEditReferEquipmentComponent.vue';
+import ViewReferEquipmentComponent from './components/referequipment/ViewReferEquipmentComponent.vue';
 
 //Cscre
-import CscreComponent from './components/Cscre/CscreComponent.vue';
-import AddEditCscreComponent from './components/Cscre/AddEditCscreComponent.vue';
-import ViewCscreComponent from './components/Cscre/ViewCscreComponent.vue';
+import CscreComponent from './components/cscre/CscreComponent.vue';
+import AddEditCscreComponent from './components/cscre/AddEditCscreComponent.vue';
+import ViewCscreComponent from './components/cscre/ViewCscreComponent.vue';
 
 //EquipmentInspection
-import EquipmentInspectionComponent from './components/EquipmentInspection/EquipmentInspectionComponent.vue';
-import AddEditEquipmentInspectionComponent from './components/EquipmentInspection/AddEditEquipmentInspectionComponent.vue';
-import ViewEquipmentInspectionComponent from './components/EquipmentInspection/ViewEquipmentInspectionComponent.vue';
+import EquipmentInspectionComponent from './components/equipmentinspection/EquipmentInspectionComponent.vue';
+import AddEditEquipmentInspectionComponent from './components/equipmentinspection/AddEditEquipmentInspectionComponent.vue';
+import ViewEquipmentInspectionComponent from './components/equipmentinspection/ViewEquipmentInspectionComponent.vue';
 
 
 
