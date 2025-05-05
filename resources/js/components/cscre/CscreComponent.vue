@@ -10,11 +10,9 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewCscre" @edit-object="prepareEditCscre" @toggle-object-status="deleteCscre"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewCscre" @edit-object="prepareEditCscre" @toggle-object-status="deleteCscre" @export-object="printCscre" @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
-		
-		
 	</div>
 </template>
 <script>
@@ -162,12 +160,13 @@ export default {
 			});
 		},
 		printCscre(cscre) {
+			this.cscreForAdd.reload = true;
 			window.location = this.docRoot+'/cscre/export-to-pdf/' + cscre.id;
 			this.showToast("Printing. Please wait ...", "success", "bottom", 3000);
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadMasterData(this.docRoot+'/user',{});
+		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/user',{});
 	}
 }
 </script>

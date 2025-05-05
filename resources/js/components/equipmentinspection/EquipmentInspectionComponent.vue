@@ -10,7 +10,7 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewEquipmentInspection" @edit-object="prepareEditEquipmentInspection" @toggle-object-status="deleteEquipmentInspection"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewEquipmentInspection" @edit-object="prepareEditEquipmentInspection" @toggle-object-status="deleteEquipmentInspection"  @export-object="printEquipmentInspection"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 		
@@ -135,7 +135,8 @@ export default {
 							source: { api: 'user', id: 'id', value: 'name' } 
 						},
 					]
-				}
+				},
+				search: "simple"
 			},
 			addeditModal: null,
 			viewModal: null,
@@ -219,18 +220,18 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadMasterData(this.docRoot+'/user',{});
 		this.allEmptyCleanList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, { id: '-1', title: 'NA'}, ];
 		this.allEmptyDirtyList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, { id: '-1', title: 'NA'}, ];
 		this.allLoadedList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, { id: '-1', title: 'NA'}, ];
-		this.allSurveyorIdList = await this.loadMasterData(this.docRoot+'/user',{});
 		this.allEqInspectionStatusList = [{ id: '1', title: 'Import'}, { id: '2', title: 'Export'}, ];
 		this.allEquipmentTypeList = [{ id: '1', title: 'Loaded'}, { id: '0', title: 'Unloaded'}, ];
 		this.allTankTypeList = [{ id: '1', title: 'IMO 1'}, { id: '2', title: 'IMO 5'}, ];
 		this.allCfsList = [{ id: '-1', title: 'NA'}, { id: '1', title: 'In'}, { id: '0', title: 'Out'}, ];
-		this.allForIdList = await this.loadMasterData(this.docRoot+'/user',{});
-		this.allInspectionLocationIdList = await this.loadMasterData(this.docRoot+'/user',{});
-		this.allCustomerIdList = await this.loadMasterData(this.docRoot+'/user',{});
+		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
+		this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
+		this.allForIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
+		this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
+		this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
 	}
 }
 </script>

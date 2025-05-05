@@ -16,8 +16,7 @@ class ReferEquipmentController extends Controller
 {
 
 	//
-	public function index()
-	{
+	public function index(){
 		$component = 'referequipment-component';
 
 		$all_permissions = ActionsService::getPermissions("ReferEquipment", auth()->user()->role_id);
@@ -28,8 +27,7 @@ class ReferEquipmentController extends Controller
 		return view('common.index', compact('component', 'current_user_id', 'all_permissions'));
 	}
 
-	public function get(Request $request)
-	{
+	public function get(Request $request){
 		$input = $request->all();
 		log::info($input);
 		$referequipmentList = \App\Models\ReferEquipment::with('rel_company_id', 'rel_inspection_location_id', 'rel_customer_id', 'rel_surveyor_id',)->select("*");
@@ -133,14 +131,12 @@ class ReferEquipmentController extends Controller
 		return \App\Http\Resources\ReferEquipmentResource::collection($referequipmentList);
 	}
 
-	public function add()
-	{
+	public function add(){
 		$component = "addedit-referequipment-component";
 		return view('common.index', compact("component"));
 	}
 
-	public function edit($id)
-	{
+	public function edit($id){
 		$component = "addedit-referequipment-component";
 		$objectId = $id;
 		$object = \App\Models\ReferEquipment::find($objectId);
@@ -150,14 +146,12 @@ class ReferEquipmentController extends Controller
 	}
 
 
-	public function getRecord($objectId)
-	{
+	public function getRecord($objectId){
 		$object = \App\Models\ReferEquipment::with('rel_company_id', 'rel_inspection_location_id', 'rel_customer_id', 'rel_surveyor_id',)->find($objectId);
 		return $object->toJson();
 	}
 
-	public function view($id)
-	{
+	public function view($id){
 		$component = "view-referequipment-component";
 		$objectId = $id;
 		if (\App\Models\ReferEquipment::find($objectId) == null) {
@@ -167,8 +161,7 @@ class ReferEquipmentController extends Controller
 	}
 
 	// Save referequipment
-	public function save(Request $request)
-	{
+	public function save(Request $request){
 		$input = $request->all();
 		if (isset($input["referequipment"])) {
 			$referequipment = $input["referequipment"];
@@ -193,11 +186,9 @@ class ReferEquipmentController extends Controller
 				} else
 					unset($objectToSave["created_by"]);
 			}
-
-			if (isset($referequipment['container_type']) && is_array($referequipment['container_type'])) {
-				$objectToSave['container_type'] = json_encode($referequipment['container_type']);
-			}
-
+			// if (isset($referequipment['container_type']) && is_array($referequipment['container_type'])) {
+			// 	$objectToSave['container_type'] = json_encode($referequipment['container_type']);
+			// }
 			$referequipmentData = \App\Models\ReferEquipment::updateOrCreate(["id" => $referequipment["id"]], $objectToSave);
 			// event(new ReferEquipmentSaved($referequipmentData));
 			return response()->json(["status" => 1, "id" => $referequipmentData->id]);
@@ -207,8 +198,7 @@ class ReferEquipmentController extends Controller
 	}
 
 	// Duplicate the record
-	public function duplicateRecord(Request $request)
-	{
+	public function duplicateRecord(Request $request){
 		$input = $request->all();
 		if (isset($input["id"])) {
 			$objectId = $input["id"];
@@ -225,8 +215,7 @@ class ReferEquipmentController extends Controller
 	}
 
 	// Delete the record
-	public function deleteRecord(Request $request)
-	{
+	public function deleteRecord(Request $request){
 		$referequipment = \App\Models\ReferEquipment::find($request->id);
 		if ($request->status == 0) {
 			// Soft delete the record
@@ -239,22 +228,22 @@ class ReferEquipmentController extends Controller
 		return response()->json(['status' => 1, 'message' => 'ReferEquipment updated successfully']);
 	}
 
-	public function exportToPDF($jointsurveyId, Request $request)
-	{
-		$jointsurvey = \App\Models\JointSurvey::with('company', 'surveyor', 'creator')->find($jointsurveyId);
-		$company = $jointsurvey["company"];
-		$filename = $jointsurvey->tank_no . ".pdf";
+	public function exportToPDF($referequipmentId, Request $request){
+		$referequipment = \App\Models\ReferEquipment::with('rel_company_id','rel_inspection_location_id', 'rel_customer_id','rel_surveyor_id', 'creator')->find($referequipmentId);
+		$company = $referequipment["rel_company_id"];
+		$filename = $referequipment->tank_no . ".pdf";
 		$data = [
-			'jointsurvey' => $jointsurvey,
+			'referequipment' => $referequipment,
 		];
-		if (strlen($company["header_url"]) > 0 && Storage::exists($company["header_url"]) && strlen($company["signature_url"]) > 0 && Storage::exists($company["signature_url"])) {
+		log::info($company);
+		if (strlen($company["header_url"]) > 0 && storage_path('app/' . $company["header_url"]) && strlen($company["signature_url"]) > 0 && storage_path('app/' . $company["signature_url"])) {
 			// lets extract the invoice signature
 			$signPathInfo = pathinfo($company["signature_url"]);
 			$signAbsolutePath = storage_path("app" . DIRECTORY_SEPARATOR . $company["signature_url"]);
 			$signImage = 'data:image/' . strtoupper($signPathInfo['extension']) . ';base64,' . base64_encode(file_get_contents($signAbsolutePath));
 			$data["sign"] = $signImage;
 
-			$view = View::make('pdfs.jointsurvey', $data);
+			$view = View::make('pdfs.referequipment', $data);
 			$html = $view->render();
 			$pdf = new \App\Models\BotPDF;
 			$pdf->headerImage = $company["header_url"];
@@ -265,13 +254,13 @@ class ReferEquipmentController extends Controller
 			// set margins
 			// $pdf->SetMargins(PDF_MARGIN_LEFT, 35, PDF_MARGIN_RIGHT, true);
 			$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
-			$pdf->SetTitle($jointsurvey->tank_no);
+			$pdf->SetTitle($referequipment->tank_no);
 			$pdf->AddPage();
 			$pdf->setFontSize(10);
 			$pdf->setTopMargin(round($pdf->headerHeight));
 			$pdf->writeHTML($html, true, false, true, false, '');
 			// Get images
-			$images = Media::where('object_id', $jointsurvey->id)->where('object_name', "Joint Survey")->get();
+			$images = Media::where('object_id', $referequipment->id)->where('object_name', "Joint Survey")->get();
 			if (count($images) > 0) {
 				$pdf->SetMargins(0, 0, 0, true);
 				// Remove header and footer

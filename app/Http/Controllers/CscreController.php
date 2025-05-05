@@ -15,8 +15,7 @@ class CscreController extends Controller
 {
 
 	//
-	public function index()
-	{
+	public function index(){
 		$component = 'cscre-component';
 
 		$all_permissions = ActionsService::getPermissions("Cscre", auth()->user()->role_id);
@@ -27,8 +26,7 @@ class CscreController extends Controller
 		return view('common.index', compact('component', 'current_user_id', 'all_permissions'));
 	}
 
-	public function get(Request $request)
-	{
+	public function get(Request $request){
 		$input = $request->all();
 		$cscreList = \App\Models\Cscre::with('rel_company_id',)->select("*");
 		if (isset($input['advfilters']) && is_array($input['advfilters']) && count($input['advfilters']) > 0) {
@@ -130,14 +128,12 @@ class CscreController extends Controller
 		return \App\Http\Resources\CscreResource::collection($cscreList);
 	}
 
-	public function add()
-	{
+	public function add(){
 		$component = "addedit-cscre-component";
 		return view('common.index', compact("component"));
 	}
 
-	public function edit($id)
-	{
+	public function edit($id){
 		$component = "addedit-cscre-component";
 		$objectId = $id;
 		$object = \App\Models\Cscre::find($objectId);
@@ -147,14 +143,12 @@ class CscreController extends Controller
 	}
 
 
-	public function getRecord($objectId)
-	{
+	public function getRecord($objectId){
 		$object = \App\Models\Cscre::with('rel_company_id',)->find($objectId);
 		return $object->toJson();
 	}
 
-	public function view($id)
-	{
+	public function view($id){
 		$component = "view-cscre-component";
 		$objectId = $id;
 		if (\App\Models\Cscre::find($objectId) == null) {
@@ -164,8 +158,7 @@ class CscreController extends Controller
 	}
 
 	// Save cscre
-	public function save(Request $request)
-	{
+	public function save(Request $request){
 		$input = $request->all();
 		if (isset($input["cscre"])) {
 			$cscre = $input["cscre"];
@@ -204,8 +197,7 @@ class CscreController extends Controller
 	}
 
 	// Duplicate the record
-	public function duplicateRecord(Request $request)
-	{
+	public function duplicateRecord(Request $request){
 		$input = $request->all();
 		if (isset($input["id"])) {
 			$objectId = $input["id"];
@@ -222,8 +214,7 @@ class CscreController extends Controller
 	}
 
 	// Delete the record
-	public function deleteRecord(Request $request)
-	{
+	public function deleteRecord(Request $request){
 		$cscre = \App\Models\Cscre::find($request->id);
 		if ($request->status == 0) {
 			// Soft delete the record
@@ -236,22 +227,22 @@ class CscreController extends Controller
 		return response()->json(['status' => 1, 'message' => 'Cscre updated successfully']);
 	}
 
-	public function exportToPDF($cscreId, Request $request)
-	{
+	public function exportToPDF($cscreId, Request $request){
 		$cscre = \App\Models\Cscre::with('rel_company_id', 'creator')->find($cscreId);
-		$company = $cscre["company"];
-		$filename = $cscre->tank_no . ".pdf";
+		$company = $cscre["rel_company_id"];
+		$filename = $cscre->ref_no . ".pdf";
 		$data = [
-			'jointsurvey' => $cscre,
+			'cscre' => $cscre,
 		];
-		if (strlen($company["header_url"]) > 0 && Storage::exists($company["header_url"]) && strlen($company["signature_url"]) > 0 && Storage::exists($company["signature_url"])) {
+
+		if (strlen($company["header_url"]) > 0 && storage_path('app/' . $company["header_url"]) && strlen($company["signature_url"]) > 0 && storage_path('app/' . $company["signature_url"])) {
 			// lets extract the invoice signature
 			$signPathInfo = pathinfo($company["signature_url"]);
 			$signAbsolutePath = storage_path("app" . DIRECTORY_SEPARATOR . $company["signature_url"]);
 			$signImage = 'data:image/' . strtoupper($signPathInfo['extension']) . ';base64,' . base64_encode(file_get_contents($signAbsolutePath));
 			$data["sign"] = $signImage;
 
-			$view = View::make('pdfs.jointsurvey', $data);
+			$view = View::make('pdfs.cscre', $data);
 			$html = $view->render();
 			$pdf = new \App\Models\BotPDF;
 			$pdf->headerImage = $company["header_url"];
@@ -286,28 +277,13 @@ class CscreController extends Controller
 					$pdf->AddPage(($imageWidth > $imageHeight ? 'L' : 'P'), 'A4'); //array($imageWidthMM, $imageHeightMM));
 					$pageWidth = $pdf->getPageWidth();
 					$pageHeight = $pdf->getPageHeight();
-					$pdf->Image(
-						$imageAbsolutePath,
-						0,
-						0,
-						$pageWidth,
-						$pageHeight,
-						'',
-						'',
-						'',
-						true,
-						300,
-						'',
-						false,
-						false,
-						0,
-						'LT',
-						false,
-						false
-					);
+					$pdf->Image( $imageAbsolutePath,0,0,$pageWidth,$pageHeight,'','','',true,300,'',false,false,0,'LT',false,false);
 				}
 			}
-			$pdf->Output($filename, 'D');
+			// $pdf->Output($filename, 'D');
+			return response($pdf->Output($filename, 'S'), 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
 		} else {
 			return response()->json(["status" => -100, "messages" => ["Company header or signature is missing."]]);
 		}

@@ -14,7 +14,8 @@ use Intervention\Image\Laravel\Facades\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\EquipmentInspection;
-use App\Events\EquipmentInspectionSaved;
+use App\Models\Media;
+use Illuminate\Support\Facades\View;
 
 class EquipmentInspectionController extends Controller{
 
@@ -202,33 +203,6 @@ class EquipmentInspectionController extends Controller{
 					unset($objectToSave["created_by"]);
 
 			}
-			if (isset($equipmentinspection['empty_clean']) && is_array($equipmentinspection['empty_clean'])) {
-				$objectToSave['empty_clean'] = json_encode($equipmentinspection['empty_clean']);
-			}
-
-			if (isset($equipmentinspection['empty_dirty']) && is_array($equipmentinspection['empty_dirty'])) {
-				$objectToSave['empty_dirty'] = json_encode($equipmentinspection['empty_dirty']);
-			}
-
-			if (isset($equipmentinspection['loaded']) && is_array($equipmentinspection['loaded'])) {
-				$objectToSave['loaded'] = json_encode($equipmentinspection['loaded']);
-			}
-
-			if (isset($equipmentinspection['eq_inspection_status']) && is_array($equipmentinspection['eq_inspection_status'])) {
-				$objectToSave['eq_inspection_status'] = json_encode($equipmentinspection['eq_inspection_status']);
-			}
-
-			if (isset($equipmentinspection['equipment_type']) && is_array($equipmentinspection['equipment_type'])) {
-				$objectToSave['equipment_type'] = json_encode($equipmentinspection['equipment_type']);
-			}
-
-			if (isset($equipmentinspection['tank_type']) && is_array($equipmentinspection['tank_type'])) {
-				$objectToSave['tank_type'] = json_encode($equipmentinspection['tank_type']);
-			}
-
-			if (isset($equipmentinspection['cfs']) && is_array($equipmentinspection['cfs'])) {
-				$objectToSave['cfs'] = json_encode($equipmentinspection['cfs']);
-			}
 
 			$equipmentinspectionData =\App\Models\EquipmentInspection::updateOrCreate( [ "id" => $equipmentinspection["id"] ], $objectToSave );
 			return response()->json(["status" => 1, "id" => $equipmentinspectionData->id]);
@@ -271,6 +245,65 @@ class EquipmentInspectionController extends Controller{
     }
 
 	
+	public function exportToPDF($equipmentinspectionId, Request $request){
+		$equipmentinspection = \App\Models\equipmentinspection::with('rel_company_id', 'rel_surveyor_id', 'rel_for_id', 'rel_inspection_location_id', 'rel_customer_id')->find($equipmentinspectionId);
+		$company = $equipmentinspection["rel_company_id"];
+		$filename = $equipmentinspection->ref_no . ".pdf";
+		$data = [
+			'equipmentinspection' => $equipmentinspection,
+		];
+		if (strlen($company["header_url"]) > 0 && storage_path('app/' . $company["header_url"]) && strlen($company["signature_url"]) > 0 && storage_path('app/' . $company["signature_url"])) {
+			// lets extract the invoice signature
+			$signPathInfo = pathinfo($company["signature_url"]);
+			$signAbsolutePath = storage_path("app" . DIRECTORY_SEPARATOR . $company["signature_url"]);
+			$signImage = 'data:image/' . strtoupper($signPathInfo['extension']) . ';base64,' . base64_encode(file_get_contents($signAbsolutePath));
+			$data["sign"] = $signImage;
 
+			$view = View::make('pdfs.equipmentinspection', $data);
+			$html = $view->render();
+			$pdf = new \App\Models\BotPDF;
+			$pdf->headerImage = $company["header_url"];
+			// set default header data
+			$pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
+			$pdf->SetFooterMargin(PDF_MARGIN_FOOTER);
+			$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "", "");
+			// set margins
+			// $pdf->SetMargins(PDF_MARGIN_LEFT, 35, PDF_MARGIN_RIGHT, true);
+			$pdf->SetAutoPageBreak(TRUE, PDF_MARGIN_BOTTOM);
+			$pdf->SetTitle($equipmentinspection->tank_no);
+			$pdf->AddPage();
+			$pdf->setFontSize(10);
+			$pdf->setTopMargin(round($pdf->headerHeight));
+			$pdf->writeHTML($html, true, false, true, false, '');
+			// Get images
+			$images = Media::where('object_id', $equipmentinspection->id)->where('object_name', "Joint Survey")->get();
+			if (count($images) > 0) {
+				$pdf->SetMargins(0, 0, 0, true);
+				// Remove header and footer
+				$pdf->setPrintHeader(false);
+				$pdf->setPrintFooter(false);
+				foreach ($images as $image) {
+					$imageAbsolutePath = storage_path("app" . DIRECTORY_SEPARATOR . $image['url']);
+					list($imageWidth, $imageHeight) = getimagesize($imageAbsolutePath);
+
+					// Convert image dimensions to millimeters (assuming 96 DPI)
+					$dpi = 96;
+					$imageWidthMM = $imageWidth * 25.4 / $dpi;
+					$imageHeightMM = $imageHeight * 25.4 / $dpi;
+
+					$pdf->AddPage(($imageWidth > $imageHeight ? 'L' : 'P'), 'A4'); //array($imageWidthMM, $imageHeightMM));
+					$pageWidth = $pdf->getPageWidth();
+					$pageHeight = $pdf->getPageHeight();
+					$pdf->Image( $imageAbsolutePath,0,0,$pageWidth,$pageHeight,'','','',true,300,'',false,false,0,'LT',false,false);
+				}
+			}
+			// $pdf->Output($filename, 'D');
+			return response($pdf->Output($filename, 'S'), 200)
+            ->header('Content-Type', 'application/pdf')
+            ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
+		} else {
+			return response()->json(["status" => -100, "messages" => ["Company header or signature is missing."]]);
+		}
+	}
 	
 }

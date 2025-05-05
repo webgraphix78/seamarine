@@ -66,8 +66,8 @@
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Container Type</label>
 				<div>
-					<span v-if="parsedcontainer_type?.id=='1'">20RF</span>
-					<span v-if="parsedcontainer_type?.id=='2'">40RF</span>
+					<span v-if="readReferEquipment.container_type=='1'">20RF</span>
+					<span v-if="readReferEquipment.container_type=='2'">40RF</span>
 				</div>
 			</div>
 			<div class="col-md-6">
@@ -396,18 +396,6 @@ export default {
 			allInspectionLocationIdList: [],
 			allCustomerIdList: [],
 			allSurveyorIdList: [],
-
-		}
-	},
-	computed: {
-		parsedcontainer_type() {
-			try {
-				if(this.readReferEquipment && this.readReferEquipment.container_type){
-					return JSON.parse(this.readReferEquipment.container_type);
-				}
-			} catch (e) {
-				return {};
-			}
 		}
 	},
 	methods: {
@@ -435,6 +423,7 @@ export default {
 	async mounted() {
 		if (this.id > 0){
 			this.reloadEverything();
+			this.allContainerTypeList = [{ id: '1', text: '20RF' }, { id: '2', text: '40RF' },];
 		}
 	}
 }

@@ -5,12 +5,12 @@
 				<div class="row mb-1">
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
-							<h4 class="m-0 me-4 text-capitalize">referequipment</h4>
+							<h4 class="m-0 me-4 text-capitalize">refer equipment</h4>
 							<a id="add_referequipment_btn" class="btn btn-warning border-dark btn-sm" :href="this.docRoot+'/referequipment/add'" role="button">Add</a>
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewReferEquipment" @edit-object="prepareEditReferEquipment" @toggle-object-status="deleteReferEquipment"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewReferEquipment" @edit-object="prepareEditReferEquipment" @toggle-object-status="deleteReferEquipment"  @export-object="printReferEquipment"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 	</div>
@@ -89,7 +89,8 @@ export default {
 							
 						},
 					]
-				}
+				},
+				search: "simple"
 			},
 			addeditModal: null,
 			viewModal: null,

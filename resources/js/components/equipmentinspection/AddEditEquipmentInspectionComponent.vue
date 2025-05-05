@@ -300,7 +300,7 @@
 		<div class='row mb-2 align-items-center'>
 			<div class="col-1 d-none d-md-block">05</div>
 			<div class="col-md-2 d-none d-md-block">
-				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Prv</label>
+				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Top Discharge</label>
 			</div>
 			<div class="col-md-2 col-sm-6">
 				<label for="add_equipmentinspection_top_discharge_tir" class="form-label text-uppercase fw-bold d-none">Top Discharge Tir</label>
@@ -609,31 +609,31 @@ export default {
 
 						
 			if (  typeof that.equipmentinspectionFormObj.empty_clean === 'object' &&  Object.keys(that.equipmentinspectionFormObj.empty_clean).length > 0) {
-				that.equipmentinspectionFormObj.empty_clean = that.equipmentinspectionFormObj.empty_clean;
+				that.equipmentinspectionFormObj.empty_clean = that.equipmentinspectionFormObj.empty_clean.id;
 			}
 
 			if (  typeof that.equipmentinspectionFormObj.empty_dirty === 'object' &&  Object.keys(that.equipmentinspectionFormObj.empty_dirty).length > 0) {
-				that.equipmentinspectionFormObj.empty_dirty = that.equipmentinspectionFormObj.empty_dirty;
+				that.equipmentinspectionFormObj.empty_dirty = that.equipmentinspectionFormObj.empty_dirty.id;
 			}
 
 			if (  typeof that.equipmentinspectionFormObj.loaded === 'object' &&  Object.keys(that.equipmentinspectionFormObj.loaded).length > 0) {
-				that.equipmentinspectionFormObj.loaded = that.equipmentinspectionFormObj.loaded;
+				that.equipmentinspectionFormObj.loaded = that.equipmentinspectionFormObj.loaded.id;
 			}
 
 			if (  typeof that.equipmentinspectionFormObj.eq_inspection_status === 'object' &&  Object.keys(that.equipmentinspectionFormObj.eq_inspection_status).length > 0) {
-				that.equipmentinspectionFormObj.eq_inspection_status = that.equipmentinspectionFormObj.eq_inspection_status;
+				that.equipmentinspectionFormObj.eq_inspection_status = that.equipmentinspectionFormObj.eq_inspection_status.id;
 			}
 
 			if (  typeof that.equipmentinspectionFormObj.equipment_type === 'object' &&  Object.keys(that.equipmentinspectionFormObj.equipment_type).length > 0) {
-				that.equipmentinspectionFormObj.equipment_type = that.equipmentinspectionFormObj.equipment_type;
+				that.equipmentinspectionFormObj.equipment_type = that.equipmentinspectionFormObj.equipment_type.id;
 			}
 
 			if (  typeof that.equipmentinspectionFormObj.tank_type === 'object' &&  Object.keys(that.equipmentinspectionFormObj.tank_type).length > 0) {
-				that.equipmentinspectionFormObj.tank_type = that.equipmentinspectionFormObj.tank_type;
+				that.equipmentinspectionFormObj.tank_type = that.equipmentinspectionFormObj.tank_type.id;
 			}
 
 			if (  typeof that.equipmentinspectionFormObj.cfs === 'object' &&  Object.keys(that.equipmentinspectionFormObj.cfs).length > 0) {
-				that.equipmentinspectionFormObj.cfs = that.equipmentinspectionFormObj.cfs;
+				that.equipmentinspectionFormObj.cfs = that.equipmentinspectionFormObj.cfs.id;
 			}
 			that.showLoading("Saving ...");
 			axios.post(that.docRoot+'/equipmentinspection/save', { equipmentinspection: that.equipmentinspectionFormObj }).then(async function (response) {
@@ -658,7 +658,6 @@ export default {
 				that.showToast("EquipmentInspection could not be saved successfully.", "error", "bottom", 3000);
 			});
 		},
-		
 		reloadEverything() {
 			if (this.id !== undefined && !isNaN(this.id)) {
 				this.mode = "edit";
@@ -670,41 +669,12 @@ export default {
 				axios.post(URL, {}).then(function (response) {
 					that.closeSwal();
 					that.equipmentinspectionFormObj = Object.assign({}, response.data);
-					if ( that.equipmentinspectionFormObj.empty_clean && typeof that.equipmentinspectionFormObj.empty_clean === 'string' ) {
-						that.equipmentinspectionFormObj.empty_clean = JSON.parse(that.equipmentinspectionFormObj.empty_clean);
-					}
-
-					if ( that.equipmentinspectionFormObj.empty_dirty && typeof that.equipmentinspectionFormObj.empty_dirty === 'string' ) {
-						that.equipmentinspectionFormObj.empty_dirty = JSON.parse(that.equipmentinspectionFormObj.empty_dirty);
-					}
-
-					if ( that.equipmentinspectionFormObj.loaded && typeof that.equipmentinspectionFormObj.loaded === 'string' ) {
-						that.equipmentinspectionFormObj.loaded = JSON.parse(that.equipmentinspectionFormObj.loaded);
-					}
-
-					if ( that.equipmentinspectionFormObj.eq_inspection_status && typeof that.equipmentinspectionFormObj.eq_inspection_status === 'string' ) {
-						that.equipmentinspectionFormObj.eq_inspection_status = JSON.parse(that.equipmentinspectionFormObj.eq_inspection_status);
-					}
-
-					if ( that.equipmentinspectionFormObj.equipment_type && typeof that.equipmentinspectionFormObj.equipment_type === 'string' ) {
-						that.equipmentinspectionFormObj.equipment_type = JSON.parse(that.equipmentinspectionFormObj.equipment_type);
-					}
-
-					if ( that.equipmentinspectionFormObj.tank_type && typeof that.equipmentinspectionFormObj.tank_type === 'string' ) {
-						that.equipmentinspectionFormObj.tank_type = JSON.parse(that.equipmentinspectionFormObj.tank_type);
-					}
-
-					if ( that.equipmentinspectionFormObj.cfs && typeof that.equipmentinspectionFormObj.cfs === 'string' ) {
-						that.equipmentinspectionFormObj.cfs = JSON.parse(that.equipmentinspectionFormObj.cfs);
-					}
-
 				})
 				.catch(function (error) {
 					console.log(error);
 				});
 			}
 		},
-		
 		displayLabelSetting ({id, text}) {
 			return `${text}`;
 		},
@@ -717,19 +687,18 @@ export default {
 		if(Array.isArray(_allCompanyIdList) && _allCompanyIdList.length > 0){
 			this.allCompanyIdList = _allCompanyIdList.map(x => {return { id: x.id, text: x.name }});
 		}
-		this.allEmptyCleanList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}, ];
-		this.allEmptyDirtyList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}, ];
-		this.allLoadedList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}, ];
-
 		let _allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/api/surveyor/get', 'post', {});
 		if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
 			this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
 		}
-
-		this.allEqInspectionStatusList = [{ id: '1', text: 'Import'}, { id: '2', text: 'Export'}, ];
-		this.allEquipmentTypeList = [{ id: '1', text: 'Loaded'}, { id: '0', text: 'Unloaded'}, ];
-		this.allTankTypeList = [{ id: '1', text: 'IMO 1'}, { id: '2', text: 'IMO 5'}, ];
-		this.allCfsList = [{ id: '-1', text: 'NA'}, { id: '1', text: 'In'}, { id: '0', text: 'Out'}, ];
+		
+		this.allEmptyCleanList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}];
+		this.allEmptyDirtyList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}];
+		this.allLoadedList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}];
+		this.allEqInspectionStatusList = [{ id: '1', text: 'Import'}, { id: '2', text: 'Export'}];
+		this.allEquipmentTypeList = [{ id: '1', text: 'Loaded'}, { id: '0', text: 'Unloaded'}];
+		this.allTankTypeList = [{ id: '1', text: 'IMO 1'}, { id: '2', text: 'IMO 5'}];
+		this.allCfsList = [{ id: '-1', text: 'NA'}, { id: '1', text: 'In'}, { id: '0', text: 'Out'}];
 
 		let _allForIdList = await this.loadAllCustomer(this.docRoot+'/api/customer/get', 'post', {});
 		if(Array.isArray(_allForIdList) && _allForIdList.length > 0){
@@ -776,6 +745,48 @@ export default {
 				let _allRelationList = this.allCustomerIdList;
 				let relationId = parseInt(this.equipmentinspectionFormObj.customer_id);
 				this.equipmentinspectionFormObj.customer_id = _allRelationList.find(item => item.id === relationId);
+			}
+		}
+		if (this.equipmentinspectionFormObj.empty_clean != null) {
+			if (Array.isArray(this.allEmptyCleanList) && this.allEmptyCleanList.length > 0) {
+				// let selectedId = this.equipmentinspectionFormObj.empty_clean;
+				this.equipmentinspectionFormObj.empty_clean = this.allEmptyCleanList.find(item => item.id == this.equipmentinspectionFormObj.empty_clean);
+			}
+		}
+		if (this.equipmentinspectionFormObj.empty_dirty != null) {
+			if (Array.isArray(this.allEmptyDirtyList) && this.allEmptyDirtyList.length > 0) {
+				// let selectedId = this.equipmentinspectionFormObj.empty_dirty;
+				this.equipmentinspectionFormObj.empty_dirty = this.allEmptyDirtyList.find(item => item.id == this.equipmentinspectionFormObj.empty_dirty);
+			}
+		}
+		if (this.equipmentinspectionFormObj.loaded != null) {
+			if (Array.isArray(this.allLoadedList) && this.allLoadedList.length > 0) {
+				// let selectedId = this.equipmentinspectionFormObj.loaded;
+				this.equipmentinspectionFormObj.loaded = this.allLoadedList.find(item => item.id == this.equipmentinspectionFormObj.loaded);
+			}
+		}
+		if (this.equipmentinspectionFormObj.eq_inspection_status != null) {
+			if (Array.isArray(this.allEqInspectionStatusList) && this.allEqInspectionStatusList.length > 0) {
+				// let selectedId = this.equipmentinspectionFormObj.eq_inspection_status;
+				this.equipmentinspectionFormObj.eq_inspection_status = this.allEqInspectionStatusList.find(item => item.id == this.equipmentinspectionFormObj.eq_inspection_status);
+			}
+		}
+		if (this.equipmentinspectionFormObj.equipment_type != null) {
+			if (Array.isArray(this.allEquipmentTypeList) && this.allEquipmentTypeList.length > 0) {
+				// let selectedId = this.equipmentinspectionFormObj.equipment_type;
+				this.equipmentinspectionFormObj.equipment_type = this.allEquipmentTypeList.find(item => item.id == this.equipmentinspectionFormObj.equipment_type);
+			}
+		}
+		if (this.equipmentinspectionFormObj.tank_type != null) {
+			if (Array.isArray(this.allTankTypeList) && this.allTankTypeList.length > 0) {
+				// let selectedId = this.equipmentinspectionFormObj.tank_type;
+				this.equipmentinspectionFormObj.tank_type = this.allTankTypeList.find(item => item.id == this.equipmentinspectionFormObj.tank_type);
+			}
+		}
+		if (this.equipmentinspectionFormObj.cfs != null) {
+			if (Array.isArray(this.allCfsList) && this.allCfsList.length > 0) {
+				// let selectedId = this.equipmentinspectionFormObj.cfs;
+				this.equipmentinspectionFormObj.cfs = this.allCfsList.find(item => item.id == this.equipmentinspectionFormObj.cfs);
 			}
 		}
 	}

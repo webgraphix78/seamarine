@@ -39,8 +39,10 @@ class ActionsService{
             if ($isUserAdmin || $canExport)
 				$actions['ex'] = ['title' => 'Export', 'action' => 'exportObject', 'class' => 'btn-outline-info'];
 
-			if ($isUserAdmin || $canAddEditDuplicate)
+			if ($isUserAdmin || $canAddEditDuplicate){
 				$actions['e'] = ['title' => 'Edit', 'action' => 'editObject', 'class' => 'btn-outline-dark'];
+				$actions['dp'] = ['title' => 'Duplicate', 'action' => 'duplicateObject', 'class' => 'btn-outline-dark'];
+			}
 
 			if ($isUserAdmin || $canDelete)
 				$actions['d'] = ['title' => 'Delete', 'action' => 'toggleObjectStatus', 'class' => 'btn-outline-danger', 'additional_params' => [0]];

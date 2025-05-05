@@ -240,7 +240,6 @@ export default {
 				that.showToast("Cscre could not be saved successfully.", "error", "bottom", 3000);
 			});
 		},
-		
 		reloadEverything() {
 			if (this.id !== undefined && !isNaN(this.id)) {
 				this.mode = "edit";
@@ -262,7 +261,6 @@ export default {
 					});
 			}
 		},
-		
 		displayLabelSetting ({id, text}) {
 			return `${text}`;
 		},
@@ -287,6 +285,4 @@ export default {
 	}
 }
 </script>
-<style>
-	.ql-container{height: 60px !important;}
-</style>
+<style> .ql-container{height: 60px !important;} </style>

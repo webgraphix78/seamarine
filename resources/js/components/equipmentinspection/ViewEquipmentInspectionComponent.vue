@@ -54,25 +54,25 @@
 						<label class="form-label fw-bold  m-0">Empty Clean</label>
 					</div>
 					<div class="col-md-8 mt-1 mt-md-3">
-						<span v-if="parsedempty_clean?.id=='1'">Yes</span>
-						<span v-if="parsedempty_clean?.id=='0'">No</span>
-						<span v-if="parsedempty_clean?.id=='-1'">NA</span>
+						<span v-if="readEquipmentInspection.empty_clean=='1'">Yes</span>
+						<span v-if="readEquipmentInspection.empty_clean=='0'">No</span>
+						<span v-if="readEquipmentInspection.empty_clean=='-1'">NA</span>
 					</div>
 					<div class="col-md-4 mt-3">
 						<label class="form-label fw-bold  m-0">Empty Dirty</label>
 					</div>
 					<div class="col-md-8 mt-1 mt-md-3">
-						<span v-if="parsedempty_dirty?.id=='1'">Yes</span>
-						<span v-if="parsedempty_dirty?.id=='0'">No</span>
-						<span v-if="parsedempty_dirty?.id=='-1'">NA</span>
+						<span v-if="readEquipmentInspection.empty_dirty=='1'">Yes</span>
+						<span v-if="readEquipmentInspection.empty_dirty=='0'">No</span>
+						<span v-if="readEquipmentInspection.empty_dirty=='-1'">NA</span>
 					</div>
 					<div class="col-md-4 mt-3">
 						<label class="form-label fw-bold  m-0">Loaded</label>
 					</div>
 					<div class="col-md-8 mt-1 mt-md-3">
-						<span v-if="parsedloaded?.id=='1'">Yes</span>
-						<span v-if="parsedloaded?.id=='0'">No</span>
-						<span v-if="parsedloaded?.id=='-1'">NA</span>
+						<span v-if="readEquipmentInspection.loaded=='1'">Yes</span>
+						<span v-if="readEquipmentInspection.loaded=='0'">No</span>
+						<span v-if="readEquipmentInspection.loaded=='-1'">NA</span>
 					</div>
 					<div class="col-md-4 mt-3">
 						<label class="form-label fw-bold  m-0">Surveyor Id</label>
@@ -92,8 +92,8 @@
 						<label class="form-label fw-bold  m-0">Status</label>
 					</div>
 					<div class="col-md-8 mt-1 mt-md-3">
-						<span v-if="parsedeq_inspection_status?.id=='1'">Import</span>
-						<span v-if="parsedeq_inspection_status?.id=='2'">Export</span>
+						<span v-if="readEquipmentInspection.eq_inspection_status=='1'">Import</span>
+						<span v-if="readEquipmentInspection.eq_inspection_status=='2'">Export</span>
 					</div>
 					<div class="col-md-4 mt-3">
 						<label class="form-label fw-bold  m-0">Last Test Date</label>
@@ -117,8 +117,8 @@
 						<label class="form-label fw-bold  m-0">Equipment Type</label>
 					</div>
 					<div class="col-md-8 mt-1 mt-md-3">
-						<span v-if="parsedequipment_type?.id=='1'">Loaded</span>
-						<span v-if="parsedequipment_type?.id=='0'">Unloaded</span>
+						<span v-if="readEquipmentInspection.equipment_type=='1'">Loaded</span>
+						<span v-if="readEquipmentInspection.equipment_type=='0'">Unloaded</span>
 					</div>
 					<div class="col-md-4 mt-3">
 						<label class="form-label fw-bold  m-0">C.S.C.</label>
@@ -138,8 +138,8 @@
 						<label class="form-label fw-bold  m-0">Tank Type</label>
 					</div>
 					<div class="col-md-8 mt-1 mt-md-3">
-						<span v-if="parsedtank_type?.id=='1'">IMO 1</span>
-						<span v-if="parsedtank_type?.id=='2'">IMO 5</span>
+						<span v-if="readEquipmentInspection.tank_type=='1'">IMO 1</span>
+						<span v-if="readEquipmentInspection.tank_type=='2'">IMO 5</span>
 					</div>
 					<div class="col-md-4 mt-3">
 						<label class="form-label fw-bold  m-0">Mfgt. Date</label>
@@ -152,9 +152,9 @@
 						<label class="form-label fw-bold  m-0">CFS</label>
 					</div>
 					<div class="col-md-8 mt-1 mt-md-3">
-						<span v-if="parsedcfs?.id=='-1'">NA</span>
-						<span v-if="parsedcfs?.id=='1'">In</span>
-						<span v-if="parsedcfs?.id=='0'">Out</span>
+						<span v-if="readEquipmentInspection.cfs=='-1'">NA</span>
+						<span v-if="readEquipmentInspection.cfs=='1'">In</span>
+						<span v-if="readEquipmentInspection.cfs=='0'">Out</span>
 					</div>
 					<div class="col-md-4 mt-3">
 						<label class="form-label fw-bold  m-0">For Id</label>
@@ -540,71 +540,6 @@ export default {
 			allCustomerIdList: [],
 		}
 	},
-	computed: {
-		parsedempty_clean() {
-			try {
-				if(this.readEquipmentInspection && this.readEquipmentInspection.empty_clean){
-					return JSON.parse(this.readEquipmentInspection.empty_clean);
-				}
-			} catch (e) {
-				return {};
-			}
-		},
-		parsedempty_dirty() {
-			try {
-				if(this.readEquipmentInspection && this.readEquipmentInspection.empty_dirty){
-					return JSON.parse(this.readEquipmentInspection.empty_dirty);
-				}
-			} catch (e) {
-				return {};
-			}
-		},
-		parsedloaded() {
-			try {
-				if(this.readEquipmentInspection && this.readEquipmentInspection.loaded){
-					return JSON.parse(this.readEquipmentInspection.loaded);
-				}
-			} catch (e) {
-				return {};
-			}
-		},
-		parsedeq_inspection_status() {
-			try {
-				if(this.readEquipmentInspection && this.readEquipmentInspection.eq_inspection_status){
-					return JSON.parse(this.readEquipmentInspection.eq_inspection_status);
-				}
-			} catch (e) {
-				return {};
-			}
-		},
-		parsedequipment_type() {
-			try {
-				if(this.readEquipmentInspection && this.readEquipmentInspection.equipment_type){
-					return JSON.parse(this.readEquipmentInspection.equipment_type);
-				}
-			} catch (e) {
-				return {};
-			}
-		},
-		parsedtank_type() {
-			try {
-				if(this.readEquipmentInspection && this.readEquipmentInspection.tank_type){
-					return JSON.parse(this.readEquipmentInspection.tank_type);
-				}
-			} catch (e) {
-				return {};
-			}
-		},
-		parsedcfs() {
-			try {
-				if(this.readEquipmentInspection && this.readEquipmentInspection.cfs){
-					return JSON.parse(this.readEquipmentInspection.cfs);
-				}
-			} catch (e) {
-				return {};
-			}
-		},
-	},
 	methods: {
 		cancelAddEdit(event){
 			window.location = this.docRoot + '/equipmentinspection';
@@ -626,6 +561,13 @@ export default {
 	async mounted() {
 		if (this.id > 0){
 			this.reloadEverything();
+			this.allEmptyCleanList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}, ];
+			this.allEmptyDirtyList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}, ];
+			this.allLoadedList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, { id: '-1', text: 'NA'}, ];
+			this.allEqInspectionStatusList = [{ id: '1', text: 'Import'}, { id: '2', text: 'Export'}, ];
+			this.allEquipmentTypeList = [{ id: '1', text: 'Loaded'}, { id: '0', text: 'Unloaded'}, ];
+			this.allTankTypeList = [{ id: '1', text: 'IMO 1'}, { id: '2', text: 'IMO 5'}, ];
+			this.allCfsList = [{ id: '-1', text: 'NA'}, { id: '1', text: 'In'}, { id: '0', text: 'Out'}, ];
 		}
 	}
 }
