@@ -276,6 +276,6 @@ app.directive("emptyZero", {
 app.use(CKEditor);
 
 // Global variables
-app.config.globalProperties.docRoot = window.location.origin ;
+app.config.globalProperties.docRoot = window.location.origin;
 
 app.mount('#app');
