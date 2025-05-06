@@ -246,7 +246,7 @@ class EquipmentInspectionController extends Controller{
 
 	
 	public function exportToPDF($equipmentinspectionId, Request $request){
-		$equipmentinspection = \App\Models\equipmentinspection::with('rel_company_id', 'rel_surveyor_id', 'rel_for_id', 'rel_inspection_location_id', 'rel_customer_id')->find($equipmentinspectionId);
+		$equipmentinspection = \App\Models\Equipmentinspection::with('rel_company_id', 'rel_surveyor_id', 'rel_for_id', 'rel_inspection_location_id', 'rel_customer_id')->find($equipmentinspectionId);
 		$company = $equipmentinspection["rel_company_id"];
 		$filename = $equipmentinspection->ref_no . ".pdf";
 		$data = [
