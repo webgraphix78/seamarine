@@ -606,28 +606,21 @@ export default {
 			if (  typeof that.equipmentinspectionFormObj.customer_id === 'object' && that.equipmentinspectionFormObj.customer_id.id) {
 				that.equipmentinspectionFormObj.customer_id = that.equipmentinspectionFormObj.customer_id.id;
 			}
-
-						
 			if (  typeof that.equipmentinspectionFormObj.empty_clean === 'object' &&  Object.keys(that.equipmentinspectionFormObj.empty_clean).length > 0) {
 				that.equipmentinspectionFormObj.empty_clean = that.equipmentinspectionFormObj.empty_clean.id;
 			}
-
 			if (  typeof that.equipmentinspectionFormObj.empty_dirty === 'object' &&  Object.keys(that.equipmentinspectionFormObj.empty_dirty).length > 0) {
 				that.equipmentinspectionFormObj.empty_dirty = that.equipmentinspectionFormObj.empty_dirty.id;
 			}
-
 			if (  typeof that.equipmentinspectionFormObj.loaded === 'object' &&  Object.keys(that.equipmentinspectionFormObj.loaded).length > 0) {
 				that.equipmentinspectionFormObj.loaded = that.equipmentinspectionFormObj.loaded.id;
 			}
-
 			if (  typeof that.equipmentinspectionFormObj.eq_inspection_status === 'object' &&  Object.keys(that.equipmentinspectionFormObj.eq_inspection_status).length > 0) {
 				that.equipmentinspectionFormObj.eq_inspection_status = that.equipmentinspectionFormObj.eq_inspection_status.id;
 			}
-
 			if (  typeof that.equipmentinspectionFormObj.equipment_type === 'object' &&  Object.keys(that.equipmentinspectionFormObj.equipment_type).length > 0) {
 				that.equipmentinspectionFormObj.equipment_type = that.equipmentinspectionFormObj.equipment_type.id;
 			}
-
 			if (  typeof that.equipmentinspectionFormObj.tank_type === 'object' &&  Object.keys(that.equipmentinspectionFormObj.tank_type).length > 0) {
 				that.equipmentinspectionFormObj.tank_type = that.equipmentinspectionFormObj.tank_type.id;
 			}

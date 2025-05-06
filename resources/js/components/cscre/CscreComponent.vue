@@ -84,7 +84,8 @@ export default {
 							
 						},
 					]
-				}
+				},
+				search: "simple"
 			},
 			addeditModal: null,
 			viewModal: null,
