@@ -34,19 +34,19 @@ class ActionsService{
 			}
 		}
 		// Set actions
-		$actions = [ 'v' => ['title' => 'View', 'action' => 'viewObject', 'class' => 'btn-dark'] ];
+		$actions = [ 'v' => ['title' => '<i class="ph ph-eye"></i>', 'action' => 'viewObject', 'class' => 'btn-dark'] ];
 		if ($status == 1) {
-            if ($isUserAdmin || $canExport)
-				$actions['ex'] = ['title' => 'Export', 'action' => 'exportObject', 'class' => 'btn-outline-info'];
-
 			if ($isUserAdmin || $canAddEditDuplicate){
-				$actions['e'] = ['title' => 'Edit', 'action' => 'editObject', 'class' => 'btn-outline-dark'];
-				$actions['dp'] = ['title' => 'Duplicate', 'action' => 'duplicateObject', 'class' => 'btn-outline-dark'];
+				$actions['e'] = ['title' => '<i class="ph ph-pencil-simple"></i>', 'action' => 'editObject', 'class' => 'btn-outline-dark'];
+				$actions['dp'] = ['title' => '<i class="ph ph-copy"></i>', 'action' => 'duplicateObject', 'class' => 'btn-info'];
 			}
-
+			
 			if ($isUserAdmin || $canDelete)
-				$actions['d'] = ['title' => 'Delete', 'action' => 'toggleObjectStatus', 'class' => 'btn-outline-danger', 'additional_params' => [0]];
-		}
+				$actions['d'] = ['title' => '<i class="ph ph-trash-simple"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-danger', 'additional_params' => [0]];
+
+			if ($isUserAdmin || $canExport)
+				$actions['ex'] = ['title' => '<i class="ph ph-printer"></i>', 'action' => 'exportObject', 'class' => 'btn-primary'];
+	}
 
         return $actions;
 	}
