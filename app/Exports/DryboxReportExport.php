@@ -40,7 +40,7 @@ class DryboxReportExport implements FromCollection, WithHeadings, WithMapping, W
 		return [
 			$row->ref,
 			$row->container_no,
-			date("d-m-Y", strtotime($row->inspection_date)),
+			date("d-m-Y", strtotime($row->dt_inspection_date)),
 			$row->inspectionlocation->name,
 			$row->customer->name,
 			$row->surveyor->name,

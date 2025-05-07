@@ -41,7 +41,7 @@ $gasketTypeArray = ["1" => "Super Tyt", "2" => "Taflon", "3" => "Rubber", "4" =>
 				<td width="20%" style="font-weight: bold;">Type:</td>
 				<td width="15%">{{ $shipperSurvey['type'] }}</td>
 				<td width="18%" style="font-weight: bold;">Survey Date:</td>
-				<td width="14%">{{ date("d-m-Y", strtotime($shipperSurvey['survey_date'])) }}</td>
+				<td width="14%">{{ date("d-m-Y", strtotime($shipperSurvey['dt_inspection_date'])) }}</td>
 			</tr>
 			<tr>
 				<td width="19%" style="font-weight: bold;">Max Gross Wt:</td>

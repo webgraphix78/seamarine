@@ -42,6 +42,7 @@ class Imo1Resource extends JsonResource
 			'ref_no' => $this->ref_no,
 			'company_id' => $this->company_id,
 			'inspection_date' => $this->inspection_date,
+			'dt_inspection_date' => $this->dt_inspection_date,
 			'csc' => $this->csc,
 			'loaded_at' => $this->loaded_at,
 			'tank_type_id' => $this->tank_type_id,

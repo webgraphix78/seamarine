@@ -53,7 +53,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="3" style="border-collapse: collapse;">
 		<tr>
 			<td width="20%">Inspection Date:</td>
-			<td width="24%" style="font-weight:bold;">{{ ($cleaning['inspection_date'] == null ? "Not Specified" : $cleaning['inspection_date']) }}</td>
+			<td width="24%" style="font-weight:bold;">{{ ($cleaning['dt_inspection_date'] == null ? "Not Specified" : $cleaning['dt_inspection_date']) }}</td>
 			<td width="20%">Inspection Location:</td>
 			<td width="36%" style="font-weight:bold;">{{ $cleaning['inspectionlocation']['name'] }}</td>
 		</tr>

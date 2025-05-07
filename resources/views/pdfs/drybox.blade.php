@@ -71,7 +71,7 @@
 		</tr>
 		<tr>
 			<td width="25%" style="font-size: 8px;">DATE OF INSPECTION</td>
-			<td width="30%" style="font-size: 8px;">{{ date('d-m-Y', strtotime($drybox['inspection_date'])) }}</td>
+			<td width="30%" style="font-size: 8px;">{{ date('d-m-Y', strtotime($drybox['dt_inspection_date'])) }}</td>
 			<td width="20%" style="font-size: 8px;">GROSS WEIGHT</td>
 			<td width="25%" style="font-size: 8px;">{{ $drybox['gross_wt'] }} KGS</td>
 		</tr>

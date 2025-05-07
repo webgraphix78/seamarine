@@ -33,7 +33,7 @@
 						{title: "Ref No", property: "ref_no"},
 						{title: "Company", property: "company.name"},
 						{title: "Customer", property: "customer.name"},
-						{title: "Inspection Date", property: "inspection_date", date_type: "mysqldate", display_type: "date", format: "LLL dd, yyyy"},
+						{title: "Inspection Date", property: "dt_inspection_date", date_type: "mysqldate", display_type: "date", format: "LLL dd, yyyy"},
 						{title: "Tank Number", property: "tank_no"},
 						{title: "Created By", property: "creator.name", alt_value: "Not Specified"}
 					],

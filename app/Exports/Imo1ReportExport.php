@@ -54,7 +54,7 @@ class Imo1ReportExport implements FromCollection, WithHeadings, WithMapping, Wit
 		return [
 			$row->ref_no,
 			$row->tank_no,
-			date("d-m-Y", strtotime($row->inspection_date)),
+			date("d-m-Y", strtotime($row->dt_inspection_date)),
 			($row->inspection_location != null ? $row->inspection_location->name : ""),
 			($row->customer != null ? $row->customer->name: ""),
 			($row->surveyor != null ? $row->surveyor->name: ""),

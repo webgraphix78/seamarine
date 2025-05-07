@@ -217,14 +217,14 @@ class ReportsController extends Controller{
 				case 4:
 					// onhire
 					$dataList = \App\Models\Onhire::with('customer', 'inspection_location', 'surveyor', 'creator')
-						->whereBetween('created_at', [$input['from_date'], $input['to_date']])
+						->whereBetween('dt_inspection_date', [$input['from_date'], $input['to_date']])
 						->where('status', 1);
 					if( isset($input["customer_id"]) && $input["customer_id"] > 0 )
 						$dataList = $dataList->where('customer_id', $input['customer_id']);
 					if( isset($input["inspection_location_id"]) && $input["inspection_location_id"] > 0 )
 						$dataList = $dataList->where('inspection_location_id', $input['inspection_location_id']);
 
-					$dataList = $dataList->orderBy("created_at")->get();
+					$dataList = $dataList->orderBy("dt_inspection_date")->get();
 					// Append occurrence count to each row without removing duplicates
 					$occurrences = $dataList->pluck('unit_nr')->countBy();
 					$dataList = $dataList->map(function ($tank, $index) use ($occurrences) {

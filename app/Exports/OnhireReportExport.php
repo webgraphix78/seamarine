@@ -40,7 +40,7 @@ class OnhireReportExport implements FromCollection, WithHeadings, WithMapping, W
 		return [
 			$row->ref_no,
 			$row->unit_nr,
-			date("d-m-Y", strtotime($row->inspection_date)),
+			date("d-m-Y", strtotime($row->dt_inspection_date)),
 			$row->inspection_location->name,
 			$row->customer->name,
 			$row->surveyor->name,
