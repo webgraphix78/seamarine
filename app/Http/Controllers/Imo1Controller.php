@@ -384,12 +384,14 @@ class Imo1Controller extends Controller
 			$signImage = 'data:image/'.strtoupper($signPathInfo['extension']).';base64,'.base64_encode(file_get_contents($signAbsolutePath));
 			$data["sign"] = $signImage;
 			$data["walkway_image"] = null;
-			if( isset($imo1Condition["walkway_image"]) && strlen($imo1Condition["walkway_image"]) > 0 ){
+			if( isset($imo1Condition["walkway_image"]) && strlen($imo1Condition["walkway_image"]) > 4 ){
 				// lets extract the walkway image
 				$walkwayPathInfo = pathinfo($imo1Condition["walkway_image"]);
 				$walkwayAbsolutePath = storage_path("app".DIRECTORY_SEPARATOR.$imo1Condition["walkway_image"]);
-				$walkwayImage = 'data:image/'.strtoupper($walkwayPathInfo['extension']).';base64,'.base64_encode(file_get_contents($walkwayAbsolutePath));
-				$data["walkway_image"] = $walkwayImage;
+				if (file_exists($walkwayAbsolutePath)) {
+					$walkwayImage = 'data:image/'.strtoupper($walkwayPathInfo['extension']).';base64,'.base64_encode(file_get_contents($walkwayAbsolutePath));
+					$data["walkway_image"] = $walkwayImage;
+				}
 			}
 
 			// Lets get the condition status array
