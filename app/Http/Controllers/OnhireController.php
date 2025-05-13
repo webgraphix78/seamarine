@@ -41,7 +41,11 @@ class OnhireController extends Controller
 	public function add()
 	{
 		$component = "onhire-add-component";
-		return view('common.index', compact("component"));
+		$param1 = "";
+		if( isset($_GET["mode"]) && strlen(trim($_GET["mode"])) > 0 ){
+			$param1 = $_GET["mode"];
+		}
+		return view('common.index', compact("component", "param1"));
 	}
 
 	public function edit($onhireId)
@@ -335,7 +339,7 @@ class OnhireController extends Controller
 			$onhire = Onhire::find($input["onhire_id"]);
 			// Now upload the onhire image
 			if ( ($request->hasFile('uploaded_file_1') && $request->file('uploaded_file_1')->isValid()) || 
-				 ($request->hasFile('uploaded_file_2') && $request->file('uploaded_file_2')->isValid()) ) {
+				($request->hasFile('uploaded_file_2') && $request->file('uploaded_file_2')->isValid()) ) {
 				if ( $request->hasFile('uploaded_file_1') && $request->file('uploaded_file_1')->isValid()) {
 					// Clear the onhire image first
 					$this->clearUpload($onhire->walkway_image_1);
@@ -413,14 +417,14 @@ class OnhireController extends Controller
 			$data["sign"] = $signImage;
 			$data["walkway_image_1"] = null;
 			$data["walkway_image_2"] = null;
-			if( isset($onhire["walkway_image_1"]) && strlen($onhire["walkway_image_1"]) > 0 && Storage::exists($onhire["walkway_image_1"]) ){
+			if( isset($onhire["walkway_image_1"]) && strlen($onhire["walkway_image_1"]) > 4 && Storage::exists($onhire["walkway_image_1"]) ){
 				// lets extract the walkway image
 				$walkwayPathInfo = pathinfo($onhire["walkway_image_1"]);
 				$walkwayAbsolutePath = storage_path("app".DIRECTORY_SEPARATOR.$onhire["walkway_image_1"]);
 				$walkwayImage = 'data:image/'.strtoupper($walkwayPathInfo['extension']).';base64,'.base64_encode(file_get_contents($walkwayAbsolutePath));
 				$data["walkway_image_1"] = $walkwayImage;
 			}
-			if( isset($onhire["walkway_image_2"]) && strlen($onhire["walkway_image_2"]) > 0 && Storage::exists($onhire["walkway_image_2"]) ){
+			if( isset($onhire["walkway_image_2"]) && strlen($onhire["walkway_image_2"]) > 4 && Storage::exists($onhire["walkway_image_2"]) ){
 				// lets extract the walkway image
 				$walkwayPathInfo = pathinfo($onhire["walkway_image_2"]);
 				$walkwayAbsolutePath = storage_path("app".DIRECTORY_SEPARATOR.$onhire["walkway_image_2"]);
@@ -453,21 +457,22 @@ class OnhireController extends Controller
 				$pdf->setPrintFooter(false);
 				foreach ($images as $image) {
 					$imageAbsolutePath = storage_path("app" . DIRECTORY_SEPARATOR . $image['url']);
-					list($imageWidth, $imageHeight) = getimagesize($imageAbsolutePath);
-					
-    				// Convert image dimensions to millimeters (assuming 96 DPI)
-					$dpi = 96;
-					$imageWidthMM = $imageWidth * 25.4 / $dpi;
-					$imageHeightMM = $imageHeight * 25.4 / $dpi;
+					if (file_exists($imageAbsolutePath)) {
+						list($imageWidth, $imageHeight) = getimagesize($imageAbsolutePath);
+						// Convert image dimensions to millimeters (assuming 96 DPI)
+						$dpi = 96;
+						$imageWidthMM = $imageWidth * 25.4 / $dpi;
+						$imageHeightMM = $imageHeight * 25.4 / $dpi;
 
-					// $pdf->AddPage(($imageWidth > $imageHeight ? 'L' : 'P'), array($imageWidthMM, $imageHeightMM));
-					$pdf->AddPage(($imageWidth > $imageHeight ? 'L' : 'P'), 'A4');
-					$pageWidth = $pdf->getPageWidth();
-					$pageHeight = $pdf->getPageHeight();
-					$pdf->Image(
-						$imageAbsolutePath, 
-						0, 0, $pageWidth, $pageHeight,
-						'', '', '', true, 300, '', false, false, 0, 'LT', false, false);
+						// $pdf->AddPage(($imageWidth > $imageHeight ? 'L' : 'P'), array($imageWidthMM, $imageHeightMM));
+						$pdf->AddPage(($imageWidth > $imageHeight ? 'L' : 'P'), 'A4');
+						$pageWidth = $pdf->getPageWidth();
+						$pageHeight = $pdf->getPageHeight();
+						$pdf->Image(
+							$imageAbsolutePath, 
+							0, 0, $pageWidth, $pageHeight,
+							'', '', '', true, 300, '', false, false, 0, 'LT', false, false);
+					}
 				}
 			}
 			$pdf->Output($filename, 'D');

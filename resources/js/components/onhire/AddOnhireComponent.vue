@@ -560,7 +560,7 @@
 	}
 	export default {
 		name: "Onhiremaster",
-		props: ["current_user_id", "all_permissions", "id"],
+		props: ["current_user_id", "all_permissions", "id","param1"],
 		setup() {
 			return {
 				v$: useVuelidate()
@@ -650,10 +650,15 @@
 							(that.document2.uploaded_file == null || that.document2.uploaded_file == undefined) ) {
 								that.showToast("On Hire Record saved successfully", "success", "bottom", 3000);
 								// that.reloadEverything();
-								setTimeout(() => {
+								if(that.param1 === "mobileApp") {
 									window.location = that.docRoot + "/onhire/";
 									that.showLoading("Loading ...");
-								}, 1500);
+								}else{
+									setTimeout(() => {
+										window.location = that.docRoot + "/onhire/";
+										that.showLoading("Loading ...");
+									}, 1500);
+								}
 							}
 							else {
 								// this means that the file has been uploaded

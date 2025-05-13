@@ -1518,7 +1518,7 @@
 	}
 	export default {
 		name: "AddEditIMO1master",
-		props: ["current_user_id", "all_permissions", "id"],
+		props: ["current_user_id", "all_permissions", "id", "param1"],
 		setup() {
 			return {
 				v$: useVuelidate()
@@ -1721,10 +1721,17 @@
 							that.imo1ForAdd.id = response.data.id;
 							if (that.document.uploaded_file == null || that.document.uploaded_file == undefined) {
 								that.showToast("IMO 1 Condition Record saved successfully", "success", "bottom", 3000);
-								setTimeout(() => {
+								// mode check param1 mobileApp 
+								// if mode is add, then reload the page
+								if(that.param1 === "mobileApp") {
 									window.location = that.docRoot + "/imo1/";
 									that.showLoading("Loading ...");
-								}, 1500);
+								}else{
+									setTimeout(() => {
+										window.location = that.docRoot + "/imo1/";
+										that.showLoading("Loading ...");
+									}, 1500);
+								}
 								// document.body.scrollTop = 0;
 								// document.documentElement.scrollTop = 0;
 								// that.reloadEverything();

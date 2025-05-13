@@ -43,7 +43,11 @@ class Imo5ConditionController extends Controller
 	public function add()
 	{
 		$component = "imo5-add-component";
-		return view('common.index', compact("component"));
+		$param1 = "";
+		if( isset($_GET["mode"]) && strlen(trim($_GET["mode"])) > 0 ){
+			$param1 = $_GET["mode"];
+		}
+		return view('common.index', compact("component", "param1"));
 	}
 
 	public function edit($imo5Id)

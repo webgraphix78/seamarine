@@ -36,11 +36,23 @@ class CleaningController extends Controller
 		}
 
 		$mode = "";
+		$param1= "";
+		$objectId = "";
 		if( isset($_GET["mode"]) && strlen(trim($_GET["mode"])) > 0 ){
 			$mode = $_GET["mode"];
+			if(isset($_GET["addeditmode"]) && strlen(trim($_GET["addeditmode"])) > 0){
+				$param1 = $_GET["addeditmode"];
+			}
+			if(isset($_GET["id"]) && strlen(trim($_GET["id"])) > 0){
+				$objectId =$_GET["id"];
+			}
 		}
-		log::info("mode :: ".$mode);
-		return view('common.index', compact('component', 'current_user_id', 'all_permissions', 'mode'));
+		return view('common.index', compact('component', 'current_user_id', 'all_permissions', 'mode', 'param1','objectId'));
+	}
+
+	public function getRecord($cleaningId){
+		$cleaningRecord = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer', 'inspectionlocation', 'customer', 'cleaninglocation', 'surveyor', 'creator')->find($cleaningId);
+		return $cleaningRecord->toJson();
 	}
 
 	public function get(Request $request)

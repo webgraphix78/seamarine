@@ -1334,7 +1334,7 @@
 	}
 	export default {
 		name: "AddEditIMO5Condition",
-		props: ["current_user_id", "all_permissions", "id"],
+		props: ["current_user_id", "all_permissions", "id","param1"],
 		setup() {
 			return {
 				v$: useVuelidate()
@@ -1406,10 +1406,15 @@
 						if (status == 1) {
 							// Ajax to submit
 							thisVar.showToast("IMO 5 Condition saved successfully", "success", "bottom", 3000);
-							setTimeout(() => {
-								window.location = thisVar.docRoot + "/imo5condition/";
-								thisVar.showLoading("Loading ...");
-							}, 1500);
+							if(that.param1 === "mobileApp") {
+								window.location = that.docRoot + "/imo5condition/";
+								that.showLoading("Loading ...");
+							}else{
+								setTimeout(() => {
+									window.location = thisVar.docRoot + "/imo5condition/";
+									thisVar.showLoading("Loading ...");
+								}, 1500);
+							}
 							// document.body.scrollTop = 0;
 							// document.documentElement.scrollTop = 0;
 						}
@@ -1451,7 +1456,6 @@
 				// else
 				// 	this.tankNoVerified = true;
 			}
-			
 			this.allTankTypeIdList = await this.loadAllTankType(true);
 			this.allTcodeIdList = await this.loadAllTcode(true);
 			this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);

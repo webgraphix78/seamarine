@@ -37,7 +37,24 @@ class DryboxController extends Controller
 			default:
 				abort(403);
 		}
-		return view('common.index', compact('component', 'current_user_id', 'all_permissions'));
+		$mode = "";
+		$param1= "";
+		$objectId = "";
+		if( isset($_GET["mode"]) && strlen(trim($_GET["mode"])) > 0 ){
+			$mode = $_GET["mode"];
+			if(isset($_GET["addeditmode"]) && strlen(trim($_GET["addeditmode"])) > 0){
+				$param1 = $_GET["addeditmode"];
+			}
+			if(isset($_GET["id"]) && strlen(trim($_GET["id"])) > 0){
+				$objectId =$_GET["id"];
+			}
+		}
+		return view('common.index', compact('component', 'current_user_id', 'all_permissions', 'mode', 'param1','objectId'));
+	}
+
+	public function getRecord($dryboxId){
+		$dryboxRecord = \App\Models\Drybox::with('company', 'inspectionlocation', 'customer', 'surveyor', 'creator')->find($dryboxId);
+		return $dryboxRecord->toJson();
 	}
 
 	public function get(Request $request)

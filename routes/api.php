@@ -50,8 +50,10 @@ Route::post('/tanktype/get', [App\Http\Controllers\TankTypeController::class, 'g
 Route::post('/tcode/get', [App\Http\Controllers\TcodeController::class, 'get'])->name('get-tcode-list');
 // Cleaning
 Route::post('/cleaning/get', [App\Http\Controllers\CleaningController::class, 'get'])->name('get-cleaning-list');
+Route::post('/cleaning/get-record/{cleaningId}', [App\Http\Controllers\CleaningController::class, 'getRecord'])->name('get-cleaning-record');
 // Drybox
 Route::post('/drybox/get', [App\Http\Controllers\DryboxController::class, 'get'])->name('get-drybox-list');
+Route::post('/drybox/get-record/{dryboxId}', [App\Http\Controllers\DryboxController::class, 'getRecord'])->name('get-drybox-record');
 // Media
 Route::post('/media/get-images', [App\Http\Controllers\MediaGalleryController::class, 'getImages'])->name('get-images-list');
 Route::get('/media/view/{mediaId}/{randomId}', [App\Http\Controllers\MediaGalleryController::class, 'viewFile'])->name('view-media');
@@ -67,6 +69,7 @@ Route::post('/imo5condition/get-record/{imo5Id}', [App\Http\Controllers\Imo5Cond
 
 // ShipperSurvey
 Route::post('/shippersurvey/get', [App\Http\Controllers\ShipperSurveyController::class, 'get'])->name('get-shippersurvey-list');
+Route::post('/shippersurvey/get-record/{shippersurveyId}', [App\Http\Controllers\ShipperSurveyController::class, 'getRecord'])->name('get-shippersurvey-record');
 // Weightment
 Route::post('/weightment/get', [App\Http\Controllers\WeightmentController::class, 'get'])->name('get-weightment-list');
 // Onhire

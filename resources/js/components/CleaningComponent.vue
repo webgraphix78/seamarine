@@ -1108,7 +1108,7 @@
 	}
 	export default {
 		name: "Cleaningmaster",
-		props: ["current_user_id", "all_permissions", "mode"],
+		props: ["current_user_id", "all_permissions", "mode", "param1","id"],
 		setup() {
 			return {
 				v$: useVuelidate()
@@ -1305,9 +1305,23 @@
 		async mounted() {
 			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
 			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
-
 			if (this.mode && this.mode == "mobileapp") {
-				this.addEditModal.show();
+				if(this.param1 && this.param1 != null && this.param1 != undefined) {
+					if (this.id !== undefined && !isNaN(this.id)) {
+						var URL = this.docRoot + "/api/cleaning/get-record/" + this.id;
+						var that = this;
+						this.showLoading("Loading ...");
+						axios.post(URL, {}).then(function (response) {
+							let cleaningObj = Object.assign({}, response.data);
+							that.prepareEditCleaning(cleaningObj);
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+					}
+				}else{
+					this.addEditModal.show();
+				}
 			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
 			this.allTankIdList = await this.loadAllTankType(true);

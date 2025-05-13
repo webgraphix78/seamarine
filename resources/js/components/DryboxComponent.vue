@@ -589,7 +589,7 @@
 	}
 	export default {
 		name: "Dryboxmaster",
-		props: ["current_user_id", "all_permissions"],
+		props: ["current_user_id", "all_permissions","mode","id","param1"],
 		setup() {
 			return {
 				v$: useVuelidate()
@@ -761,6 +761,24 @@
 		async mounted() {
 			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
 			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
+			if (this.mode && this.mode == "mobileapp") {
+				if(this.param1 && this.param1 != null && this.param1 != undefined) {
+					if (this.id !== undefined && !isNaN(this.id)) {
+						var URL = this.docRoot + "/api/drybox/get-record/" + this.id;
+						var that = this;
+						this.showLoading("Loading ...");
+						axios.post(URL, {}).then(function (response) {
+							let dryboxObj = Object.assign({}, response.data);
+							that.prepareEditDrybox(dryboxObj);
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+					}
+				}else{
+					this.addEditModal.show();
+				}
+			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
 			this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
 			this.allCustomerIdList = await this.loadAllCustomer(true);
