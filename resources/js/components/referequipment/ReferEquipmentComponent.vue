@@ -6,7 +6,7 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">refer equipment</h4>
-							<a id="add_referequipment_btn" class="btn btn-warning border-dark btn-sm" :href="this.docRoot+'/referequipment/add'" role="button">Add</a>
+							<a id="add_referequipment_btn" class="btn btn-success btn-sm" :href="this.docRoot+'/referequipment/add'" role="button">Add</a>
 						</div>
 					</div>
 				</div>

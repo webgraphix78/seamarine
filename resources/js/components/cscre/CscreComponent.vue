@@ -6,7 +6,7 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">cscre</h4>
-							<a id="add_cscre_btn" class="btn btn-warning border-dark btn-sm" :href="this.docRoot+'/cscre/add'" role="button">Add</a>
+							<a id="add_cscre_btn" class="btn btn-success border-dark btn-sm" :href="this.docRoot+'/cscre/add'" role="button">Add</a>
 						</div>
 					</div>
 				</div>

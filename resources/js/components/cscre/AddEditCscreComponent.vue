@@ -4,7 +4,7 @@
 			<div class="col-sm-7">
 				<div class="d-flex align-items-center mb-2">
 					<a id="add_cscre_btn" class="btn btn-dark btn-sm me-4 d-flex align-items-center gap-2" :href="docRoot+'/cscre'" role="button"><i class="ph ph-arrow-left "></i>Back to list</a>
-					<!-- <h4 class="m-0 text-capitalize">Add cscre</h4> -->
+					<h4 class="m-0 text-capitalize">Add cscre</h4>
 				</div>
 			</div>
 		</div>
