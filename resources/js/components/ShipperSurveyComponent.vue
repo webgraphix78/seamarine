@@ -10,7 +10,7 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewShipperSurvey" @upload-object="uploadImages" @duplicate-object="duplicateObject" @print-object="printShippersurvey" @edit-object="prepareEditShipperSurvey" @toggle-object-status="toggleShipperSurvey"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewShipperSurvey" @upload-object="uploadImages" @duplicate-object="duplicateObject" @print-object="printShippersurvey" @edit-object="prepareEditShipperSurvey" @toggle-object-status="toggleShipperSurvey" v-if="mode != 'mobileapp'"></DataTableComponent>
 			</div>
 		</div>
 		<div class="modal fade" ref="addEditModal" id="addShipperSurveyModal" tabindex="-1" aria-labelledby="addShipperSurveyModalLabel" aria-hidden="true">
