@@ -1326,6 +1326,8 @@
 				}else{
 					this.addEditModal.show();
 				}
+				this.$refs.addEditModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
+				this.$refs.readModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
 			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
 			this.allTankIdList = await this.loadAllTankType(true);
