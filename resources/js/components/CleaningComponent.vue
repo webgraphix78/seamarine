@@ -1314,6 +1314,7 @@
 						axios.post(URL, {}).then(function (response) {
 							let cleaningObj = Object.assign({}, response.data);
 							that.prepareEditCleaning(cleaningObj);
+							that.closeSwal();	
 						})
 						.catch(function (error) {
 							console.log(error);

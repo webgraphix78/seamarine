@@ -770,6 +770,7 @@
 						axios.post(URL, {}).then(function (response) {
 							let dryboxObj = Object.assign({}, response.data);
 							that.prepareEditDrybox(dryboxObj);
+							that.closeSwal();	
 						})
 						.catch(function (error) {
 							console.log(error);

@@ -1345,6 +1345,7 @@
 						axios.post(URL, {}).then(function (response) {
 							let shippersurveyObj = Object.assign({}, response.data);
 							that.prepareEditShipperSurvey(shippersurveyObj);
+							that.closeSwal();	
 						})
 						.catch(function (error) {
 							console.log(error);
