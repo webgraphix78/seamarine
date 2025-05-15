@@ -1723,8 +1723,8 @@
 								that.showToast("IMO 1 Condition Record saved successfully", "success", "bottom", 3000);
 								// mode check param1 mobileApp 
 								// if mode is add, then reload the page
-								if(that.param1 === "mobileApp") {
-									window.location = that.docRoot + "/imo1/";
+								if(that.param1 === "mobileapp") {
+									window.location = that.docRoot+"/operation-successful";
 									that.showLoading("Loading ...");
 								}else{
 									setTimeout(() => {

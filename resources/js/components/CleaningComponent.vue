@@ -1247,6 +1247,9 @@
 						if (status > 0) {
 							// Ajax to submit
 							that.showToast("Cleaning saved successfully", "success", "bottom", 3000);
+							if(that.mode === "mobileapp") {
+								window.location = that.docRoot+"/operation-successful";
+							}
 							setTimeout(() => {
 								that.dataprops.reload = true;
 							}, 1500);

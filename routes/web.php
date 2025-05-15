@@ -18,6 +18,13 @@ Route::get('/', function () {
     return redirect('home');
 });
 
+Route::get('/operation-successful', function () {
+	return view('success');
+});
+Route::get('/operation-canceled', function () {
+	return view('canceled');
+});
+
 Auth::routes();
 
 Route::middleware(['auth'])->group(function () {

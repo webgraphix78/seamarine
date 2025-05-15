@@ -650,8 +650,8 @@
 							(that.document2.uploaded_file == null || that.document2.uploaded_file == undefined) ) {
 								that.showToast("On Hire Record saved successfully", "success", "bottom", 3000);
 								// that.reloadEverything();
-								if(that.param1 === "mobileApp") {
-									window.location = that.docRoot + "/onhire/";
+								if(that.param1 === "mobileapp") {
+									window.location = that.docRoot + "/operation-successful/";
 									that.showLoading("Loading ...");
 								}else{
 									setTimeout(() => {

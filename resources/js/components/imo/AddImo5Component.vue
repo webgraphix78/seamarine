@@ -1406,9 +1406,8 @@
 						if (status == 1) {
 							// Ajax to submit
 							thisVar.showToast("IMO 5 Condition saved successfully", "success", "bottom", 3000);
-							if(that.param1 === "mobileApp") {
-								window.location = that.docRoot + "/imo5condition/";
-								that.showLoading("Loading ...");
+							if(thisVar.param1 === "mobileapp") {
+								window.location = thisVar.docRoot + "/operation-successful/";
 							}else{
 								setTimeout(() => {
 									window.location = thisVar.docRoot + "/imo5condition/";

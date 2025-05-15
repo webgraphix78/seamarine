@@ -710,6 +710,9 @@
 						if (status == 1) {
 							// Ajax to submit
 							thisVar.showToast("Drybox saved successfully", "success", "bottom", 3000);
+							if(thisVar.mode === "mobileapp") {
+								window.location = thisVar.docRoot + "/operation-successful";
+							}
 							setTimeout(() => {
 								thisVar.dataprops.reload = true;
 							}, 1500);
@@ -779,6 +782,8 @@
 				}else{
 					this.addEditModal.show();
 				}
+				this.$refs.addEditModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
+				this.$refs.readModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
 			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
 			this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
