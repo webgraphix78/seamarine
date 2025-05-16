@@ -1316,7 +1316,11 @@
 						this.showLoading("Loading ...");
 						axios.post(URL, {}).then(function (response) {
 							let cleaningObj = Object.assign({}, response.data);
-							that.prepareEditCleaning(cleaningObj);
+							if(that.param1 === "edit"){
+								that.prepareEditCleaning(cleaningObj);
+							}else{
+								that.viewCleaning(cleaningObj);
+							}
 							that.closeSwal();	
 						})
 						.catch(function (error) {

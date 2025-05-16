@@ -1347,7 +1347,11 @@
 						this.showLoading("Loading ...");
 						axios.post(URL, {}).then(function (response) {
 							let shippersurveyObj = Object.assign({}, response.data);
-							that.prepareEditShipperSurvey(shippersurveyObj);
+							if(that.param1 === "edit"){
+								that.prepareEditShipperSurvey(shippersurveyObj);
+							}else{
+								that.viewShipperSurvey(shippersurveyObj);
+							}
 							that.closeSwal();	
 						})
 						.catch(function (error) {

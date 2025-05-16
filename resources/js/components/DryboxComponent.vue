@@ -772,7 +772,11 @@
 						this.showLoading("Loading ...");
 						axios.post(URL, {}).then(function (response) {
 							let dryboxObj = Object.assign({}, response.data);
-							that.prepareEditDrybox(dryboxObj);
+							if(that.param1 === "edit"){
+								that.prepareEditDrybox(dryboxObj);
+							}else{
+								that.viewDrybox(dryboxObj);
+							}
 							that.closeSwal();	
 						})
 						.catch(function (error) {
