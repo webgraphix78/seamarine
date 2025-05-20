@@ -109,19 +109,26 @@
 							</div>
 							<div class="row mb-0 mb-sm-4">
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
-									<label for="add_cleaning_customer_id" class="form-label text-uppercase fw-bold me-3">Customer <span class="mandatory">*</span></label>
+									<label for="add_cleaning_customer_id" class="form-label text-uppercase fw-bold me-3">Cleaning Co. M/s <span class="mandatory">*</span></label>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<select class="form-select" v-model="cleaningForAdd.customer_id" id="add_customer_id">
+										<!-- <select class="form-select" v-model="cleaningForAdd.customer_id" id="add_customer_id">
 											<optgroup v-if="allCustomerIdList" label="Choose Customer">
 												<template v-for="customerId in allCustomerIdList" :key="customerId.id">
 													<option :value="customerId.id">{{ customerId.name }}</option>
 												</template>
 											</optgroup>
+										</select> -->
+										<select class="form-select" v-model="cleaningForAdd.inspection_locn" id="add_inspection_locn">
+											<optgroup v-if="allInspectionLocnList" label="Choose Inspection Location">
+												<template v-for="inspectionLocn in allInspectionLocnList" :key="inspectionLocn.id">
+													<option :value="inspectionLocn.id">{{ inspectionLocn.name }}</option>
+												</template>
+											</optgroup>
 										</select>
 									</div>
-									<template v-for="error of v$.cleaningForAdd.customer_id.$errors" :key="error.$uid">
+									<template v-for="error of v$.cleaningForAdd.inspection_locn.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
 									</template>
 								</div>
@@ -231,19 +238,19 @@
 							</div>
 							<div class="row mb-0 mb-sm-4">
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
-									<label for="add_cleaning_client_id" class="form-label text-uppercase fw-bold me-3">For <span class="mandatory">*</span></label>
+									<label for="add_cleaning_customer_id" class="form-label text-uppercase fw-bold me-3">For M/s.<span class="mandatory">*</span></label>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<select class="form-select" v-model="cleaningForAdd.client_id" id="add_client_id">
-											<optgroup v-if="allClientIdList" label="Choose Client">
-												<template v-for="clientId in allClientIdList" :key="clientId.id">
-													<option :value="clientId.id">{{ clientId.name }}</option>
+										<select class="form-select" v-model="cleaningForAdd.customer_id" id="add_customer_id">
+											<optgroup v-if="allCustomerIdList" label="Choose Client">
+												<template v-for="customerId in allCustomerIdList" :key="customerId.id">
+													<option :value="customerId.id">{{ customerId.name }}</option>
 												</template>
 											</optgroup>
 										</select>
 									</div>
-									<template v-for="error of v$.cleaningForAdd.client_id.$errors" :key="error.$uid">
+									<template v-for="error of v$.cleaningForAdd.customer_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
 									</template>
 								</div>
@@ -621,11 +628,11 @@
 						</div>
 						<div class="row mb-0 mb-sm-4">
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">Customer</label>
+								<label class="form-label text-uppercase fw-bold m-0">Cleaning CO. M/s.</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
-									<span v-if="readCleaning.customer?.name">{{ readCleaning.customer?.name }}</span
+									<span v-if="readCleaning.inspectionlocation?.name">{{ readCleaning.inspectionlocation?.name }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
@@ -721,7 +728,7 @@
 						</div>
 						<div class="row mb-0 mb-sm-4">
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">For</label>
+								<label class="form-label text-uppercase fw-bold m-0">For M/s.</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
