@@ -53,15 +53,15 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="3" style="border-collapse: collapse;">
 		<tr>
 			<td width="20%">Inspection Date:</td>
-			<td width="24%" style="font-weight:bold;">{{ ($cleaning['dt_inspection_date'] == null ? "Not Specified" : $cleaning['dt_inspection_date']) }}</td>
+			<td width="30%" style="font-weight:bold;">{{ ($cleaning['dt_inspection_date'] == null ? "Not Specified" : $cleaning['dt_inspection_date']) }}</td>
 			<td width="20%">Inspection Location:</td>
-			<td width="36%" style="font-weight:bold;">{{ $cleaning['inspectionlocation']['name'] }}</td>
+			<td width="30%" style="font-weight:bold;">{{ $cleaning['inspectionlocation']['name'] }}</td>
 		</tr>
 		<tr>
 			<td width="20%">Cleaning Co. M/s:</td>
-			<td width="80%" style="font-weight:bold;">{{ $cleaning['customer']['name'] }}</td>
-			<!-- <td width="20%">for M/s.:</td>
-			<td width="36%" style="font-weight:bold;">{{ $cleaning['client']['name'] }}</td> -->
+			<td width="30%" style="font-weight:bold;">{{ $cleaning['inspectionlocation']['name'] }}</td>
+			<td width="20%">for M/s.:</td>
+			<td width="30%" style="font-weight:bold;">{{ $cleaning['customer']['name'] }}</td>
 		</tr>
 		<tr>
 			<td width="20%">T-Code:</td>
