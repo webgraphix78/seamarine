@@ -57,11 +57,9 @@ class MediaGalleryController extends Controller{
 			$filePath = $media->url;
 			if( strlen($filePath) > 0 && Storage::exists($filePath) ){
 				Storage::delete($filePath);
-				$media->delete();
-				return response()->json(["status" => 1]);
 			}
-			else
-				return response()->json(["status" => -1]);	
+			$media->delete();
+			return response()->json(["status" => 1]);	
 		}
 		else
 			return response()->json(["status" => -1]);
