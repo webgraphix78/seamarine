@@ -211,7 +211,7 @@ class CleaningController extends Controller
 					'tcode_id' => 'required',
 					'customer_id' => 'required',
 					'inspection_locn' => 'required',
-					'client_id' => 'required',
+					// 'client_id' => 'required',
 					'surveyor_id' => 'required',
 					'frame_tank' => 'required',
 					'manlid_valves' => 'required',
