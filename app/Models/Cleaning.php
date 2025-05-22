@@ -33,7 +33,7 @@ class Cleaning extends Model
 
 	public function client()
 	{
-		return $this->belongsTo('App\Models\Customer', 'customer_id', 'id');
+		return $this->belongsTo('App\Models\Customer', 'client_id', 'id');
 	}
 
 	public function inspectionlocation()

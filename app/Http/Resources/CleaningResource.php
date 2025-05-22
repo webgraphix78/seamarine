@@ -82,7 +82,7 @@ class CleaningResource extends JsonResource
 			'tcode' => $this->tcode,
 			'customer' => $this->customer,
 			'inspectionlocation' => $this->inspectionlocation,
-			'customer' => $this->customer,
+			'client' => $this->client,
 			'cleaninglocation' => $this->cleaninglocation,
 			'surveyor' => $this->surveyor,
 			'creator' => $this->creator,
