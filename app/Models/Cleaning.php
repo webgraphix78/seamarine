@@ -26,9 +26,8 @@ class Cleaning extends Model
 		return $this->belongsTo('App\Models\Tcode', 'tcode_id', 'id');
 	}
 
-	public function customer()
-	{
-		return $this->belongsTo('App\Models\Customer', 'customer_id', 'id');
+	public function customer(){
+		return $this->belongsTo('App\Models\InspectionLocation', 'customer_id', 'id');
 	}
 
 	public function client()
