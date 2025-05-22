@@ -594,7 +594,7 @@
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
-									<span v-if="readCleaning.tank?.name">{{ readCleaning.tank?.name }}</span
+									<span v-if="readCleaning.tank?.type">{{ readCleaning.tank?.type }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
@@ -714,7 +714,7 @@
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
-									<span v-if="readCleaning.inspection_date">{{ formatMySQLDate(readCleaning.inspection_date, "MMM dd, yyyy") }}</span
+									<span v-if="readCleaning.inspection_date">{{ readCleaning.inspection_date }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
@@ -740,14 +740,14 @@
 							</div> -->
 						</div>
 						<div class="row mb-0 mb-sm-4">
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">Ref</label>
+							<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-flex justify-content-end">
+								<!-- <label class="form-label text-uppercase fw-bold m-0">Ref</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readCleaning.ref">{{ readCleaning.ref }}</span
 									><span v-else><i>Not specified</i></span>
-								</div>
+								</div> -->
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Last Cargo Carried</label>
