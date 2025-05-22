@@ -46,7 +46,7 @@ class CleaningController extends Controller
 	public function get(Request $request)
 	{
 		$input = $request->all();
-		$cleaningList = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer', 'inspectionlocation', 'customer', 'cleaninglocation', 'surveyor', 'creator')->select("*");
+		$cleaningList = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer','client', 'inspectionlocation', 'cleaninglocation', 'surveyor', 'creator')->select("*");
 		// SIMPLE & ADVANCED SEARCH ClAUSE
 		$searchType = "simple";
 		if (isset($input["search"]))
