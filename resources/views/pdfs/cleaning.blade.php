@@ -58,8 +58,6 @@
 			<td width="30%" style="font-weight:bold;">{{ $cleaning['inspectionlocation']['name'] }}</td>
 		</tr>
 		<tr>
-			<!-- <td width="20%">Cleaning Co. M/s:</td>
-			<td width="30%" style="font-weight:bold;">{{ $cleaning['customer']['name']  }}</td> -->
 			<td width="20%">for M/s.:</td>
 			<td width="30%" style="font-weight:bold;">{{ $cleaning['customer']['name'] }}</td>
 		</tr>

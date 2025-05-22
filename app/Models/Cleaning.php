@@ -30,10 +30,10 @@ class Cleaning extends Model
 		return $this->belongsTo('App\Models\Customer', 'customer_id', 'id');
 	}
 
-	// public function client()
-	// {
-	// 	return $this->belongsTo('App\Models\Customer', 'client_id', 'id');
-	// }
+	public function client()
+	{
+		return $this->belongsTo('App\Models\Customer', 'client_id', 'id');
+	}
 
 	public function inspectionlocation()
 	{
