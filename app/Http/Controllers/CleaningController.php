@@ -51,14 +51,14 @@ class CleaningController extends Controller
 	}
 
 	public function getRecord($cleaningId){
-		$cleaningRecord = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer', 'client', 'inspectionlocation', 'cleaninglocation', 'surveyor', 'creator')->find($cleaningId);
+		$cleaningRecord = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer', 'inspectionlocation', 'cleaninglocation', 'surveyor', 'creator')->find($cleaningId);
 		return $cleaningRecord->toJson();
 	}
 
 	public function get(Request $request)
 	{
 		$input = $request->all();
-		$cleaningList = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer','client', 'inspectionlocation', 'cleaninglocation', 'surveyor', 'creator')->select("*");
+		$cleaningList = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer', 'inspectionlocation', 'cleaninglocation', 'surveyor', 'creator')->select("*");
 		// SIMPLE & ADVANCED SEARCH ClAUSE
 		$searchType = "simple";
 		if (isset($input["search"]))
@@ -223,7 +223,7 @@ class CleaningController extends Controller
 					'tcode_id' => 'required',
 					'customer_id' => 'required',
 					'inspection_locn' => 'required',
-					'client_id' => 'required',
+					// 'client_id' => 'required',
 					'surveyor_id' => 'required',
 					'frame_tank' => 'required',
 					'manlid_valves' => 'required',
@@ -343,7 +343,7 @@ class CleaningController extends Controller
 	// } 
 
 	public function exportToPDF($cleaningId, Request $request){
-		$cleaning = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer', 'client', 'inspectionlocation', 'cleaninglocation', 'surveyor', 'creator')->find($cleaningId);
+		$cleaning = \App\Models\Cleaning::with('company', 'tank', 'tcode', 'customer', 'inspectionlocation', 'cleaninglocation', 'surveyor', 'creator')->find($cleaningId);
 		$company = $cleaning["company"];
 		$filename = $cleaning->tank_no.".pdf";
 		$data = [

@@ -108,8 +108,8 @@
 								</div>
 							</div>
 							<div class="row mb-0 mb-sm-4">
-								<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
-									<label for="add_cleaning_customer_id" class="form-label text-uppercase fw-bold me-3">Cleaning Co. M/s <span class="mandatory">*</span></label>
+								<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
+									<!-- <label for="add_cleaning_customer_id" class="form-label text-uppercase fw-bold me-3">Cleaning Co. M/s <span class="mandatory">*</span></label>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
@@ -123,7 +123,7 @@
 									</div>
 									<template v-for="error of v$.cleaningForAdd.customer_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
-									</template>
+									</template> -->
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
 									<label for="add_cleaning_csc" class="form-label text-uppercase fw-bold me-3">Csc</label
@@ -231,19 +231,19 @@
 							</div>
 							<div class="row mb-0 mb-sm-4">
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
-									<label for="add_cleaning_client_id" class="form-label text-uppercase fw-bold me-3">For M/s.<span class="mandatory">*</span></label>
+									<label for="add_cleaning_customer_id" class="form-label text-uppercase fw-bold me-3">For M/s.<span class="mandatory">*</span></label>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<select class="form-select" v-model="cleaningForAdd.client_id" id="add_client_id">
-											<optgroup v-if="allCustomerIdList" label="Choose Client">
+										<select class="form-select" v-model="cleaningForAdd.customer_id" id="add_customer_id">
+											<optgroup v-if="allCustomerIdList" label="Choose Customer">
 												<template v-for="customerId in allCustomerIdList" :key="customerId.id">
 													<option :value="customerId.id">{{ customerId.name }}</option>
 												</template>
 											</optgroup>
 										</select>
 									</div>
-									<template v-for="error of v$.cleaningForAdd.client_id.$errors" :key="error.$uid">
+									<template v-for="error of v$.cleaningForAdd.customer_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
 									</template>
 								</div>
@@ -620,14 +620,14 @@
 							</div>
 						</div>
 						<div class="row mb-0 mb-sm-4">
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">Cleaning CO. M/s.</label>
+							<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-flex justify-content-end">
+								<!-- <label class="form-label text-uppercase fw-bold m-0">Cleaning CO. M/s.</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readCleaning.customer?.name">{{ readCleaning.customer?.name }}</span
 									><span v-else><i>Not specified</i></span>
-								</div>
+								</div> -->
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Csc</label>
@@ -725,7 +725,7 @@
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
-									<span v-if="readCleaning.client?.name">{{ readCleaning.client?.name }}</span
+									<span v-if="readCleaning.customer?.name">{{ readCleaning.customer?.name }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
@@ -1041,7 +1041,7 @@
 			tare_wt: 0,
 			inspection_locn: null,
 			inspection_date: "",
-			client_id: null,
+			// client_id: null,
 			cleaning_location_id: 0,
 			ref: "",
 			last_cargo_carried: "",
@@ -1083,7 +1083,7 @@
 			tare_wt: {numeric, minValue: minValue(0)},
 			inspection_locn: {required},
 			inspection_date: {},
-			client_id: {required},
+			// client_id: {required},
 			ref: {minLengthValue: minLength(1)},
 			last_cargo_carried: {minLengthValue: minLength(1)},
 			surveyor_id: {required},
