@@ -32,9 +32,6 @@ Route::middleware(['auth'])->group(function () {
 
 	Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-	// MediaGallery
-	Route::post('/media/add', [App\Http\Controllers\MediaGalleryController::class, 'uploadFile'])->name('upload-media');
-	Route::post('/media/delete', [App\Http\Controllers\MediaGalleryController::class, 'deleteFile'])->name('delete-media');
 
 	// Reports
 	Route::post('/reports/download', [App\Http\Controllers\ReportsController::class, 'downloadReport'])->name('download-report');

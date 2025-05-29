@@ -27,7 +27,7 @@ class MediaGalleryController extends Controller{
 				$media->size = $file->getSize();
 				// Need to rearrange it
 				$media->sequence_no = 0;
-				$media->created_by = Auth::id();
+				$media->created_by = $input["created_by"] ?? Auth::id();
 				$media->save();
 				return response()->json(["status" => 1, "id" => $media->id]);
 			}

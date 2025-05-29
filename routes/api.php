@@ -57,6 +57,8 @@ Route::post('/drybox/get-record/{dryboxId}', [App\Http\Controllers\DryboxControl
 // Media
 Route::post('/media/get-images', [App\Http\Controllers\MediaGalleryController::class, 'getImages'])->name('get-images-list');
 Route::get('/media/view/{mediaId}/{randomId}', [App\Http\Controllers\MediaGalleryController::class, 'viewFile'])->name('view-media');
+Route::post('/media/add', [App\Http\Controllers\MediaGalleryController::class, 'uploadFile'])->name('upload-media');
+Route::post('/media/delete', [App\Http\Controllers\MediaGalleryController::class, 'deleteFile'])->name('delete-media');
 
 // ImoConditionStatus
 Route::post('/imoconditionstatus/get', [App\Http\Controllers\ImoConditionStatusController::class, 'get'])->name('get-imoconditionstatus-list');
