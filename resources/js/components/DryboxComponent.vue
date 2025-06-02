@@ -22,10 +22,10 @@
 					</div>
 					<div class="modal-body">
 						<div class="row mb-4">
-							<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="col-md-3 d-flex justify-content-md-end align-items-center">
 								<label for="add_drybox_container_no" class="form-label text-uppercase fw-bold me-3">Container No</label><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3">
 								<div class="input-group">
 									<MaskInput v-model="dryboxForAdd.container_no" mask="AAAA-######-#" class="form-control" :readonly="tankNoVerified" textmode="uppercase"/>
 									<span class="input-group-text" :class="tankNoVerified ? 'bg-success' : 'bg-danger'">
@@ -37,24 +37,24 @@
 									<div class="mandatory mb-1">{{ error.$message }}</div>
 								</template>
 							</div>
-							<div class="col-6 py-2" v-if="dryboxForAdd.id == 0 && tankNoVerified">
+							<div class="col-md-6 py-2" v-if="dryboxForAdd.id == 0 && tankNoVerified">
 								<label for="">Tank last used: <span v-if="lastThree && lastThree.length > 0">On {{  lastThree.join(", ") }}</span><span v-else>Never</span></label>
 							</div>
 						</div>
 						<template v-if="tankNoVerified">
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_ref" class="form-label text-uppercase fw-bold me-3">Ref No</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.ref" id="add_drybox_ref" placeholder="AUTO GENERATED" readonly>
 									</div>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_company_id" class="form-label text-uppercase fw-bold me-3">Company <span class="mandatory">*</span></label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<select class="form-select" v-model="dryboxForAdd.company_id" id="add_company_id">
 											<optgroup v-if="allCompanyIdList" label="Choose Company">
@@ -69,11 +69,11 @@
 									</template>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
-									<label for="add_drybox_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Place Of Inspection <span class="mandatory">*</span></label>
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
+									<label for="add_drybox_inspection_location_id" class="form-label text-uppercase fw-bold me-3 text-end">Place Of Inspection <span class="mandatory">*</span></label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<select class="form-select" v-model="dryboxForAdd.inspection_location_id" id="add_inspection_location_id">
 											<optgroup v-if="allInspectionLocationIdList" label="Choose Inspection Location">
@@ -87,68 +87,68 @@
 										<div class="mandatory mb-1">{{ error.$message }}</div>
 									</template>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
-									<label for="add_drybox_inspection_date" class="form-label text-uppercase fw-bold me-3">Inspection Date</label>
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
+									<label for="add_drybox_inspection_date" class="form-label text-uppercase fw-bold me-3 text-end	">Inspection Date</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<MaskInput v-model="dryboxForAdd.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 									</div>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_size" class="form-label text-uppercase fw-bold me-3">Size</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.size" id="add_drybox_size" placeholder="Enter Size" />
 									</div>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_tare_wt" class="form-label text-uppercase fw-bold me-3">Tare Weight</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="number" class="form-control" v-empty-zero v-model="dryboxForAdd.tare_wt" id="add_drybox_tare_wt" placeholder="Enter Tare Wt" />
 									</div>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_gross_wt" class="form-label text-uppercase fw-bold me-3">Gross Weight</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="number" class="form-control" v-empty-zero v-model="dryboxForAdd.gross_wt" id="add_drybox_gross_wt" placeholder="Enter Gross Wt" />
 									</div>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_csc_no" class="form-label text-uppercase fw-bold me-3">Csc No</label>
 									<a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.csc_no" id="add_drybox_csc_no" placeholder="Enter Csc No" />
 									</div>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_mfgt_date" class="form-label text-uppercase fw-bold me-3">Mfgt Date</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<!-- <MonthYearPicker  v-model="dryboxForAdd.mfgt_date" :min="new Date(1990, 1, 1)" :max="new Date()" returnmode="String" class="form-select"/> -->
 										<input type="text" class="form-control" v-model="dryboxForAdd.mfgt_date" id="add_cleaning_next_date" placeholder="Enter Mfgt Date" />
 									</div>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_customer_id" class="form-label text-uppercase fw-bold me-3">Customer <span class="mandatory">*</span></label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<select class="form-select" v-model="dryboxForAdd.customer_id" id="add_customer_id">
 											<optgroup v-if="allCustomerIdList" label="Choose Customer">
@@ -162,10 +162,10 @@
 										<div class="mandatory mb-1">{{ error.$message }}</div>
 									</template>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor <span class="mandatory">*</span></label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<select class="form-select" v-model="dryboxForAdd.surveyor_id" id="add_surveyor_id">
 											<optgroup v-if="allSurveyorIdList" label="Choose Surveyor">
@@ -180,83 +180,83 @@
 									</template>
 								</div>
 							</div>
-							<div class="row mb-4">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
 								<div class="col-12 p-2 bg-info text-center">
 									<h5 class="m-0">REMARKS</h5>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_rear_end" class="form-label text-uppercase fw-bold me-3">Rear End</label
 									><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.rear_end" id="add_drybox_rear_end" placeholder="Enter Rear End" />
 									</div>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_right_side" class="form-label text-uppercase fw-bold me-3">Right Side</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.right_side" id="add_drybox_right_side" placeholder="Enter Right Side" />
 									</div>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_front_end" class="form-label text-uppercase fw-bold me-3">Front End</label
 									><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.front_end" id="add_drybox_front_end" placeholder="Enter Front End" />
 									</div>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_left_side" class="form-label text-uppercase fw-bold me-3">Left Side</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.left_side" id="add_drybox_left_side" placeholder="Enter Left Side" />
 									</div>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_top_roof" class="form-label text-uppercase fw-bold me-3">Top Roof</label
 									><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.top_roof" id="add_drybox_top_roof" placeholder="Enter Top Roof" />
 									</div>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
-									<label for="add_drybox_under_structure" class="form-label text-uppercase fw-bold me-3">Under Structure</label
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
+									<label for="add_drybox_under_structure" class="form-label text-uppercase fw-bold me-3 text-end">Under Structure</label
 									><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.under_structure" id="add_drybox_under_structure" placeholder="Enter Under Structure" />
 									</div>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_interior" class="form-label text-uppercase fw-bold me-3">Interior</label
 									><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<input type="text" class="form-control" v-model="dryboxForAdd.interior" id="add_drybox_interior" placeholder="Enter Interior" />
 									</div>
 								</div>
-								<div class="col-3 d-flex justify-content-end align-items-center">
+								<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 									<label for="add_drybox_drybox_status" class="form-label text-uppercase fw-bold me-3">Drybox Status</label>
 								</div>
-								<div class="col-3">
+								<div class="col-md-3 col-6">
 									<div>
 										<select class="form-select" v-model="dryboxForAdd.drybox_status" id="add_drybox_status">
 											<optgroup v-if="allDryboxStatusList" label="Choose Drybox Status">
@@ -268,12 +268,12 @@
 									</div>
 								</div>
 							</div>
-							<div class="row mb-4">
-								<div class="col-3 d-flex justify-content-end align-items-top">
+							<div class="row mb-md-4 mb-3 g-2 g-md-3">
+								<div class="col-md-3 d-flex justify-content-md-end align-items-top">
 									<label for="add_drybox_note" class="form-label text-uppercase fw-bold me-3">Note</label
 									><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
-								<div class="col-6">
+								<div class="col-md-6">
 									<div>
 										<textarea class="form-control" v-model="dryboxForAdd.note" id="add_drybox_note" placeholder="Enter Note" rows="3"></textarea>
 									</div>
@@ -299,7 +299,7 @@
 					</div>
 					<div class="modal-body">
 						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Ref:</label>
 							</div>
 							<div class="col-3">
