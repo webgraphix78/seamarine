@@ -1,18 +1,18 @@
 <template lang="">
 	<div id="add-onhire-unitnr" class="border-top border-secondary">
 		<div class="row my-2">
-			<div class="col-2">
+			<div class="col-md-2">
 				<h5>Unit Nr</h5>
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_1" id="add_onhireunitnr_unit_nr_1" />
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-3 text-end">
 				<label for="add_onhireunitnr_unit_nr_1_calibration" class="form-label text-uppercase fw-bold m-0 py-2">Calibration Table</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_1_calibration" id="add_unit_nr_1_calibration">
 					<optgroup v-if="allUnitNr1CalibrationList" label="Choose">
 						<template v-for="unitNr1Calibration in allUnitNr1CalibrationList" :key="unitNr1Calibration.id">
@@ -21,7 +21,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_1_calibration_value" id="add_unit_nr_1_calibration_value">
 					<optgroup v-if="allUnitNr1CalibrationValueList" label="Choose">
 						<template v-for="unitNr1CalibrationValue in allUnitNr1CalibrationValueList" :key="unitNr1CalibrationValue.id">
@@ -32,13 +32,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_2" id="add_onhireunitnr_unit_nr_2" />
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-4 text-end">
 				<label for="add_onhireunitnr_unit_nr_2_manlid_swing" class="form-label text-uppercase fw-bold m-0 py-2">Manlid With Swingbolts</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<div>
 					<select class="form-select" v-model="onhireunitnr.unit_nr_2_manlid_swing" id="add_unit_nr_2_manlid_swing">
 						<optgroup v-if="allUnitNr2ManlidSwingList" label="Choose">
@@ -49,7 +49,7 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_2_manlid_swing_value" id="add_unit_nr_2_manlid_swing_value">
 					<optgroup v-if="allUnitNr2ManlidSwingValueList" label="Choose">
 						<template v-for="unitNr2ManlidSwingValue in allUnitNr2ManlidSwingValueList" :key="unitNr2ManlidSwingValue.id">
@@ -58,31 +58,31 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_2_manlid_swing_other" id="add_onhireunitnr_unit_nr_2_manlid_swing_other" />
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_3" id="add_onhireunitnr_unit_nr_3"/>
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-4 text-end">
 				<label for="add_onhireunitnr_unit_nr_3_collapsible" class="form-label text-uppercase fw-bold m-0 py-2">Collapsible Handrails</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<div>
 					<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_3_collapsible" id="add_onhireunitnr_unit_nr_3_collapsible"/>
 				</div>
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_4" id="add_onhireunitnr_unit_nr_4"/>
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-3 text-end">
 				<label for="add_onhireunitnr_unit_nr_4_dipstick" class="form-label text-uppercase fw-bold m-0 py-2">Dipstick</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_4_dipstick" id="add_unit_nr_4_dipstick">
 					<optgroup v-if="allUnitNr4DipstickList" label="Choose">
 						<template v-for="unitNr4Dipstick in allUnitNr4DipstickList" :key="unitNr4Dipstick.id">
@@ -91,7 +91,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_4_dipstick_value" id="add_unit_nr_4_dipstick_value">
 					<optgroup v-if="allUnitNr4DipstickValueList" label="Choose">
 						<template v-for="unitNr4DipstickValue in allUnitNr4DipstickValueList" :key="unitNr4DipstickValue.id">
@@ -102,13 +102,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_5" id="add_onhireunitnr_unit_nr_5"/>
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-4 text-end">
 				<label for="add_onhireunitnr_unit_nr_5_topcover" class="form-label text-uppercase fw-bold m-0 py-2">Topcovers & Lockings Material</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_5_topcover" id="add_unit_nr_5_topcover">
 					<optgroup v-if="allUnitNr5TopcoverList" label="Choose">
 						<template v-for="unitNr5Topcover in allUnitNr5TopcoverList" :key="unitNr5Topcover.id">
@@ -119,13 +119,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_6" id="add_onhireunitnr_unit_nr_6"/>
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-4 text-end">
 				<label for="add_onhireunitnr_unit_nr_6_walkway" class="form-label text-uppercase fw-bold m-0 py-2">Walkway</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_6_walkway" id="add_unit_nr_6_walkway">
 					<optgroup v-if="allUnitNr6WalkwayList" label="Choose">
 						<template v-for="unitNr6Walkway in allUnitNr6WalkwayList" :key="unitNr6Walkway.id">
@@ -136,13 +136,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_7" id="add_onhireunitnr_unit_nr_7"/>
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-3 text-end">
 				<label for="add_onhireunitnr_unit_nr_7_manlid_gasket" class="form-label text-uppercase fw-bold m-0 py-2">Manlid Gasket</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<div>
 					<select class="form-select" v-model="onhireunitnr.unit_nr_7_manlid_gasket" id="add_unit_nr_7_manlid_gasket">
 						<optgroup v-if="allUnitNr7ManlidGasketList" label="Choose">
@@ -153,18 +153,18 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-3">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_7_manlid_gasket_other" id="add_onhireunitnr_unit_nr_7_manlid_gasket_other"/>
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_8" id="add_onhireunitnr_unit_nr_8"/>
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-4 text-end">
 				<label for="add_onhireunitnr_unit_nr_8_grounding" class="form-label text-uppercase fw-bold m-0 py-2">Grounding Lug</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_8_grounding" id="add_unit_nr_8_grounding">
 					<optgroup v-if="allUnitNr8GroundingList" label="Choose">
 						<template v-for="unitNr8Grounding in allUnitNr8GroundingList" :key="unitNr8Grounding.id">
@@ -175,13 +175,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_9" id="add_onhireunitnr_unit_nr_9"/>
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-4 text-end">
 				<label for="add_onhireunitnr_unit_nr_9_bottomplate" class="form-label text-uppercase fw-bold m-0 py-2">Bottomplate</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_9_bottomplate" id="add_unit_nr_9_bottomplate">
 					<optgroup v-if="allUnitNr9BottomplateList" label="Choose">
 						<template v-for="unitNr9Bottomplate in allUnitNr9BottomplateList" :key="unitNr9Bottomplate.id">
@@ -192,13 +192,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireunitnr.unit_nr_10" id="add_onhireunitnr_unit_nr_10"/>
 			</div>
-			<div class="col-2 text-end">
+			<div class="col-md-2 col-4 text-end">
 				<label for="add_onhireunitnr_unit_nr_10_pti_date" class="form-label text-uppercase fw-bold m-0 py-2">Pti Date</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireunitnr.unit_nr_10_pti_date" id="add_unit_nr_10_pti_date">
 					<optgroup v-if="allUnitNr10PtiDateList" label="Choose">
 						<template v-for="unitNr10PtiDate in allUnitNr10PtiDateList" :key="unitNr10PtiDate.id">

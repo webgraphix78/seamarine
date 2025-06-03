@@ -22,11 +22,11 @@
 					</div>
 					<div class="modal-body">
 						<div class="row mb-0 mb-sm-4">
-							<div class="col-6 col-sm-3 d-flex justify-content-end align-items-center">
+							<div class="col-md-4 d-flex justify-content-md-end align-items-center">
 								<label for="add_cleaning_tank_no" class="form-label text-uppercase fw-bold m-0 me-3">Tank No <span class="mandatory">*</span></label
 								><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-12 col-sm-3 mb-2 mb-sm-0">
 								<div class="input-group">
 									<MaskInput v-model="cleaningForAdd.tank_no" mask="AAAA-######-#" class="form-control" :readonly="tankNoVerified" textmode="uppercase"/>
 									<span class="input-group-text" :class="tankNoVerified ? 'bg-success' : 'bg-danger'">
@@ -108,7 +108,7 @@
 								</div>
 							</div>
 							<div class="row mb-0 mb-sm-4">
-								<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
+								<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-md-flex d-none justify-content-end align-items-center">
 									<!-- <label for="add_cleaning_customer_id" class="form-label text-uppercase fw-bold me-3">Cleaning Co. M/s <span class="mandatory">*</span></label>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
@@ -194,7 +194,7 @@
 								</div>
 							</div>
 							<div class="row mb-0 mb-sm-4">
-								<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
+								<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-md-end align-items-center">
 									<label for="add_cleaning_inspection_locn" class="form-label text-uppercase fw-bold me-3">Inspection Location <span class="mandatory">*</span></label>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
@@ -268,7 +268,7 @@
 									</div>
 								</div> -->
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end align-items-center">
-									<label for="add_cleaning_last_cargo_carried" class="form-label text-uppercase fw-bold me-3">Last Cargo Carried</label
+									<label for="add_cleaning_last_cargo_carried" class="form-label text-uppercase fw-bold me-3 text-end">Last Cargo Carried</label
 									><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
@@ -620,7 +620,7 @@
 							</div>
 						</div>
 						<div class="row mb-0 mb-sm-4">
-							<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-flex justify-content-end">
+							<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-md-flex d-none justify-content-end">
 								<!-- <label class="form-label text-uppercase fw-bold m-0">Cleaning CO. M/s.</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
@@ -650,7 +650,7 @@
 								</div>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">Last Inspection Date</label>
+								<label class="form-label text-uppercase fw-bold m-0 text-end">Last Inspection Date</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
@@ -701,7 +701,7 @@
 						</div>
 						<div class="row mb-0 mb-sm-4">
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">Inspection Location</label>
+								<label class="form-label text-uppercase fw-bold m-0 text-end">Inspection Location</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
@@ -740,7 +740,7 @@
 							</div> -->
 						</div>
 						<div class="row mb-0 mb-sm-4">
-							<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-flex justify-content-end">
+							<div class="col-6 col-sm-6 mb-2 mb-sm-0 d-md-flex d-none justify-content-end">
 								<!-- <label class="form-label text-uppercase fw-bold m-0">Ref</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
@@ -750,7 +750,7 @@
 								</div> -->
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">Last Cargo Carried</label>
+								<label class="form-label text-uppercase fw-bold m-0 test-end">Last Cargo Carried</label>
 							</div>
 							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 								<div>
@@ -940,7 +940,7 @@
 						</div>
 						<div class="row mb-0 mb-sm-4">
 							<div class="col-8 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">Gas free entry permit issue</label>
+								<label class="form-label text-uppercase fw-bold m-0 text-end">Gas free entry permit issue</label>
 							</div>
 							<div class="col-4 col-sm-2 mb-2 mb-sm-0">
 								<div>

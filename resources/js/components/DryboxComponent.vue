@@ -298,231 +298,231 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
 					</div>
 					<div class="modal-body">
-						<div class="row mb-3">
+						<div class="row mb-3 g-3">
 							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Ref:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.ref">{{ readDrybox.ref }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Company:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.company?.name">{{ readDrybox.company?.name }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
-								<label class="form-label text-uppercase fw-bold m-0">Inspection Location:</label>
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
+								<label class="form-label text-uppercase fw-bold m-0 text-end">Inspection Location:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.inspectionlocation?.name">{{ readDrybox.inspectionlocation?.name }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Inspection Date:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.inspection_date">{{ formatMySQLDate(readDrybox.inspection_date, "MMM dd, yyyy") }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Container No:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.container_no">{{ readDrybox.container_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Size:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.size">{{ readDrybox.size }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Tare Wt:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.tare_wt">{{ readDrybox.tare_wt }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Gross Wt:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.gross_wt">{{ readDrybox.gross_wt }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Csc No:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.csc_no">{{ readDrybox.csc_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Mfgt Date:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.mfgt_date">{{ readDrybox.mfgt_date }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Customer:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.customer?.name">{{ readDrybox.customer?.name }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Surveyor:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.surveyor?.name">{{ readDrybox.surveyor?.name }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Rear End:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.rear_end">{{ readDrybox.rear_end }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Right Side:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.right_side">{{ readDrybox.right_side }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Front End:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.front_end">{{ readDrybox.front_end }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Left Side:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.left_side">{{ readDrybox.left_side }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Top Roof:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.top_roof">{{ readDrybox.top_roof }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Under Structure:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.under_structure">{{ readDrybox.under_structure }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Interior:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.interior">{{ readDrybox.interior }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Drybox Status:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.drybox_status == '0'">Empty</span>
 									<span v-if="readDrybox.drybox_status == '1'">Loaded</span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Note:</label>
 							</div>
-							<div class="col-9">
+							<div class="col-md-9 col-6">
 								<div>
 									<span v-if="readDrybox.note">{{ readDrybox.note }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-3">
-							<div class="col-3 d-flex justify-content-end">
+						<div class="row mb-3 g-3">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Status:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span class="badge rounded-pill bg-success" v-if="readDrybox.status == 1">ACTIVE</span>
 									<span class="badge rounded-pill bg-danger" v-if="readDrybox.status == 0">INACTIVE</span>
 								</div>
 							</div>
-							<div class="col-3 d-flex justify-content-end">
+							<div class="col-md-3 col-6 d-flex justify-content-end">
 								<label class="form-label text-uppercase fw-bold m-0">Created By:</label>
 							</div>
-							<div class="col-3">
+							<div class="col-md-3 col-6">
 								<div>
 									<span v-if="readDrybox.creator?.name">{{ readDrybox.creator?.name }}</span
 									><span v-else><i>Not specified</i></span>

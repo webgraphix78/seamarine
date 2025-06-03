@@ -1,18 +1,18 @@
 <template lang="">
 	<div id="add-onhire-anc" class="border-top border-secondary">
 		<div class="row my-2">
-			<div class="col-2">
+			<div class="col-md-2">
 				<h5>Ancillary Fittings</h5>
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_1" id="add_onhireancillary_ancf_1" />
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-4 text-end py-1">
 				<label for="add_onhireancillary_ancf_1_cladding" class="form-label text-uppercase fw-bold m-0">Cladding</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<div>
 					<select class="form-select" v-model="onhireancillary.ancf_1_cladding" id="add_ancf_1_cladding">
 						<optgroup v-if="allAncf1CladdingList" label="Choose">
@@ -25,10 +25,10 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_2" id="add_onhireancillary_ancf_2" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireancillary.ancf_2_ladder" id="add_ancf_2_ladder">
 					<optgroup v-if="allAncf2LadderList" label="Choose">
 						<template v-for="ancf2Ladder in allAncf2LadderList" :key="ancf2Ladder.id">
@@ -37,7 +37,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireancillary.ancf_2_ladder_type" id="add_ancf_2_ladder_type">
 					<optgroup v-if="allAncf2LadderTypeList" label="Choose">
 						<template v-for="ancf2LadderType in allAncf2LadderTypeList" :key="ancf2LadderType.id">
@@ -48,13 +48,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_3" id="add_onhireancillary_ancf_3" />
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-4 text-end py-1">
 				<label for="add_onhireancillary_ancf_3_placard" class="form-label text-uppercase fw-bold m-0">Placard Holders</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireancillary.ancf_3_placard" id="add_ancf_3_placard">
 					<optgroup v-if="allAncf3PlacardList" label="Choose">
 						<template v-for="ancf3Placard in allAncf3PlacardList" :key="ancf3Placard.id">
@@ -65,13 +65,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_4" id="add_onhireancillary_ancf_4" />
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-4 text-end py-1">
 				<label for="add_onhireancillary_ancf_4_decals" class="form-label text-uppercase fw-bold m-0">Decals</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhireancillary.ancf_4_decals" id="add_ancf_4_decals">
 					<optgroup v-if="allAncf4DecalsList" label="Choose">
 						<template v-for="ancf4Decals in allAncf4DecalsList" :key="ancf4Decals.id">
@@ -81,14 +81,14 @@
 				</select>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_5" id="add_onhireancillary_ancf_5" />
 			</div>
-			<div class="col-2 d-flex flex-row text-end align-items-center justify-content-end">
+			<div class="col-md-2 col-4 d-flex flex-row text-end align-items-center justify-content-end">
 				<label for="add_onhireancillary_ancf_5_tgauge" class="form-label text-uppercase fw-bold m-0">Temperature gauge</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<div>
 					<select class="form-select" v-model="onhireancillary.ancf_5_tgauge" id="add_ancf_5_tgauge">
 						<optgroup v-if="allAncf5TgaugeList" label="Choose">
@@ -99,19 +99,19 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-2 d-flex flex-row gap-2">
+			<div class="col-md-2 col-6 d-flex flex-row gap-2">
 				<label for="add_onhireancillary_ancf_5_other" class="form-label text-uppercase fw-bold m-0 py-2">Other</label>
 				<div>
 					<input type="text" class="form-control" v-model="onhireancillary.ancf_5_other" id="add_onhireancillary_ancf_5_other" />
 				</div>
 			</div>
-			<div class="col-2 d-flex flex-row gap-2">
+			<div class="col-md-2 col-6 d-flex flex-row gap-2">
 				<label for="add_onhireancillary_ancf_5_temperature" class="form-label text-uppercase fw-bold m-0 py-2">Temperature</label>
 				<div>
 					<input type="text" class="form-control" v-model="onhireancillary.ancf_5_temperature" id="add_onhireancillary_ancf_5_temperature" />
 				</div>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhireancillary.ancf_5_ttype" id="add_ancf_5_ttype">
 					<optgroup v-if="allAncf5TtypeList" label="Choose">
 						<template v-for="ancf5Ttype in allAncf5TtypeList" :key="ancf5Ttype.id">
@@ -122,27 +122,27 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_6" id="add_onhireancillary_ancf_6" />
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-4 text-end py-1">
 				<label for="add_onhireancillary_ancf_6_doc_tube" class="form-label text-uppercase fw-bold m-0">Document Tube</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_6_doc_tube" id="add_onhireancillary_ancf_6_doc_tube" />
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_7" id="add_onhireancillary_ancf_7" />
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-4 text-end py-1">
 				<label for="add_onhireancillary_ancf_7_steam_tube" class="form-label text-uppercase fw-bold m-0">Steam Tube Cap</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_7_steam_tube" id="add_onhireancillary_ancf_7_steam_tube" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhireancillary.ancf_7_steam_tube_value_1" id="add_ancf_7_steam_tube_value_1">
 					<optgroup v-if="allAncf7SteamTubeValue1List" label="Choose">
 						<template v-for="ancf7SteamTubeValue1 in allAncf7SteamTubeValue1List" :key="ancf7SteamTubeValue1.id">
@@ -151,7 +151,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhireancillary.ancf_7_steam_tube_value_2" id="add_ancf_7_steam_tube_value_2">
 					<optgroup v-if="allAncf7SteamTubeValue2List" label="Choose">
 						<template v-for="ancf7SteamTubeValue2 in allAncf7SteamTubeValue2List" :key="ancf7SteamTubeValue2.id">
@@ -162,16 +162,16 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_8" id="add_onhireancillary_ancf_8" />
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-4 text-end py-1">
 				<label for="add_onhireancillary_ancf_8_steam_acc" class="form-label text-uppercase fw-bold m-0">Steam Accessories</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_8_steam_acc" id="add_onhireancillary_ancf_8_steam_acc" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2">
 				<select class="form-select" v-model="onhireancillary.ancf_8_steam_acc_value" id="add_ancf_8_steam_acc_value">
 					<optgroup v-if="allAncf8SteamAccValueList" label="Choose">
 						<template v-for="ancf8SteamAccValue in allAncf8SteamAccValueList" :key="ancf8SteamAccValue.id">
@@ -182,13 +182,13 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_9" id="add_onhireancillary_ancf_9" />
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-4 text-md-end py-1">
 				<label for="add_onhireancillary_ancf_9_bottom_comp" class="form-label text-uppercase fw-bold m-0">Bottom Compartment Cover Material</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<div>
 					<select class="form-select" v-model="onhireancillary.ancf_9_bottom_comp" id="add_ancf_9_bottom_comp">
 						<optgroup v-if="allAncf9BottomCompList" label="Choose">
@@ -200,14 +200,14 @@
 				</div>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhireancillary.ancf_10" id="add_onhireancillary_ancf_10" />
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-4 text-end py-1">
 				<label for="add_onhireancillary_ancf_10_electrical" class="form-label text-uppercase fw-bold m-0">Electrical</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<div>
 					<select class="form-select" v-model="onhireancillary.ancf_10_electrical" id="add_ancf_10_electrical">
 						<optgroup v-if="allAncf10ElectricalList" label="Choose">
@@ -218,10 +218,10 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-2 text-end py-1">
+			<div class="col-md-2 col-6 text-end py-1">
 				<label for="add_onhireancillary_ancf_10_manufacturer" class="form-label text-uppercase fw-bold m-0">Manufacturer</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<div>
 					<input type="text" class="form-control" v-model="onhireancillary.ancf_10_manufacturer" id="add_onhireancillary_ancf_10_manufacturer" />
 				</div>
