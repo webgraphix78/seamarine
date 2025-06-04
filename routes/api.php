@@ -59,6 +59,7 @@ Route::post('/media/get-images', [App\Http\Controllers\MediaGalleryController::c
 Route::get('/media/view/{mediaId}/{randomId}', [App\Http\Controllers\MediaGalleryController::class, 'viewFile'])->name('view-media');
 Route::post('/media/add', [App\Http\Controllers\MediaGalleryController::class, 'uploadFile'])->name('upload-media');
 Route::post('/media/delete', [App\Http\Controllers\MediaGalleryController::class, 'deleteFile'])->name('delete-media');
+Route::post('/media/delete-all', [App\Http\Controllers\MediaGalleryController::class, 'deleteFile'])->name('delete-all-media');
 
 // ImoConditionStatus
 Route::post('/imoconditionstatus/get', [App\Http\Controllers\ImoConditionStatusController::class, 'get'])->name('get-imoconditionstatus-list');

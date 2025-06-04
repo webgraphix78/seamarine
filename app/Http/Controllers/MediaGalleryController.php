@@ -11,7 +11,10 @@ class MediaGalleryController extends Controller{
 
 	public function uploadFile(Request $request){
 		$input = $request->all();
-		// Log::info($input);
+		$user = \App\Models\User::where('current_token', $request->user_token)->first();
+		if (!$user) {
+			return response()->json(['status' => -1, 'message' => 'Invalid user_token'], 401);
+		}
 		if( isset($input["id"]) && $input["name"]){
 			if ( $request->hasFile('uploaded_file') && $request->file('uploaded_file')->isValid()) {
 				$file = $request->file('uploaded_file');
@@ -27,7 +30,7 @@ class MediaGalleryController extends Controller{
 				$media->size = $file->getSize();
 				// Need to rearrange it
 				$media->sequence_no = 0;
-				$media->created_by = $input["created_by"] ?? Auth::id();
+				$media->created_by = isset($input["created_by"]) && $input["created_by"] ? $input["created_by"] : $user->id;
 				$media->save();
 				return response()->json(["status" => 1, "id" => $media->id]);
 			}
@@ -52,17 +55,31 @@ class MediaGalleryController extends Controller{
 
 	public function deleteFile(Request $request){
 		$input = $request->all();
-		if( isset($input["image_id"]) ){
-			$media = Media::find($input["image_id"]);
-			$filePath = $media->url;
-			if( strlen($filePath) > 0 && Storage::exists($filePath) ){
-				Storage::delete($filePath);
+		if ($input["purpose"] === 'single') {
+			if (isset($input["image_id"])) {
+				$mediaItems = [Media::find($input["image_id"])];
+			} else {
+				return response()->json(["status" => -1]);
 			}
-			$media->delete();
-			return response()->json(["status" => 1]);	
-		}
-		else
+		} elseif ($input["purpose"] === 'all') {
+			$objectId = $request->input('object_id');
+			if (!$objectId) {
+				return response()->json(['status' => -1, 'message' => 'object_id is required']);
+			}
+			$mediaItems = Media::where('object_id', $objectId)->get();
+		} else {
 			return response()->json(["status" => -1]);
+		}
+		foreach ($mediaItems as $media) {
+			if ($media && $media->url && Storage::exists($media->url)) {
+				Storage::delete($media->url);
+			}
+			if ($media) {
+				$media->delete();
+			}
+		}
+
+		return response()->json(['status' => 1]);
 	}
 
 	public function getImages(Request $request){
