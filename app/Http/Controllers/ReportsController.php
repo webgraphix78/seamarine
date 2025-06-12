@@ -197,8 +197,9 @@ class ReportsController extends Controller{
 				case 3:
 					$dataList = \App\Models\Cleaning::
 						with('customer', 'inspectionlocation', 'surveyor', 'creator')
-						->whereBetween('cleaning.dt_inspection_date', [$input['from_date'], $input['to_date']])
-						->where('cleaning.status', 1);
+						->whereBetween('cleaning.dt_inspection_date', [$input['from_date'], $input['to_date']]);
+						// ->where('cleaning.status', 1);
+						// Add status filter if provided
 					if( isset($input["customer_id"]) && $input["customer_id"] > 0 )
 						$dataList = $dataList->where('customer_id', $input['customer_id']);
 					if( isset($input["inspection_location_id"]) && $input["inspection_location_id"] > 0 )

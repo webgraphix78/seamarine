@@ -27,7 +27,7 @@ class CleaningReportExport implements FromCollection, WithHeadings, WithMapping,
 	public function headings(): array
 	{
 		return [
-			'Sr No','Tank No','Inspection Date','Inspection Location','Customer','Surveyor','Login Person','System Date', 'Occurence'
+			'Sr No','Tank No','Inspection Date','Inspection Location','Customer','Surveyor','Login Person','System Date', 'Occurence','status'
 		];
 	}
 	
@@ -47,6 +47,7 @@ class CleaningReportExport implements FromCollection, WithHeadings, WithMapping,
 			$row->creator->name,
 			date("d-m-Y", strtotime($row->updated_at)),
 			$row->count_occurrence,
+			$row->status == 1 ? 'Active' : 'Inactive'
 		];
 	}
 	
