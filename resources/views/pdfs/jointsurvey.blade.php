@@ -12,52 +12,66 @@
 </head>
 <body>
 	<table cellspacing="5" cellpadding="0">
-		<tr>
-			<td width="33%">
-				<p>Ref No: </p>
-			</td>
-			<td width="34%">
-				<h3 style="text-align: center;margin: 0;padding: 0;">Joint Survey Report</h3>
-				<p>Tank No.: <b></b></p>
-			</td>
-			<td width="33%">
-				<p>Date: </p>
-			</td>
-		</tr>
-	</table>
-	<p>At the request of {{ $jointsurvey['customer_name'] }}, the undersigned surveyor, {{ $jointsurvey['tank_no'] }} the undersigned surveyor, Tank container {{ $jointsurvey['tank_no'] }} has been surveyed at, Oceanstar Services, Survey no 84/2, 85/2, Village Belondakhar, Jasai-Digode Road, Uran, Raigad, Maharashtra ° 410207.   
-	Mumbai have carried out Joint Survey of Tank Container {{ $jointsurvey['tank_no'] }}. Tank Container {{ $jointsurvey['tank_no'] }} was surveyed at Speedy CFS, Nava Sheva on 26-10-2024. During Joint following were present:
-	<ol>
-		<li>{{ $jointsurvey['instruction_1'] }}</li>
-		<li>{{ $jointsurvey['instruction_2'] }}</li>
-		<li>{{ $jointsurvey['instruction_3'] }}</li>
-	</ol>
-
-	<p>Tank Container No: {{ $jointsurvey['tank_no'] }}</p>
-	<p>Date of Manufature: {{ $jointsurvey['manufacture_date'] }}</p>
-	<p>MGW: {{ $jointsurvey['mgw'] }} Kgs</p>
-	<p>Tare Wt.: {{ $jointsurvey['tare_wt'] }} Kgs</p>
-	<p>Capacity: {{ $jointsurvey['capacity'] }} Kgs</p>
-	<p>CSC: {{ $jointsurvey['csc'] }}</p>
-	<p>COMMENT: {{ $jointsurvey['comments'] }}</p>
-	
-	<table width="100%" cellspacing="0" cellpadding="5" border="0">
+		<tr><td>&nbsp;</td></tr>
 		<tr>
 			<td width="50%">
-				SURVEYOR: 
-				{{ $jointsurvey['surveyor']['name'] }}
+				<h3 style="text-align: start;">Ref No: {{ $jointsurvey['ref_no'] }}</h3>
 			</td>
-			<td width="50%" align="right">
-				{{ $jointsurvey['company']['name'] }}
+			<td width="50%">
+				<h3 style="text-align: right;">Date: {{ date("d-m-Y", strtotime($jointsurvey['created_at'])) }}</h3>
 			</td>
 		</tr>
-	</table>
-	<p></p>
-	<table width="100%" cellspacing="0" cellpadding="5" border="1">
 		<tr>
-			<td width="85%" style="font-size: 7.5px;">
-THIS REPORT IS BASED SOLELY UPON A VISUAL EXAMINATION OF DOCUMENTS PROVIDED BY OTHERS. THE SURVEYOR ACCEPTS NO LIABILITY FOR ANY CONDITIONS THAT ARE NOT APPARENT DURING A NORMAL VISUAL INSPECTION OR THAT MAY BE RESULT OF INACCURATE INFORMATION PROVIDED IN DOCUMENTS UPON WHICH THE SURVEYOR MUST RELY.WE ARE NOT TO BE HELD RESPONSIBLE FOR ANY CONDENSATION AND RESURGENT ODOURS OCCURRING BETWEEN THE INSPECTION AND THE LOADING OPERATIONS WHICH MAY OCCUR DUE TO TEMPERATURE VARIATION.SUBJECT ONLY TO CLEANLINESS OF THE TANK, INTERIOR,VALVES & FITTINGS. 
-<br/><br/>Issued without any prejudice.
+			<td width="30%"></td>
+			<td width="40%">
+				<h2 style="text-align: center;margin: 0;padding: 0;text-decoration:underline;">Joint Survey Report</h2>
+				<h2 style="text-align: center;margin: 0;padding: 0;text-decoration:underline;">Tank No.: <b>{{ $jointsurvey['tank_no'] }}</b></h2>
+			</td>
+			<td width="30%"></td>
+		</tr>
+	</table>
+	<p>At the request of <strong>{{ $jointsurvey['customer_name'] }}</strong>, the undersigned surveyor, <strong>{{ $jointsurvey['company_name'] }}</strong>, Mumbai has carried out Joint Survey of Tank Container: <strong>{{ $jointsurvey['tank_no'] }}</strong>. Tank has been surveyed at <strong>{{ $jointsurvey['address'] }}</strong></p>
+
+	<p style="text-decoration:underline;">Tank Particulars as noted are as follows:</p>
+	<p style="margin: 4px;">Tank Container No: {{ $jointsurvey['tank_no'] }}</p>
+	<p style="margin:0px; padding: 0px;">Year of manufacture: {{ $jointsurvey['mfg_date'] }}</p>
+	<p style="margin:0px; padding: 0px;">CSC No: {{ $jointsurvey['csc'] }}</p>
+	<p style="margin:0px; padding: 0px;">MGW: {{ $jointsurvey['mgw'] }}</p>
+	<p style="margin:0px; padding: 0px;">Tare Wt.: {{ $jointsurvey['tare_weight'] }}</p>
+	<p style="margin:0px; padding: 0px;">Capacity: {{ $jointsurvey['capacity'] }}</p>
+	
+	<p style="text-decoration:underline;">Joint Survey attended by following:</p>
+	<ol>
+		@if(isset($jointsurvey['instruction_1']) && $jointsurvey['instruction_1'])
+			<li>{{ $jointsurvey['instruction_1'] }}</li>
+		@endif
+		
+		@if(isset($jointsurvey['instruction_2']) && $jointsurvey['instruction_2'])
+			<li>{{ $jointsurvey['instruction_2'] }}</li>
+		@endif
+		
+		@if(isset($jointsurvey['instruction_3']) && $jointsurvey['instruction_3'])
+			<li>{{ $jointsurvey['instruction_3'] }}</li>
+		@endif
+		
+		@if(isset($jointsurvey['instruction_4']) && $jointsurvey['instruction_4'])
+			<li>{{ $jointsurvey['instruction_4'] }}</li>
+		@endif
+		
+		@if(isset($jointsurvey['instruction_5']) && $jointsurvey['instruction_5'])
+			<li>{{ $jointsurvey['instruction_5'] }}</li>
+		@endif
+	</ol>
+
+	@if(isset($jointsurvey['comments']) && $jointsurvey['comments'])
+	<p>{{ $jointsurvey['comments'] }}</p>
+	@endif
+	<table width="100%" cellspacing="0" cellpadding="5" border="0"  style="margin: 0 auto;">
+		<tr>
+			<td width="85%">
+				<p>&nbsp;</p>
+				<h3>Certificate Issued without any prejudice.</h3>
+				<h3>SURVEYOR: {{ $jointsurvey['surveyor']['name'] }}</h3>
 			</td>
 			<td width="15%" style="text-align: center;" rowspan="2">
 				<img src="{{ $sign }}">

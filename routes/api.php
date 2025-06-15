@@ -99,3 +99,19 @@ Route::post('/cscre/get-record/{id}', [App\Http\Controllers\CscreController::cla
 // EquipmentInspection	
 Route::post('/equipmentinspection/get', [App\Http\Controllers\EquipmentInspectionController::class, 'get'])->name('get-equipmentinspection-list');
 Route::post('/equipmentinspection/get-record/{id}', [App\Http\Controllers\EquipmentInspectionController::class, 'getRecord'])->name('get-equipmentinspection-record');
+
+// Stuffing	
+Route::post('/stuffing/get', [App\Http\Controllers\StuffingController::class, 'get'])->name('get-stuffing-list');
+Route::post('/stuffing/get-record/{id}', [App\Http\Controllers\StuffingController::class, 'getRecord'])->name('get-stuffing-record');
+
+// GasFreeReport	
+Route::post('/gasfreereport/get', [App\Http\Controllers\GasFreeReportController::class, 'get'])->name('get-gasfreereport-list');
+Route::post('/gasfreereport/get-record/{id}', [App\Http\Controllers\GasFreeReportController::class, 'getRecord'])->name('get-gasfreereport-record');
+
+// Dmcc	
+Route::post('/dmcc/get', [App\Http\Controllers\DmccController::class, 'get'])->name('get-dmcc-list');
+Route::post('/dmcc/get-record/{id}', [App\Http\Controllers\DmccController::class, 'getRecord'])->name('get-dmcc-record');
+
+// DepotConditionSurvey	
+Route::post('/depotconditionsurvey/get', [App\Http\Controllers\DepotConditionSurveyController::class, 'get'])->name('get-depotconditionsurvey-list');
+Route::post('/depotconditionsurvey/get-record/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'getRecord'])->name('get-depotconditionsurvey-record');

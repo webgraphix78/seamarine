@@ -13,7 +13,7 @@ class Cscre extends Model
 
 	protected $table = "cscre";
 
-	protected $fillable = ['id', 'ref_no', 'company_id', 'request_of_name', 'attend', 'of_name', 'attend_day', 'attend_month', 'unit_no', 'csc_approval_no', 'mfg', 'mfg_date', 'mfg_serial_no', 'container_type', 'iso_type', 'next_csc_inspection_date', 'csc_reinspection_date', 'survey_without_prejudice', 'created_by', 'status'];
+	protected $fillable = ['id', 'ref_no', 'company_id', 'customer_name', 'serial_no', 'company_name', 'inspection_date', 'inspection_location', 'address', 'container_no', 'iso_type', 'csc_approval_no', 'mfg', 'mfg_date', 'mfg_type', 'customs_no', 'csc_reinspection_date', 'comments',  'max_gross_weight', 'tare_weight', 'stacking_weight', 'racking_test_force', 'surveyor_name', 'issue_date', 'created_by', 'status'];
 	
 	public $timestamps = true;
 

@@ -86,7 +86,7 @@
 							<div class="row mb-0 mb-sm-4">
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<label for="add_shippersurvey_last_cargo_carried" class="form-label text-uppercase fw-bold mb-0 mt-1 me-3">Last Cargo Carried</label>
-									<a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
+									<a href="#" class="cstooltip d-none d-md-inline-block" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
@@ -326,8 +326,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="row mb-0 mb-sm-4">
-								<div class="col-7 d-flex flex-row align-items-center gap-2 text-end">
+							<div class="row mb-2 mb-sm-4">
+								<div class="col-md-9 d-flex flex-row flex-wrap flex-md-nowrap align-items-center gap-2 text-end">
 									<label for="add_shippersurvey_manlid_cover" class="form-label text-uppercase fw-bold mb-0 mt-1 flex-shrink-0 flex-grow-1">Unit having</label>
 									<select class="form-select w-auto" v-model="shippersurveyForAdd.gasket_type" id="add_gasket_type">
 										<optgroup v-if="allGasketTypeList" label="Choose">
@@ -337,8 +337,6 @@
 										</optgroup>
 									</select>
 									<label for="add_shippersurvey_manlid_cover" class="form-label text-uppercase fw-bold mb-0 mt-1 flex-shrink-0">gasket on manlid cover</label>
-								</div>
-								<div class="col-4 col-sm-2 mb-2 mb-sm-0 text-end">
 									<div>
 										<select class="form-select" v-model="shippersurveyForAdd.manlid_cover" id="add_manlid_cover">
 											<optgroup v-if="arrYesNoNA" label="Choose">
@@ -349,6 +347,8 @@
 										</select>
 									</div>
 								</div>
+								<!-- <div class="col-4 col-sm-2 mb-2 mb-sm-0 text-end">
+								</div> -->
 							</div>
 							<div class="row mb-0 mb-sm-4">
 								<div class="col-7 text-end">

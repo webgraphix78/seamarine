@@ -42,6 +42,7 @@ class JointSurveyResource extends JsonResource
 		return [
 			'id' => $this->id,
 			'ref_no' => $this->ref_no,
+			'address' => $this->address,
 			'company_id' => $this->company_id,
 			'date_of_issue' => $this->date_of_issue,
 			'customer_name' => $this->customer_name,
@@ -49,6 +50,8 @@ class JointSurveyResource extends JsonResource
 			'instruction_1' => $this->instruction_1,
 			'instruction_2' => $this->instruction_2,
 			'instruction_3' => $this->instruction_3,
+			'instruction_4' => $this->instruction_4,
+			'instruction_5' => $this->instruction_5,
 			'tank_no' => $this->tank_no,
 			'mfg_date' => $this->mfg_date,
 			'mgw' => $this->mgw,

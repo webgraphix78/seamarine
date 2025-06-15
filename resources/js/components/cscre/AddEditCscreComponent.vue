@@ -22,105 +22,145 @@
 			</div>
 		</div>
 		<div class='row mb-4'>
-			<div class="col">
-				<label for="add_cscre_request_of_name" class="form-label me-3">This is certify that the undersigned surveyor did, at the request of</label>
+			<div class="col-md-6">
+				<label for="add_cscre_serial_no" class="form-label me-3">Serial No.</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="cscreFormObj.request_of_name" id="add_cscre_request_of_name" placeholder="Enter Request Of Name" >
+					<input type="text" class="form-control"  v-model="cscreFormObj.serial_no" id="add_cscre_serial_no" placeholder="Enter Serial No" >
+				</div>
+			</div>
+			<div class="col-md-6">
+				<label for="add_cscre_issue_date" class="form-label me-3">Date of Issue</label>
+				<div class="input-group">
+					<input type="text" class="form-control"  v-model="cscreFormObj.issue_date" id="add_cscre_issue_date" placeholder="Enter Issue Date" >
 				</div>
 			</div>
 		</div>
 		<div class='row mb-4'>
 			<div class="col">
-				<label for="add_cscre_attend" class="form-label me-3">, attend</label>
+				<label for="add_cscre_customer_name" class="form-label me-3">Customer Name</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="cscreFormObj.attend" id="add_cscre_attend" placeholder="Enter Attend" >
+					<input type="text" class="form-control"  v-model="cscreFormObj.customer_name" id="add_cscre_customer_name" placeholder="Enter Customer Name" >
 				</div>
 			</div>
 		</div>
 		<div class='row mb-4'>
 			<div class="col">
-				<label for="add_cscre_of_name" class="form-label me-3">, of</label>
+				<label for="add_cscre_of_name" class="form-label me-3">Company Name</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="cscreFormObj.of_name" id="add_cscre_of_name" placeholder="Enter Of Name" >
+					<input type="text" class="form-control"  v-model="cscreFormObj.company_name" id="add_cscre_company_name" placeholder="Enter Company Name" >
 				</div>
 			</div>
 		</div>
 		<div class='row mb-4'>
 			<div class="col">
-				<label for="add_cscre_attend_day" class="form-label me-3">on the</label>
+				<label for="add_cscre_inspection_date" class="form-label me-3">Inspection Date</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="cscreFormObj.attend_day" id="add_cscre_attend_day" placeholder="Enter Attend Day" >
+					<input type="text" class="form-control"  v-model="cscreFormObj.inspection_date" id="add_cscre_inspection_date" placeholder="Enter Inspection Date" >
 				</div>
 			</div>
 		</div>
 		<div class='row mb-4'>
 			<div class="col">
-				<label for="add_cscre_attend_month" class="form-label me-3">day of</label>
+				<label for="add_cscre_inspection_location" class="form-label me-3">Inspection Location</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="cscreFormObj.attend_month" id="add_cscre_attend_month" placeholder="Enter Attend Month" >
+					<input type="text" class="form-control"  v-model="cscreFormObj.inspection_location" id="add_cscre_inspection_location" placeholder="Enter Inspection Location" >
 				</div>
 			</div>
 		</div>
-		<p class="mb-2">, in order to witness and report upon the CSC re-inspection of one (1) container. For furthur particulars, see details as follow:</p>
+		<div class="row mb-4">
+			<div class="col-12">
+				<label for="add_jointsurvey_address" class="form-label me-3">Address</label>
+				<div>
+					<input type="text" class="form-control" v-model="cscreFormObj.address" id="add_jointsurvey_address" placeholder="Enter the address" />
+				</div>
+			</div>
+		</div>
+		<p class="mb-2">General Structural Condition</p>
 		<div class='row mb-4 align-items-center'>
-			<label for="add_cscre_unit_no" class="form-label col-md-2">Unit Number</label>
+			<label for="add_cscre_container_no" class="form-label col-md-3">Container No</label>
 			<div class="col-md-4">
-				<input type="text" class="form-control"  v-model="cscreFormObj.unit_no" id="add_cscre_unit_no" placeholder="Enter Unit No" >
+				<input type="text" class="form-control"  v-model="cscreFormObj.container_no" id="add_cscre_container_no" placeholder="Enter Unit No" >
 			</div>
 		</div>
 		<div class='row mb-4 align-items-center'>
-			<label for="add_cscre_csc_approval_no" class="form-label m-0 col-md-2">Csc Approval Number</label>
+			<label for="add_cscre_iso_type" class="form-label m-0 col-md-3">ISO Type (if applicable)</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control"  v-model="cscreFormObj.iso_type" id="add_cscre_iso_type" placeholder="Enter Iso Type" >
+			</div>
+		</div>
+		<div class='row mb-4 align-items-center'>
+			<label for="add_cscre_csc_approval_no" class="form-label m-0 col-md-3">Csc Certification Number</label>
 			<div class="col-md-4">
 				<input type="text" class="form-control"  v-model="cscreFormObj.csc_approval_no" id="add_cscre_csc_approval_no" placeholder="Enter Csc Approval No" >
 			</div>
 		</div>
 		<div class='row mb-4 align-items-center'>
-			<label for="add_cscre_mfg" class="form-label m-0 col-md-2">Mfg</label>
+			<label for="add_cscre_customs_no" class="form-label m-0 col-md-3">Customs/Transport No.</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control"  v-model="cscreFormObj.customs_no" id="add_cscre_customs_no" placeholder="Enter Customs/Transport No" >
+			</div>
+		</div>
+		<div class='row mb-4 align-items-center'>
+			<label for="add_cscre_mfg_type" class="form-label m-0 col-md-3">Manufacture Type</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control"  v-model="cscreFormObj.mfg_type" id="add_cscre_mfg_type" placeholder="Enter Mfg Serial No" >
+			</div>
+		</div>
+		<div class='row mb-4 align-items-center'>
+			<label for="add_cscre_mfg" class="form-label m-0 col-md-3">Manufacture</label>
 			<div class="col-md-4">
 				<input type="text" class="form-control"  v-model="cscreFormObj.mfg" id="add_cscre_mfg" placeholder="Enter Mfg" >
 			</div>
 		</div>
 		<div class='row mb-4 align-items-center'>
-			<label for="add_cscre_mfg_date" class="form-label m-0 col-md-2">Mfg Date:</label>
+			<label for="add_cscre_mfg_date" class="form-label m-0 col-md-3">Manufacture Date:</label>
 			<div class="col-md-4">
 				<input type="text" class="form-control"  v-model="cscreFormObj.mfg_date" id="add_cscre_mfg_date" placeholder="Enter Mfg Date" >
 			</div>
 		</div>
-		<div class='row mb-4 align-items-center'>
-			<label for="add_cscre_mfg_serial_no" class="form-label m-0 col-md-2">Mfg S/N</label>
-			<div class="col-md-4">
-				<input type="text" class="form-control"  v-model="cscreFormObj.mfg_serial_no" id="add_cscre_mfg_serial_no" placeholder="Enter Mfg Serial No" >
-			</div>
-		</div>
-		<div class='row mb-4 align-items-center'>
-			<label for="add_cscre_container_type" class="form-label m-0 col-md-2">Container Type</label>
-			<div class="col-md-4">
-				<input type="text" class="form-control"  v-model="cscreFormObj.container_type" id="add_cscre_container_type" placeholder="Enter Container Type" >
-			</div>
-		</div>
-		<div class='row mb-4 align-items-center'>
-			<label for="add_cscre_iso_type" class="form-label m-0 col-md-2">ISO Type (if applicable)</label>
-			<div class="col-md-4">
-				<input type="text" class="form-control"  v-model="cscreFormObj.iso_type" id="add_cscre_iso_type" placeholder="Enter Iso Type" >
-			</div>
-		</div>
-		<p class="mb-2">The above mentioned container was inspected in accordance with procedures set forth by The Convention of Safe Containers and found in satisfactory condition.<br>Note this inspection does not meet the requirements of any other regulatory body</p>
+		<!-- <p class="mb-3">The above mentioned container was inspected in accordance with procedures set forth by The Convention of Safe Containers and found in satisfactory condition.<br>Note this inspection does not meet the requirements of any other regulatory body</p> -->
 		<div class='row mb-4'>
-			<label for="add_cscre_next_csc_inspection_date" class="form-label m-0 col-md-2">Next CSC Inspection Date:</label>
+			<label for="add_cscre_max_gross_weight" class="form-label m-0 col-md-3">Maximum Gross Weight – kg/lbs</label>
 			<div class="col-md-4">
-				<input type="text" class="form-control"  v-model="cscreFormObj.next_csc_inspection_date" id="add_cscre_next_csc_inspection_date" placeholder="Enter Next Csc Inspection Date" >
+				<input type="text" class="form-control"  v-model="cscreFormObj.max_gross_weight" id="add_cscre_max_gross_weight" placeholder="Enter Next Csc Inspection Date" >
 			</div>
 		</div>
 		<div class='row mb-4'>
-			<label for="add_cscre_csc_reinspection_date" class="form-label m-0 col-md-2">CSC re-inspection date stamped:</label>
+			<label for="add_cscre_tare_weight" class="form-label m-0 col-md-3">Tare Weight – kg/lbs</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control"  v-model="cscreFormObj.tare_weight" id="add_cscre_tare_weight" placeholder="Enter Tare Weight" >
+			</div>
+		</div>
+		<div class='row mb-4'>
+			<label for="add_cscre_stacking_weight" class="form-label m-0 col-md-3">Allowable Stacking Weight – kg/lbs</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control"  v-model="cscreFormObj.stacking_weight" id="add_cscre_stacking_weight" placeholder="Enter Stacking Weight" >
+			</div>
+		</div>
+		<div class='row mb-4'>
+			<label for="add_cscre_racking_test_force" class="form-label m-0 col-md-3">Transverse Racking Test Force – kg/lbs</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control"  v-model="cscreFormObj.racking_test_force" id="add_cscre_racking_test_force" placeholder="Enter Racking Test Force" >
+			</div>
+		</div>
+		<div class='row mb-4'>
+			<label for="add_cscre_csc_reinspection_date" class="form-label m-0 col-md-3">CSC re-examination is due before:</label>
 			<div class="col-md-4">
 				<input type="text" class="form-control"  v-model="cscreFormObj.csc_reinspection_date" id="add_cscre_csc_reinspection_date" placeholder="Enter Csc Reinspection Date" >
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<label for="add_cscre_survey_without_prejudice" class="form-label m-0 col-md-2">Survey made without prejudice</label>
+		<div class="row mb-4">
+			<label for="add_cscre_comments" class="form-label m-0 col-md-3">Comments</label>
 			<div class="col-md-4">
-				<input type="text" class="form-control"  v-model="cscreFormObj.survey_without_prejudice" id="add_cscre_survey_without_prejudice" placeholder="Enter Survey Without Prejudice" >
+				<div>
+					<textarea class="form-control" v-model="cscreFormObj.comments" id="add_cscre_comments" placeholder="Enter Comments" rows="3"></textarea>
+				</div>
+			</div>
+		</div>
+		<div class='row mb-4'>
+			<label for="add_cscre_surveyor_name" class="form-label m-0 col-md-3">Survey Name</label>
+			<div class="col-md-4">
+				<input type="text" class="form-control"  v-model="cscreFormObj.surveyor_name" id="add_cscre_surveyor_name" placeholder="Enter Surveyor Name" >
 			</div>
 		</div>
 		<div class="row justify-content-center" v-if="!isModal">
@@ -138,21 +178,27 @@ function initialState(){
 		id:0,
 		ref_no:'AUTOGENERATED',
 		company_id:'',
-		request_of_name:'',
-		attend:'',
-		of_name:'',
-		attend_day:'',
-		attend_month:'',
-		unit_no:'',
+		customer_name:'',
+		serial_no:'',
+		company_name:'',
+		inspection_date:'',
+		inspection_location:'',
+		address:'',
+		container_no:'',
+		iso_type:'',
 		csc_approval_no:'',
+		mfg_type:'',
 		mfg:'',
 		mfg_date:'',
-		mfg_serial_no:'',
-		container_type:'',
-		iso_type:'',
-		next_csc_inspection_date:'',
+		customs_no:'',
 		csc_reinspection_date:'',
-		survey_without_prejudice:'',
+		comments:'',
+		surveyor_name:'',
+		max_gross_weight:'',
+		tare_weight:'',
+		stacking_weight: '',
+		racking_test_force:'',
+		issue_date:'',
 		deleted_at:'',
 		created_at:'',
 		updated_at:'',

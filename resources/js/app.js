@@ -123,6 +123,28 @@ import EquipmentInspectionComponent from './components/equipmentinspection/Equip
 import AddEditEquipmentInspectionComponent from './components/equipmentinspection/AddEditEquipmentInspectionComponent.vue';
 import ViewEquipmentInspectionComponent from './components/equipmentinspection/ViewEquipmentInspectionComponent.vue';
 
+//Stuffing
+import StuffingComponent from './components/stuffing/StuffingComponent.vue';
+import AddEditStuffingComponent from './components/stuffing/AddEditStuffingComponent.vue';
+import ViewStuffingComponent from './components/stuffing/ViewStuffingComponent.vue';
+
+//GasFreeReport
+import GasFreeReportComponent from './components/gasfreereport/GasFreeReportComponent.vue';
+import AddEditGasFreeReportComponent from './components/gasfreereport/AddEditGasFreeReportComponent.vue';
+import ViewGasFreeReportComponent from './components/gasfreereport/ViewGasFreeReportComponent.vue';
+
+//Dmcc
+import DmccComponent from './components/dmcc/DmccComponent.vue';
+import AddEditDmccComponent from './components/dmcc/AddEditDmccComponent.vue';
+import ViewDmccComponent from './components/dmcc/ViewDmccComponent.vue';
+
+//DepotConditionSurvey
+import DepotConditionSurveyComponent from './components/depotconditionsurvey/DepotConditionSurveyComponent.vue';
+import AddEditDepotConditionSurveyComponent from './components/depotconditionsurvey/AddEditDepotConditionSurveyComponent.vue';
+import ViewDepotConditionSurveyComponent from './components/depotconditionsurvey/ViewDepotConditionSurveyComponent.vue';
+
+
+
 
 
 
@@ -246,6 +268,25 @@ app.component('equipmentinspection-component', EquipmentInspectionComponent);
 app.component('addedit-equipmentinspection-component', AddEditEquipmentInspectionComponent);
 app.component('view-equipmentinspection-component', ViewEquipmentInspectionComponent);
 
+//Stuffing
+app.component('stuffing-component', StuffingComponent);
+app.component('addedit-stuffing-component', AddEditStuffingComponent);
+app.component('view-stuffing-component', ViewStuffingComponent);
+
+//GasFreeReport
+app.component('gasfreereport-component', GasFreeReportComponent);
+app.component('addedit-gasfreereport-component', AddEditGasFreeReportComponent);
+app.component('view-gasfreereport-component', ViewGasFreeReportComponent);
+
+//Dmcc
+app.component('dmcc-component', DmccComponent);
+app.component('addedit-dmcc-component', AddEditDmccComponent);
+app.component('view-dmcc-component', ViewDmccComponent);
+
+//DepotConditionSurvey
+app.component('depotconditionsurvey-component', DepotConditionSurveyComponent);
+app.component('addedit-depotconditionsurvey-component', AddEditDepotConditionSurveyComponent);
+app.component('view-depotconditionsurvey-component', ViewDepotConditionSurveyComponent);
 
 
 

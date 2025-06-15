@@ -64,6 +64,14 @@
 								</div>
 							</div>
 						</div>
+						<div class="row mb-4">
+							<div class="col-12">
+								<label for="add_jointsurvey_address" class="form-label text-uppercase fw-bold me-3">Address</label>
+								<div>
+									<input type="text" class="form-control" v-model="jointsurveyForAdd.address" id="add_jointsurvey_address" placeholder="Enter the address" />
+								</div>
+							</div>
+						</div>
 						<div class="row pb-2 border-bottom mb-2">
 							<div class="col-1 text-center">1.</div>
 							<div class="col-11">
@@ -85,6 +93,22 @@
 							<div class="col-11">
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.instruction_3" id="add_jointsurvey_instruction_3" placeholder="Enter Instruction 3" />
+								</div>
+							</div>
+						</div>
+						<div class="row pb-2 border-bottom mb-2">
+							<div class="col-1 text-center">4.</div>
+							<div class="col-11">
+								<div>
+									<input type="text" class="form-control" v-model="jointsurveyForAdd.instruction_4" id="add_jointsurvey_instruction_4" placeholder="Enter Instruction 4" />
+								</div>
+							</div>
+						</div>
+						<div class="row pb-2 border-bottom mb-2">
+							<div class="col-1 text-center">5.</div>
+							<div class="col-11">
+								<div>
+									<input type="text" class="form-control" v-model="jointsurveyForAdd.instruction_5" id="add_jointsurvey_instruction_5" placeholder="Enter Instruction 5" />
 								</div>
 							</div>
 						</div>
@@ -121,6 +145,16 @@
 						</div>
 						<div class="row mb-4">
 							<div class="col-3 d-flex justify-content-end align-items-center">
+								<label for="add_jointsurvey_csc" class="form-label text-uppercase fw-bold mb-0">Csc</label>
+							</div>
+							<div class="col-4">
+								<div>
+									<input type="text" class="form-control" v-model="jointsurveyForAdd.csc" id="add_jointsurvey_csc" placeholder="Enter Csc" />
+								</div>
+							</div>
+						</div>
+						<div class="row mb-4">
+							<div class="col-3 d-flex justify-content-end align-items-center">
 								<label for="add_jointsurvey_tare_weight" class="form-label text-uppercase fw-bold mb-0">Tare Weight</label>
 							</div>
 							<div class="col-4">
@@ -136,16 +170,6 @@
 							<div class="col-4">
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.capacity" id="add_jointsurvey_capacity" placeholder="Enter Capacity" />
-								</div>
-							</div>
-						</div>
-						<div class="row mb-4">
-							<div class="col-3 d-flex justify-content-end align-items-center">
-								<label for="add_jointsurvey_csc" class="form-label text-uppercase fw-bold mb-0">Csc</label>
-							</div>
-							<div class="col-4">
-								<div>
-									<input type="text" class="form-control" v-model="jointsurveyForAdd.csc" id="add_jointsurvey_csc" placeholder="Enter Csc" />
 								</div>
 							</div>
 						</div>
@@ -218,6 +242,13 @@
 						</div>
 						<div class="row mb-4">
 							<div class="col-4">
+								<label class="form-label text-uppercase fw-bold m-0">Address</label>
+								<div>
+									<span v-if="readJointSurvey.address">{{ readJointSurvey.address }}</span
+									><span v-else><i>Not specified</i></span>
+								</div>
+							</div>
+							<div class="col-4">
 								<label class="form-label text-uppercase fw-bold m-0">Customer Name</label>
 								<div>
 									<span v-if="readJointSurvey.customer_name">{{ readJointSurvey.customer_name }}</span
@@ -231,26 +262,40 @@
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+						</div>
+						<div class="row mb-4">
+							<div class="col-6">
 								<label class="form-label text-uppercase fw-bold m-0">Instruction 1</label>
 								<div>
 									<span v-if="readJointSurvey.instruction_1">{{ readJointSurvey.instruction_1 }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-						</div>
-						<div class="row mb-4">
-							<div class="col-4">
+							<div class="col-6">
 								<label class="form-label text-uppercase fw-bold m-0">Instruction 2</label>
 								<div>
 									<span v-if="readJointSurvey.instruction_2">{{ readJointSurvey.instruction_2 }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-6">
 								<label class="form-label text-uppercase fw-bold m-0">Instruction 3</label>
 								<div>
 									<span v-if="readJointSurvey.instruction_3">{{ readJointSurvey.instruction_3 }}</span
+									><span v-else><i>Not specified</i></span>
+								</div>
+							</div>
+							<div class="col-6">
+								<label class="form-label text-uppercase fw-bold m-0">Instruction 4</label>
+								<div>
+									<span v-if="readJointSurvey.instruction_4">{{ readJointSurvey.instruction_4 }}</span
+									><span v-else><i>Not specified</i></span>
+								</div>
+							</div>
+							<div class="col-12">
+								<label class="form-label text-uppercase fw-bold m-0">Instruction 5</label>
+								<div>
+									<span v-if="readJointSurvey.instruction_5">{{ readJointSurvey.instruction_5 }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
@@ -348,6 +393,7 @@
 		return {
 			id: 0,
 			ref_no: "",
+			address: "",
 			company_id: null,
 			date_of_issue: "",
 			customer_name: "",
@@ -355,6 +401,8 @@
 			instruction_1: "",
 			instruction_2: "",
 			instruction_3: "",
+			instruction_4: "",
+			instruction_5: "",
 			tank_no: "",
 			mfg_date: "",
 			mgw: "",

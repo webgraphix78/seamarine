@@ -27,27 +27,27 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="3" style="border-collapse: collapse;">
 		<tr>
 			<td width="20%">Tank Container No:</td>
-			<td width="24%" style="font-weight:bold;">{{ $cleaning['tank_no'] }}</td>
+			<td width="24%" style="font-weight:bold;">{{ $cleaning['tank_no'] ?? 'Not Specified' }}</td>
 			<td width="10%">Type:</td>
-			<td width="18%" style="font-weight:bold;">{{ $cleaning['tank']['type'] }}</td>
+			<td width="18%" style="font-weight:bold;">{{ $cleaning['tank']['type'] ?? 'Not Specified' }}</td>
 			<td width="10%">Ref:</td>
-			<td width="18%" style="font-weight:bold;">{{ $cleaning['ref_no'] }}</td>
+			<td width="18%" style="font-weight:bold;">{{ $cleaning['ref_no'] ?? 'Not Specified' }}</td>
 		</tr>
 		<tr>
 			<td width="20%">C.S.C:</td>
-			<td width="24%" style="font-weight:bold;">{{ $cleaning['csc'] }}</td>
+			<td width="24%" style="font-weight:bold;">{{ $cleaning['csc'] ?? 'Not Specified' }}</td>
 			<td width="10%">Mfg:</td>
-			<td width="18%" style="font-weight:bold;">{{ $cleaning['mfgt_date'] }}</td>
+			<td width="18%" style="font-weight:bold;">{{ $cleaning['mfgt_date'] ?? 'Not Specified' }}</td>
 			<td width="10%">NED:</td>
-			<td width="18%" style="font-weight:bold;">{{ $cleaning['next_date'] }}</td>
+			<td width="18%" style="font-weight:bold;">{{ $cleaning['next_date'] ?? 'Not Specified' }}</td>
 		</tr>
 		<tr>
 			<td width="20%">MGW:</td>
-			<td width="24%" style="font-weight:bold;">{{ $cleaning['mgw'] }} KGS</td>
+			<td width="24%" style="font-weight:bold;">{{ $cleaning['mgw'] ?? 'Not Specified' }} KGS</td>
 			<td width="10%">Tare Wt.:</td>
-			<td width="18%" style="font-weight:bold;">{{ $cleaning['tare_wt'] }} KGS</td>
+			<td width="18%" style="font-weight:bold;">{{ $cleaning['tare_wt'] ?? '' }} KGS</td>
 			<td width="10%">Capacity:</td>
-			<td width="18%" style="font-weight:bold;">{{ $cleaning['capacity'] }} LTRS</td>
+			<td width="18%" style="font-weight:bold;">{{ $cleaning['capacity'] ?? '' }} LTRS</td>
 		</tr>
 	</table>
 	<table width="100%" border="0" cellspacing="0" cellpadding="3" style="border-collapse: collapse;">
@@ -55,19 +55,19 @@
 			<td width="20%">Inspection Date:</td>
 			<td width="30%" style="font-weight:bold;">{{ ($cleaning['dt_inspection_date'] == null ? "Not Specified" : $cleaning['dt_inspection_date']) }}</td>
 			<td width="20%">Inspection Location:</td>
-			<td width="30%" style="font-weight:bold;">{{ $cleaning['inspectionlocation']['name'] }}</td>
+			<td width="30%" style="font-weight:bold;">{{ $cleaning['inspectionlocation']['name'] ?? '' }}</td>
 		</tr>
 		<tr>
 			<td width="20%">for M/s.:</td>
-			<td width="30%" style="font-weight:bold;">{{ $cleaning['customer']['name'] }}</td>
+			<td width="30%" style="font-weight:bold;">{{ $cleaning['customer']['name'] ?? '' }}</td>
 		</tr>
 		<tr>
 			<td width="20%">T-Code:</td>
-			<td width="80%" colspan="2" style="font-weight:bold;">{{ $cleaning['tcode']['name'] }}</td>
+			<td width="80%" colspan="2" style="font-weight:bold;">{{ $cleaning['tcode']['name'] ?? 'Not Specified' }}</td>
 		</tr>
 		<tr>
 			<td width="20%">Last Cargo Carried:<br/>(AS GIVEN)</td>
-			<td width="80%" colspan="2" style="font-weight:bold;">{{ $cleaning['last_cargo_carried'] }}</td>
+			<td width="80%" colspan="2" style="font-weight:bold;">{{ $cleaning['last_cargo_carried'] ?? 'Not Specified' }}</td>
 		</tr>
 	</table>
 	<p>
@@ -158,19 +158,19 @@
 	<table width="100%" cellspacing="0" cellpadding="3" border="0">
 		<tr>
 			<td width="25%">EXTERIOR/COMMENTS</td>
-			<td width="75%">{{ $cleaning['exterior'] }}</td>
+			<td width="75%">{{ $cleaning['exterior'] ?? 'Not Specified' }}</td>
 		</tr>
 		<tr>
 			<td width="25%">INTERIOR</td>
-			<td width="75%">{{ $cleaning['interior'] }}</td>
+			<td width="75%">{{ $cleaning['interior'] ?? 'Not Specified' }}</td>
 		</tr>
 		<tr>
 			<td width="25%">REMARKS</td>
-			<td width="75%">{{ $cleaning['remarks'] }}</td>
+			<td width="75%">{{ $cleaning['remarks'] ?? 'Not Specified' }}</td>
 		</tr>
 		<tr>
 			<td width="25%">SEAL NO</td>
-			<td width="75%">{{ $cleaning['sealno'] }}</td>
+			<td width="75%">{{ $cleaning['sealno'] ?? 'Not Specified' }}</td>
 		</tr>
 	</table>
 	<p></p>
@@ -187,7 +187,7 @@ THIS REPORT IS BASED SOLELY UPON A VISUAL EXAMINATION OF DOCUMENTS PROVIDED BY O
 		<tr>
 			<td width="85%">
 				SURVEYOR: 
-				{{ $cleaning['surveyor']['name'] }}
+				{{ $cleaning['surveyor']['name'] ?? 'Not Specified' }}
 			</td>
 		</tr>
 	</table>

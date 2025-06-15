@@ -34,20 +34,20 @@ class CscreController extends Controller
 				if ($filter['property'] == "__q") {
 					switch ($filter['condition']) {
 						case 0: // NOT EQUALS
-							$cscreList = $cscreList->whereNot('ref_no', trim($filter['search_for_value']))->whereNot('request_of_name', trim($filter['search_for_value']))->whereNot('attend', trim($filter['search_for_value']))->whereNot('of_name', trim($filter['search_for_value']))->whereNot('attend_day', trim($filter['search_for_value']))->whereNot('attend_month', trim($filter['search_for_value']))->whereNot('unit_no', trim($filter['search_for_value']));
+							$cscreList = $cscreList->whereNot('ref_no', trim($filter['search_for_value']))->whereNot('customer_name', trim($filter['search_for_value']))->whereNot('serial_no', trim($filter['search_for_value']))->whereNot('company_name', trim($filter['search_for_value']))->whereNot('inspection_date', trim($filter['search_for_value']))->whereNot('inspection_location', trim($filter['search_for_value']))->whereNot('container_no', trim($filter['search_for_value']));
 							break;
 						case 1: // EQUALS
 							$cscreList = $cscreList->where(function ($query) use ($filter) {
-								$query = $query->where('ref_no', trim($filter['search_for_value']))->orWhere('request_of_name', trim($filter['search_for_value']))->orWhere('attend', trim($filter['search_for_value']))->orWhere('of_name', trim($filter['search_for_value']))->orWhere('attend_day', trim($filter['search_for_value']))->orWhere('attend_month', trim($filter['search_for_value']))->orWhere('unit_no', trim($filter['search_for_value']));
+								$query = $query->where('ref_no', trim($filter['search_for_value']))->orWhere('customer_name', trim($filter['search_for_value']))->orWhere('serial_no', trim($filter['search_for_value']))->orWhere('company_name', trim($filter['search_for_value']))->orWhere('inspection_date', trim($filter['search_for_value']))->orWhere('inspection_location', trim($filter['search_for_value']))->orWhere('container_no', trim($filter['search_for_value']));
 							});
 							break;
 						case 22: // CONTAINS
 							$cscreList = $cscreList->where(function ($query) use ($filter) {
-								$query = $query->where('ref_no', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('request_of_name', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('attend', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('of_name', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('attend_day', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('attend_month', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('unit_no', 'like', '%' . trim($filter['search_for_value']) . '%');
+								$query = $query->where('ref_no', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('customer_name', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('serial_no', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('company_name', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('inspection_date', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('inspection_location', 'like', '%' . trim($filter['search_for_value']) . '%')->orWhere('container_no', 'like', '%' . trim($filter['search_for_value']) . '%');
 							});
 							break;
 						case 23: // DOES NOT CONTAIN
-							$cscreList = $cscreList->where('ref_no', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('request_of_name', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('attend', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('of_name', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('attend_day', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('attend_month', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('unit_no', 'not like', '%' . trim($filter['search_for_value']) . '%');
+							$cscreList = $cscreList->where('ref_no', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('customer_name', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('serial_no', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('company_name', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('inspection_date', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('inspection_location', 'not like', '%' . trim($filter['search_for_value']) . '%')->where('container_no', 'not like', '%' . trim($filter['search_for_value']) . '%');
 							break;
 					}
 				} else {
@@ -234,7 +234,6 @@ class CscreController extends Controller
 		$data = [
 			'cscre' => $cscre,
 		];
-
 		if (strlen($company["header_url"]) > 0 && storage_path('app/' . $company["header_url"]) && strlen($company["signature_url"]) > 0 && storage_path('app/' . $company["signature_url"])) {
 			// lets extract the invoice signature
 			$signPathInfo = pathinfo($company["signature_url"]);
