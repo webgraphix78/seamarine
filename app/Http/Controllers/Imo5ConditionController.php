@@ -316,7 +316,7 @@ class Imo5ConditionController extends Controller
 				$data['imo5diagram'] = 'data:image/png;base64,' . base64_encode(file_get_contents(public_path('images/imo5diagram.png')));
 			}
 
-			$view = View::make('pdfs.imo5Condition', $data);
+			$view = View::make('pdfs.imo5condition', $data);
 			$html = $view->render();
 			$pdf = new \App\Models\BotPDF;
 			$pdf->headerImage = $company["header_url"];
