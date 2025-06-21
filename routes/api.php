@@ -115,3 +115,11 @@ Route::post('/dmcc/get-record/{id}', [App\Http\Controllers\DmccController::class
 // DepotConditionSurvey	
 Route::post('/depotconditionsurvey/get', [App\Http\Controllers\DepotConditionSurveyController::class, 'get'])->name('get-depotconditionsurvey-list');
 Route::post('/depotconditionsurvey/get-record/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'getRecord'])->name('get-depotconditionsurvey-record');
+
+// CscInspectionTank	
+Route::post('/cscinspectiontank/get', [App\Http\Controllers\CscInspectionTankController::class, 'get'])->name('get-cscinspectiontank-list');
+Route::post('/cscinspectiontank/get-record/{id}', [App\Http\Controllers\CscInspectionTankController::class, 'getRecord'])->name('get-cscinspectiontank-record');
+
+// SmTestingField	
+Route::post('/smtestingfield/get', [App\Http\Controllers\SmTestingFieldController::class, 'get'])->name('get-smtestingfield-list');
+Route::post('/smtestingfield/get-record/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'getRecord'])->name('get-smtestingfield-record');

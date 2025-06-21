@@ -70,7 +70,7 @@
 		<tr>
 			<td width="85%">
 				<p>&nbsp;</p>
-				<h3>Certificate Issued without any prejudice.</h3>
+				<h3>Issued without any prejudice.</h3>
 				<h3>SURVEYOR: {{ $jointsurvey['surveyor']['name'] }}</h3>
 			</td>
 			<td width="15%" style="text-align: center;" rowspan="2">

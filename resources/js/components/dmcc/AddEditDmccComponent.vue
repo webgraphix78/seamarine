@@ -55,7 +55,7 @@
 				<div class="col-12">
 					<p class="text-uppercase fw-bold m-0">Tank under Nitrogen pressure and all Seals intact</p>
 				</div>
-				<div class="col-md-6 mb-3">
+				<div class="col-md-6">
 					<label for="add_dmcc_seals_intact_time" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.seals_intact_time" id="add_dmcc_seals_intact_time" placeholder="Enter Time" >
@@ -68,32 +68,64 @@
 						<input type="text" class="form-control"  v-model="dmccFormObj.seals_intact_remark" id="add_dmcc_seals_intact_remark" placeholder="Enter Remark" >
 					</div>
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_seals_broken" class="form-label text-uppercase fw-bold me-3">All Seals broken</label>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">All Seals broken</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_seals_broken" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.seals_broken" id="add_dmcc_seals_broken" placeholder="Enter Seals Broken" >
 					</div>
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_pretrip_inspection_qc" class="form-label text-uppercase fw-bold me-3">Pre‐trip inspection by Quality officer carried out</label>
+				<div class="col-md-6">
+					<label for="add_dmcc_seals_broken_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.seals_broken_remark" id="add_dmcc_seals_broken_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Pre‐trip inspection by Quality officer carried out</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_pretrip_inspection_qc" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.pretrip_inspection_qc" id="add_dmcc_pretrip_inspection_qc" placeholder="Enter Pretrip Inspection Qc" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_bottom_valve_checked" class="form-label text-uppercase fw-bold me-3">Bottom discharge valve operated and checked for any leakage of Nitrogen by QC.</label>
+				<div class="col-md-6">
+					<label for="add_dmcc_pretrip_inspection_qc_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="dmccFormObj.bottom_valve_checked" id="add_dmcc_bottom_valve_checked" placeholder="Enter Bottom Valve Checked" >
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.pretrip_inspection_qc_remark" id="add_dmcc_pretrip_inspection_qc_remark" placeholder="Enter Remark" >
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_n2_released_dn40" class="form-label text-uppercase fw-bold me-3">Nitrogen from Container released by opening DN40 Airline Valve by QC.</label>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Bottom discharge valve operated and checked for any leakage of Nitrogen by QC.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_bottom_valve_checked" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.bottom_valve_checked" id="add_dmcc_bottom_valve_checked" placeholder="Enter Bottom Valve Checked" >
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="bottom_valve_checked_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.bottom_valve_checked_remark" id="bottom_valve_checked_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Nitrogen from Container released by opening DN40 Airline Valve by QC.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_n2_released_dn40" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
 						
 						<input type="text" class="form-control"  v-model="dmccFormObj.n2_released_dn40" id="add_dmcc_n2_released_dn40" placeholder="Enter N2 Released Dn40" >
@@ -101,17 +133,37 @@
 					</div>
 					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_emergency_remote_checked" class="form-label text-uppercase fw-bold me-3">Operation of Emergency Remote cable checked by QC.</label>
+				<div class="col-md-6">
+					<label for="n2_released_dn40_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="dmccFormObj.emergency_remote_checked" id="add_dmcc_emergency_remote_checked" placeholder="Enter Emergency Remote Checked" >
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_released_dn40_remark" id="n2_released_dn40_remark" placeholder="Enter Remark" >
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_manlid_checked" class="form-label text-uppercase fw-bold me-3">Manlid opened and Tank checked for any moisture or smell by QC.</label>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Operation of Emergency Remote cable checked by QC.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_emergency_remote_checked" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.emergency_remote_checked" id="add_dmcc_emergency_remote_checked" placeholder="Enter Emergency Remote Checked" >
+					</div>
+				</div>
+				<div class="col-md-6">
+					{{ dmccFormObj.emergency_remote_checked_remark }}
+					<label for="add_emergency_remote_checked_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.emergency_remote_checked_remark" id="add_emergency_remote_checked_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Manlid opened and Tank checked for any moisture or smell by QC.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_manlid_checked" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
 						
 						<input type="text" class="form-control"  v-model="dmccFormObj.manlid_checked" id="add_dmcc_manlid_checked" placeholder="Enter Manlid Checked" >
@@ -119,26 +171,53 @@
 					</div>
 					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_manlid_valve_closed" class="form-label text-uppercase fw-bold me-3">Manlid and Bottom discharge valve closed by QC.</label>
+				<div class="col-md-6">
+					<label for="add_dmcc_manlid_checked_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.manlid_checked_remark" id="add_dmcc_manlid_checked_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Manlid and Bottom discharge valve closed by QC.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_manlid_valve_closed" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.manlid_valve_closed" id="add_dmcc_manlid_valve_closed" placeholder="Enter Manlid Valve Closed" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_tank_cleared_for_purging" class="form-label text-uppercase fw-bold me-3">Tank cleared for Nitrogen purging.</label>
+				<div class="col-md-6">
+					<label for="manlid_valve_closed_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="dmccFormObj.tank_cleared_for_purging" id="add_dmcc_tank_cleared_for_purging" placeholder="Enter Tank Cleared For Purging" >
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.manlid_valve_closed_remark" id="manlid_valve_closed_remark" placeholder="Enter Remark" >
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_dn80_connector_fitted" class="form-label text-uppercase fw-bold me-3">Blind Flange of DN80 Butterfly Top Valve removed and special connector fitted.</label>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Tank cleared for Nitrogen purging.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_tank_cleared_for_purging" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.tank_cleared_for_purging" id="add_dmcc_tank_cleared_for_purging" placeholder="Enter Tank Cleared For Purging" >
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="tank_cleared_for_purging_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.tank_cleared_for_purging_remark" id="tank_cleared_for_purging_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Blind Flange of DN80 Butterfly Top Valve removed and special connector fitted.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_dn80_connector_fitted" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
 						
 						<input type="text" class="form-control"  v-model="dmccFormObj.dn80_connector_fitted" id="add_dmcc_dn80_connector_fitted" placeholder="Enter Dn80 Connector Fitted" >
@@ -146,8 +225,19 @@
 					</div>
 					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_n2_purged_1" class="form-label text-uppercase fw-bold me-3">N2 purged up to 0.5 bar pressure through DN40 Airline Valve. ( 1st Time)</label>
+				<div class="col-md-6">
+					<label for="dn80_connector_fitted_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.dn80_connector_fitted_remark" id="dn80_connector_fitted_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">N2 purged up to 0.5 bar pressure through DN40 Airline Valve. ( 1st Time)</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_n2_purged_1" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
 						
 						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_1" id="add_dmcc_n2_purged_1" placeholder="Enter N2 Purged 1" >
@@ -155,8 +245,19 @@
 					</div>
 					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_n2_released_1" class="form-label text-uppercase fw-bold me-3">N2 pressure released from DN 40 Airline Valve. (1st Time)</label>
+				<div class="col-md-6">
+					<label for="n2_purged_1_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_1_remark" id="n2_purged_1_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">N2 pressure released from DN 40 Airline Valve. (1st Time)</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_n2_released_1" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
 						
 						<input type="text" class="form-control"  v-model="dmccFormObj.n2_released_1" id="add_dmcc_n2_released_1" placeholder="Enter N2 Released 1" >
@@ -164,80 +265,155 @@
 					</div>
 					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_n2_purged_2" class="form-label text-uppercase fw-bold me-3">N2 purged up to 0.5 bar pressure through DN40 Airline Valve. ( 2nd Time)</label>
+				<div class="col-md-6">
+					<label for="n2_released_1_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_released_1_remark" id="n2_released_1_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">N2 purged up to 0.5 bar pressure through DN40 Airline Valve. ( 2nd Time)</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_n2_purged_2" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_2" id="add_dmcc_n2_purged_2" placeholder="Enter N2 Purged 2" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_n2_released_2" class="form-label text-uppercase fw-bold me-3">N2 pressure released from DN 40 Airline Valve. (2ndTime)</label>
+				<div class="col-md-6">
+					<label for="n2_purged_2_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_2_remark" id="n2_purged_2_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">N2 pressure released from DN 40 Airline Valve. (2ndTime)</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_n2_released_2" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.n2_released_2" id="add_dmcc_n2_released_2" placeholder="Enter N2 Released 2" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_n2_purged_3" class="form-label text-uppercase fw-bold me-3">N2 purged up to 0.5 bar pressure through DN40 Airline Valve. (3rd Time)</label>
+				<div class="col-md-6">
+					<label for="n2_released_2_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_released_2_remark" id="n2_released_2_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">N2 purged up to 0.5 bar pressure through DN40 Airline Valve. (3rd Time)</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_n2_purged_3" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_3" id="add_dmcc_n2_purged_3" placeholder="Enter N2 Purged 3" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_n2_released_3" class="form-label text-uppercase fw-bold me-3">N2 pressure released from DN 40 Airline Valve. (3rdTime)</label>
+				<div class="col-md-6">
+					<label for="n2_purged_3_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_3_remark" id="n2_purged_3_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">N2 pressure released from DN 40 Airline Valve. (3rdTime)</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_n2_released_3" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.n2_released_3" id="add_dmcc_n2_released_3" placeholder="Enter N2 Released 3" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_qc_permission_granted" class="form-label text-uppercase fw-bold me-3">Permission of QC Manager for starting loading BSCL accorded.</label>
+				<div class="col-md-6">
+					<label for="n2_released_3_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_released_3_remark" id="n2_released_3_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Permission of QC Manager for starting loading BSCL accorded.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_qc_permission_granted" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.qc_permission_granted" id="add_dmcc_qc_permission_granted" placeholder="Enter Qc Permission Granted" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_bscl_pumping_started" class="form-label text-uppercase fw-bold me-3">Pumping of BSCL started & filling commenced through Special Connector.</label>
+				<div class="col-md-6">
+					<label for="qc_permission_granted_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.qc_permission_granted_remark" id="qc_permission_granted_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Pumping of BSCL started & filling commenced through Special Connector.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_bscl_pumping_started" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.bscl_pumping_started" id="add_dmcc_bscl_pumping_started" placeholder="Enter Bscl Pumping Started" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_dn40_opened_during_loading" class="form-label text-uppercase fw-bold me-3">DN40 Airline Valve opened soon after commencing of loading to avoid building of undue pressure in Tank</label>
+				<div class="col-md-6">
+					<label for="bscl_pumping_started_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.bscl_pumping_started_remark" id="bscl_pumping_started_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">DN40 Airline Valve opened soon after commencing of loading to avoid building of undue pressure in Tank</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_dn40_opened_during_loading" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.dn40_opened_during_loading" id="add_dmcc_dn40_opened_during_loading" placeholder="Enter Dn40 Opened During Loading" >
-						
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_loading_completed_dn40_closed" class="form-label text-uppercase fw-bold me-3">Loading completed, pump stopped and DN 40 Airline Valve closed.</label>
+				<div class="col-md-6">
+					<label for="dn40_opened_during_loading_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="dmccFormObj.loading_completed_dn40_closed" id="add_dmcc_loading_completed_dn40_closed" placeholder="Enter Loading Completed Dn40 Closed" >
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.dn40_opened_during_loading_remark" id="dn40_opened_during_loading_remark" placeholder="Enter Remark" >
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_butterfly_valve_closed" class="form-label text-uppercase fw-bold me-3">Butterfly Valve Closed & Special Connector removed from DN80 Butterfly Top Discharge Valve.</label>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Loading completed, pump stopped and DN 40 Airline Valve closed.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_loading_completed_dn40_closed" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.loading_completed_dn40_closed" id="add_dmcc_loading_completed_dn40_closed" placeholder="Enter Loading Completed Dn40 Closed" >
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="loading_completed_dn40_closed_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.loading_completed_dn40_closed_remark" id="loading_completed_dn40_closed_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Butterfly Valve Closed & Special Connector removed from DN80 Butterfly Top Discharge Valve.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_butterfly_valve_closed" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
 						
 						<input type="text" class="form-control"  v-model="dmccFormObj.butterfly_valve_closed" id="add_dmcc_butterfly_valve_closed" placeholder="Enter Butterfly Valve Closed" >
@@ -245,41 +421,79 @@
 					</div>
 					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_cargo_sample_removed" class="form-label text-uppercase fw-bold me-3">BSCL cargo sample removed through Blind Flange opening.</label>
+				<div class="col-md-6">
+					<label for="butterfly_valve_closed_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="dmccFormObj.cargo_sample_removed" id="add_dmcc_cargo_sample_removed" placeholder="Enter Cargo Sample Removed" >
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.butterfly_valve_closed_remark" id="butterfly_valve_closed_remark" placeholder="Enter Remark" >
 					</div>
-					
 				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_butterfly_valve_reclosed" class="form-label text-uppercase fw-bold me-3">Butterfly Valve of DN 80 Top Valve closed and Blind Flange fitted back.</label>
-					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="dmccFormObj.butterfly_valve_reclosed" id="add_dmcc_butterfly_valve_reclosed" placeholder="Enter Butterfly Valve Reclosed" >
-						
-					</div>
-					
-				</div>
-				<div class="col-12 mb-3">
-					<label for="add_dmcc_n2_purged_final" class="form-label text-uppercase fw-bold me-3">On completion of Cargo stuffing, N2 purged through DN40 Airline Valve in Tank: Nitrogen blanket pressure (0.5 bar).</label>
-					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_final" id="add_dmcc_n2_purged_final" placeholder="Enter N2 Purged Final" >
-						
-					</div>
-					
-				</div>
+			</div>
+			<div class='row mb-4'>
 				<div class="col-12">
-					<label for="add_dmcc_final_inspection_done" class="form-label text-uppercase fw-bold me-3">After loading inspection completed by QC officer & Loading Operation Completed</label>
+					<p class="text-uppercase fw-bold m-0">BSCL cargo sample removed through Blind Flange opening.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_cargo_sample_removed" class="form-label text-uppercase fw-bold me-3">Time</label>
 					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="dmccFormObj.final_inspection_done" id="add_dmcc_final_inspection_done" placeholder="Enter Final Inspection Done" >
-						
+						<input type="text" class="form-control"  v-model="dmccFormObj.cargo_sample_removed" id="add_dmcc_cargo_sample_removed" placeholder="Enter Cargo Sample Removed" >
 					</div>
-					
+				</div>
+				<div class="col-md-6">
+					<label for="cargo_sample_removed_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.cargo_sample_removed_remark" id="cargo_sample_removed_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">Butterfly Valve of DN 80 Top Valve closed and Blind Flange fitted back.</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_butterfly_valve_reclosed" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.butterfly_valve_reclosed" id="add_dmcc_butterfly_valve_reclosed" placeholder="Enter Butterfly Valve Reclosed" >
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="butterfly_valve_reclosed_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.butterfly_valve_reclosed_remark" id="butterfly_valve_reclosed_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">On completion of Cargo stuffing, N2 purged through DN40 Airline Valve in Tank: Nitrogen blanket pressure (0.5 bar).</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_n2_purged_final" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_final" id="add_dmcc_n2_purged_final" placeholder="Enter N2 Purged Final" >
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="n2_purged_final_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.n2_purged_final_remark" id="n2_purged_final_remark" placeholder="Enter Remark" >
+					</div>
+				</div>
+			</div>
+			<div class='row mb-4'>
+				<div class="col-12">
+					<p class="text-uppercase fw-bold m-0">After loading inspection completed by QC officer & Loading Operation Completed</p>
+				</div>
+				<div class="col-md-6">
+					<label for="add_dmcc_final_inspection_done" class="form-label text-uppercase fw-bold me-3">Time</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.final_inspection_done" id="add_dmcc_final_inspection_done" placeholder="Enter Final Inspection Done" >
+					</div>
+				</div>
+				<div class="col-md-6">
+					<label for="final_inspection_done_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
+					<div class="input-group">
+						<input type="text" class="form-control"  v-model="dmccFormObj.final_inspection_done_remark" id="final_inspection_done_remark" placeholder="Enter Remark" >
+					</div>
 				</div>
 			</div>
 			<div class='row mb-4 g-3'>
@@ -330,29 +544,53 @@ function initialState(){
 		seals_intact_time:'',
 		seals_intact_remark:'',
 		seals_broken:'',
+		seals_broken_remark:'',
 		pretrip_inspection_qc:'',
+		pretrip_inspection_qc_remark:'',
 		bottom_valve_checked:'',
+		bottom_valve_checked_remark:'',
 		n2_released_dn40:'',
+		n2_released_dn40_remark:'',
 		emergency_remote_checked:'',
+		emergency_remote_checked_remark:'',
 		manlid_checked:'',
+		manlid_checked_remark:'',
 		manlid_valve_closed:'',
+		manlid_valve_closed_remark:'',
 		tank_cleared_for_purging:'',
+		tank_cleared_for_purging_remark:'',
 		dn80_connector_fitted:'',
+		dn80_connector_fitted_remark:'',
 		n2_purged_1:'',
+		n2_purged_1_remark:'',
 		n2_released_1:'',
+		n2_released_1_remark:'',
 		n2_purged_2:'',
+		n2_purged_2_remark:'',
 		n2_released_2:'',
+		n2_released_2_remark:'',
 		n2_purged_3:'',
+		n2_purged_3_remark:'',
 		n2_released_3:'',
+		n2_released_3_remark:'',
 		qc_permission_granted:'',
+		qc_permission_granted_remark:'',
 		bscl_pumping_started:'',
+		bscl_pumping_started_remark:'',
 		dn40_opened_during_loading:'',
+		dn40_opened_during_loading_remark:'',
 		loading_completed_dn40_closed:'',
+		loading_completed_dn40_closed_remark:'',
 		butterfly_valve_closed:'',
+		butterfly_valve_closed_remark:'',
 		cargo_sample_removed:'',
+		cargo_sample_removed_remark:'',
 		butterfly_valve_reclosed:'',
+		butterfly_valve_reclosed_remark:'',
 		n2_purged_final:'',
+		n2_purged_final_remark:'',
 		final_inspection_done:'',
+		final_inspection_done_remark:'',
 		n2_cylinder_nos:'',
 		total_no_cylinder:'',
 		bscl_rep:'',

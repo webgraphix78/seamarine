@@ -230,7 +230,7 @@
 	<p></p>
 	<table width="100%" cellspacing="0" cellpadding="2" border="0">
 		<tr valign="middle">
-			<td width="75%" valign="middle" style="text-align: left; margin: auto;">Certificate Issued Without Any Prejudice.</td>
+			<td width="75%" valign="middle" style="text-align: left; margin: auto;">Issued Without Any Prejudice.</td>
 			<td width="25%" style="text-align: center;">
 				<img src="{{ $sign }}" alt="Signature" width="100px"/>
 			</td>

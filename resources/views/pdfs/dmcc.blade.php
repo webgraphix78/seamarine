@@ -54,7 +54,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['seals_intact_time']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;">{{$dmcc['seals_intact_remark'] }}</p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['seals_intact_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -68,7 +68,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['seals_broken']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['seals_broken_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -82,7 +82,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['pretrip_inspection_qc']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['pretrip_inspection_qc_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -96,7 +96,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['bottom_valve_checked']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['bottom_valve_checked_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -110,7 +110,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['n2_released_dn40']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['n2_released_dn40_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -124,7 +124,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['emergency_remote_checked']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['emergency_remote_checked_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -138,7 +138,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['manlid_checked']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['manlid_checked_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -152,7 +152,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['manlid_valve_closed']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['manlid_valve_closed_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -166,7 +166,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['tank_cleared_for_purging']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['tank_cleared_for_purging_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -180,7 +180,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['dn80_connector_fitted']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['dn80_connector_fitted_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -194,12 +194,12 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['n2_purged_1']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;text-align: center;">N2 Cylinder</p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['n2_purged_1_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
 			<td width="10%">
-				<p style="margin:0px;text-align: center;">12</p>
+				<p style="margin:0px;">12</p>
 			</td>
 			<td width="70%">
 				<p style="margin:0px;">N2 pressure released from DN 40 Airline Valve. (1st Time)</p>
@@ -208,7 +208,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['n2_released_1']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['n2_released_1_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -222,7 +222,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['n2_purged_2']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;text-align: center;">N2 Cylinder</p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['n2_purged_2_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -236,7 +236,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['n2_released_2']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['n2_released_2_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -250,7 +250,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['n2_purged_3']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;text-align: center;">N2 Cylinder</p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['n2_purged_3_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -264,7 +264,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['n2_released_3']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['n2_released_3_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -278,7 +278,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['qc_permission_granted']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['qc_permission_granted_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -292,7 +292,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['bscl_pumping_started']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['bscl_pumping_started_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -306,7 +306,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['dn40_opened_during_loading']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['dn40_opened_during_loading_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -320,7 +320,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['loading_completed_dn40_closed']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['loading_completed_dn40_closed_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -334,7 +334,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['butterfly_valve_closed']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['butterfly_valve_closed_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -348,7 +348,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['cargo_sample_removed']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['cargo_sample_removed_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -362,7 +362,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['butterfly_valve_reclosed']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['butterfly_valve_reclosed_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -376,7 +376,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['n2_purged_final']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;text-align:center;">N2 Cylinder</p>
+				<p style="margin:0px;text-align:center;">{{$dmcc['n2_purged_final_remark'] }}</p>
 			</td>
 		</tr>
 		<tr>
@@ -390,7 +390,7 @@
 				<p style="margin:0px;text-align: center;">{{$dmcc['final_inspection_done']}}</p>
 			</td>
 			<td width="10%">
-				<p style="margin:0px;"></p>
+				<p style="margin:0px;text-align: center;">{{$dmcc['final_inspection_done_remark'] }}</p>
 			</td>
 		</tr>
 	</table>
@@ -426,7 +426,7 @@
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
-						<td><h3>Certificate Issued Without Any Prejudice</h3></td>
+						<td><h3>Issued Without Any Prejudice</h3></td>
 					</tr>
 				</table>
 			</td>

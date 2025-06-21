@@ -58,7 +58,6 @@ class ReportsController extends Controller{
 			else if($input["duration"] == 2){
 				// get last month date
 				$lastMonth = strtotime('-1 month');
-				log::info("last month: ".date('Y-m-d', $lastMonth));
 				// last month
 				$cleaningCount = \App\Models\Cleaning::whereMonth('dt_inspection_date', date('m', $lastMonth))
 					->whereYear('dt_inspection_date', date('Y', $lastMonth))

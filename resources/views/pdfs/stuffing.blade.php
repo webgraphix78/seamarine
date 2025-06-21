@@ -163,7 +163,7 @@
 				<p style="margin:0px;text-align:center;">11</p>
 			</td>
 			<td width="46%">
-				<p style="margin:0px;">Whether photos taken BEFORE & AFTER unloading of goods fromthe vehicle</p>
+				<p style="margin:0px;">Whether photos taken BEFORE & AFTER unloading of goods from the vehicle</p>
 			</td>
 			<td width="46%">
 				<p style="margin:0px;text-align:center;">{{$stuffing['unloading_photos']}}</p>
@@ -407,7 +407,7 @@
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
-						<td>Certificate Issued Without Any Prejudice</td>
+						<td>Issued Without Any Prejudice</td>
 					</tr>
 				</table>
 			</td>

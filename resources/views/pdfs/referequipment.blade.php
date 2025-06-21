@@ -213,7 +213,7 @@
 			<td width="75%" valign="middle" style="text-align: left; margin: auto;">
 				<table width="100%">
 					<tr>
-						<td>Certificate Issued Without Any Prejudice</td>
+						<td>Issued Without Any Prejudice</td>
 					</tr>
 					<tr>
 						<td>

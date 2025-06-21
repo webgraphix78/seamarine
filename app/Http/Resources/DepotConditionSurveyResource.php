@@ -52,6 +52,8 @@ class DepotConditionSurveyResource extends JsonResource
 			'rupture_disc_series' => $this->rupture_disc_series,
 			'dipping_pipe' => $this->dipping_pipe,
 			'air_valve' => $this->air_valve,
+			'air_valve_label' => $this->air_valve_label,
+			'top_loading_label' => $this->top_loading_label,
 			'dipstick' => $this->dipstick,
 			'manhole_gasket_type' => $this->manhole_gasket_type,
 			'manhole_gasket' => $this->manhole_gasket,

@@ -269,6 +269,34 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/depotconditionsurvey/view-file/{depotconditionsurveyId}/{randomId}', [App\Http\Controllers\DepotConditionSurveyController::class, 'viewFile'])->name('view-depotconditionsurvey-file');
 	Route::post('/depotconditionsurvey/verify-tank-number', [App\Http\Controllers\DepotConditionSurveyController::class, 'verifyTankNumber'])->name('verify-depotconditionsurvey-tank-number');
 
+	// CscInspectionTank
+	Route::get('/cscinspectiontank', [App\Http\Controllers\CscInspectionTankController::class, 'index'])->name('cscinspectiontank-list');
+	Route::post('/cscinspectiontank/save', [App\Http\Controllers\CscInspectionTankController::class, 'save'])->name('save-cscinspectiontank');
+	Route::post('/selectcscinspectiontank', [App\Http\Controllers\CscInspectionTankController::class, 'loadForSelection'])->name('selectcscinspectiontank');
+	Route::get('/cscinspectiontank/edit/{id}', [App\Http\Controllers\CscInspectionTankController::class, 'edit'])->name('edit-cscinspectiontank-page');
+	Route::post('/cscinspectiontank/duplicate', [App\Http\Controllers\CscInspectionTankController::class, 'duplicateRecord'])->name('duplicate-cscinspectiontank-page');
+	Route::get('/cscinspectiontank/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\CscInspectionTankController::class, 'viewFile'])->name('view-cscinspectiontank-file');
+	Route::get('/cscinspectiontank/export-to-pdf/{id}', [App\Http\Controllers\CscInspectionTankController::class, 'exportToPDF'])->name('print-cscinspectiontank');
+	Route::post('/cscinspectiontank/upload-file', [App\Http\Controllers\CscInspectionTankController::class, 'uploadFile'])->name('upload-cscinspectiontank-file');
+	Route::post('/cscinspectiontank/clear-file/{id}/{randomId}', [App\Http\Controllers\CscInspectionTankController::class, 'clearFile'])->name('clear-cscinspectiontank-file');
+	Route::post('/cscinspectiontank/delete', [App\Http\Controllers\CscInspectionTankController::class, 'deleteRecord'])->name('deletecscinspectiontank');
+	Route::get('/cscinspectiontank/add', [App\Http\Controllers\CscInspectionTankController::class, 'add'])->name('add-cscinspectiontank-page');
+	Route::get('/cscinspectiontank/view/{id}', [App\Http\Controllers\CscInspectionTankController::class, 'view'])->name('view-cscinspectiontank-page');
+
+	// SmTestingField
+	Route::get('/smtestingfield', [App\Http\Controllers\SmTestingFieldController::class, 'index'])->name('smtestingfield-list');
+	Route::post('/smtestingfield/save', [App\Http\Controllers\SmTestingFieldController::class, 'save'])->name('save-smtestingfield');
+	Route::post('/selectsmtestingfield', [App\Http\Controllers\SmTestingFieldController::class, 'loadForSelection'])->name('selectsmtestingfield');
+	Route::get('/smtestingfield/edit/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'edit'])->name('edit-smtestingfield-page');
+	Route::post('/smtestingfield/duplicate', [App\Http\Controllers\SmTestingFieldController::class, 'duplicateRecord'])->name('duplicate-smtestingfield-page');
+	Route::get('/smtestingfield/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\SmTestingFieldController::class, 'viewFile'])->name('view-smtestingfield-file');
+	Route::get('/smtestingfield/export-to-pdf/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'exportToPDF'])->name('print-smtestingfield');
+	Route::post('/smtestingfield/upload-file', [App\Http\Controllers\SmTestingFieldController::class, 'uploadFile'])->name('upload-smtestingfield-file');
+	Route::post('/smtestingfield/clear-file/{id}/{randomId}', [App\Http\Controllers\SmTestingFieldController::class, 'clearFile'])->name('clear-smtestingfield-file');
+	Route::post('/smtestingfield/delete', [App\Http\Controllers\SmTestingFieldController::class, 'deleteRecord'])->name('deletesmtestingfield');
+	Route::get('/smtestingfield/add', [App\Http\Controllers\SmTestingFieldController::class, 'add'])->name('add-smtestingfield-page');
+	Route::get('/smtestingfield/view/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'view'])->name('view-smtestingfield-page');
+
 });
 // OnhireMain
 Route::get('/onhiremain', [App\Http\Controllers\OnhireMainController::class, 'index'])->name('onhiremain-list');

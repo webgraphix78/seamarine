@@ -64,6 +64,26 @@
 		</tr>
 		<tr>
 			<td width="16%">
+				<p style="margin:0px;">MGW::</p>
+			</td>
+			<td width="17%">
+				<p style="margin:0px;">{{$gasfreereport['mgw']}}</p>
+			</td>
+			<td width="17%">
+				<p style="margin:0px;">Tare Wt:</p>
+			</td>
+			<td width="17%">
+				<p style="margin:0px;">{{$gasfreereport['tare_wt']}}</p>
+			</td>
+			<td width="16%">
+				<p style="margin:0px;">Capacity:</p>
+			</td>
+			<td width="17%">
+				<p style="margin:0px;">{{$gasfreereport['capacity']}}</p>
+			</td>
+		</tr>
+		<tr>
+			<td width="16%">
 				<p style="margin:0px;">Inspection Date:</p>
 			</td>
 			<td width="17%">
@@ -212,7 +232,7 @@
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
-						<td><h3>Certificate Issued Without Any Prejudice</h3></td>
+						<td><h3>Issued Without Any Prejudice</h3></td>
 					</tr>
 				</table>
 			</td>

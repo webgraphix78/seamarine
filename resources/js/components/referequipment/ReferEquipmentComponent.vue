@@ -174,11 +174,11 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadMasterData(this.docRoot+'/user',{});
-		this.allInspectionLocationIdList = await this.loadMasterData(this.docRoot+'/user',{});
-		this.allCustomerIdList = await this.loadMasterData(this.docRoot+'/user',{});
+		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/user',{});
+		this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/user',{});
+		this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/user',{});
 		this.allContainerTypeList = [{ id: '1', title: '20RF'}, { id: '2', title: '40RF'}, ];
-		this.allSurveyorIdList = await this.loadMasterData(this.docRoot+'/user',{});
+		this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/user',{});
 
 	}
 }

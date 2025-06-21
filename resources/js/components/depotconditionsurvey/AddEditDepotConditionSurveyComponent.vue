@@ -205,7 +205,10 @@
 							
 						</div>
 						<div class="col-12">
-							<label for="add_depotconditionsurvey_air_valve" class="form-label text-uppercase fw-bold me-3">Air Valve</label>
+							<div class="d-flex flex-row gap-2 align-items-center mb-2">
+								<label for="add_depotconditionsurvey_air_valve" class="form-label text-uppercase fw-bold m-0">Label:</label>
+								<multiselect v-model="depotconditionsurveyFormObj.air_valve_label" :options="allAirValveLabelList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+							</div>
 							<div class="d-flex flex-row gap-3">
 								<multiselect v-model="depotconditionsurveyFormObj.air_valve" :options="allAirValveList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 							</div>
@@ -242,20 +245,19 @@
 							
 						</div>
 						<div class="col-12">
-							<label for="add_depotconditionsurvey_top_loading" class="form-label text-uppercase fw-bold me-3">Top Loading</label>
-							<div class="input-group">
-								
-								<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.top_loading" id="add_depotconditionsurvey_top_loading" placeholder="Enter Top Loading" >
-								
+							<div class="d-flex flex-row gap-2 align-items-center mb-2">
+								<label for="add_depotconditionsurvey_top_loading" class="form-label text-uppercase fw-bold m-0">Label:</label>
+								<multiselect v-model="depotconditionsurveyFormObj.top_loading_label" :options="allTopLoadingLabelList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 							</div>
-							
+							<div class="input-group">
+								<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.top_loading" id="add_depotconditionsurvey_top_loading" placeholder="Enter Top Loading" >
+							</div>
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_top_loading_flange" class="form-label text-uppercase fw-bold me-3">Top Loading Flange</label>
 							<div class="d-flex flex-row gap-3">
 								<multiselect v-model="depotconditionsurveyFormObj.top_loading_flange" :options="allTopLoadingFlangeList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 							</div>
-							
 						</div>
 					</div>
 				</div>
@@ -650,11 +652,13 @@ function initialState(){
 		rupture_disc_series:'',
 		dipping_pipe:'',
 		air_valve:'',
+		air_valve_label:'',		
 		dipstick:'',
 		manhole_gasket_type:'',
 		manhole_gasket:'',
 		walkway:'',
 		top_loading:'',
+		top_loading_label:'',
 		top_loading_flange:'',
 		heating_plug_pipe:'',
 		heating_pipe_covers:'',
@@ -736,6 +740,8 @@ export default {
 			allRuptureDiscSeriesList: [],
 			allDippingPipeList: [],
 			allAirValveList: [],
+			allAirValveLabelList: [],
+			allTopLoadingLabelList: [],
 			allDipstickList: [],
 			allManholeGasketList: [],
 			allWalkwayList: [],
@@ -804,174 +810,182 @@ export default {
 				that.depotconditionsurveyFormObj.action = "details";
 			that.depotconditionsurveyFormObj.created_by = that.current_user_id;
 			
-			if (  typeof that.depotconditionsurveyFormObj.company_id === 'object' && that.depotconditionsurveyFormObj.company_id.id) {
+			if (  that.depotconditionsurveyFormObj.company_id != null && typeof that.depotconditionsurveyFormObj.company_id === 'object' && that.depotconditionsurveyFormObj.company_id.id) {
 				that.depotconditionsurveyFormObj.company_id = that.depotconditionsurveyFormObj.company_id.id;
 			}
-			if (  typeof that.depotconditionsurveyFormObj.customer_id === 'object' && that.depotconditionsurveyFormObj.customer_id.id) {
+			if (  that.depotconditionsurveyFormObj.customer_id != null && typeof that.depotconditionsurveyFormObj.customer_id === 'object' && that.depotconditionsurveyFormObj.customer_id.id) {
 				that.depotconditionsurveyFormObj.customer_id = that.depotconditionsurveyFormObj.customer_id.id;
 			}
-			if (  typeof that.depotconditionsurveyFormObj.inspection_location_id === 'object' && that.depotconditionsurveyFormObj.inspection_location_id.id) {
+			if (  that.depotconditionsurveyFormObj.inspection_location_id != null && typeof that.depotconditionsurveyFormObj.inspection_location_id === 'object' && that.depotconditionsurveyFormObj.inspection_location_id.id) {
 				that.depotconditionsurveyFormObj.inspection_location_id = that.depotconditionsurveyFormObj.inspection_location_id.id;
 			}
-			if (  typeof that.depotconditionsurveyFormObj.liquid_inspection_location_id === 'object' && that.depotconditionsurveyFormObj.liquid_inspection_location_id.id) {
+			if (  that.depotconditionsurveyFormObj.liquid_inspection_location_id != null && typeof that.depotconditionsurveyFormObj.liquid_inspection_location_id === 'object' && that.depotconditionsurveyFormObj.liquid_inspection_location_id.id) {
 				that.depotconditionsurveyFormObj.liquid_inspection_location_id = that.depotconditionsurveyFormObj.liquid_inspection_location_id.id;
 			}
-			if (  typeof that.depotconditionsurveyFormObj.surveyor_id === 'object' && that.depotconditionsurveyFormObj.surveyor_id.id) {
+			if ( that.depotconditionsurveyFormObj.surveyor_id != null && typeof that.depotconditionsurveyFormObj.surveyor_id === 'object' && that.depotconditionsurveyFormObj.surveyor_id.id) {
 				that.depotconditionsurveyFormObj.surveyor_id = that.depotconditionsurveyFormObj.surveyor_id.id;
 			}
-			if (  typeof that.depotconditionsurveyFormObj.protection_cover === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.protection_cover).length > 0) {
+			if (  that.depotconditionsurveyFormObj.protection_cover != null && typeof that.depotconditionsurveyFormObj.protection_cover === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.protection_cover).length > 0) {
 				that.depotconditionsurveyFormObj.protection_cover = that.depotconditionsurveyFormObj.protection_cover.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.manhole_cover_fastening_bolts === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.manhole_cover_fastening_bolts).length > 0) {
+			if (  that.depotconditionsurveyFormObj.manhole_cover_fastening_bolts != null && typeof that.depotconditionsurveyFormObj.manhole_cover_fastening_bolts === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.manhole_cover_fastening_bolts).length > 0) {
 				that.depotconditionsurveyFormObj.manhole_cover_fastening_bolts = that.depotconditionsurveyFormObj.manhole_cover_fastening_bolts.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.top_safety_valve === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.top_safety_valve).length > 0) {
+			if (  that.depotconditionsurveyFormObj.top_safety_valve != null &&  typeof that.depotconditionsurveyFormObj.top_safety_valve === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.top_safety_valve).length > 0) {
 				that.depotconditionsurveyFormObj.top_safety_valve = that.depotconditionsurveyFormObj.top_safety_valve.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.rupture_disc_series === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.rupture_disc_series).length > 0) {
+			if (  that.depotconditionsurveyFormObj.rupture_disc_series != null &&  typeof that.depotconditionsurveyFormObj.rupture_disc_series === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.rupture_disc_series).length > 0) {
 				that.depotconditionsurveyFormObj.rupture_disc_series = that.depotconditionsurveyFormObj.rupture_disc_series.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.dipping_pipe === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.dipping_pipe).length > 0) {
+			if (  that.depotconditionsurveyFormObj.dipping_pipe != null &&  typeof that.depotconditionsurveyFormObj.dipping_pipe === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.dipping_pipe).length > 0) {
 				that.depotconditionsurveyFormObj.dipping_pipe = that.depotconditionsurveyFormObj.dipping_pipe.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.air_valve === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.air_valve).length > 0) {
+			if (  that.depotconditionsurveyFormObj.air_valve != null &&  typeof that.depotconditionsurveyFormObj.air_valve === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.air_valve).length > 0) {
 				that.depotconditionsurveyFormObj.air_valve = that.depotconditionsurveyFormObj.air_valve.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.dipstick === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.dipstick).length > 0) {
+			if (  that.depotconditionsurveyFormObj.air_valve_label != null &&  typeof that.depotconditionsurveyFormObj.air_valve_label === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.air_valve_label).length > 0) {
+				that.depotconditionsurveyFormObj.air_valve_label = that.depotconditionsurveyFormObj.air_valve_label.id;
+			}
+
+			if (  that.depotconditionsurveyFormObj.top_loading_label != null &&  typeof that.depotconditionsurveyFormObj.top_loading_label === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.top_loading_label).length > 0) {
+				that.depotconditionsurveyFormObj.top_loading_label = that.depotconditionsurveyFormObj.top_loading_label.id;
+			}
+
+			if (  that.depotconditionsurveyFormObj.dipstick != null &&  typeof that.depotconditionsurveyFormObj.dipstick === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.dipstick).length > 0) {
 				that.depotconditionsurveyFormObj.dipstick = that.depotconditionsurveyFormObj.dipstick.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.manhole_gasket === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.manhole_gasket).length > 0) {
+			if (  that.depotconditionsurveyFormObj.manhole_gasket != null &&  typeof that.depotconditionsurveyFormObj.manhole_gasket === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.manhole_gasket).length > 0) {
 				that.depotconditionsurveyFormObj.manhole_gasket = that.depotconditionsurveyFormObj.manhole_gasket.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.walkway === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.walkway).length > 0) {
+			if (  that.depotconditionsurveyFormObj.walkway != null &&  typeof that.depotconditionsurveyFormObj.walkway === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.walkway).length > 0) {
 				that.depotconditionsurveyFormObj.walkway = that.depotconditionsurveyFormObj.walkway.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.top_loading_flange === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.top_loading_flange).length > 0) {
+			if (  that.depotconditionsurveyFormObj.top_loading_flange != null &&  typeof that.depotconditionsurveyFormObj.top_loading_flange === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.top_loading_flange).length > 0) {
 				that.depotconditionsurveyFormObj.top_loading_flange = that.depotconditionsurveyFormObj.top_loading_flange.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.heating_plug_pipe === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.heating_plug_pipe).length > 0) {
+			if (  that.depotconditionsurveyFormObj.heating_plug_pipe != null &&  typeof that.depotconditionsurveyFormObj.heating_plug_pipe === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.heating_plug_pipe).length > 0) {
 				that.depotconditionsurveyFormObj.heating_plug_pipe = that.depotconditionsurveyFormObj.heating_plug_pipe.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.heating_pipe_covers === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.heating_pipe_covers).length > 0) {
+			if (  that.depotconditionsurveyFormObj.heating_pipe_covers != null &&  typeof that.depotconditionsurveyFormObj.heating_pipe_covers === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.heating_pipe_covers).length > 0) {
 				that.depotconditionsurveyFormObj.heating_pipe_covers = that.depotconditionsurveyFormObj.heating_pipe_covers.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.bottom_outlet_valve === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.bottom_outlet_valve).length > 0) {
+			if (  that.depotconditionsurveyFormObj.bottom_outlet_valve != null &&  typeof that.depotconditionsurveyFormObj.bottom_outlet_valve === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.bottom_outlet_valve).length > 0) {
 				that.depotconditionsurveyFormObj.bottom_outlet_valve = that.depotconditionsurveyFormObj.bottom_outlet_valve.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.bottom_valve_cap === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.bottom_valve_cap).length > 0) {
+			if (  that.depotconditionsurveyFormObj.bottom_valve_cap != null &&  typeof that.depotconditionsurveyFormObj.bottom_valve_cap === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.bottom_valve_cap).length > 0) {
 				that.depotconditionsurveyFormObj.bottom_valve_cap = that.depotconditionsurveyFormObj.bottom_valve_cap.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.bottom_valve_bolts_nuts === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.bottom_valve_bolts_nuts).length > 0) {
+			if (  that.depotconditionsurveyFormObj.bottom_valve_bolts_nuts != null &&  typeof that.depotconditionsurveyFormObj.bottom_valve_bolts_nuts === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.bottom_valve_bolts_nuts).length > 0) {
 				that.depotconditionsurveyFormObj.bottom_valve_bolts_nuts = that.depotconditionsurveyFormObj.bottom_valve_bolts_nuts.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.bottom_valve_lever === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.bottom_valve_lever).length > 0) {
+			if (  that.depotconditionsurveyFormObj.bottom_valve_lever != null &&  typeof that.depotconditionsurveyFormObj.bottom_valve_lever === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.bottom_valve_lever).length > 0) {
 				that.depotconditionsurveyFormObj.bottom_valve_lever = that.depotconditionsurveyFormObj.bottom_valve_lever.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.ladder === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.ladder).length > 0) {
+			if (  that.depotconditionsurveyFormObj.ladder != null &&  typeof that.depotconditionsurveyFormObj.ladder === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.ladder).length > 0) {
 				that.depotconditionsurveyFormObj.ladder = that.depotconditionsurveyFormObj.ladder.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.document_box === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.document_box).length > 0) {
+			if (  that.depotconditionsurveyFormObj.document_box != null &&  typeof that.depotconditionsurveyFormObj.document_box === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.document_box).length > 0) {
 				that.depotconditionsurveyFormObj.document_box = that.depotconditionsurveyFormObj.document_box.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.thermometer === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.thermometer).length > 0) {
+			if (  that.depotconditionsurveyFormObj.thermometer != null &&  typeof that.depotconditionsurveyFormObj.thermometer === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.thermometer).length > 0) {
 				that.depotconditionsurveyFormObj.thermometer = that.depotconditionsurveyFormObj.thermometer.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.remote_shut_off === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.remote_shut_off).length > 0) {
+			if ( that.depotconditionsurveyFormObj.remote_shut_off != null &&  typeof that.depotconditionsurveyFormObj.remote_shut_off === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.remote_shut_off).length > 0) {
 				that.depotconditionsurveyFormObj.remote_shut_off = that.depotconditionsurveyFormObj.remote_shut_off.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.hand_rail === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.hand_rail).length > 0) {
+			if (  that.depotconditionsurveyFormObj.hand_rail != null &&  typeof that.depotconditionsurveyFormObj.hand_rail === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.hand_rail).length > 0) {
 				that.depotconditionsurveyFormObj.hand_rail = that.depotconditionsurveyFormObj.hand_rail.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.rust === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.rust).length > 0) {
+			if (  that.depotconditionsurveyFormObj.rust != null &&  typeof that.depotconditionsurveyFormObj.rust === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.rust).length > 0) {
 				that.depotconditionsurveyFormObj.rust = that.depotconditionsurveyFormObj.rust.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.discolouration === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.discolouration).length > 0) {
+			if (  that.depotconditionsurveyFormObj.discolouration != null &&  typeof that.depotconditionsurveyFormObj.discolouration === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.discolouration).length > 0) {
 				that.depotconditionsurveyFormObj.discolouration = that.depotconditionsurveyFormObj.discolouration.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.surface_scoring === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.surface_scoring).length > 0) {
+			if (  that.depotconditionsurveyFormObj.surface_scoring != null &&  typeof that.depotconditionsurveyFormObj.surface_scoring === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.surface_scoring).length > 0) {
 				that.depotconditionsurveyFormObj.surface_scoring = that.depotconditionsurveyFormObj.surface_scoring.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.pitting_surface_pin === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.pitting_surface_pin).length > 0) {
+			if (  that.depotconditionsurveyFormObj.pitting_surface_pin != null &&  typeof that.depotconditionsurveyFormObj.pitting_surface_pin === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.pitting_surface_pin).length > 0) {
 				that.depotconditionsurveyFormObj.pitting_surface_pin = that.depotconditionsurveyFormObj.pitting_surface_pin.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.corrosion_mark === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.corrosion_mark).length > 0) {
+			if (  that.depotconditionsurveyFormObj.corrosion_mark != null &&  typeof that.depotconditionsurveyFormObj.corrosion_mark === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.corrosion_mark).length > 0) {
 				that.depotconditionsurveyFormObj.corrosion_mark = that.depotconditionsurveyFormObj.corrosion_mark.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.others === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.others).length > 0) {
+			if (  that.depotconditionsurveyFormObj.others != null &&  typeof that.depotconditionsurveyFormObj.others === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.others).length > 0) {
 				that.depotconditionsurveyFormObj.others = that.depotconditionsurveyFormObj.others.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.framework_front_end === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_front_end).length > 0) {
+			if (  that.depotconditionsurveyFormObj.framework_front_end != null &&  typeof that.depotconditionsurveyFormObj.framework_front_end === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_front_end).length > 0) {
 				that.depotconditionsurveyFormObj.framework_front_end = that.depotconditionsurveyFormObj.framework_front_end.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.cladding_front_end === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_front_end).length > 0) {
+			if (  that.depotconditionsurveyFormObj.cladding_front_end != null &&  typeof that.depotconditionsurveyFormObj.cladding_front_end === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_front_end).length > 0) {
 				that.depotconditionsurveyFormObj.cladding_front_end = that.depotconditionsurveyFormObj.cladding_front_end.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.framework_rare_end === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_rare_end).length > 0) {
+			if (  that.depotconditionsurveyFormObj.framework_rare_end != null &&  typeof that.depotconditionsurveyFormObj.framework_rare_end === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_rare_end).length > 0) {
 				that.depotconditionsurveyFormObj.framework_rare_end = that.depotconditionsurveyFormObj.framework_rare_end.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.cladding_rare_end === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_rare_end).length > 0) {
+			if (  that.depotconditionsurveyFormObj.cladding_rare_end != null &&  typeof that.depotconditionsurveyFormObj.cladding_rare_end === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_rare_end).length > 0) {
 				that.depotconditionsurveyFormObj.cladding_rare_end = that.depotconditionsurveyFormObj.cladding_rare_end.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.framework_right_side === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_right_side).length > 0) {
+			if (  that.depotconditionsurveyFormObj.framework_right_side != null &&  typeof that.depotconditionsurveyFormObj.framework_right_side === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_right_side).length > 0) {
 				that.depotconditionsurveyFormObj.framework_right_side = that.depotconditionsurveyFormObj.framework_right_side.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.cladding_right_side === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_right_side).length > 0) {
+			if (  that.depotconditionsurveyFormObj.cladding_right_side != null &&  typeof that.depotconditionsurveyFormObj.cladding_right_side === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_right_side).length > 0) {
 				that.depotconditionsurveyFormObj.cladding_right_side = that.depotconditionsurveyFormObj.cladding_right_side.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.framework_left_side === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_left_side).length > 0) {
+			if (  that.depotconditionsurveyFormObj.framework_left_side != null &&  typeof that.depotconditionsurveyFormObj.framework_left_side === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_left_side).length > 0) {
 				that.depotconditionsurveyFormObj.framework_left_side = that.depotconditionsurveyFormObj.framework_left_side.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.cladding_left_side === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_left_side).length > 0) {
+			if (  that.depotconditionsurveyFormObj.cladding_left_side != null &&  typeof that.depotconditionsurveyFormObj.cladding_left_side === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_left_side).length > 0) {
 				that.depotconditionsurveyFormObj.cladding_left_side = that.depotconditionsurveyFormObj.cladding_left_side.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.framework_top === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_top).length > 0) {
+			if (  that.depotconditionsurveyFormObj.framework_top != null &&  typeof that.depotconditionsurveyFormObj.framework_top === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_top).length > 0) {
 				that.depotconditionsurveyFormObj.framework_top = that.depotconditionsurveyFormObj.framework_top.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.cladding_top === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_top).length > 0) {
+			if (  that.depotconditionsurveyFormObj.cladding_top != null &&  typeof that.depotconditionsurveyFormObj.cladding_top === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_top).length > 0) {
 				that.depotconditionsurveyFormObj.cladding_top = that.depotconditionsurveyFormObj.cladding_top.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.framework_bottom === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_bottom).length > 0) {
+			if (  that.depotconditionsurveyFormObj.framework_bottom != null &&  typeof that.depotconditionsurveyFormObj.framework_bottom === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.framework_bottom).length > 0) {
 				that.depotconditionsurveyFormObj.framework_bottom = that.depotconditionsurveyFormObj.framework_bottom.id;
 			}
 
-			if (  typeof that.depotconditionsurveyFormObj.cladding_bottom === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_bottom).length > 0) {
+			if (  that.depotconditionsurveyFormObj.cladding_bottom != null &&  typeof that.depotconditionsurveyFormObj.cladding_bottom === 'object' &&  Object.keys(that.depotconditionsurveyFormObj.cladding_bottom).length > 0) {
 				that.depotconditionsurveyFormObj.cladding_bottom = that.depotconditionsurveyFormObj.cladding_bottom.id;
 			}
 			that.showLoading("Saving ...");
@@ -1184,6 +1198,8 @@ export default {
 		this.allRuptureDiscSeriesList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
 		this.allDippingPipeList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
 		this.allAirValveList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
+		this.allAirValveLabelList = [{ id: '1', text: 'Airline Valve'}, { id: '0', text: 'Air Valve with Gauge'}, ];
+		this.allTopLoadingLabelList = [{ id: '1', text: 'Top Loading'}, { id: '0', text: 'Top Discharge'}, ];
 		this.allDipstickList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
 		this.allManholeGasketList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
 		this.allWalkwayList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
@@ -1295,6 +1311,16 @@ export default {
 				if (Array.isArray(this.allAirValveList) && this.allAirValveList.length > 0) {
 				const selectedId = this.depotconditionsurveyFormObj.air_valve;
 				this.depotconditionsurveyFormObj.air_valve = this.allAirValveList.find(item => item.id === selectedId);}
+			}
+			if (this.depotconditionsurveyFormObj.air_valve_label) {
+				if (Array.isArray(this.allAirValveLabelList) && this.allAirValveLabelList.length > 0) {
+				const selectedId = this.depotconditionsurveyFormObj.air_valve_label;
+				this.depotconditionsurveyFormObj.air_valve_label = this.allAirValveLabelList.find(item => item.id === selectedId);}
+			}
+			if (this.depotconditionsurveyFormObj.top_loading_label) {
+				if (Array.isArray(this.allTopLoadingLabelList) && this.allTopLoadingLabelList.length > 0) {
+				const selectedId = this.depotconditionsurveyFormObj.top_loading_label;
+				this.depotconditionsurveyFormObj.top_loading_label = this.allTopLoadingLabelList.find(item => item.id === selectedId);}
 			}
 			if (this.depotconditionsurveyFormObj.dipstick) {
 				if (Array.isArray(this.allDipstickList) && this.allDipstickList.length > 0) {

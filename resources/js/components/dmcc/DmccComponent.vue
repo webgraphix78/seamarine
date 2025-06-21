@@ -80,7 +80,7 @@ export default {
 			readDmcc: {},
 			dmccForAdd: {},
 			allCompanyIdList: [],
-allSurveyorIdList: [],
+			allSurveyorIdList: [],
 
 		}
 	},

@@ -143,8 +143,15 @@ import DepotConditionSurveyComponent from './components/depotconditionsurvey/Dep
 import AddEditDepotConditionSurveyComponent from './components/depotconditionsurvey/AddEditDepotConditionSurveyComponent.vue';
 import ViewDepotConditionSurveyComponent from './components/depotconditionsurvey/ViewDepotConditionSurveyComponent.vue';
 
+//CscInspectionTank
+import CscInspectionTankComponent from './components/cscinspectiontank/CscInspectionTankComponent.vue';
+import AddEditCscInspectionTankComponent from './components/cscinspectiontank/AddEditCscInspectionTankComponent.vue';
+import ViewCscInspectionTankComponent from './components/cscinspectiontank/ViewCscInspectionTankComponent.vue';
 
-
+//SmTestingField
+import SmTestingFieldComponent from './components/smtestingfield/SmTestingFieldComponent.vue';
+import AddEditSmTestingFieldComponent from './components/smtestingfield/AddEditSmTestingFieldComponent.vue';
+import ViewSmTestingFieldComponent from './components/smtestingfield/ViewSmTestingFieldComponent.vue';
 
 
 
@@ -287,6 +294,18 @@ app.component('view-dmcc-component', ViewDmccComponent);
 app.component('depotconditionsurvey-component', DepotConditionSurveyComponent);
 app.component('addedit-depotconditionsurvey-component', AddEditDepotConditionSurveyComponent);
 app.component('view-depotconditionsurvey-component', ViewDepotConditionSurveyComponent);
+
+//CscInspectionTank
+app.component('cscinspectiontank-component', CscInspectionTankComponent);
+app.component('addedit-cscinspectiontank-component', AddEditCscInspectionTankComponent);
+app.component('view-cscinspectiontank-component', ViewCscInspectionTankComponent);
+
+//SmTestingField
+app.component('smtestingfield-component', SmTestingFieldComponent);
+app.component('addedit-smtestingfield-component', AddEditSmTestingFieldComponent);
+app.component('view-smtestingfield-component', ViewSmTestingFieldComponent);
+
+
 
 
 

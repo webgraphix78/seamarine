@@ -155,16 +155,15 @@
 						<label class="form-label text-uppercase fw-bold m-0">Dipping Pipe</label>
 						<div>
 							<span v-if="readDepotConditionSurvey.dipping_pipe=='1'">Yes</span>
-					<span v-if="readDepotConditionSurvey.dipping_pipe=='0'">No</span>
-		
+							<span v-if="readDepotConditionSurvey.dipping_pipe=='0'">No</span>
 						</div>
 					</div>
 					<div class="col-12">
-						<label class="form-label text-uppercase fw-bold m-0">Air Valve</label>
+						<label class="form-label text-uppercase fw-bold m-0" v-if="readDepotConditionSurvey.air_valve=='1'">Airline Valve</label>
+						<label class="form-label text-uppercase fw-bold m-0" v-if="readDepotConditionSurvey.air_valve=='0'">Air Valve with Gauge</label>
 						<div>
 							<span v-if="readDepotConditionSurvey.air_valve=='1'">Yes</span>
-					<span v-if="readDepotConditionSurvey.air_valve=='0'">No</span>
-		
+							<span v-if="readDepotConditionSurvey.air_valve=='0'">No</span>
 						</div>
 					</div>
 					<div class="col-12">
@@ -198,7 +197,8 @@
 						</div>
 					</div>
 					<div class="col-12">
-						<label class="form-label text-uppercase fw-bold m-0">Top Loading</label>
+						<label class="form-label text-uppercase fw-bold m-0" v-if="readDepotConditionSurvey.top_loading_label=='1'">Top Loading</label>
+						<label class="form-label text-uppercase fw-bold m-0" v-if="readDepotConditionSurvey.top_loading_label=='0'">Top Discharge</label>
 						<div>
 							<span v-if='readDepotConditionSurvey.top_loading'>{{ readDepotConditionSurvey.top_loading }}</span><span v-else><i>Not specified</i></span>
 						</div>
@@ -207,8 +207,7 @@
 						<label class="form-label text-uppercase fw-bold m-0">Top Loading Flange</label>
 						<div>
 							<span v-if="readDepotConditionSurvey.top_loading_flange=='1'">Yes</span>
-					<span v-if="readDepotConditionSurvey.top_loading_flange=='0'">No</span>
-		
+							<span v-if="readDepotConditionSurvey.top_loading_flange=='0'">No</span>
 						</div>
 					</div>
 				</div>
@@ -322,8 +321,8 @@
 						<label class="form-label text-uppercase fw-bold m-0">Rust</label>
 						<div>
 							<span v-if="readDepotConditionSurvey.rust=='1'">Yes</span>
-					<span v-if="readDepotConditionSurvey.rust=='0'">No</span>
-		
+							<span v-if="readDepotConditionSurvey.rust=='0'">No</span>
+							<span v-else>Not Specified</span>
 						</div>
 					</div>
 					<div class="col-12">
@@ -617,6 +616,24 @@ export default {
 			}
 		},
 			
+		parsedair_valve_label() {
+			try {
+				if(this.readDepotConditionSurvey && this.readDepotConditionSurvey.air_valve_label){
+					return JSON.parse(this.readDepotConditionSurvey.air_valve_label);
+				}
+			} catch (e) {
+				return {};
+			}
+		},
+		parsedtop_loading_label() {
+			try {
+				if(this.readDepotConditionSurvey && this.readDepotConditionSurvey.top_loading_label){
+					return JSON.parse(this.readDepotConditionSurvey.top_loading_label);
+				}
+			} catch (e) {
+				return {};
+			}
+		},
 		parseddipstick() {
 			try {
 				if(this.readDepotConditionSurvey && this.readDepotConditionSurvey.dipstick){
@@ -979,6 +996,8 @@ export default {
 			this.allRuptureDiscSeriesList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
 			this.allDippingPipeList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
 			this.allAirValveList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
+			this.allAirValveLabelList = [{ id: '1', text: 'Airline Valve'}, { id: '0', text: 'Air Valve with Gauge'}, ];
+			this.allTopLoadingLabelList = [{ id: '1', text: 'Top Loading'}, { id: '0', text: 'Top Discharge'}, ];
 			this.allDipstickList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
 			this.allManholeGasketList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
 			this.allWalkwayList = [{ id: '1', text: 'Yes'}, { id: '0', text: 'No'}, ];
