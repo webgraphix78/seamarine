@@ -204,16 +204,15 @@ class OnhireController extends Controller
 					return response()->json(["status" => -1, "messages" => array_merge(...array_values($validator->errors()->toArray()))]);
 				}
 				$objectToSave = $onhire;
+				// New setting for dt_inspection_date
+				if( isset($objectToSave["inspection_date"]) && strlen($objectToSave["inspection_date"]) > 0 ){
+					$objectToSave["dt_inspection_date"] = date("Y-m-d", strtotime($objectToSave["inspection_date"]));
+				}
 				if ($onhire["id"] == 0) {
 					if (!isset($objectToSave["created_by"]))
 						$objectToSave["created_by"] = Auth::id();
 				} else
 					unset($objectToSave["created_by"]);
-
-				// New setting for dt_inspection_date
-				if( isset($objectToSave["inspection_date"]) && strlen($objectToSave["inspection_date"]) > 0 ){
-					$objectToSave["dt_inspection_date"] = date("Y-m-d", strtotime($objectToSave["inspection_date"]));
-				}
 			}
 			if( $onhire["id"] == 0 ){
 				// Check if the user is a surveyor, set the status to 0
