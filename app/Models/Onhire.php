@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Onhire extends Model
 {
 	protected $table = "onhire";
-	protected $fillable = ['company_id', 'ref_no', 'customer_id', 'survey_type', 'inspection_date', 'inspection_location_id', 'form_liquid_tanks', 'surveyor_id', 'unit_nr', 'tank_type_id', 'tcode_id', 'manufacturer', 'iso_type', 'adr', 'serial_no', 'first_test', 'first_by', 'last_25', 'last_25_by', 'last_5', 'last_5_by', 'next_due_date', 'csc_acep_date', 'max_gross_wgt', 'tare_wgt', 'capacity', 'mawp', 'test_pressure', 'steam_tube_wp', 'steam_test_pressure', 'shell_tank_material', 'shell_head', 'shell_thickness', 'shell_head_thickness', 'onhire_main_id', 'onhire_ancillary_id', 'comment_1', 'comment_2', 'created_by', 'status'];
+	protected $fillable = ['company_id', 'ref_no', 'customer_id', 'survey_type', 'inspection_date', 'dt_inspection_date', 'inspection_location_id', 'form_liquid_tanks', 'surveyor_id', 'unit_nr', 'tank_type_id', 'tcode_id', 'manufacturer', 'iso_type', 'adr', 'serial_no', 'first_test', 'first_by', 'last_25', 'last_25_by', 'last_5', 'last_5_by', 'next_due_date', 'csc_acep_date', 'max_gross_wgt', 'tare_wgt', 'capacity', 'mawp', 'test_pressure', 'steam_tube_wp', 'steam_test_pressure', 'shell_tank_material', 'shell_head', 'shell_thickness', 'shell_head_thickness', 'onhire_main_id', 'onhire_ancillary_id', 'comment_1', 'comment_2', 'created_by', 'status'];
 	public $timestamps = true;
 
 	public function company()
