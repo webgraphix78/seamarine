@@ -76,7 +76,8 @@
 			</div>
 			<div class="col-md-3 col-6">
 				<div>
-					<input type="text" class="form-control" v-model="onhireForAdd.inspection_date" id="add_onhire_inspection_date" placeholder="Enter Inspection Date" />
+					<!-- <input type="text" class="form-control" v-model="onhireForAdd.inspection_date" id="add_onhire_inspection_date" placeholder="Enter Inspection Date" /> -->
+					<MaskInput v-model="onhireForAdd.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 				</div>
 			</div>
 			<div class="col-md-3 col-6 text-end">
