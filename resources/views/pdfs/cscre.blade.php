@@ -26,7 +26,7 @@
 		<tr><td>&nbsp;</td></tr>
 		<tr>
 			<td width="100%">
-				This certificate is issued to <strong>{{ $cscre['customer_name'] }}</strong> to certify that <strong>{{ $cscre['customer_name'] }}</strong>. attended inspections on <strong>{{$cscre['inspection_date']}}</strong> at <strong>{{$cscre['inspection_location']}}</strong>, <strong>{{$cscre['address']}}</strong> for the purpose of conducting a  General Condition survey been carried out on the equipment mentioned here below and that said equipment conforms to the standards of the Convention for Safe Containers 1972 (CSC) and IMO/CSC.1/Circ.138. Furthermore, it is declared that this same equipment appears sound at time of inspection and suitable for the carriage of cargo.
+				This certificate is issued to <strong>{{ $cscre['customer_name'] }}</strong> to certify that <strong>{{ $cscre['company_name'] }}</strong>. attended inspections on <strong>{{$cscre['inspection_date']}}</strong> at <strong>{{$cscre['inspection_location']}}</strong>, <strong>{{$cscre['address']}}</strong> for the purpose of conducting a  General Condition survey been carried out on the equipment mentioned here below and that said equipment conforms to the standards of the Convention for Safe Containers 1972 (CSC) and IMO/CSC.1/Circ.138. Furthermore, it is declared that this same equipment appears sound at time of inspection and suitable for the carriage of cargo.
 			</td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>

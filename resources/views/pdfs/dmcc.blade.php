@@ -76,7 +76,7 @@
 				<p style="margin:0px;text-align: center;">3</p>
 			</td>
 			<td width="70%">
-				<p style="margin:0px;">Pre‐trip inspection by Quality officer carried out</p>
+				<p style="margin:0px;">Pre-trip inspection by Quality officer carried out</p>
 			</td>
 			<td width="10%">
 				<p style="margin:0px;text-align: center;">{{$dmcc['pretrip_inspection_qc']}}</p>
@@ -199,7 +199,7 @@
 		</tr>
 		<tr>
 			<td width="10%">
-				<p style="margin:0px;">12</p>
+				<p style="margin:0px;text-align: center;">12</p>
 			</td>
 			<td width="70%">
 				<p style="margin:0px;">N2 pressure released from DN 40 Airline Valve. (1st Time)</p>
@@ -407,13 +407,13 @@
 					<tr><td>&nbsp;</td></tr>
 					<tr>
 						<td width="100%" valign="middle" style="margin: auto;">
-							<p>Total No. of N2 Cylinder consumed: {{ $dmcc['total_no_cylinder']}} Cylinders.</p>
+							<p>Total No. of N2 Cylinder consumed: {{ $dmcc['total_no_cylinder']}}.</p>
 						</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
 						<td width="100%" valign="middle" style="margin: auto;">
-							<p>M/S BSCL REp: {{ $dmcc['bscl_rep']}} Cylinders.</p>
+							<p>M/S BSCL REp: {{ $dmcc['bscl_rep']}}.</p>
 						</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>

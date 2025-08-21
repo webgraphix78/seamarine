@@ -334,6 +334,7 @@ class DepotConditionSurveyController extends Controller{
 			$signImage = 'data:image/'.strtoupper($signPathInfo['extension']).';base64,'.base64_encode(file_get_contents($signAbsolutePath));
 			$data["sign"] = $signImage;
 			$data["liquid_img"] = null;
+			$data["fixedImg"] = storage_path("app".DIRECTORY_SEPARATOR."uploads".DIRECTORY_SEPARATOR."depot_condition.jpg");
 			if( isset($depotconditionsurvey["liquid_img"]) && strlen($depotconditionsurvey["liquid_img"]) > 4 ){
 				// lets extract the walkway image
 				$walkwayPathInfo = pathinfo($depotconditionsurvey["liquid_img"]);

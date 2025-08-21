@@ -44,6 +44,11 @@
 			<td width="25%">NEXT INSPCTION DATE:<br>{{$depotconditionsurvey['next_inspection_date']}}</td>
 		</tr>
 	</table>
+	<table width="100%" cellspacing="0" cellpadding="2" border="0">
+		<tr>
+			<td style="text-align: center;"><img src="{{ $fixedImg }}"></td>
+		</tr>
+	</table>
 	<table width="100%"><tr><td>&nbsp;</td></tr></table>
 	<table width="100%" border="0" cellspacing="0" cellpadding="2" style="border-top: 1px solid #000000;">
 		<tr>
@@ -622,30 +627,17 @@
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 	</table>
-	<table width="100%"><tr><td>&nbsp;</td></tr></table>
+	<br pagebreak="true"/>
+	<p></p>
 	<table border="1" cellspacing="0" cellpadding="10" style="padding:10px;">
 		<tr>
 			<td>Exterior Remarks: {{ $depotconditionsurvey['exterior_remarks'] }}</td>
 		</tr>
 	</table>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<table width="100%"><tr><td>&nbsp;</td></tr></table>
 	<table width="100%" border="0" cellspacing="0" cellpadding="2" >
 		<tr><td>&nbsp;</td></tr>
 		<tr>
-			<td>Tank Container Mapping Chart for LIQUID tanks</td>
+			<td style="text-align:center;text-decoration:underline;"><h2>Tank Container Mapping Chart for LIQUID tanks</h2></td>
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 	</table>

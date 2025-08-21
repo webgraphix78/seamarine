@@ -297,6 +297,20 @@ Route::middleware(['auth'])->group(function () {
 	Route::get('/smtestingfield/add', [App\Http\Controllers\SmTestingFieldController::class, 'add'])->name('add-smtestingfield-page');
 	Route::get('/smtestingfield/view/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'view'])->name('view-smtestingfield-page');
 
+	// Prv
+	Route::get('/prv', [App\Http\Controllers\PrvController::class, 'index'])->name('prv-list');
+	Route::post('/prv/save', [App\Http\Controllers\PrvController::class, 'save'])->name('save-prv');
+	Route::post('/selectprv', [App\Http\Controllers\PrvController::class, 'loadForSelection'])->name('selectprv');
+	Route::get('/prv/edit/{id}', [App\Http\Controllers\PrvController::class, 'edit'])->name('edit-prv-page');
+	Route::post('/prv/duplicate', [App\Http\Controllers\PrvController::class, 'duplicateRecord'])->name('duplicate-prv-page');
+	Route::get('/prv/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\PrvController::class, 'viewFile'])->name('view-prv-file');
+	Route::get('/prv/export-to-pdf/{id}', [App\Http\Controllers\PrvController::class, 'exportToPDF'])->name('print-prv');
+	Route::post('/prv/upload-file', [App\Http\Controllers\PrvController::class, 'uploadFile'])->name('upload-prv-file');
+	Route::post('/prv/clear-file/{id}/{randomId}', [App\Http\Controllers\PrvController::class, 'clearFile'])->name('clear-prv-file');
+	Route::post('/prv/delete', [App\Http\Controllers\PrvController::class, 'deleteRecord'])->name('deleteprv');
+	Route::get('/prv/add', [App\Http\Controllers\PrvController::class, 'add'])->name('add-prv-page');
+	Route::get('/prv/view/{id}', [App\Http\Controllers\PrvController::class, 'view'])->name('view-prv-page');
+
 });
 // OnhireMain
 Route::get('/onhiremain', [App\Http\Controllers\OnhireMainController::class, 'index'])->name('onhiremain-list');

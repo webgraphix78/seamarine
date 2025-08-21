@@ -153,7 +153,10 @@ import SmTestingFieldComponent from './components/smtestingfield/SmTestingFieldC
 import AddEditSmTestingFieldComponent from './components/smtestingfield/AddEditSmTestingFieldComponent.vue';
 import ViewSmTestingFieldComponent from './components/smtestingfield/ViewSmTestingFieldComponent.vue';
 
-
+//Prv
+import PrvComponent from './components/prv/PrvComponent.vue';
+import AddEditPrvComponent from './components/prv/AddEditPrvComponent.vue';
+import ViewPrvComponent from './components/prv/ViewPrvComponent.vue';
 
 
 const app = createApp({})
@@ -305,7 +308,10 @@ app.component('smtestingfield-component', SmTestingFieldComponent);
 app.component('addedit-smtestingfield-component', AddEditSmTestingFieldComponent);
 app.component('view-smtestingfield-component', ViewSmTestingFieldComponent);
 
-
+//Prv
+app.component('prv-component', PrvComponent);
+app.component('addedit-prv-component', AddEditPrvComponent);
+app.component('view-prv-component', ViewPrvComponent);
 
 
 

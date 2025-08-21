@@ -123,3 +123,7 @@ Route::post('/cscinspectiontank/get-record/{id}', [App\Http\Controllers\CscInspe
 // SmTestingField	
 Route::post('/smtestingfield/get', [App\Http\Controllers\SmTestingFieldController::class, 'get'])->name('get-smtestingfield-list');
 Route::post('/smtestingfield/get-record/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'getRecord'])->name('get-smtestingfield-record');
+
+// Prv	
+Route::post('/prv/get', [App\Http\Controllers\PrvController::class, 'get'])->name('get-prv-list');
+Route::post('/prv/get-record/{id}', [App\Http\Controllers\PrvController::class, 'getRecord'])->name('get-prv-record');

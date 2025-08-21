@@ -11,6 +11,10 @@
 	</style>
 </head>
 <body>
+	
+	<table cellspacing="5" cellpadding="0">
+		<tr><td></td></tr>
+	</table>
 	<table cellspacing="5" cellpadding="0">
 		<tr>
 			<td width="25%">
@@ -22,16 +26,15 @@
 				<h3 style="text-align: center;margin: 0;padding: 0;">Date Of Issue: {{$stuffing['issue_date']}}</h3>
 			</td>
 		</tr>
-	</table>
-	<table cellspacing="5" cellpadding="0">
-		<tr><td></td></tr>
-	</table>
-	<table width="100%" cellspacing="0" cellpadding="5" border="0"  style="margin: 0 auto;">
+		
 		<tr>
 			<td width="100%">
 				<h3 style="text-decoration:underline; margin:0px;text-align:center;">{{$stuffing['rel_customer_id']['name']}}</h3>
 			</td>
 		</tr>
+	</table>
+	<table width="100%" cellspacing="0" cellpadding="3" border="0"  style="margin: auto;">
+		<tr><td>&nbsp;</td></tr>
 		<tr>
 			<td width="100%">
 				<h3 style="text-decoration:underline; margin:0px;text-align:center;">PORT STUFFING CHECK LIST</h3>
@@ -128,6 +131,8 @@
 			</td>
 		</tr>
 	</table>
+	<p></p>
+	<p></p>
 	<table width="100%" cellspacing="0" cellpadding="5" border="0"  style="margin: 0 auto;">
 		<tr>
 			<td width="100%">
@@ -214,6 +219,7 @@
 			</td>
 		</tr>
 	</table>
+	<br pagebreak="true"/>
 	<table width="100%" cellspacing="0" cellpadding="5" border="0"  style="margin: 0 auto;">
 		<tr>
 			<td width="100%">
@@ -300,10 +306,6 @@
 			</td>
 		</tr>
 	</table>
-	<p></p>
-	<p></p>
-	<p></p>
-	<p></p>
 	<p></p>
 	<table width="100%" cellspacing="0" cellpadding="5" border="0"  style="margin: 0 auto;">
 		<tr>
