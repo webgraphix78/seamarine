@@ -46,7 +46,7 @@
 	</table>
 	<table width="100%" cellspacing="0" cellpadding="2" border="0">
 		<tr>
-			<td style="text-align: center;"><img src="{{ $fixedImg }}">{{ $fixedImg }}</td>
+			<td style="text-align: center;"><img src="{{ $fixed_img }}"></td>
 		</tr>
 	</table>
 	<table width="100%"><tr><td>&nbsp;</td></tr></table>
