@@ -64,7 +64,7 @@
 	</ol>
 
 	@if(isset($jointsurvey['comments']) && $jointsurvey['comments'])
-	<p>{{ $jointsurvey['comments'] }}</p>
+	<p>Comments: <br>{{ $jointsurvey['comments'] }}</p>
 	@endif
 	<table width="100%" cellspacing="0" cellpadding="5" border="0"  style="margin: 0 auto;">
 		<tr>
