@@ -10,17 +10,19 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewPrv" @edit-object="prepareEditPrv" @toggle-object-status="deletePrv" @export-object="printPrv"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewPrv" @edit-object="prepareEditPrv"  @upload-Object="uploadImages" @toggle-object-status="deletePrv" @export-object="printPrv"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<!-- Upload Images -->
+				<UploadImages :dataprops="uploadDataprops" @refresh-object="refreshObject"></UploadImages>
+				<!-- Upload Images -->
 			</div>
 		</div>
-		
-		
 	</div>
 </template>
 <script>
 export default {
 	name: "Prvmaster",
 	props: ['current_user_id', 'all_permissions'],
+	emits: ['uploadImages'],
 	data(){
 		return{
 			dataprops: {
@@ -70,7 +72,11 @@ export default {
 						},
 					]
 				},
-				search: "simple"
+				search: "simple",
+			},
+			uploadDataprops: {
+				relatedObject: null,
+				name: "Prv",
 			},
 			addeditModal: null,
 			viewModal: null,
@@ -149,6 +155,11 @@ export default {
 		printPrv(prv) {
 			window.location = this.docRoot+'/prv/export-to-pdf/' + prv.id;
 			this.showToast("Printing. Please wait ...", "success", "bottom", 3000);
+		},
+		async uploadImages(prv) {
+			this.showLoading("Loading images ...");
+			await this.refreshObject(prv, "Prv", 1);
+			this.closeSwal();
 		},
 	},
 	async mounted() {

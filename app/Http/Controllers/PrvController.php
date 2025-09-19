@@ -267,6 +267,31 @@ class PrvController extends Controller{
 			$pdf->setFontSize(10);
 			$pdf->setTopMargin(round($pdf->headerHeight));
 			$pdf->writeHTML($html, true, false, true, false, '');
+			// Get images
+			$images = Media::where('object_id', $prv->id)->where('object_name', "Prv")->get();
+			if( count($images) > 0 ){
+				$pdf->SetMargins(0, 0, 0);
+				// Remove header and footer
+				$pdf->setPrintHeader(false);
+				$pdf->setPrintFooter(false);
+				foreach ($images as $image) {
+					$imageAbsolutePath = storage_path("app" . DIRECTORY_SEPARATOR . $image['url']);
+					list($imageWidth, $imageHeight) = getimagesize($imageAbsolutePath);
+					
+    				// Convert image dimensions to millimeters (assuming 96 DPI)
+					$dpi = 96;
+					$imageWidthMM = $imageWidth * 25.4 / $dpi;
+					$imageHeightMM = $imageHeight * 25.4 / $dpi;
+
+					$pdf->AddPage(($imageWidth > $imageHeight ? 'L' : 'P'), 'A4');//array($imageWidthMM, $imageHeightMM));
+					$pageWidth = $pdf->getPageWidth();
+					$pageHeight = $pdf->getPageHeight();
+					$pdf->Image(
+						$imageAbsolutePath, 
+						0, 0, $pageWidth, $pageHeight,
+						'', '', '', true, 300, '', false, false, 0, 'LT', false, false);
+				}
+			}
 			$pdf->Output($filename, 'D');
 		}
 		else{

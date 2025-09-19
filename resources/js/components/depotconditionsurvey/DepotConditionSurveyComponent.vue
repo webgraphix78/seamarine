@@ -10,7 +10,10 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewDepotConditionSurvey" @edit-object="prepareEditDepotConditionSurvey" @toggle-object-status="deleteDepotConditionSurvey" @export-object="printDepotConditionSurvey"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewDepotConditionSurvey" @edit-object="prepareEditDepotConditionSurvey" @upload-Object="uploadImages" @toggle-object-status="deleteDepotConditionSurvey" @export-object="printDepotConditionSurvey"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<!-- Upload Images -->
+				<UploadImages :dataprops="uploadDataprops" @refresh-object="refreshObject"></UploadImages>
+				<!-- Upload Images -->
 			</div>
 		</div>
 	</div>
@@ -360,6 +363,10 @@ export default {
 				},
 				search: "simple"
 			},
+			uploadDataprops: {
+				relatedObject: null,
+				name: "depot_condition_survey",
+			},
 			addeditModal: null,
 			viewModal: null,
 			currentUser: siteUserObject,
@@ -439,6 +446,11 @@ export default {
 		printDepotConditionSurvey(depotconditionsurvey) {
 			window.location = this.docRoot+'/depotconditionsurvey/export-to-pdf/' + depotconditionsurvey.id;
 			this.showToast("Printing. Please wait ...", "success", "bottom", 3000);
+		},
+		async uploadImages(depotconditionsurvey) {
+			this.showLoading("Loading images ...");
+			await this.refreshObject(depotconditionsurvey, "depot_condition_survey", 1);
+			this.closeSwal();
 		},
 	},
 	async mounted() {

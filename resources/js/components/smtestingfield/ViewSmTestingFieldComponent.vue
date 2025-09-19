@@ -64,8 +64,9 @@
 		<div class='row mb-4'>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Csc</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.csc'>{{ readSmTestingField.csc }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.csc_blank'>{{ readSmTestingField.csc_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 			<div class="col">
@@ -120,8 +121,9 @@
 		<div class='row mb-4'>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Tir</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.tir'>{{ readSmTestingField.tir }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.tir_blank'>{{ readSmTestingField.tir_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 			<div class="col">

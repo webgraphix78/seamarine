@@ -27,7 +27,6 @@
 				<p>Note: This inspection is performed subject to Seamarine Standard Terms and Conditions.</p>
 			</td>
 		</tr>
-		<tr><td>&nbsp;</td></tr>
 	</table>
 	
 	<table  width="100%" cellspacing="0" cellpadding="5" border="1">
@@ -43,13 +42,10 @@
 			<td>Manufacturer No: {{ $smtestingfield['mfg_sr_no'] }}</td>
 		</tr>
 	</table>
-	<table cellspacing="5" cellpadding="0">
-		<tr><td>&nbsp;</td></tr>
-	</table>
 	<table width="100%" cellspacing="0" cellpadding="2" border="0">
 		<tr><td style="text-decoration:underline;"><b>Applicable Regulations. Enter initial approval No. as applicable</b></td></tr>
 		<tr>
-			<td width="4%" style="border:1px solid #000;"></td>
+			<td width="4%" style="border:1px solid #000;text-align:center;">{{ $smtestingfield['csc_blank'] }}</td>
 			<td width="48%">CSC: {{ $smtestingfield['csc'] }}</td>
 			<td width="48%">UK-DOT: {{ $smtestingfield['uk_dot'] }}</td>
 		</tr>
@@ -69,7 +65,7 @@
 			<td width="48%">TC Impact: {{ $smtestingfield['tc_impact'] }}</td>
 		</tr>
 		<tr>
-			<td width="4%" style="border:1px solid #000;"></td>
+			<td width="4%" style="border:1px solid #000;text-align:center;">{{ $smtestingfield['tir_blank'] }}</td>
 			<td width="48%">TIR: {{ $smtestingfield['tir'] }}</td>
 			<td width="24%">UIC: {{ $smtestingfield['uic'] }}</td>
 			<td width="24%">FRA: {{ $smtestingfield['fra'] }}</td>
@@ -164,9 +160,7 @@
 						<td width="100%">Next CSC Due: {{ $smtestingfield['next_insp_date'] }}</td>
 					</tr>
 				</table>
-				<table cellspacing="5" cellpadding="0">
-					<tr><td>&nbsp;</td></tr>
-				</table>
+				<p></p>
 				<table border="1" cellspacing="0" cellpadding="2" style="border-collapse: collapse;">
 					<tr>
 						<td width="40%" align="center"><b>Inspections Performed</b></td>
@@ -226,9 +220,6 @@
 			</td>
 		</tr>
 	</table>
-	<table cellspacing="0" cellpadding="0">
-		<tr><td>&nbsp;</td></tr>
-	</table>
 	<table border="0" cellspacing="5" cellpadding="2">
 		<tr>
 			<td width="50%">
@@ -269,9 +260,7 @@
 						<td width="30%" align="center">{{ $smtestingfield['p_bursting_disc_2'] }}</td>
 					</tr>
 				</table>
-				<table cellspacing="5" cellpadding="0">
-					<tr><td>&nbsp;</td></tr>
-				</table>
+				<p></p>
 				<table border="1" cellspacing="0" cellpadding="2" style="border-collapse: collapse;">
 					<tr>
 						<td width="100%">Surveyors Name:</td>
@@ -292,6 +281,17 @@
 						</td>
 					</tr>
 				</table>
+			</td>
+		</tr>
+	</table>
+	<table width="100%" cellspacing="0" cellpadding="2" border="0">
+		<tr valign="bottom">
+			<td width="70%" valign="middle" style="text-align: left; margin: auto;">
+				<p></p>
+				<h4 style="font-size:10px;">Issued Without Any Prejudice</h4>
+			</td>
+			<td width="30%" style="text-align: center;" valign="bottom" rowspan="2">
+				<img src="{{ $sign }}" alt="Signature" width="60px"/>
 			</td>
 		</tr>
 	</table>

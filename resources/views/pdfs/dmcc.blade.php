@@ -384,7 +384,7 @@
 				<p style="margin:0px;text-align: center;">25</p>
 			</td>
 			<td width="70%">
-				<p style="margin:0px;">N2 pressure released from DN 40 Airline Valve. (3rdTime)</p>
+				<p style="margin:0px;">After loading inspection completed by QC officer & Loading Operation Completed</p>
 			</td>
 			<td width="10%">
 				<p style="margin:0px;text-align: center;">{{$dmcc['final_inspection_done']}}</p>
@@ -419,14 +419,14 @@
 					<tr><td>&nbsp;</td></tr>
 					<tr>
 						<td>
-							<h3>
+							<h4 style="font-size:10px;">
 								Surveyor Name: {{ $dmcc['rel_surveyor_id']['name'] }}
-							</h3>
+							</h4>
 						</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
-						<td><h3>Issued Without Any Prejudice</h3></td>
+						<td><h4 style="font-size:10px;">Issued Without Any Prejudice</h4></td>
 					</tr>
 				</table>
 			</td>

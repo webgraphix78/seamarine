@@ -571,7 +571,7 @@
 			</div>
 			<div class="row mb-4">
 				<div class="col-md-2 col-12  text-md-end px-1">
-					<label for="add_company_name" class="form-label text-uppercase fw-bold me-3">Upload Walkway Image</label>
+					<label for="add_company_name" class="form-label text-uppercase fw-bold me-3">Upload Mapping Chart</label>
 				</div>
 				<div class="col-md-7">
 					<div class="d-flex flex-row gap-3">

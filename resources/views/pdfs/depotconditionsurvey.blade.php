@@ -384,14 +384,12 @@
 		<tr><td>&nbsp;</td></tr>
 	</table>
 	<table width="100%" border="0" cellspacing="0" cellpadding="2" style="border-top: 1px solid #000000;">
-		<tr><td>&nbsp;</td></tr>
 		<tr>
 			<td align="center">
 				PLEASE INSPECT FOR THE FOLLOWING CONDITIONS AND CHECK THE APPROPRIATE BOX IF THE NAMED CONDITION IS NOT PRESENT ANY DEFECTS TO BE SPECIFIED IN THE COMMENTS AREA PROVIDED BELOW.
 			</td>
 		</tr>
 	</table>
-	<table width="100%"><tr><td>&nbsp;</td></tr></table>
 	<table width="100%" border="0" cellspacing="0" cellpadding="1" style="border-top: 1px solid #000000;">
 		<tr><td>&nbsp;</td></tr>
 		<tr>
@@ -627,13 +625,12 @@
 		</tr>
 		<tr><td>&nbsp;</td></tr>
 	</table>
-	<br pagebreak="true"/>
-	<p></p>
 	<table border="1" cellspacing="0" cellpadding="10" style="padding:10px;">
 		<tr>
 			<td>Exterior Remarks: {{ $depotconditionsurvey['exterior_remarks'] }}</td>
 		</tr>
 	</table>
+	<br pagebreak="true"/>
 	<table width="100%" border="0" cellspacing="0" cellpadding="2" >
 		<tr><td>&nbsp;</td></tr>
 		<tr>
@@ -672,9 +669,9 @@
 	<table width="100%" cellspacing="0" cellpadding="2" border="0">
 		<tr valign="middle">
 			<td width="75%" valign="middle" style="text-align: left; margin: auto;">
-				<p>Issued without any prejudice.</p>
+				<h4 style="font-size:10px;">Issued without any prejudice.</h4>
 				<p><b>NAME OF INSPECTOR</b></p>
-				<p>{{ $depotconditionsurvey['rel_surveyor_id']['name'] ?? 'Not Specified' }}</p>
+				<h4 style="font-size:10px;">{{ $depotconditionsurvey['rel_surveyor_id']['name'] ?? 'Not Specified' }}</h4>
 			</td>
 			<td width="25%" style="text-align: center;" valign="middle" rowspan="2">
 				<img src="{{ $sign }}" alt="Signature" width="70px"/>

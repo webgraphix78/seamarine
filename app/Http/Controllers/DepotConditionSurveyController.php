@@ -368,7 +368,7 @@ class DepotConditionSurveyController extends Controller{
 			$pdf->setTopMargin(round($pdf->headerHeight));
 			$pdf->writeHTML($html, true, false, true, false, '');
 			// Get images
-			$images = Media::where('object_id', $depotconditionsurvey->id)->where('object_name', "Depot Condition Survey")->get();
+			$images = Media::where('object_id', $depotconditionsurvey->id)->where('object_name', "depot_condition_survey")->get();
 			if( count($images) > 0 ){
 				$pdf->SetMargins(0, 0, 0, true);
 				// Remove header and footer

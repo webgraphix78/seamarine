@@ -70,8 +70,8 @@
 		<tr>
 			<td width="85%">
 				<p>&nbsp;</p>
-				<h3>Issued without any prejudice.</h3>
-				<h3>Surveyor: {{ $jointsurvey['surveyor']['name'] }}</h3>
+				<h4 style="font-size:10px;">Issued without any prejudice.</h4>
+				<h4 style="font-size:10px;">Surveyor: {{ $jointsurvey['surveyor']['name'] }}</h4>
 			</td>
 			<td width="15%" style="text-align: center;" rowspan="2">
 				<img src="{{ $sign }}">

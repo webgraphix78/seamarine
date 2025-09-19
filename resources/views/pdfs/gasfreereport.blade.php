@@ -225,14 +225,14 @@
 				<table width="100%">
 					<tr>
 						<td>
-							<h3>
+							<h4 style="font-size:10px;">
 								Surveyor Name: {{ $gasfreereport['rel_surveyor_id']['name'] ?? 'N/A' }}
-							</h3>
+							</h4>
 						</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
-						<td><h3>Issued Without Any Prejudice</h3></td>
+						<td><h4 style="font-size:10px;">Issued Without Any Prejudice</h4></td>
 					</tr>
 				</table>
 			</td>

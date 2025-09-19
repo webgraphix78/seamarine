@@ -400,7 +400,8 @@
 				<table width="100%">
 					<tr>
 						<td>
-							Surveyor Name: {{ $stuffing['rel_surveyor_id']['name'] ?? 'N/A' }}
+							<h4 style="font-size:10px;">Surveyor Name: {{ $stuffing['rel_surveyor_id']['name'] ?? 'N/A' }}</h4>
+							
 						</td>
 					</tr>
 					<tr><td>&nbsp;</td></tr>
@@ -409,7 +410,7 @@
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
-						<td>Issued Without Any Prejudice</td>
+						<td><h4 style="font-size:10px;">Issued Without Any Prejudice</h4></td>
 					</tr>
 				</table>
 			</td>

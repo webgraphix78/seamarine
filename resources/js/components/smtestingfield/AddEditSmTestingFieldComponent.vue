@@ -81,12 +81,10 @@
 		<div class='row mb-4'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_csc" class="form-label text-uppercase fw-bold me-3">Csc</label>
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.csc" id="add_cscinspectiontank_csc" placeholder="Enter Csc" >
-					
+				<div class="d-flex flex-row gap-2">
+					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.csc" id="add_cscinspectiontank_csc" placeholder="Enter Csc" >
+					<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.csc_blank" id="add_cscinspectiontank_csc" >
 				</div>
-				
 			</div>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_uk_dot" class="form-label text-uppercase fw-bold me-3">Uk Dot</label>
@@ -161,10 +159,9 @@
 		<div class='row mb-4'>
 			<div class="col-md-4">
 				<label for="add_cscinspectiontank_tir" class="form-label text-uppercase fw-bold me-3">Tir</label>
-				<div class="input-group">
-					
+				<div class="d-flex flex-row gap-2">
 					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.tir" id="add_cscinspectiontank_tir" placeholder="Enter Tir" >
-					
+					<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.tir_blank" id="add_cscinspectiontank_tir" >
 				</div>
 				
 			</div>
@@ -829,6 +826,7 @@ function initialState(){
 		mfg:'',
 		mfg_sr_no:'',
 		csc:'',
+		csc_blank: '',
 		uk_dot:'',
 		imdg:'',
 		us_dot:'',
@@ -837,6 +835,7 @@ function initialState(){
 		bam:'',
 		tc_impact:'',
 		tir:'',
+		tir_blank: '',
 		uic:'',
 		fra:'',
 		tank_mfg_year:'',
