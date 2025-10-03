@@ -288,7 +288,7 @@
 		<tr valign="bottom">
 			<td width="70%" valign="middle" style="text-align: left; margin: auto;">
 				<p></p>
-				<h4 style="font-size:10px;">Issued Without Any Prejudice</h4>
+				<h4 style="font-size:8px;">Issued Without Any Prejudice</h4>
 			</td>
 			<td width="30%" style="text-align: center;" valign="bottom" rowspan="2">
 				<img src="{{ $sign }}" alt="Signature" width="60px"/>

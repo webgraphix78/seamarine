@@ -669,7 +669,7 @@
 	<table width="100%" cellspacing="0" cellpadding="2" border="0">
 		<tr valign="middle">
 			<td width="75%" valign="middle" style="text-align: left; margin: auto;">
-				<h4 style="font-size:10px;">Issued without any prejudice.</h4>
+				<h4 style="font-size:8px;">Issued without any prejudice.</h4>
 				<p><b>NAME OF INSPECTOR</b></p>
 				<h4 style="font-size:10px;">{{ $depotconditionsurvey['rel_surveyor_id']['name'] ?? 'Not Specified' }}</h4>
 			</td>

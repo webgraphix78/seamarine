@@ -410,7 +410,7 @@
 					</tr>
 					<tr><td>&nbsp;</td></tr>
 					<tr>
-						<td><h4 style="font-size:10px;">Issued Without Any Prejudice</h4></td>
+						<td><h4 style="font-size:8px;">Issued Without Any Prejudice</h4></td>
 					</tr>
 				</table>
 			</td>
