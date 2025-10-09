@@ -118,7 +118,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/imo1/verify-tank-number', [App\Http\Controllers\Imo1Controller::class, 'verifyTankNumber'])->name('verify-imo1-tank-number');
 	Route::get('/imo1/view-file/{imo1Id}/{randomId}', [App\Http\Controllers\Imo1Controller::class, 'viewFile'])->name('view-imo1-file');
 	Route::post('/imo1/upload-file', [App\Http\Controllers\Imo1Controller::class, 'uploadFile'])->name('upload-imo1-file');
-	Route::post('/imo1/clear-file/{imo1Id}/{randomId}', [App\Http\Controllers\Imo1Controller::class, 'clearFile'])->name('clear-onhire-file');
+	Route::post('/imo1/clear-file/{imo1Id}/{randomId}', [App\Http\Controllers\Imo1Controller::class, 'clearFile'])->name('clear-imo1-file');
 	
 	// Imo5 Condition
 	Route::get('/imo5condition', [App\Http\Controllers\Imo5ConditionController::class, 'index'])->name('imo5condition-list');
@@ -204,6 +204,109 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/equipmentinspection/delete', [App\Http\Controllers\EquipmentInspectionController::class, 'deleteRecord'])->name('deleteequipmentinspection');
 	Route::get('/equipmentinspection/add', [App\Http\Controllers\EquipmentInspectionController::class, 'add'])->name('add-equipmentinspection-page');
 	Route::get('/equipmentinspection/view/{id}', [App\Http\Controllers\EquipmentInspectionController::class, 'view'])->name('view-equipmentinspection-page');
+
+	// Stuffing
+	Route::get('/stuffing', [App\Http\Controllers\StuffingController::class, 'index'])->name('stuffing-list');
+	Route::post('/stuffing/save', [App\Http\Controllers\StuffingController::class, 'save'])->name('save-stuffing');
+	Route::post('/selectstuffing', [App\Http\Controllers\StuffingController::class, 'loadForSelection'])->name('selectstuffing');
+	Route::get('/stuffing/edit/{id}', [App\Http\Controllers\StuffingController::class, 'edit'])->name('edit-stuffing-page');
+	Route::post('/stuffing/duplicate', [App\Http\Controllers\StuffingController::class, 'duplicateRecord'])->name('duplicate-stuffing-page');
+	Route::get('/stuffing/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\StuffingController::class, 'viewFile'])->name('view-stuffing-file');
+	Route::get('/stuffing/export-to-pdf/{id}', [App\Http\Controllers\StuffingController::class, 'exportToPDF'])->name('print-stuffing');
+	Route::post('/stuffing/upload-file', [App\Http\Controllers\StuffingController::class, 'uploadFile'])->name('upload-stuffing-file');
+	Route::post('/stuffing/clear-file/{id}/{randomId}', [App\Http\Controllers\StuffingController::class, 'clearFile'])->name('clear-stuffing-file');
+	Route::post('/stuffing/delete', [App\Http\Controllers\StuffingController::class, 'deleteRecord'])->name('deletestuffing');
+	Route::get('/stuffing/add', [App\Http\Controllers\StuffingController::class, 'add'])->name('add-stuffing-page');
+	Route::get('/stuffing/view/{id}', [App\Http\Controllers\StuffingController::class, 'view'])->name('view-stuffing-page');
+
+	// GasFreeReport
+	Route::get('/gasfreereport', [App\Http\Controllers\GasFreeReportController::class, 'index'])->name('gasfreereport-list');
+	Route::post('/gasfreereport/save', [App\Http\Controllers\GasFreeReportController::class, 'save'])->name('save-gasfreereport');
+	Route::post('/selectgasfreereport', [App\Http\Controllers\GasFreeReportController::class, 'loadForSelection'])->name('selectgasfreereport');
+	Route::get('/gasfreereport/edit/{id}', [App\Http\Controllers\GasFreeReportController::class, 'edit'])->name('edit-gasfreereport-page');
+	Route::post('/gasfreereport/duplicate', [App\Http\Controllers\GasFreeReportController::class, 'duplicateRecord'])->name('duplicate-gasfreereport-page');
+	Route::get('/gasfreereport/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\GasFreeReportController::class, 'viewFile'])->name('view-gasfreereport-file');
+	Route::get('/gasfreereport/export-to-pdf/{id}', [App\Http\Controllers\GasFreeReportController::class, 'exportToPDF'])->name('print-gasfreereport');
+	Route::post('/gasfreereport/upload-file', [App\Http\Controllers\GasFreeReportController::class, 'uploadFile'])->name('upload-gasfreereport-file');
+	Route::post('/gasfreereport/clear-file/{id}/{randomId}', [App\Http\Controllers\GasFreeReportController::class, 'clearFile'])->name('clear-gasfreereport-file');
+	Route::post('/gasfreereport/delete', [App\Http\Controllers\GasFreeReportController::class, 'deleteRecord'])->name('deletegasfreereport');
+	Route::get('/gasfreereport/add', [App\Http\Controllers\GasFreeReportController::class, 'add'])->name('add-gasfreereport-page');
+	Route::get('/gasfreereport/view/{id}', [App\Http\Controllers\GasFreeReportController::class, 'view'])->name('view-gasfreereport-page');
+	Route::post('/gasfreereport/verify-tank-number', [App\Http\Controllers\GasFreeReportController::class, 'verifyTankNumber'])->name('verify-gasfreereport-tank-number');
+
+	// Dmcc
+	Route::get('/dmcc', [App\Http\Controllers\DmccController::class, 'index'])->name('dmcc-list');
+	Route::post('/dmcc/save', [App\Http\Controllers\DmccController::class, 'save'])->name('save-dmcc');
+	Route::post('/selectdmcc', [App\Http\Controllers\DmccController::class, 'loadForSelection'])->name('selectdmcc');
+	Route::get('/dmcc/edit/{id}', [App\Http\Controllers\DmccController::class, 'edit'])->name('edit-dmcc-page');
+	Route::post('/dmcc/duplicate', [App\Http\Controllers\DmccController::class, 'duplicateRecord'])->name('duplicate-dmcc-page');
+	Route::get('/dmcc/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\DmccController::class, 'viewFile'])->name('view-dmcc-file');
+	Route::get('/dmcc/export-to-pdf/{id}', [App\Http\Controllers\DmccController::class, 'exportToPDF'])->name('print-dmcc');
+	Route::post('/dmcc/upload-file', [App\Http\Controllers\DmccController::class, 'uploadFile'])->name('upload-dmcc-file');
+	Route::post('/dmcc/clear-file/{id}/{randomId}', [App\Http\Controllers\DmccController::class, 'clearFile'])->name('clear-dmcc-file');
+	Route::post('/dmcc/delete', [App\Http\Controllers\DmccController::class, 'deleteRecord'])->name('deletedmcc');
+	Route::get('/dmcc/add', [App\Http\Controllers\DmccController::class, 'add'])->name('add-dmcc-page');
+	Route::get('/dmcc/view/{id}', [App\Http\Controllers\DmccController::class, 'view'])->name('view-dmcc-page');
+	Route::post('/dmcc/verify-tank-number', [App\Http\Controllers\DmccController::class, 'verifyTankNumber'])->name('verify-dmcc-tank-number');
+
+	// DepotConditionSurvey
+	Route::get('/depotconditionsurvey', [App\Http\Controllers\DepotConditionSurveyController::class, 'index'])->name('depotconditionsurvey-list');
+	Route::post('/depotconditionsurvey/save', [App\Http\Controllers\DepotConditionSurveyController::class, 'save'])->name('save-depotconditionsurvey');
+	Route::post('/selectdepotconditionsurvey', [App\Http\Controllers\DepotConditionSurveyController::class, 'loadForSelection'])->name('selectdepotconditionsurvey');
+	Route::get('/depotconditionsurvey/edit/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'edit'])->name('edit-depotconditionsurvey-page');
+	Route::post('/depotconditionsurvey/duplicate', [App\Http\Controllers\DepotConditionSurveyController::class, 'duplicateRecord'])->name('duplicate-depotconditionsurvey-page');
+	Route::get('/depotconditionsurvey/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\DepotConditionSurveyController::class, 'viewFile'])->name('view-depotconditionsurvey-file');
+	Route::get('/depotconditionsurvey/export-to-pdf/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'exportToPDF'])->name('print-depotconditionsurvey');
+	Route::post('/depotconditionsurvey/upload-file', [App\Http\Controllers\DepotConditionSurveyController::class, 'uploadFile'])->name('upload-depotconditionsurvey-file');
+	Route::post('/depotconditionsurvey/clear-file/{id}/{randomId}', [App\Http\Controllers\DepotConditionSurveyController::class, 'clearFile'])->name('clear-depotconditionsurvey-file');
+	Route::post('/depotconditionsurvey/delete', [App\Http\Controllers\DepotConditionSurveyController::class, 'deleteRecord'])->name('deletedepotconditionsurvey');
+	Route::get('/depotconditionsurvey/add', [App\Http\Controllers\DepotConditionSurveyController::class, 'add'])->name('add-depotconditionsurvey-page');
+	Route::get('/depotconditionsurvey/view/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'view'])->name('view-depotconditionsurvey-page');
+	// Route::get('/depotconditionsurvey/view-file/{depotconditionsurveyId}/{randomId}', [App\Http\Controllers\DepotConditionSurveyController::class, 'viewFile'])->name('view-depotconditionsurvey-file');
+	Route::post('/depotconditionsurvey/verify-tank-number', [App\Http\Controllers\DepotConditionSurveyController::class, 'verifyTankNumber'])->name('verify-depotconditionsurvey-tank-number');
+
+	// CscInspectionTank
+	Route::get('/cscinspectiontank', [App\Http\Controllers\CscInspectionTankController::class, 'index'])->name('cscinspectiontank-list');
+	Route::post('/cscinspectiontank/save', [App\Http\Controllers\CscInspectionTankController::class, 'save'])->name('save-cscinspectiontank');
+	Route::post('/selectcscinspectiontank', [App\Http\Controllers\CscInspectionTankController::class, 'loadForSelection'])->name('selectcscinspectiontank');
+	Route::get('/cscinspectiontank/edit/{id}', [App\Http\Controllers\CscInspectionTankController::class, 'edit'])->name('edit-cscinspectiontank-page');
+	Route::post('/cscinspectiontank/duplicate', [App\Http\Controllers\CscInspectionTankController::class, 'duplicateRecord'])->name('duplicate-cscinspectiontank-page');
+	Route::get('/cscinspectiontank/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\CscInspectionTankController::class, 'viewFile'])->name('view-cscinspectiontank-file');
+	Route::get('/cscinspectiontank/export-to-pdf/{id}', [App\Http\Controllers\CscInspectionTankController::class, 'exportToPDF'])->name('print-cscinspectiontank');
+	Route::post('/cscinspectiontank/upload-file', [App\Http\Controllers\CscInspectionTankController::class, 'uploadFile'])->name('upload-cscinspectiontank-file');
+	Route::post('/cscinspectiontank/clear-file/{id}/{randomId}', [App\Http\Controllers\CscInspectionTankController::class, 'clearFile'])->name('clear-cscinspectiontank-file');
+	Route::post('/cscinspectiontank/delete', [App\Http\Controllers\CscInspectionTankController::class, 'deleteRecord'])->name('deletecscinspectiontank');
+	Route::get('/cscinspectiontank/add', [App\Http\Controllers\CscInspectionTankController::class, 'add'])->name('add-cscinspectiontank-page');
+	Route::get('/cscinspectiontank/view/{id}', [App\Http\Controllers\CscInspectionTankController::class, 'view'])->name('view-cscinspectiontank-page');
+
+	// SmTestingField
+	Route::get('/smtestingfield', [App\Http\Controllers\SmTestingFieldController::class, 'index'])->name('smtestingfield-list');
+	Route::post('/smtestingfield/save', [App\Http\Controllers\SmTestingFieldController::class, 'save'])->name('save-smtestingfield');
+	Route::post('/selectsmtestingfield', [App\Http\Controllers\SmTestingFieldController::class, 'loadForSelection'])->name('selectsmtestingfield');
+	Route::get('/smtestingfield/edit/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'edit'])->name('edit-smtestingfield-page');
+	Route::post('/smtestingfield/duplicate', [App\Http\Controllers\SmTestingFieldController::class, 'duplicateRecord'])->name('duplicate-smtestingfield-page');
+	Route::get('/smtestingfield/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\SmTestingFieldController::class, 'viewFile'])->name('view-smtestingfield-file');
+	Route::get('/smtestingfield/export-to-pdf/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'exportToPDF'])->name('print-smtestingfield');
+	Route::post('/smtestingfield/upload-file', [App\Http\Controllers\SmTestingFieldController::class, 'uploadFile'])->name('upload-smtestingfield-file');
+	Route::post('/smtestingfield/clear-file/{id}/{randomId}', [App\Http\Controllers\SmTestingFieldController::class, 'clearFile'])->name('clear-smtestingfield-file');
+	Route::post('/smtestingfield/delete', [App\Http\Controllers\SmTestingFieldController::class, 'deleteRecord'])->name('deletesmtestingfield');
+	Route::get('/smtestingfield/add', [App\Http\Controllers\SmTestingFieldController::class, 'add'])->name('add-smtestingfield-page');
+	Route::get('/smtestingfield/view/{id}', [App\Http\Controllers\SmTestingFieldController::class, 'view'])->name('view-smtestingfield-page');
+
+	// Prv
+	Route::get('/prv', [App\Http\Controllers\PrvController::class, 'index'])->name('prv-list');
+	Route::post('/prv/save', [App\Http\Controllers\PrvController::class, 'save'])->name('save-prv');
+	Route::post('/selectprv', [App\Http\Controllers\PrvController::class, 'loadForSelection'])->name('selectprv');
+	Route::get('/prv/edit/{id}', [App\Http\Controllers\PrvController::class, 'edit'])->name('edit-prv-page');
+	Route::post('/prv/duplicate', [App\Http\Controllers\PrvController::class, 'duplicateRecord'])->name('duplicate-prv-page');
+	Route::get('/prv/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\PrvController::class, 'viewFile'])->name('view-prv-file');
+	Route::get('/prv/export-to-pdf/{id}', [App\Http\Controllers\PrvController::class, 'exportToPDF'])->name('print-prv');
+	Route::post('/prv/upload-file', [App\Http\Controllers\PrvController::class, 'uploadFile'])->name('upload-prv-file');
+	Route::post('/prv/clear-file/{id}/{randomId}', [App\Http\Controllers\PrvController::class, 'clearFile'])->name('clear-prv-file');
+	Route::post('/prv/delete', [App\Http\Controllers\PrvController::class, 'deleteRecord'])->name('deleteprv');
+	Route::get('/prv/add', [App\Http\Controllers\PrvController::class, 'add'])->name('add-prv-page');
+	Route::get('/prv/view/{id}', [App\Http\Controllers\PrvController::class, 'view'])->name('view-prv-page');
+
 });
 // OnhireMain
 Route::get('/onhiremain', [App\Http\Controllers\OnhireMainController::class, 'index'])->name('onhiremain-list');

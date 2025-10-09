@@ -6,7 +6,7 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">refer equipment</h4>
-							<a id="add_referequipment_btn" class="btn btn-warning border-dark btn-sm" :href="this.docRoot+'/referequipment/add'" role="button">Add</a>
+							<a id="add_referequipment_btn" class="btn btn-success btn-sm" :href="this.docRoot+'/referequipment/add'" role="button">Add</a>
 						</div>
 					</div>
 				</div>
@@ -174,11 +174,11 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadMasterData(this.docRoot+'/user',{});
-		this.allInspectionLocationIdList = await this.loadMasterData(this.docRoot+'/user',{});
-		this.allCustomerIdList = await this.loadMasterData(this.docRoot+'/user',{});
+		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/user',{});
+		this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/user',{});
+		this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/user',{});
 		this.allContainerTypeList = [{ id: '1', title: '20RF'}, { id: '2', title: '40RF'}, ];
-		this.allSurveyorIdList = await this.loadMasterData(this.docRoot+'/user',{});
+		this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/user',{});
 
 	}
 }

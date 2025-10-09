@@ -123,8 +123,40 @@ import EquipmentInspectionComponent from './components/equipmentinspection/Equip
 import AddEditEquipmentInspectionComponent from './components/equipmentinspection/AddEditEquipmentInspectionComponent.vue';
 import ViewEquipmentInspectionComponent from './components/equipmentinspection/ViewEquipmentInspectionComponent.vue';
 
+//Stuffing
+import StuffingComponent from './components/stuffing/StuffingComponent.vue';
+import AddEditStuffingComponent from './components/stuffing/AddEditStuffingComponent.vue';
+import ViewStuffingComponent from './components/stuffing/ViewStuffingComponent.vue';
 
+//GasFreeReport
+import GasFreeReportComponent from './components/gasfreereport/GasFreeReportComponent.vue';
+import AddEditGasFreeReportComponent from './components/gasfreereport/AddEditGasFreeReportComponent.vue';
+import ViewGasFreeReportComponent from './components/gasfreereport/ViewGasFreeReportComponent.vue';
 
+//Dmcc
+import DmccComponent from './components/dmcc/DmccComponent.vue';
+import AddEditDmccComponent from './components/dmcc/AddEditDmccComponent.vue';
+import ViewDmccComponent from './components/dmcc/ViewDmccComponent.vue';
+
+//DepotConditionSurvey
+import DepotConditionSurveyComponent from './components/depotconditionsurvey/DepotConditionSurveyComponent.vue';
+import AddEditDepotConditionSurveyComponent from './components/depotconditionsurvey/AddEditDepotConditionSurveyComponent.vue';
+import ViewDepotConditionSurveyComponent from './components/depotconditionsurvey/ViewDepotConditionSurveyComponent.vue';
+
+//CscInspectionTank
+import CscInspectionTankComponent from './components/cscinspectiontank/CscInspectionTankComponent.vue';
+import AddEditCscInspectionTankComponent from './components/cscinspectiontank/AddEditCscInspectionTankComponent.vue';
+import ViewCscInspectionTankComponent from './components/cscinspectiontank/ViewCscInspectionTankComponent.vue';
+
+//SmTestingField
+import SmTestingFieldComponent from './components/smtestingfield/SmTestingFieldComponent.vue';
+import AddEditSmTestingFieldComponent from './components/smtestingfield/AddEditSmTestingFieldComponent.vue';
+import ViewSmTestingFieldComponent from './components/smtestingfield/ViewSmTestingFieldComponent.vue';
+
+//Prv
+import PrvComponent from './components/prv/PrvComponent.vue';
+import AddEditPrvComponent from './components/prv/AddEditPrvComponent.vue';
+import ViewPrvComponent from './components/prv/ViewPrvComponent.vue';
 
 
 const app = createApp({})
@@ -246,6 +278,40 @@ app.component('equipmentinspection-component', EquipmentInspectionComponent);
 app.component('addedit-equipmentinspection-component', AddEditEquipmentInspectionComponent);
 app.component('view-equipmentinspection-component', ViewEquipmentInspectionComponent);
 
+//Stuffing
+app.component('stuffing-component', StuffingComponent);
+app.component('addedit-stuffing-component', AddEditStuffingComponent);
+app.component('view-stuffing-component', ViewStuffingComponent);
+
+//GasFreeReport
+app.component('gasfreereport-component', GasFreeReportComponent);
+app.component('addedit-gasfreereport-component', AddEditGasFreeReportComponent);
+app.component('view-gasfreereport-component', ViewGasFreeReportComponent);
+
+//Dmcc
+app.component('dmcc-component', DmccComponent);
+app.component('addedit-dmcc-component', AddEditDmccComponent);
+app.component('view-dmcc-component', ViewDmccComponent);
+
+//DepotConditionSurvey
+app.component('depotconditionsurvey-component', DepotConditionSurveyComponent);
+app.component('addedit-depotconditionsurvey-component', AddEditDepotConditionSurveyComponent);
+app.component('view-depotconditionsurvey-component', ViewDepotConditionSurveyComponent);
+
+//CscInspectionTank
+app.component('cscinspectiontank-component', CscInspectionTankComponent);
+app.component('addedit-cscinspectiontank-component', AddEditCscInspectionTankComponent);
+app.component('view-cscinspectiontank-component', ViewCscInspectionTankComponent);
+
+//SmTestingField
+app.component('smtestingfield-component', SmTestingFieldComponent);
+app.component('addedit-smtestingfield-component', AddEditSmTestingFieldComponent);
+app.component('view-smtestingfield-component', ViewSmTestingFieldComponent);
+
+//Prv
+app.component('prv-component', PrvComponent);
+app.component('addedit-prv-component', AddEditPrvComponent);
+app.component('view-prv-component', ViewPrvComponent);
 
 
 

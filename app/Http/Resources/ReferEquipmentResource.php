@@ -81,6 +81,7 @@ class ReferEquipmentResource extends JsonResource
 			'comments' => $this->comments,
 			'surveyor_id' => $this->surveyor_id,
 			'rel_surveyor_id' => $this->rel_surveyor_id,
+			'status' => $this->status,
 			'deleted_at' => $this->deleted_at,
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,

@@ -18,13 +18,12 @@ class ActionsService{
         $canDuplicate = false;
 		$canDelete = false;
 		if ( $roleId > 0 ) {
-			if ($roleId == 1)
+			if ($roleId > 0)
 				$isUserAdmin = true;
 			else {
 				//Take this to common method?
 				$permissions = PlatformObject::
-					where('role_id', $roleId)
-					->where('name', $objectName)
+					where('name', $objectName)
 					->first();
 				if ($permissions !== null) {
 					$canExport = ($permissions->can_export ? true : false);
@@ -57,8 +56,7 @@ class ActionsService{
 		}else {
 			// Common code for authorization
 			$permissions = PlatformObject::
-				where('role_id', $roleId)
-				->where('name', $objectName)
+				where('name', $objectName)
 				->first();
 			$all_permissions = "1";
 			if ($permissions !== null) {

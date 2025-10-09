@@ -90,10 +90,11 @@ class EquipmentInspectionResource extends JsonResource
 			'afg_inspection_hatch_seal' => $this->afg_inspection_hatch_seal,
 			'afg_inspection_hatch_comments' => $this->afg_inspection_hatch_comments,
 			'comments' => $this->comments,
+			
+			'status' => $this->status,
 			'deleted_at' => $this->deleted_at,
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,
-
 			'current_user_admin' => 1,
 			'actions' => $actions
 		];

@@ -6,7 +6,7 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">cscre</h4>
-							<a id="add_cscre_btn" class="btn btn-warning border-dark btn-sm" :href="this.docRoot+'/cscre/add'" role="button">Add</a>
+							<a id="add_cscre_btn" class="btn btn-success border-dark btn-sm" :href="this.docRoot+'/cscre/add'" role="button">Add</a>
 						</div>
 					</div>
 				</div>
@@ -29,8 +29,8 @@ export default {
 				columns: [
 					{ title: 'Ref No', property: 'ref_no', sortable: true, },
 					{ title: 'Company Name', property: 'rel_company_id.name', alt_value: 'Not Specified', sortable: true, },
-					{ title: 'This is certify that the undersigned surveyor did, at the request of', property: 'request_of_name', sortable: true, },
-					{ title: ', attend', property: 'attend', sortable: true, },
+					{ title: 'Customer Name', property: 'customer_name', sortable: true, },
+					{ title: 'serial_no', property: 'serial_no', sortable: true, },
 				],
 				data_to_send: { current_user_id: this.current_user_id } ,
 				reload: false,
@@ -48,38 +48,38 @@ export default {
 							type: "relation",
 							source: { api: 'user', id: 'id', value: 'name' } 
 						},                        {
-							title: "This is certify that the undersigned surveyor did, at the request of",
-							property: "request_of_name",
+							title: "Customer Name",
+							property: "customer_name",
 							type: "text",
 							
 						},
 						{
-							title: ", attend",
-							property: "attend",
+							title: "serial_no",
+							property: "serial_no",
 							type: "text",
 							
 						},
 						{
-							title: ", of",
-							property: "of_name",
+							title: "company name",
+							property: "company_name",
 							type: "text",
 							
 						},
 						{
-							title: "on the",
-							property: "attend_day",
+							title: "inspection date",
+							property: "inspection_date",
 							type: "text",
 							
 						},
 						{
-							title: "day of",
-							property: "attend_month",
+							title: "inspection location",
+							property: "inspection_location",
 							type: "text",
 							
 						},
 						{
-							title: "Unit Number",
-							property: "unit_no",
+							title: "container no",
+							property: "container_no",
 							type: "text",
 							
 						},
