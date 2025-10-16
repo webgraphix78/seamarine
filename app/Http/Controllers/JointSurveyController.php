@@ -20,20 +20,16 @@ class JointSurveyController extends Controller
 	{
 		$component = 'jointsurvey-component';
 		$current_user_id = auth()->id();
-		if (auth()->user()->role_id == 1) {
-			$all_permissions = "111";
-		} else {
-			// Common code for authorization
-			$platformObject = PlatformObject::where('name', 'JointSurvey')->first();
-			$permissions = DB::table('role_object_mapping')
-				->where('role_id', auth()->user()->role_id)
-				->where('platform_object_id', $platformObject->id)
-				->first();
-			$all_permissions = "1";
-			if ($permissions !== null) {
-				$all_permissions .= ($permissions->can_add_edit ? "1" : "0");
-				$all_permissions .= ($permissions->can_delete ? "1" : "0");
-			} else
+		switch(auth()->user()->role_id){
+			case 2:
+				$all_permissions = "100";
+				break;
+			case 1:
+			case 3:
+			case 4:
+				$all_permissions = "111";
+				break;
+			default:
 				abort(403);
 		}
 		return view('common.index', compact('component', 'current_user_id', 'all_permissions'));
