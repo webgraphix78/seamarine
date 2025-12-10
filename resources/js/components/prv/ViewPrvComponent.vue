@@ -8,33 +8,34 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Ref</label>
 				<div>
 					<span v-if='readPrv.ref'>{{ readPrv.ref }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Date Of Issue</label>
 				<div>
 					<span v-if='readPrv.date_of_issue'>{{ readPrv.date_of_issue }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'><div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Company Name</label>
 				<div>
 					<span v-if='readPrv.rel_company_id?.name'>{{ readPrv.rel_company_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Customer Name</label>
 				<div>
 					<span v-if='readPrv.rel_customer_id?.name'>{{ readPrv.rel_customer_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Location Id</label>
 				<div>
 					<span v-if='readPrv.rel_inspection_location_id?.name'>{{ readPrv.rel_inspection_location_id.name }}</span><span v-else><i>Not specified</i></span>
@@ -49,14 +50,14 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Tank No</label>
 				<div>
 					<span v-if='readPrv.tank_no'>{{ readPrv.tank_no }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Date</label>
 				<div>
 					<span v-if='readPrv.inspection_date'>{{ readPrv.inspection_date }}</span><span v-else><i>Not specified</i></span>

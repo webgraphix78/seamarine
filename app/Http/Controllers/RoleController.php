@@ -125,9 +125,20 @@ class RoleController extends Controller{
 
 	public function getPermittedObjects(Request $request){
 		$input = $request->all();
-		if( isset($input["role_id"]) ){
-			$permittedObjects = PlatformObject::get();
-			return response()->json(["status" => 1, "permitted_objects" => $permittedObjects]);
+		if( isset($input["roles"]) ){
+			$permittedObjects = [];
+			foreach( $input["roles"] as $role ){
+				$roleObjects = PlatformObject::whereJsonContains('permissions', ['role_id' => (int)$role])->get();
+				array_push($permittedObjects, $roleObjects);
+			}
+			// remove duplicates and group by section title
+			$groupedObjects = collect($permittedObjects)
+				->flatten(1)
+				->unique(function($item){
+					return $item->id;
+				})
+				->groupBy('section_title');
+			return response()->json(["status" => 1, "permitted_objects" => $groupedObjects]);
 		}
 		else
 			return response()->json(["status" => -1]);

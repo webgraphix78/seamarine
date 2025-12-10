@@ -95,6 +95,12 @@ class ReferEquipmentController extends Controller
 				}
 			}
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 2) {
+			// Wait
+			$referequipmentList = $referequipmentList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")
 				$referequipmentList = $referequipmentList->orderByDesc(trim($input["sortBy"]));

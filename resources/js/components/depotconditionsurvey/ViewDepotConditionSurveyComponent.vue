@@ -16,94 +16,94 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-md-0 gy-3'>
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Ref No</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.ref_no'>{{ readDepotConditionSurvey.ref_no }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Company Id</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.rel_company_id?.name'>{{ readDepotConditionSurvey.rel_company_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Date</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.inspection_date'>{{ readDepotConditionSurvey.inspection_date }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Mfg Sr No</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.mfg_sr_no'>{{ readDepotConditionSurvey.mfg_sr_no }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Last Test Date</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.last_test_date'>{{ readDepotConditionSurvey.last_test_date }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
-				<label class="form-label text-uppercase fw-bold m-0">Customer Id</label>
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-4">
+			<label class="form-label text-uppercase fw-bold m-0">Customer Id</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.rel_customer_id?.name'>{{ readDepotConditionSurvey.rel_customer_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Mgw</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.mgw'>{{ readDepotConditionSurvey.mgw }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Tare Wt</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.tare_wt'>{{ readDepotConditionSurvey.tare_wt }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Iso Type</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.iso_type'>{{ readDepotConditionSurvey.iso_type }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Capacity</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.capacity'>{{ readDepotConditionSurvey.capacity }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Location Id</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.rel_inspection_location_id?.name'>{{ readDepotConditionSurvey.rel_inspection_location_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Date Of Mfg</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.date_of_mfg'>{{ readDepotConditionSurvey.date_of_mfg }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Mfg</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.mfg'>{{ readDepotConditionSurvey.mfg }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Next Inspection Date</label>
 				<div>
 					<span v-if='readDepotConditionSurvey.next_inspection_date'>{{ readDepotConditionSurvey.next_inspection_date }}</span><span v-else><i>Not specified</i></span>
@@ -491,7 +491,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Liquid Tank No</label>
 				<div>

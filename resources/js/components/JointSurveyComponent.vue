@@ -21,14 +21,14 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
 					</div>
 					<div class="modal-body">
-						<div class="row mb-4">
-							<div class="col-2">
+						<div class="row mb-4 gy-3 gy-md-0">
+							<div class="col-md-2">
 								<label for="add_jointsurvey_ref_no" class="form-label text-uppercase fw-bold me-3">Ref No</label>
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.ref_no" id="add_jointsurvey_ref_no" placeholder="ref"/>
 								</div>
 							</div>
-							<div class="col-8">
+							<div class="col-md-8">
 								<label for="add_jointsurvey_company_id" class="form-label text-uppercase fw-bold me-3">Company <span class="mandatory">*</span></label>
 								<div>
 									<select class="form-select" v-model="jointsurveyForAdd.company_id" id="add_company_id">
@@ -41,7 +41,7 @@
 								</div>
 								<div v-if="v$.jointsurveyForAdd.company_id.$error" class="mandatory ms-3">Mandatory</div>
 							</div>
-							<div class="col-2">
+							<div class="col-md-2">
 								<label for="add_jointsurvey_date_of_issue" class="form-label text-uppercase fw-bold me-3">Date Of Issue</label>
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.date_of_issue" id="add_jointsurvey_date_of_issue" placeholder="Enter Date Of Issue" />
@@ -113,10 +113,10 @@
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 								<label for="add_jointsurvey_tank_no" class="form-label text-uppercase fw-bold mb-0">Tank No <span class="mandatory">*</span></label>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4 col-6">
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.tank_no" id="add_jointsurvey_tank_no" placeholder="Enter Tank No" />
 								</div>
@@ -124,70 +124,70 @@
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 								<label for="add_jointsurvey_mfg_date" class="form-label text-uppercase fw-bold mb-0">Mfg Date</label>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4 col-6">
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.mfg_date" id="add_jointsurvey_mfg_date" placeholder="Enter Mfg Date" />
 								</div>
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 								<label for="add_jointsurvey_mgw" class="form-label text-uppercase fw-bold mb-0">Mgw</label>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4 col-6">
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.mgw" id="add_jointsurvey_mgw" placeholder="Enter Mgw" />
 								</div>
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 								<label for="add_jointsurvey_csc" class="form-label text-uppercase fw-bold mb-0">Csc</label>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4 col-6">
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.csc" id="add_jointsurvey_csc" placeholder="Enter Csc" />
 								</div>
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 								<label for="add_jointsurvey_tare_weight" class="form-label text-uppercase fw-bold mb-0">Tare Weight</label>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4 col-6">
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.tare_weight" id="add_jointsurvey_tare_weight" placeholder="Enter Tare Weight" />
 								</div>
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-3 d-flex justify-content-end align-items-center">
+							<div class="col-md-3 col-6 d-flex justify-content-end align-items-center">
 								<label for="add_jointsurvey_capacity" class="form-label text-uppercase fw-bold mb-0">Capacity</label>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4 col-6">
 								<div>
 									<input type="text" class="form-control" v-model="jointsurveyForAdd.capacity" id="add_jointsurvey_capacity" placeholder="Enter Capacity" />
 								</div>
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-3 text-end">
+							<div class="col-md-3 col-6 text-end">
 								<label for="add_jointsurvey_comments" class="form-label text-uppercase fw-bold mb-0">Comments</label>
 							</div>
-							<div class="col-9">
+							<div class="col-md-9 col-6">
 								<div>
 									<textarea class="form-control" v-model="jointsurveyForAdd.comments" id="add_jointsurvey_comments" placeholder="Enter Comments" rows="3"></textarea>
 								</div>
 							</div>
 						</div>
 						<div class="row mb-4">
-							<div class="col-3 text-end">
+							<div class="col-md-3 col-6 text-end">
 								<label for="add_jointsurvey_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor <span class="mandatory">*</span></label>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4 col-6">
 								<div>
 									<select class="form-select" v-model="jointsurveyForAdd.surveyor_id" id="add_surveyor_id">
 										<optgroup v-if="allSurveyorIdList" label="Choose Surveyor">
@@ -217,22 +217,22 @@
 						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="cancelAddEdit"></button>
 					</div>
 					<div class="modal-body">
-						<div class="row mb-4">
-							<div class="col-4">
+						<div class="row mb-4 gy-4 gy-md-0">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Ref No</label>
 								<div>
 									<span v-if="readJointSurvey.ref_no">{{ readJointSurvey.ref_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Company</label>
 								<div>
 									<span v-if="readJointSurvey.company?.title">{{ readJointSurvey.company?.title }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Date Of Issue</label>
 								<div>
 									<span v-if="readJointSurvey.date_of_issue">{{ readJointSurvey.date_of_issue }}</span
@@ -240,22 +240,22 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-4">
-							<div class="col-4">
+						<div class="row mb-4 gy-4 gy-md-0">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Address</label>
 								<div>
 									<span v-if="readJointSurvey.address">{{ readJointSurvey.address }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Customer Name</label>
 								<div>
 									<span v-if="readJointSurvey.customer_name">{{ readJointSurvey.customer_name }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Company Name</label>
 								<div>
 									<span v-if="readJointSurvey.company_name">{{ readJointSurvey.company_name }}</span
@@ -263,7 +263,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-4">
+						<div class="row mb-4 gy-4 gy-md-0">
 							<div class="col-6">
 								<label class="form-label text-uppercase fw-bold m-0">Instruction 1</label>
 								<div>
@@ -299,7 +299,7 @@
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Tank No</label>
 								<div>
 									<span v-if="readJointSurvey.tank_no">{{ readJointSurvey.tank_no }}</span
@@ -307,22 +307,22 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-4">
-							<div class="col-4">
+						<div class="row mb-4 gy-4 gy-md-0">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Mfg Date</label>
 								<div>
 									<span v-if="readJointSurvey.mfg_date">{{ formatMySQLDate(readJointSurvey.mfg_date, "MMM dd, yyyy") }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Mgw</label>
 								<div>
 									<span v-if="readJointSurvey.mgw">{{ readJointSurvey.mgw }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Tare Weight</label>
 								<div>
 									<span v-if="readJointSurvey.tare_weight">{{ readJointSurvey.tare_weight }}</span
@@ -330,22 +330,22 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-4">
-							<div class="col-4">
+						<div class="row mb-4 gy-4 gy-md-0">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Capacity</label>
 								<div>
 									<span v-if="readJointSurvey.capacity">{{ readJointSurvey.capacity }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Csc</label>
 								<div>
 									<span v-if="readJointSurvey.csc">{{ readJointSurvey.csc }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Comments</label>
 								<div>
 									<span v-if="readJointSurvey.comments">{{ readJointSurvey.comments }}</span
@@ -353,22 +353,22 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-4">
-							<div class="col-4">
+						<div class="row mb-4 gy-4 gy-md-0">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Surveyor</label>
 								<div>
 									<span v-if="readJointSurvey.surveyor?.title">{{ readJointSurvey.surveyor?.title }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Status</label>
 								<div>
 									<span class="badge rounded-pill bg-success" v-if="readJointSurvey.status == 1">ACTIVE</span>
 									<span class="badge rounded-pill bg-danger" v-if="readJointSurvey.status == 0">INACTIVE</span>
 								</div>
 							</div>
-							<div class="col-4">
+							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Created By</label>
 								<div>
 									<span v-if="readJointSurvey.creator?.title">{{ readJointSurvey.creator?.title }}</span

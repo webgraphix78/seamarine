@@ -20,20 +20,16 @@ class JointSurveyController extends Controller
 	{
 		$component = 'jointsurvey-component';
 		$current_user_id = auth()->id();
-		if (auth()->user()->role_id == 1) {
-			$all_permissions = "111";
-		} else {
-			// Common code for authorization
-			$platformObject = PlatformObject::where('name', 'JointSurvey')->first();
-			$permissions = DB::table('role_object_mapping')
-				->where('role_id', auth()->user()->role_id)
-				->where('platform_object_id', $platformObject->id)
-				->first();
-			$all_permissions = "1";
-			if ($permissions !== null) {
-				$all_permissions .= ($permissions->can_add_edit ? "1" : "0");
-				$all_permissions .= ($permissions->can_delete ? "1" : "0");
-			} else
+		switch(auth()->user()->role_id){
+			case 2:
+				$all_permissions = "100";
+				break;
+			case 1:
+			case 3:
+			case 4:
+				$all_permissions = "111";
+				break;
+			default:
 				abort(403);
 		}
 		return view('common.index', compact('component', 'current_user_id', 'all_permissions'));
@@ -121,6 +117,12 @@ class JointSurveyController extends Controller
 		if (isset($input["active"]) && is_numeric($input["active"]) && $input["active"] == 1) {
 			$jointsurveyList = $jointsurveyList->where('status', 1);
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 2) {
+			// Wait
+			$jointsurveyList = $jointsurveyList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")
 				$jointsurveyList = $jointsurveyList->orderByDesc(trim($input["sortBy"]));
@@ -185,6 +187,14 @@ class JointSurveyController extends Controller
 					unset($objectToSave["created_by"]);
 			}
 			$jointsurveyObject = \App\Models\JointSurvey::updateOrCreate(["id" => $jointsurvey["id"]], $objectToSave);
+			// if ($jointsurvey["id"] == 0) {
+			// 	// Also check if the user is a surveyor, set the status to 0
+			// 	$user = \App\Models\User::find(Auth::id());
+			// 	if ($user->role_id == 4) {
+			// 		$jointsurveyObject->status = 0;
+			// 	}
+			// 	$jointsurveyObject->save();
+			// }
 			return response()->json(["status" => 1]);
 		} else {
 			return response()->json(["status" => -100, "messages" => ["Data for Joint Survey is missing."]]);

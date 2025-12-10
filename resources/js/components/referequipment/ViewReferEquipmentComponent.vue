@@ -11,7 +11,7 @@
 		<div class="row py-2 bg-dark mb-3">
 			<h4 class="fw-bold text-white text-center m-0">Add Record in the System.</h4>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Ref No</label>
 				<div>
@@ -25,8 +25,8 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col-md-6"></div>
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-6 d-none d-md-block"></div>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Date</label>
 				<div>
@@ -34,7 +34,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Location Id</label>
 				<div>
@@ -48,7 +48,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Tank No</label>
 				<div>
@@ -62,7 +62,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Container Type</label>
 				<div>
@@ -86,7 +86,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Serial</label>
 				<div>
@@ -102,7 +102,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Date of last Pre-Trip Insp.</label>
 				<div>
@@ -118,7 +118,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Temperature Set (PTI)</label>
 				<div>

@@ -18,18 +18,12 @@ class ActionsService{
         $canDuplicate = false;
 		$canDelete = false;
 		if ( $roleId > 0 ) {
-			if ($roleId > 0)
+			if ($roleId ===  1 || $roleId === 3 || $roleId === 4)
 				$isUserAdmin = true;
-			else {
-				//Take this to common method?
-				$permissions = PlatformObject::
-					where('name', $objectName)
-					->first();
-				if ($permissions !== null) {
-					$canExport = ($permissions->can_export ? true : false);
-					$canAddEditDuplicate = ($permissions->can_add_edit ? true : false);
-					$canDelete = ($permissions->can_delete ? true : false);
-				}
+			else if($roleId === 2) {
+				$canExport = 1;
+			}else{
+				return [];
 			}
 		}
 		// Set actions

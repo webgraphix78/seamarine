@@ -8,11 +8,11 @@
 				</div>
 			</div>
 		</div>
-		<div class="row py-2 bg-dark">
+		<div class="row py-2 bg-dark mb-2">
 			<h4 class="fw-bold text-white text-center m-0">Add Record in the System.</h4>
 		</div>
 		<!-- ref and company name  -->
-		<div class="row mb-4 align-items-center">
+		<div class="row mb-3 align-items-center">
 			<div class="col-md-2">
 				<label for="add_referequipment_ref_no" class="form-label text-uppercase m-0">Ref No</label>
 			</div>
@@ -38,12 +38,12 @@
 				<label for="add_referequipment_inspection_date" class="form-label text-uppercase m-0">Inspection Date</label>
 			</div>
 			<div class="col-md-4 mb-3 mb-md-0">
-				<input type="text" class="form-control"  v-model="referequipmentFormObj.inspection_date" id="add_referequipment_inspection_date" placeholder="Enter Inspection Date" >
+				<MaskInput v-model="referequipmentFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 			</div>
 		</div>
 		<!-- inspection date  -->
 		<!-- place of inspection & on behalf  -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3  align-items-center'>
 			<label for="add_referequipment_inspection_location_id" class="form-label text-uppercase m-0 col-md-2">Place of Inspection</label>
 			<div class="col-md-4 mb-3 mb-md-0">
 				<multiselect v-model="referequipmentFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
@@ -55,7 +55,7 @@
 		</div>
 		<!-- place of inspection & on behalf  -->
 		<!-- container no. & shipping agency  -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3 align-items-center'>
 			<div class="col-md-2">
 				<label for="add_referequipment_tank_no" class="form-label text-uppercase m-0">Container No</label>
 			</div>
@@ -71,7 +71,7 @@
 		</div>
 		<!-- container no. & shipping agency  -->
 		<!-- Container type & booking number  -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3  align-items-center'>
 			<label for="add_referequipment_container_type" class="form-label text-uppercase m-0 col-md-2">Container Type</label>
 			<div class="col-md-4 mb-3 mb-md-0">
 				<multiselect v-model="referequipmentFormObj.container_type" :options="allContainerTypeList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
@@ -85,7 +85,7 @@
 		</div>
 		<!-- Container type & booking number  -->
 		<!-- model -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3  align-items-center'>
 			<div class="col-md-6"></div>
 			<div class="col-md-2">
 				<label for="add_referequipment_model" class="form-label text-uppercase m-0 ">Model</label>
@@ -96,7 +96,7 @@
 		</div>
 		<!-- model -->
 		<!-- serial & in service  -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3  align-items-center'>
 			<div class="col-md-2">
 				<label for="add_referequipment_serial" class="form-label text-uppercase m-0">Serial</label>
 			</div>
@@ -112,7 +112,7 @@
 		</div>
 		<!-- serial & in service  -->
 		<!-- Date & plugged  -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3  align-items-center'>
 			<div class="col-md-2">
 				<label for="add_referequipment_date_of_last_pretrip" class="form-label text-uppercase m-0">Date of last Pre-Trip Insp.</label>
 			</div>
@@ -130,7 +130,7 @@
 		</div>
 		<!-- Date & plugged  -->
 		<!-- temperature set and Rechecked -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3  align-items-center'>
 			<div class="col-md-2">
 				<label for="add_referequipment_temperature_set_pti" class="form-label text-uppercase m-0">Temperature Set (PTI)</label>
 			</div>
@@ -149,9 +149,9 @@
 			<h4 class="fw-bold text-white text-center m-0">Container</h4>
 		</div>
 		<!-- container -->
-		<div class="row mb-4  align-items-center">
+		<div class="row mb-3  align-items-center">
 			<div class="col-md-6">
-				<div class='row gy-4 align-items-center'>
+				<div class='row gy-md-4 align-items-center'>
 					<div class="col-md-6">
 						<label for="add_referequipment_exterior" class="form-label text-uppercase m-0">Exterior</label>
 					</div>
@@ -240,7 +240,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class='row gy-4 align-items-center'>
+				<div class='row gy-md-4 align-items-center'>
 					<div class="col-md-6">
 						<label for="add_referequipment_interior" class="form-label text-uppercase m-0">Interior</label>
 					</div>
@@ -329,9 +329,9 @@
 			<h4 class="fw-bold text-white text-center m-0">Refrigeration Machinery</h4>
 		</div>
 		<!-- Refrigeration Machinery -->
-		<div class="row mb-4  align-items-center">
+		<div class="row mb-3  align-items-center">
 			<div class="col-md-6">
-				<div class='row gy-4 align-items-center'>
+				<div class='row gy-md-4 align-items-center'>
 					<div class="col-md-6">
 						<label for="add_referequipment_cable_440" class="form-label text-uppercase m-0">440 V Cable 18 mtrs.</label>
 					</div>
@@ -387,7 +387,7 @@
 				</div>
 			</div>
 			<div class="col-md-6">
-				<div class='row gy-4 align-items-center'>
+				<div class='row gy-md-4 align-items-center'>
 					<div class="col-md-6">
 						<label for="add_referequipment_power_plug_440" class="form-label text-uppercase m-0">440 V Power Plug</label>
 					</div>
@@ -444,7 +444,7 @@
 		</div>
 		<!-- Refrigeration Machinery -->
 		<!-- Comments -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3  align-items-center'>
 			<div class="col">
 				<label for="add_referequipment_comments" class="form-label text-uppercase fw-bold mb-2">Comments</label>
 				<div>
@@ -456,7 +456,7 @@
 		</div>
 		<!-- Comments -->
 		<!-- Surveyors name -->
-		<div class='row mb-4  align-items-center'>
+		<div class='row mb-3  align-items-center'>
 			<div class="col">
 				<label for="add_referequipment_surveyor_id" class="form-label fw-bold text-uppercase mb-2">Surveyor's Name:</label>
 				<div>

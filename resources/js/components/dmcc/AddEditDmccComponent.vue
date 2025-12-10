@@ -30,7 +30,7 @@
 			</div>
 		</div>
 		<template v-if="tankNoVerified">
-			<div class='row mb-4'>
+			<div class='row mb-4 gy-3 gy-md-0'>
 				<div class="col-md-6">
 					<label for="add_dmcc_company_id" class="form-label text-uppercase fw-bold me-3">Company Name</label>
 					<div>
@@ -41,7 +41,7 @@
 				<div class="col-md-6">
 					<label for="add_dmcc_inspection_date" class="form-label text-uppercase fw-bold me-3">Date of Loading</label>
 					<div class="input-group">
-						<input type="text" class="form-control"  v-model="dmccFormObj.inspection_date" id="add_dmcc_inspection_date" placeholder="Enter Date of Loading" >
+						<MaskInput v-model="dmccFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 					</div>
 				</div>
 			</div>

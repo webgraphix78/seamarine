@@ -36,7 +36,8 @@
 			<div class="col-md-6">
 				<label for="add_stuffing_issue_date" class="form-label text-uppercase fw-bold me-3">Date of Issue</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="stuffingFormObj.issue_date" id="add_stuffing_issue_date" placeholder="Enter Date of Issue" >
+					<MaskInput v-model="stuffingFormObj.issue_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
+
 				</div>
 			</div>
 		</div>

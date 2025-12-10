@@ -13,7 +13,7 @@
 		</div>
 		<div class='row mb-4 align-items-center'>
 			<label for="add_cscre_ref_no" class="form-label col-md-1 m-0">Ref No:</label>
-			<div class="col-md-3">
+			<div class="col-md-3 mb-4 mb-md-0">
 				<input type="text" class="form-control"  v-model="cscreFormObj.ref_no" id="add_cscre_ref_no" placeholder="Auto Number" disabled>
 			</div>
 			<label for="add_cscre_company_id" class="form-label col-md-2 m-0">Company Name:</label>
@@ -21,7 +21,7 @@
 				<multiselect v-model="cscreFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-4 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscre_serial_no" class="form-label me-3">Serial No.</label>
 				<div class="input-group">
@@ -55,7 +55,8 @@
 			<div class="col">
 				<label for="add_cscre_inspection_date" class="form-label me-3">Inspection Date</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="cscreFormObj.inspection_date" id="add_cscre_inspection_date" placeholder="Enter Inspection Date" >
+					<MaskInput v-model="cscreFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
+					
 				</div>
 			</div>
 		</div>

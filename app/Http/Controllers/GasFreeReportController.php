@@ -107,6 +107,12 @@ class GasFreeReportController extends Controller{
 			else
 				$gasfreereportList = $gasfreereportList->orderBy(trim($input["sortBy"]));
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 2) {
+			// Wait
+			$gasfreereportList = $gasfreereportList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
 		if( isset($input["page"]) )
 			$gasfreereportList = $gasfreereportList->paginate(10);
 		else{

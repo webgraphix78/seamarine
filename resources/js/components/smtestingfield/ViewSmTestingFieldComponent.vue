@@ -8,34 +8,34 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Company Id</label>
 				<div>
 					<span v-if='readSmTestingField.rel_company_id?.name'>{{ readSmTestingField.rel_company_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Date</label>
 				<div>
 					<span v-if='readSmTestingField.inspection_date'>{{ readSmTestingField.inspection_date }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Location Id</label>
 				<div>
 					<span v-if='readSmTestingField.rel_inspection_location_id?.name'>{{ readSmTestingField.rel_inspection_location_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Operator Lessor</label>
 				<div>
 					<span v-if='readSmTestingField.operator_lessor'>{{ readSmTestingField.operator_lessor }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Tank No</label>
 				<div>
 					<span v-if='readSmTestingField.tank_no'>{{ readSmTestingField.tank_no }}</span><span v-else><i>Not specified</i></span>
@@ -62,14 +62,14 @@
 			</div>
 		</div>
 		<div class='row mb-4'>
-			<div class="col">
+			<div class="col-md-6 mb-md-0 mb-3">
 				<label class="form-label text-uppercase fw-bold m-0">Csc</label>
 				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.csc'>{{ readSmTestingField.csc }}</span><span v-else><i>Not specified</i></span>
 					<span v-if='readSmTestingField.csc_blank'>{{ readSmTestingField.csc_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Uk Dot</label>
 				<div>
 					<span v-if='readSmTestingField.uk_dot'>{{ readSmTestingField.uk_dot }}</span><span v-else><i>Not specified</i></span>
@@ -119,7 +119,7 @@
 			</div>
 		</div>
 		<div class='row mb-4'>
-			<div class="col">
+			<div class="col-md-4 mb-3 mb-md-0">
 				<label class="form-label text-uppercase fw-bold m-0">Tir</label>
 				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.tir'>{{ readSmTestingField.tir }}</span><span v-else><i>Not specified</i></span>
@@ -237,7 +237,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-7">
+			<div class="col-md-7 mt-2 mt-md-0">
 				<div class="row mb-4">
 					<div class="col-12">
 						<h5 class="m-0 fw-bold">Inspection Dates (mm/yy)</h5>

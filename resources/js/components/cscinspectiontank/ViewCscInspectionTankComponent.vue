@@ -8,48 +8,48 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Company Id</label>
 				<div>
 					<span v-if='readCscInspectionTank.rel_company_id?.name'>{{ readCscInspectionTank.rel_company_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Date</label>
 				<div>
 					<span v-if='readCscInspectionTank.inspection_date'>{{ readCscInspectionTank.inspection_date }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Location Id</label>
 				<div>
 					<span v-if='readCscInspectionTank.rel_inspection_location_id?.name'>{{ readCscInspectionTank.rel_inspection_location_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Operator Lessor</label>
 				<div>
 					<span v-if='readCscInspectionTank.operator_lessor'>{{ readCscInspectionTank.operator_lessor }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Tank No</label>
 				<div>
 					<span v-if='readCscInspectionTank.tank_no'>{{ readCscInspectionTank.tank_no }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Mfg</label>
 				<div>
 					<span v-if='readCscInspectionTank.mfg'>{{ readCscInspectionTank.mfg }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Mfg Sr No</label>
 				<div>
 					<span v-if='readCscInspectionTank.mfg_sr_no'>{{ readCscInspectionTank.mfg_sr_no }}</span><span v-else><i>Not specified</i></span>
@@ -137,7 +137,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="row mb-4">
+		<div class="row mb-4 gy-3 gy-md-0">
 			<div class="col-md-5">
 				<div class='row g-4'>
 					<div class="col-12">
@@ -236,7 +236,7 @@
 				</div>
 			</div>
 			<div class="col-md-7">
-				<div class="row mb-4">
+				<div class="row mb-1 mb-md-4">
 					<div class="col-12">
 						<h5 class="m-0 fw-bold">Inspection Dates (mm/yy)</h5>
 					</div>

@@ -106,6 +106,13 @@ class PrvController extends Controller{
 			else
 				$prvList = $prvList->orderBy(trim($input["sortBy"]));
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		Log::info("message". $user);
+		if ($user->role_id == 2) {
+			// Wait
+			$prvList = $prvList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
 		if( isset($input["page"]) )
 			$prvList = $prvList->paginate(10);
 		else{
@@ -199,6 +206,14 @@ class PrvController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$prvData =\App\Models\Prv::updateOrCreate( [ "id" => $prv["id"] ], $objectToSave );
+			if ($objectToSave["id"] == 0) {
+				$prvData->ref = $prvData->id;
+				$user = \App\Models\User::find(Auth::id());
+				if ($user->role_id == 4) {
+					$prvData->status = 0;
+				}
+				$prvData->save();
+			}
 			return response()->json(["status" => 1, "id" => $prvData->id]);
 		}
 		else{

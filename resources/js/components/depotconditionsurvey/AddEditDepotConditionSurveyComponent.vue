@@ -30,14 +30,14 @@
 			</div>
 		</div>
 		<template v-if="tankNoVerified">
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-6">
 					<label for="add_depotconditionsurvey_ref_no" class="form-label text-uppercase fw-bold me-3">Ref No</label>
 					<div class="input-group">
 						<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.ref_no" id="add_depotconditionsurvey_ref_no" placeholder="Enter Ref No" disabled>
 					</div>
 				</div>
-				<div class="col">
+				<div class="col-md-6">
 					<label for="add_depotconditionsurvey_company_id" class="form-label text-uppercase fw-bold me-3">Company Id</label>
 					<div>
 						<multiselect v-model="depotconditionsurveyFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
@@ -45,17 +45,17 @@
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_inspection_date" class="form-label text-uppercase fw-bold me-3">Inspection Date</label>
 					<div class="input-group">
 						
-						<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.inspection_date" id="add_depotconditionsurvey_inspection_date" placeholder="Enter Inspection Date" >
+						<MaskInput v-model="depotconditionsurveyFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 						
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_mfg_sr_no" class="form-label text-uppercase fw-bold me-3">Mfg Sr No</label>
 					<div class="input-group">
 						
@@ -64,7 +64,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_last_test_date" class="form-label text-uppercase fw-bold me-3">Last Test Date</label>
 					<div class="input-group">
 						
@@ -74,15 +74,15 @@
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_customer_id" class="form-label text-uppercase fw-bold me-3">Client Name</label>
 					<div>
 						<multiselect v-model="depotconditionsurveyFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_mgw" class="form-label text-uppercase fw-bold me-3">Mgw</label>
 					<div class="input-group">
 						
@@ -91,7 +91,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_tare_wt" class="form-label text-uppercase fw-bold me-3">Tare Wt</label>
 					<div class="input-group">
 						
@@ -101,8 +101,8 @@
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_iso_type" class="form-label text-uppercase fw-bold me-3">Iso Type</label>
 					<div class="input-group">
 						
@@ -111,7 +111,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_capacity" class="form-label text-uppercase fw-bold me-3">Capacity</label>
 					<div class="input-group">
 						
@@ -120,7 +120,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Inspection Location</label>
 					<div>
 						<multiselect v-model="depotconditionsurveyFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
@@ -128,8 +128,8 @@
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_date_of_mfg" class="form-label text-uppercase fw-bold me-3">Date Of Mfg</label>
 					<div class="input-group">
 						
@@ -138,7 +138,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_mfg" class="form-label text-uppercase fw-bold me-3">Mfg</label>
 					<div class="input-group">
 						
@@ -147,11 +147,11 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_next_inspection_date" class="form-label text-uppercase fw-bold me-3">Next Inspection Date</label>
 					<div class="input-group">
 						
-						<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.next_inspection_date" id="add_depotconditionsurvey_next_inspection_date" placeholder="Enter Next Inspection Date" >
+						<MaskInput v-model="depotconditionsurveyFormObj.next_inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 						
 					</div>
 					
@@ -542,7 +542,7 @@
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
+			<div class='row mb-4 gy-3 gy-md-0'>
 				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_liquid_tank_no" class="form-label text-uppercase fw-bold me-3">Liquid Tank No</label>
 					<div class="input-group">
@@ -556,7 +556,7 @@
 					<label for="add_depotconditionsurvey_liquid_inspection_date" class="form-label text-uppercase fw-bold me-3">Liquid Inspection Date</label>
 					<div class="input-group">
 						
-						<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.liquid_inspection_date" id="add_depotconditionsurvey_liquid_inspection_date" placeholder="Enter Liquid Inspection Date" >
+						<MaskInput v-model="depotconditionsurveyFormObj.liquid_inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 						
 					</div>
 					

@@ -343,7 +343,7 @@ class OnhireController extends Controller
 			$onhire = Onhire::find($input["onhire_id"]);
 			// Now upload the onhire image
 			if ( ($request->hasFile('uploaded_file_1') && $request->file('uploaded_file_1')->isValid()) || 
-				($request->hasFile('uploaded_file_2') && $request->file('uploaded_file_2')->isValid()) ) {
+				 ($request->hasFile('uploaded_file_2') && $request->file('uploaded_file_2')->isValid()) ) {
 				if ( $request->hasFile('uploaded_file_1') && $request->file('uploaded_file_1')->isValid()) {
 					// Clear the onhire image first
 					$this->clearUpload($onhire->walkway_image_1);

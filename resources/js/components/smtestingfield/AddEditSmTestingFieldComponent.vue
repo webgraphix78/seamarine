@@ -8,7 +8,7 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_company_id" class="form-label text-uppercase fw-bold me-3">Company Name</label>
 				<div>
@@ -19,14 +19,12 @@
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_inspection_date" class="form-label text-uppercase fw-bold me-3">Inspection Date</label>
 				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.inspection_date" id="add_cscinspectiontank_inspection_date" placeholder="Enter Inspection Date" >
-					
+					<MaskInput v-model="smtestingfieldFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 				</div>
 				
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-4">
 				<label for="add_cscinspectiontank_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Place of Inspection</label>
 				<div>
@@ -53,7 +51,7 @@
 				
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_mfg" class="form-label text-uppercase fw-bold me-3">Manufacturer</label>
 				<div class="input-group">
@@ -78,7 +76,7 @@
 				<h4 class="m-0 fw-bold">Applicable Regulations. Enter initial approval No. as applicable</h4>
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_csc" class="form-label text-uppercase fw-bold me-3">Csc</label>
 				<div class="d-flex flex-row gap-2">
@@ -96,7 +94,7 @@
 				
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_imdg" class="form-label text-uppercase fw-bold me-3">Imdg</label>
 				<div class="input-group">
@@ -116,7 +114,7 @@
 				
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_rid" class="form-label text-uppercase fw-bold me-3">Rid</label>
 				<div class="input-group">
@@ -136,7 +134,7 @@
 				
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_bam" class="form-label text-uppercase fw-bold me-3">Bam</label>
 				<div class="input-group">
@@ -156,7 +154,7 @@
 				
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-4">
 				<label for="add_cscinspectiontank_tir" class="form-label text-uppercase fw-bold me-3">Tir</label>
 				<div class="d-flex flex-row gap-2">
@@ -184,7 +182,7 @@
 				
 			</div>
 		</div>
-		<div class="row mb-4">
+		<div class="row mb-4 gy-3 gy-md-0">
 			<div class="col-md-5">
 				<div class='row g-3'>
 					<div class="col-12">
@@ -328,12 +326,12 @@
 				</div>
 			</div>
 			<div class="col-md-7">
-				<div class="row mb-4">
+				<div class="row mb-2 mb-md-4">
 					<div class="col-12">
 						<h4 class="m-0 fw-bold">Inspection Dates (mm/yy)</h4>
 					</div>
 				</div>
-				<div class='row mb-4'>
+				<div class='row mb-4 gy-3 gy-md-0'>
 					<div class="col-md-6">
 						<label for="add_cscinspectiontank_insp_init_hydro_date" class="form-label text-uppercase fw-bold me-3">Initial Hydro Test</label>
 						<div class="input-group">
@@ -353,7 +351,7 @@
 						
 					</div>
 				</div>
-				<div class='row mb-4'>
+				<div class='row mb-4 gy-3 gy-md-0'>
 					<div class="col-md-6">
 						<label for="add_cscinspectiontank_insp_last_hydro_date" class="form-label text-uppercase fw-bold me-3">Last Hydro Test</label>
 						<div class="input-group">
@@ -790,7 +788,7 @@
 				
 			</div>
 		</div>
-		<div class='row mb-4'>
+		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_platemark" class="form-label text-uppercase fw-bold me-3">Plate Marking/Stamping:</label>
 				<div class="input-group">

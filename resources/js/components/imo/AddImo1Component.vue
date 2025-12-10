@@ -656,15 +656,15 @@
 			<div class="row mb-4">
 				<div class="col-md-6">
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">1.</div>
 							<div class="flex-grow-1"><label for="add_imo1_ladder_nos" class="form-label fw-bold m-0 me-3">Ladder</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.ladder_nos" id="add_imo1_ladder_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.ladder_cond_status_id" id="add_ladder_cond_status_id">
 								<optgroup v-if="allLadderCondStatusIdList" label="Choose Ladder Cond Status Id">
 									<template v-for="ladderCondStatusId in allLadderCondStatusIdList" :key="ladderCondStatusId.id">
@@ -675,15 +675,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">2.</div>
 							<div class="flex-grow-1"><label for="add_imo1_document_box_nos" class="form-label fw-bold m-0 me-3">Document Box</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.document_box_nos" id="add_imo1_document_box_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.document_box_cond_status_id" id="add_document_box_cond_status_id">
 								<optgroup v-if="allDocumentBoxCondStatusIdList" label="Choose Document Box Cond Status Id">
 									<template v-for="documentBoxCondStatusId in allDocumentBoxCondStatusIdList" :key="documentBoxCondStatusId.id">
@@ -694,15 +694,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">3.</div>
 							<div class="flex-grow-1"><label for="add_imo1_temperature_gauge_nos" class="form-label fw-bold m-0 me-3">Temperature Gauge</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.temperature_gauge_nos" id="add_imo1_temperature_gauge_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.temperature_gauge_cond_status_id" id="add_temperature_gauge_cond_status_id">
 								<optgroup v-if="allTemperatureGaugeCondStatusIdList" label="Choose Temperature Gauge Cond Status Id">
 									<template v-for="temperatureGaugeCondStatusId in allTemperatureGaugeCondStatusIdList" :key="temperatureGaugeCondStatusId.id">
@@ -713,15 +713,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">4.</div>
 							<div class="flex-grow-1"><label for="add_imo1_steam_nos" class="form-label fw-bold m-0 me-3">Steam Pipe & Caps</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.steam_nos" id="add_imo1_steam_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.steam_cond_status_id" id="add_steam_cond_status_id">
 								<optgroup v-if="allSteamCondStatusIdList" label="Choose Steam Cond Status Id">
 									<template v-for="steamCondStatusId in allSteamCondStatusIdList" :key="steamCondStatusId.id">
@@ -732,15 +732,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">5.</div>
 							<div class="flex-grow-1"><label for="add_imo1_steam_pressure_nos" class="form-label fw-bold m-0 me-3">Steam Pressure Relief Valve</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.steam_pressure_nos" id="add_imo1_steam_pressure_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.steam_pressure_cond_status_id" id="add_steam_pressure_cond_status_id">
 								<optgroup v-if="allSteamPressureCondStatusIdList" label="Choose Steam Pressure Cond Status Id">
 									<template v-for="steamPressureCondStatusId in allSteamPressureCondStatusIdList" :key="steamPressureCondStatusId.id">
@@ -751,15 +751,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">6.</div>
 							<div class="flex-grow-1"><label for="add_imo1_remote_system_nos" class="form-label fw-bold m-0 me-3">Remote Control System</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.remote_system_nos" id="add_imo1_remote_system_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.remote_system_cond_status_id" id="add_remote_system_cond_status_id">
 								<optgroup v-if="allRemoteSystemCondStatusIdList" label="Choose Remote System Cond Status Id">
 									<template v-for="remoteSystemCondStatusId in allRemoteSystemCondStatusIdList" :key="remoteSystemCondStatusId.id">
@@ -770,15 +770,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">7.</div>
 							<div class="flex-grow-1"><label for="add_imo1_electrical_heating_nos" class="form-label fw-bold m-0 me-3">Electrical Heating</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.electrical_heating_nos" id="add_imo1_electrical_heating_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.electrical_heating_cond_status_id" id="add_electrical_heating_cond_status_id">
 								<optgroup v-if="allElectricalHeatingCondStatusIdList" label="Choose Electrical Heating Cond Status Id">
 									<template v-for="electricalHeatingCondStatusId in allElectricalHeatingCondStatusIdList" :key="electricalHeatingCondStatusId.id">
@@ -789,15 +789,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">8.</div>
 							<div class="flex-grow-1"><label for="add_imo1_manlid_nos" class="form-label fw-bold m-0 me-3">Manlid</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="number" class="form-control" v-model="imo1ForAdd.manlid_nos" id="add_imo1_manlid_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.manlid_cond_status_id" id="add_manlid_cond_status_id">
 								<optgroup v-if="allManlidCondStatusIdList" label="Choose Manlid Cond Status Id">
 									<template v-for="manlidCondStatusId in allManlidCondStatusIdList" :key="manlidCondStatusId.id">
@@ -808,15 +808,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">8a.</div>
 							<div class="flex-grow-1"><label for="add_imo1_manlid_swing_nos" class="form-label fw-bold m-0 me-3">Manlid Swing Bolts</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="number" class="form-control" v-model="imo1ForAdd.manlid_swing_nos" id="add_imo1_manlid_swing_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.manlid_swing_cond_status_id" id="add_manlid_swing_cond_status_id">
 								<optgroup v-if="allManlidSwingCondStatusIdList" label="Choose Manlid Swing Cond Status Id">
 									<template v-for="manlidSwingCondStatusId in allManlidSwingCondStatusIdList" :key="manlidSwingCondStatusId.id">
@@ -827,15 +827,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">9.</div>
 							<div class="flex-grow-1"><label for="add_imo1_insp_hatch_nos" class="form-label fw-bold m-0 me-3">Inspection Hatch</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.insp_hatch_nos" id="add_imo1_insp_hatch_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.insp_hatch_cond_status_id" id="add_insp_hatch_cond_status_id">
 								<optgroup v-if="allInspHatchCondStatusIdList" label="Choose Insp Hatch Cond Status Id">
 									<template v-for="inspHatchCondStatusId in allInspHatchCondStatusIdList" :key="inspHatchCondStatusId.id">
@@ -846,15 +846,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">9a.</div>
 							<div class="flex-grow-1"><label for="add_imo1_insp_hatch_swing_bolt_no" class="form-label fw-bold m-0 me-3">Inspection Hatch Swing Bolts</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.insp_hatch_swing_bolt_no" id="add_imo1_insp_hatch_swing_bolt_no" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.insp_hatch_swing_bolt_cond_status_id" id="add_insp_hatch_swing_bolt_cond_status_id">
 								<optgroup v-if="allInspHatchSwingBoltCondStatusIdList" label="Choose Insp Hatch Swing Bolt Cond Status Id">
 									<template v-for="inspHatchSwingBoltCondStatusId in allInspHatchSwingBoltCondStatusIdList" :key="inspHatchSwingBoltCondStatusId.id">
@@ -865,15 +865,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">10.</div>
 							<div class="flex-grow-1"><label for="add_imo1_spill_box_nos" class="form-label fw-bold m-0 me-3">Spill Box Covers</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.spill_box_nos" id="add_imo1_spill_box_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.spill_box_cond_status_id" id="add_spill_box_cond_status_id">
 								<optgroup v-if="allSpillBoxCondStatusIdList" label="Choose Spill Box Cond Status Id">
 									<template v-for="spillBoxCondStatusId in allSpillBoxCondStatusIdList" :key="spillBoxCondStatusId.id">
@@ -884,15 +884,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">11.</div>
 							<div class="flex-grow-1"><label for="add_imo1_pre_valve_nos" class="form-label fw-bold m-0 me-3">Pre/Vac Valves</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.pre_valve_nos" id="add_imo1_pre_valve_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.pre_valve_cond_status_id" id="add_pre_valve_cond_status_id">
 								<optgroup v-if="allPreValveCondStatusIdList" label="Choose Pre Valve Cond Status Id">
 									<template v-for="preValveCondStatusId in allPreValveCondStatusIdList" :key="preValveCondStatusId.id">
@@ -903,15 +903,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">12.</div>
 							<div class="flex-grow-1"><label for="add_imo1_pre_bursting_disc_nos" class="form-label fw-bold m-0 me-3">Pre/Vac Bursting Disc</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.pre_bursting_disc_nos" id="add_imo1_pre_bursting_disc_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.pre_bursting_disc_cond_status_id" id="add_pre_bursting_disc_cond_status_id">
 								<optgroup v-if="allPreBurstingDiscCondStatusIdList" label="Choose Pre Bursting Disc Cond Status Id">
 									<template v-for="preBurstingDiscCondStatusId in allPreBurstingDiscCondStatusIdList" :key="preBurstingDiscCondStatusId.id">
@@ -922,15 +922,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">13.</div>
 							<div class="flex-grow-1"><label for="add_imo1_walkyway_ls_nos" class="form-label fw-bold m-0 me-3">WalkyWay(Long Section)</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.walkyway_ls_nos" id="add_imo1_walkyway_ls_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.walkyway_ls_cond_status_id" id="add_walkyway_ls_cond_status_id">
 								<optgroup v-if="allWalkywayLsCondStatusIdList" label="Choose Walkyway Ls Cond Status Id">
 									<template v-for="walkywayLsCondStatusId in allWalkywayLsCondStatusIdList" :key="walkywayLsCondStatusId.id">
@@ -941,15 +941,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">14.</div>
 							<div class="flex-grow-1"><label for="add_imo1_walkyway_scs_nos" class="form-label fw-bold m-0 me-3">WalkyWay(Short Cross Section)</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.walkyway_scs_nos" id="add_imo1_walkyway_scs_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.walkyway_scs_cond_status_id" id="add_walkyway_scs_cond_status_id">
 								<optgroup v-if="allWalkywayScsCondStatusIdList" label="Choose Walkyway Scs Cond Status Id">
 									<template v-for="walkywayScsCondStatusId in allWalkywayScsCondStatusIdList" :key="walkywayScsCondStatusId.id">
@@ -960,15 +960,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">14a.</div>
 							<div class="flex-grow-1"><label for="add_imo1_walkyway_mls_nos" class="form-label fw-bold m-0 me-3">WalkyWay(Mid length Section)</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.walkyway_mls_nos" id="add_imo1_walkyway_mls_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.walkyway_mls_cond_status_id" id="add_walkyway_mls_cond_status_id">
 								<optgroup v-if="allWalkywayMlsCondStatusIdList" label="Choose Walkyway Mls Cond Status Id">
 									<template v-for="walkywayMlsCondStatusId in allWalkywayMlsCondStatusIdList" :key="walkywayMlsCondStatusId.id">
@@ -981,15 +981,15 @@
 				</div>
 				<div class="col-md-6">
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">15.</div>
 							<div class="flex-grow-1"><label for="add_imo1_airline_valve_nos" class="form-label fw-bold m-0 me-3">Airline Valve</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.airline_valve_nos" id="add_imo1_airline_valve_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.airline_valve_cond_status_id" id="add_airline_valve_cond_status_id">
 								<optgroup v-if="allAirlineValveCondStatusIdList" label="Choose Airline Valve Cond Status Id">
 									<template v-for="airlineValveCondStatusId in allAirlineValveCondStatusIdList" :key="airlineValveCondStatusId.id">
@@ -1000,15 +1000,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">16.</div>
 							<div class="flex-grow-1"><label for="add_imo1_tank_gauge_nos" class="form-label fw-bold m-0 me-3">Tank Pressure Gauge</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.tank_gauge_nos" id="add_imo1_tank_gauge_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.tank_gauge_cond_status_id" id="add_tank_gauge_cond_status_id">
 								<optgroup v-if="allTankGaugeCondStatusIdList" label="Choose Tank Gauge Cond Status Id">
 									<template v-for="tankGaugeCondStatusId in allTankGaugeCondStatusIdList" :key="tankGaugeCondStatusId.id">
@@ -1019,15 +1019,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">17.</div>
 							<div class="flex-grow-1"><label for="add_imo1_dipstick_nos" class="form-label fw-bold m-0 me-3">Dip-Stick</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.dipstick_nos" id="add_imo1_dipstick_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.dipstick_cond_status_id" id="add_dipstick_cond_status_id">
 								<optgroup v-if="allDipstickCondStatusIdList" label="Choose Dipstick Cond Status Id">
 									<template v-for="dipstickCondStatusId in allDipstickCondStatusIdList" :key="dipstickCondStatusId.id">
@@ -1038,15 +1038,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">18.</div>
 							<div class="flex-grow-1"><label for="add_imo1_calibration_chart_nos" class="form-label fw-bold m-0 me-3">Calibration Chart</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.calibration_chart_nos" id="add_imo1_calibration_chart_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.calibration_chart_cond_status_id" id="add_calibration_chart_cond_status_id">
 								<optgroup v-if="allCalibrationChartCondStatusIdList" label="Choose Calibration Chart Cond Status Id">
 									<template v-for="calibrationChartCondStatusId in allCalibrationChartCondStatusIdList" :key="calibrationChartCondStatusId.id">
@@ -1057,15 +1057,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">19.</div>
 							<div class="flex-grow-1"><label for="add_imo1_syphon_pipe_nos" class="form-label fw-bold m-0 me-3">Syphon Pipe(Dip-Tube)Top Fill</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.syphon_pipe_nos" id="add_imo1_syphon_pipe_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.syphon_pipe_cond_status_id" id="add_syphon_pipe_cond_status_id">
 								<optgroup v-if="allSyphonPipeCondStatusIdList" label="Choose Syphon Pipe Cond Status Id">
 									<template v-for="syphonPipeCondStatusId in allSyphonPipeCondStatusIdList" :key="syphonPipeCondStatusId.id">
@@ -1076,15 +1076,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">20.</div>
 							<div class="flex-grow-1"><label for="add_imo1_b_fly_valve_nos" class="form-label fw-bold m-0 me-3">B/FLY Valve (Clamp/Flange)</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.b_fly_valve_nos" id="add_imo1_b_fly_valve_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.b_fly_valve_cond_status_id" id="add_b_fly_valve_cond_status_id">
 								<optgroup v-if="allBFlyValveCondStatusIdList" label="Choose B Fly Valve Cond Status Id">
 									<template v-for="bFlyValveCondStatusId in allBFlyValveCondStatusIdList" :key="bFlyValveCondStatusId.id">
@@ -1095,15 +1095,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">21.</div>
 							<div class="flex-grow-1"><label for="add_imo1_blank_flange_nos" class="form-label fw-bold m-0 me-3">Blank Flange, Top Fill (BOLTS) No.</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.blank_flange_nos" id="add_imo1_blank_flange_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.blank_flange_cond_status_id" id="add_blank_flange_cond_status_id">
 								<optgroup v-if="allBlankFlangeCondStatusIdList" label="Choose Blank Flange Cond Status Id">
 									<template v-for="blankFlangeCondStatusId in allBlankFlangeCondStatusIdList" :key="blankFlangeCondStatusId.id">
@@ -1114,15 +1114,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">22.</div>
 							<div class="flex-grow-1"><label for="add_imo1_top_vapour_nos" class="form-label fw-bold m-0 me-3">Top Vapour B/Fly Valve (Clamp Flange)</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.top_vapour_nos" id="add_imo1_top_vapour_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.top_vapour_cond_status_id" id="add_top_vapour_cond_status_id">
 								<optgroup v-if="allTopVapourCondStatusIdList" label="Choose Top Vapour Cond Status Id">
 									<template v-for="topVapourCondStatusId in allTopVapourCondStatusIdList" :key="topVapourCondStatusId.id">
@@ -1133,15 +1133,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">23.</div>
 							<div class="flex-grow-1"><label for="add_imo1_top_vapour_bolts_nos" class="form-label fw-bold m-0 me-3">Top Vapour Blank Flange (Bolts) No.</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.top_vapour_bolts_nos" id="add_imo1_top_vapour_bolts_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.top_vapour_bolts_cond_status_id" id="add_top_vapour_bolts_cond_status_id">
 								<optgroup v-if="allTopVapourBoltsCondStatusIdList" label="Choose Top Vapour Bolts Cond Status Id">
 									<template v-for="topVapourBoltsCondStatusId in allTopVapourBoltsCondStatusIdList" :key="topVapourBoltsCondStatusId.id">
@@ -1152,15 +1152,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">24.</div>
 							<div class="flex-grow-1"><label for="add_imo1_flanged_provision_nos" class="form-label fw-bold m-0 me-3">Flanged Provision</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.flanged_provision_nos" id="add_imo1_flanged_provision_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.flanged_provision_cond_status_id" id="add_flanged_provision_cond_status_id">
 								<optgroup v-if="allFlangedProvisionCondStatusIdList" label="Choose Flanged Provision Cond Status Id">
 									<template v-for="flangedProvisionCondStatusId in allFlangedProvisionCondStatusIdList" :key="flangedProvisionCondStatusId.id">
@@ -1171,15 +1171,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">25.</div>
 							<div class="flex-grow-1"><label for="add_imo1_bottom_foot_nos" class="form-label fw-bold m-0 me-3">Bottom Foot Valve</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.bottom_foot_nos" id="add_imo1_bottom_foot_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.bottom_foot_cond_status_id" id="add_bottom_foot_cond_status_id">
 								<optgroup v-if="allBottomFootCondStatusIdList" label="Choose Bottom Foot Cond Status Id">
 									<template v-for="bottomFootCondStatusId in allBottomFootCondStatusIdList" :key="bottomFootCondStatusId.id">
@@ -1190,15 +1190,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">26.</div>
 							<div class="flex-grow-1"><label for="add_imo1_bottom_bfly_nos" class="form-label fw-bold m-0 me-3">Bottom B/Fly</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.bottom_bfly_nos" id="add_imo1_bottom_bfly_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.bottom_bfly_cond_status_id" id="add_bottom_bfly_cond_status_id">
 								<optgroup v-if="allBottomBflyCondStatusIdList" label="Choose Bottom Bfly Cond Status Id">
 									<template v-for="bottomBflyCondStatusId in allBottomBflyCondStatusIdList" :key="bottomBflyCondStatusId.id">
@@ -1209,15 +1209,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">27.</div>
 							<div class="flex-grow-1"><label for="add_imo1_bottom_outlet_flange_nos" class="form-label fw-bold m-0 me-3">Bottom Outlet Flange</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.bottom_outlet_flange_nos" id="add_imo1_bottom_outlet_flange_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.bottom_outlet_flange_cond_status_id" id="add_bottom_outlet_flange_cond_status_id">
 								<optgroup v-if="allBottomOutletFlangeCondStatusIdList" label="Choose Bottom Outlet Flange Cond Status Id">
 									<template v-for="bottomOutletFlangeCondStatusId in allBottomOutletFlangeCondStatusIdList" :key="bottomOutletFlangeCondStatusId.id">
@@ -1228,15 +1228,15 @@
 						</div>
 					</div>
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">28.</div>
 							<div class="flex-grow-1"><label for="add_imo1_bottom_valve_handle_nos" class="form-label fw-bold m-0 me-3">Bottom Valve Handle</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.bottom_valve_handle_nos" id="add_imo1_bottom_valve_handle_nos" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.bottom_valve_handle_cond_status_id" id="add_bottom_valve_handle_cond_status_id">
 								<optgroup v-if="allBottomValveHandleCondStatusIdList" label="Choose Bottom Valve Handle Cond Status Id">
 									<template v-for="bottomValveHandleCondStatusId in allBottomValveHandleCondStatusIdList" :key="bottomValveHandleCondStatusId.id">
@@ -1248,15 +1248,15 @@
 					</div>
 					<!--  -->
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">29.</div>
 							<div class="flex-grow-1"><label for="add_imo1_bottom_bfly_ball_nos" class="form-label fw-bold m-0 me-3">Bottom B/Fly/Ball Valve Handle</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.bottom_bfly_ball_nos" id="add_imo1_bottom_bfly_ball_nos"/>
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.bottom_bfly_ball_cond_status_id" id="add_bottom_bfly_ball_cond_status_id">
 								<optgroup v-if="allBottomBflyBallCondStatusIdList" label="Choose Bottom Bfly Ball Cond Status Id">
 									<template v-for="bottomBflyBallCondStatusId in allBottomBflyBallCondStatusIdList" :key="bottomBflyBallCondStatusId.id">
@@ -1268,15 +1268,15 @@
 					</div>
 					<!--  -->
 					<div class="row mb-1">
-						<div class="col-7 d-flex align-items-center">
+						<div class="col-md-7 d-flex align-items-center">
 							<div class="number">30.</div>
 							<div class="flex-grow-1"><label for="add_imo1_fusible_link_no" class="form-label fw-bold m-0 me-3">Fusible Link</label></div>
 							<div>Nos:</div>
 						</div>
-						<div class="col-2">
+						<div class="col-md-2 col-6">
 							<input type="text" class="form-control" v-model="imo1ForAdd.fusible_link_no" id="add_imo1_fusible_link_no" />
 						</div>
-						<div class="col-3">
+						<div class="col-md-3 col-6">
 							<select class="form-select" v-model="imo1ForAdd.fusible_link_cond_status_id" id="add_fusible_link_cond_status_id">
 								<optgroup v-if="allFusibleLinkCondStatusIdList" label="Choose Fusible Link Cond Status Id">
 									<template v-for="fusibleLinkCondStatusId in allFusibleLinkCondStatusIdList" :key="fusibleLinkCondStatusId.id">
@@ -1292,8 +1292,8 @@
 							<div class="number">31.</div>
 							<div class="flex-grow-1"><label for="add_imo1_camera" class="form-label text-uppercase fw-bold m-0 me-3">Camera</label></div>
 						</div>
-						<div class="col-2 d-flex align-items-center">&nbsp;</div>
-						<div class="col-3 d-flex align-items-center">
+						<div class="col-md-2 col-6 d-md-flex d-none align-items-center">&nbsp;</div>
+						<div class="col-md-3 col-4 d-flex align-items-center">
 							<select class="form-select" v-model="imo1ForAdd.camera" id="add_camera">
 								<optgroup v-if="allCameraList" label="Choose Camera">
 									<template v-for="camera in allCameraList" :key="camera.id">
@@ -1309,8 +1309,8 @@
 							<div class="number">32.</div>
 							<div class="flex-grow-1"><label for="add_imo1_camera" class="form-label text-uppercase fw-bold m-0 me-3">GPS</label></div>
 						</div>
-						<div class="col-2 d-flex align-items-center">&nbsp;</div>
-						<div class="col-3 d-flex align-items-center">
+						<div class="col-md-2 col-6 d-md-flex d-none align-items-center">&nbsp;</div>
+						<div class="col-md-3 col-4 d-flex align-items-center">
 							<select class="form-select" v-model="imo1ForAdd.gps" id="add_gps">
 								<optgroup v-if="allGpsList" label="Choose GPS">
 									<template v-for="gps in allGpsList" :key="gps.id">

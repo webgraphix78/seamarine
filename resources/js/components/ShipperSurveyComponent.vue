@@ -805,11 +805,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Frame,Tank and walkways free of contamination and cargo</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.frame_tank == '1'">Yes</span>
 									<span v-if="readShipperSurvey.frame_tank == '0'">No</span>
@@ -817,11 +817,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Manlid and valve compartments free of contamination and cargo</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.manlid_valve == '1'">Yes</span>
 									<span v-if="readShipperSurvey.manlid_valve == '0'">No</span>
@@ -829,11 +829,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Serial numbers and statutory markings legible</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.serial_nos == '1'">Yes</span>
 									<span v-if="readShipperSurvey.serial_nos == '0'">No</span>
@@ -841,11 +841,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Unit having steam jacket</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.steam_jacket == '1'">Yes</span>
 									<span v-if="readShipperSurvey.steam_jacket == '0'">No</span>
@@ -853,11 +853,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Unit having bottom seal provision for bullet seal</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.bullet_seal == '1'">Yes</span>
 									<span v-if="readShipperSurvey.bullet_seal == '0'">No</span>
@@ -865,7 +865,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">
 									<span>Unit having&nbsp;</span>
@@ -876,7 +876,7 @@
 									<span>&nbsp;gasket on manlid cover</span>
 								</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.manlid_cover == '1'">Yes</span>
 									<span v-if="readShipperSurvey.manlid_cover == '0'">No</span>
@@ -884,11 +884,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Distick orginally fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.distick == '1'">Yes</span>
 									<span v-if="readShipperSurvey.distick == '0'">No</span>
@@ -896,11 +896,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Calibration chart fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.calibration == '1'">Yes</span>
 									<span v-if="readShipperSurvey.calibration == '0'">No</span>
@@ -908,11 +908,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Siphon Tube orginally fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.siphon_tube == '1'">Yes</span>
 									<span v-if="readShipperSurvey.siphon_tube == '0'">No</span>
@@ -920,11 +920,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Pressure Gauge fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.pressure_gauge == '1'">Yes</span>
 									<span v-if="readShipperSurvey.pressure_gauge == '0'">No</span>
@@ -932,11 +932,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Temperature Gauge fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.temperature_gauge == '1'">Yes</span>
 									<span v-if="readShipperSurvey.temperature_gauge == '0'">No</span>
@@ -944,11 +944,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">PRV with poppet</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.prv_poppet == '1'">Yes</span>
 									<span v-if="readShipperSurvey.prv_poppet == '0'">No</span>
@@ -956,11 +956,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Top discharge Provision</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.top_provision == '1'">Yes</span>
 									<span v-if="readShipperSurvey.top_provision == '0'">No</span>
@@ -968,11 +968,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Interior Clean dry and odourless</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.interior_clean == '1'">Yes</span>
 									<span v-if="readShipperSurvey.interior_clean == '0'">No</span>
@@ -980,11 +980,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">VALVES/FITTINGS free from previous cargo</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.valves_free == '1'">Yes</span>
 									<span v-if="readShipperSurvey.valves_free == '0'">No</span>
@@ -992,82 +992,82 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Non transferable cargo stains interior shell</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.non_transferable">{{ readShipperSurvey.non_transferable }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Polish/Buffing marks in interior</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.polish_buffing">{{ readShipperSurvey.polish_buffing }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-12 text-center">
 								1.0Kg/cm2air pressure/leak test carried out with Teflon/Rubber gasket.
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Remarks</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.note">{{ readShipperSurvey.note }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Manlid Seal No</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.manlid_seal_no">{{ readShipperSurvey.manlid_seal_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Airline Seal</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.airline_seal_no">{{ readShipperSurvey.airline_seal_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Bottom Seal No</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.bottom_seal_no">{{ readShipperSurvey.bottom_seal_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Top Discharge Seal</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.top_seal">{{ readShipperSurvey.top_seal }}</span
 									><span v-else><i>Not specified</i></span>

@@ -107,6 +107,12 @@ class DepotConditionSurveyController extends Controller{
 			else
 				$depotconditionsurveyList = $depotconditionsurveyList->orderBy(trim($input["sortBy"]));
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 2) {
+			// Wait
+			$depotconditionsurveyList = $depotconditionsurveyList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
 		if( isset($input["page"]) )
 			$depotconditionsurveyList = $depotconditionsurveyList->paginate(10);
 		else{
