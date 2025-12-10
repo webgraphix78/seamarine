@@ -118,7 +118,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/imo1/verify-tank-number', [App\Http\Controllers\Imo1Controller::class, 'verifyTankNumber'])->name('verify-imo1-tank-number');
 	Route::get('/imo1/view-file/{imo1Id}/{randomId}', [App\Http\Controllers\Imo1Controller::class, 'viewFile'])->name('view-imo1-file');
 	Route::post('/imo1/upload-file', [App\Http\Controllers\Imo1Controller::class, 'uploadFile'])->name('upload-imo1-file');
-	Route::post('/imo1/clear-file/{imo1Id}/{randomId}', [App\Http\Controllers\Imo1Controller::class, 'clearFile'])->name('clear-onhire-file');
+	Route::post('/imo1/clear-file/{imo1Id}/{randomId}', [App\Http\Controllers\Imo1Controller::class, 'clearFile'])->name('clear-imo1-file');
 	
 	// Imo5 Condition
 	Route::get('/imo5condition', [App\Http\Controllers\Imo5ConditionController::class, 'index'])->name('imo5condition-list');
