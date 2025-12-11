@@ -6,7 +6,7 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">SM testing field</h4>
-							<a id="add_smtestingfield_btn" class="btn btn-success border-dark btn-sm" :href="this.docRoot+'/smtestingfield/add'" role="button">Add</a>
+							<a id="add_smtestingfield_btn" class="btn btn-success border-dark btn-sm" :href="this.docRoot+'/smtestingfield/add'" role="button" v-if="['0101', '1111'].indexOf(all_permissions) >= 0">Add</a>
 						</div>
 					</div>
 				</div>

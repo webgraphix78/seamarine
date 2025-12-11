@@ -114,7 +114,7 @@ export default {
 		if (this.currentUser) {
 			var that = this;
 			
-			axios.post("/role/get-permitted-objects", { roles: JSON.parse(this.currentUser.roles) })
+			axios.post("/role/get-permitted-objects", { roles: this.currentUser.roles })
 				.then(function (response) {
 					if (response.data.hasOwnProperty("status") && response.data.status == 1) {
 						that.menuState = 1;

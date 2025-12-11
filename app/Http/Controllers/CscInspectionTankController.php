@@ -100,6 +100,11 @@ class CscInspectionTankController extends Controller{
 				}
 			}
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 4) {
+			$cscinspectiontankList = $cscinspectiontankList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if( isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0 ){
 			if( trim($input["sortOrder"]) == "desc" )
 				$cscinspectiontankList = $cscinspectiontankList->orderByDesc(trim($input["sortBy"]));

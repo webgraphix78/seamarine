@@ -6,17 +6,16 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">cscre</h4>
-							<a id="add_cscre_btn" class="btn btn-success border-dark btn-sm" :href="this.docRoot+'/cscre/add'" role="button">Add</a>
+							<a id="add_cscre_btn" class="btn btn-success border-dark btn-sm" v-if="['0101', '1111'].indexOf(all_permissions) >= 0" :href="this.docRoot+'/cscre/add'" role="button">Add</a>
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewCscre" @edit-object="prepareEditCscre" @toggle-object-status="deleteCscre" @export-object="printCscre" @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewCscre" @edit-object="prepareEditCscre" @toggle-object-status="toggleObjectStatus" @export-object="printCscre" @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-import * as bootstrap from 'bootstrap';
 export default {
 	name: "Cscremaster",
 	props: ['current_user_id', 'all_permissions'],
@@ -109,8 +108,31 @@ export default {
 		prepareAddModal(obj){
 			this.cscreForAdd = Object.assign({});
 		},
-		saveCscre(){
-			this.cscreForAdd.reload = true;
+		saveCscre(cscreForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/cscre/save', { cscre: cscreForAdd }).then(async function (response) {
+				console.log(response);
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.cscreForAdd.id = response.data.id;
+					that.showToast('CSCRE saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("CSCRE could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("CSCRE could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(cscre) {
 			let that = this;
@@ -136,27 +158,19 @@ export default {
 				}
 			});
 		},
-		deleteCscre(cscre, status){
-			var thisVar = this;
+		toggleObjectStatus(cscre, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the Cleaning record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/cscre/delete', { id: cscre.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('CSCRE updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("CSCRE could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("CSCRE could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.cscreForAdd = cscre;
+					that.cscreForAdd.status = status;
+					that.cscreForAdd.action = "status";
+					that.cscreForAdd.reload = true;
+					that.saveCscre(that.cscreForAdd);
 				}
 			});
 		},

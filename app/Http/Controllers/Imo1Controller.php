@@ -30,6 +30,7 @@ class Imo1Controller extends Controller
 				break;
 			case 1:
 			case 3:
+			case 4:
 				$all_permissions = "111";
 				break;
 			default:
@@ -154,6 +155,9 @@ class Imo1Controller extends Controller
 		if ($user->role_id == 2) {
 			// Wait
 			$imo1List = $imo1List->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$imo1List = $imo1List->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
 		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")

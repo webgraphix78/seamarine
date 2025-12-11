@@ -138,7 +138,7 @@ class CleaningController extends Controller
 			$cleaningList = $cleaningList->where('customer_id', $user->customer_id)->where('status', 1);
 		}
 		else if ($user->role_id == 4) {
-			$cleaningList = $cleaningList->where('created_by', $user->id);
+			$cleaningList = $cleaningList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
 		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")

@@ -567,7 +567,6 @@ export default {
 			equipmentinspectionFormObj: initialState(),
 		}
 	},
-	
 	methods: {
 		canceladdedit(event){
 			window.location = this.docRoot + '/equipmentinspection';

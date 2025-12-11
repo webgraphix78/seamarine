@@ -227,7 +227,6 @@ export default {
 				that.showToast("Prv could not be saved successfully.", "error", "bottom", 3000);
 			});
 		},
-		
 		reloadEverything() {
 			if (this.id !== undefined && !isNaN(this.id)) {
 				this.mode = "edit";
@@ -247,10 +246,9 @@ export default {
 					});
 			}
 		},
-		
 		displayLabelSetting ({id, text}) {
-	return `${text}`;
-},
+			return `${text}`;
+		},
 	},
 	async mounted() {
 		if (this.id > 0){

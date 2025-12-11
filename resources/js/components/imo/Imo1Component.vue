@@ -6,7 +6,7 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4">IMO 1 CONDITION</h4>
-							<a id="add_imo1_btn" class="btn btn-success btn-sm" :href="docRoot+'/imo1/add'">ADD</a>
+							<a id="add_imo1_btn" class="btn btn-success btn-sm" :href="docRoot+'/imo1/add'" v-if="['110', '111'].indexOf(all_permissions) >= 0">ADD</a>
 						</div>
 					</div>
 				</div>

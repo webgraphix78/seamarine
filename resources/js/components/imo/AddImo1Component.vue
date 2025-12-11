@@ -173,13 +173,7 @@
 					<label for="add_imo1_for_client" class="form-label text-uppercase fw-bold m-0">For</label>
 				</div>
 				<div class="col-md-3 col-6 ">
-					<select class="form-select" v-model="imo1ForAdd.for_client" id="add_for_client">
-						<optgroup v-if="allForClientList" label="Choose For">
-							<template v-for="forClient in allForClientList" :key="forClient.id">
-								<option :value="forClient.id">{{ forClient.name }}</option>
-							</template>
-						</optgroup>
-					</select>
+					<multiselect v-model="imo1ForAdd.for_client" :options="allForClientList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 				</div>
 			</div>
 			<div class="row mb-2 align-items-center g-2 g-md-0">
@@ -208,13 +202,7 @@
 					<label for="add_imo1_surveyor_id" class="form-label text-uppercase fw-bold m-0">Surveyor</label>
 				</div>
 				<div class="col-md-3 col-6 ">
-					<select class="form-select" v-model="imo1ForAdd.surveyor_id" id="add_surveyor_id">
-						<optgroup v-if="allSurveyorIdList" label="Choose Surveyor">
-							<template v-for="surveyorId in allSurveyorIdList" :key="surveyorId.id">
-								<option :value="surveyorId.id">{{ surveyorId.name }}</option>
-							</template>
-						</optgroup>
-					</select>
+					<multiselect v-model="imo1ForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 				</div>
 				<div class="col-md-2 col-6  text-md-end px-1">
 					<label for="add_imo1_country" class="form-label text-uppercase fw-bold m-0 me-3">Country</label><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
@@ -235,13 +223,7 @@
 					<label for="add_imo1_inspection_location_id" class="form-label text-uppercase fw-bold m-0">Inspection Location</label>
 				</div>
 				<div class="col-md-3 col-6 ">
-					<select class="form-select" v-model="imo1ForAdd.inspection_location_id" id="add_inspection_location_id">
-						<optgroup v-if="allInspectionLocationIdList" label="Choose Inspection Location">
-							<template v-for="inspectionLocationId in allInspectionLocationIdList" :key="inspectionLocationId.id">
-								<option :value="inspectionLocationId.id">{{ inspectionLocationId.name }}</option>
-							</template>
-						</optgroup>
-					</select>
+					<multiselect v-model="imo1ForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 				</div>
 			</div>
 			<div class="row mb-2 align-items-center g-2 g-md-0">
@@ -249,13 +231,7 @@
 					<label for="add_imo1_customer_id" class="form-label text-uppercase fw-bold m-0">Customer</label>
 				</div>
 				<div class="col-md-3 col-6 ">
-					<select class="form-select" v-model="imo1ForAdd.customer_id" id="add_customer_id">
-						<optgroup v-if="allCustomerIdList" label="Choose Customer">
-							<template v-for="customerId in allCustomerIdList" :key="customerId.id">
-								<option :value="customerId.id">{{ customerId.name }}</option>
-							</template>
-						</optgroup>
-					</select>
+					<multiselect v-model="imo1ForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 				</div>
 				<div class="col-md-2 col-6  text-md-end px-1">
 					<label for="add_imo1_cha_client" class="form-label text-uppercase fw-bold m-0">CHA Client</label>
@@ -1708,6 +1684,21 @@
 						return;
 					}
 				}
+				if ( this.imo1ForAdd.surveyor_id != 'null' && typeof this.imo1ForAdd.surveyor_id === 'object' && this.imo1ForAdd.surveyor_id.id) {
+					this.imo1ForAdd.surveyor_id = this.imo1ForAdd.surveyor_id.id;
+				}
+				if ( this.imo1ForAdd.customer_id != 'null' && typeof this.imo1ForAdd.customer_id === 'object' && this.imo1ForAdd.customer_id.id) {
+					this.imo1ForAdd.customer_id = this.imo1ForAdd.customer_id.id;
+				}
+				if ( this.imo1ForAdd.for_client != 'null' && typeof this.imo1ForAdd.for_client === 'object' && this.imo1ForAdd.for_client.id) {
+					this.imo1ForAdd.for_client = this.imo1ForAdd.for_client.id;
+				}
+				if ( this.imo1ForAdd.inspection_location_id != 'null' && typeof this.imo1ForAdd.inspection_location_id === 'object' && this.imo1ForAdd.inspection_location_id.id) {
+					this.imo1ForAdd.inspection_location_id = this.imo1ForAdd.inspection_location_id.id;
+				}
+				console.log(this.imo1ForAdd);
+				
+				// return;
 				if (!this.imo1ForAdd.action || this.imo1ForAdd.action == "") this.imo1ForAdd.action = "details";
 				this.imo1ForAdd.created_by = this.current_user_id;
 				this.showLoading("Saving ...");
@@ -1909,7 +1900,10 @@
 							console.log(error);
 						});
 				}
-			}
+			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
+			},
 		},
 		async mounted() {
 			if (this.id > 0){
@@ -2079,6 +2073,50 @@
 			];
 			await this.loadAllMasters();
 			// this.reloadEverything();
+			let _allSurveyorIdList = this.allSurveyorIdList;
+			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
+				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allCustomerIdList = this.allCustomerIdList;
+			if(Array.isArray(_allCustomerIdList) && _allCustomerIdList.length > 0){
+				this.allCustomerIdList = _allCustomerIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allForClientList = this.allForClientList;
+			if(Array.isArray(_allForClientList) && _allForClientList.length > 0){
+				this.allForClientList = _allForClientList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allInspectionLocationIdList = this.allInspectionLocationIdList;
+			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
+				this.allInspectionLocationIdList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			if (this.imo1ForAdd.surveyor_id) {
+				if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+					let _allRelationList = this.allSurveyorIdList;
+					let relationId = parseInt(this.imo1ForAdd.surveyor_id);
+					this.imo1ForAdd.surveyor_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
+			if (this.imo1ForAdd.customer_id) {
+				if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+					let _allRelationList = this.allCustomerIdList;
+					let relationId = parseInt(this.imo1ForAdd.customer_id);
+					this.imo1ForAdd.customer_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
+			if (this.imo1ForAdd.for_client) {
+				if (Array.isArray(this.allForClientList) && this.allForClientList.length > 0) {
+					let _allRelationList = this.allForClientList;
+					let relationId = parseInt(this.imo1ForAdd.for_client);
+					this.imo1ForAdd.for_client = _allRelationList.find(item => item.id === relationId);
+				}
+			}
+			if (this.imo1ForAdd.inspection_location_id) {
+				if (Array.isArray(this.allInspectionLocationIdList) && this.allInspectionLocationIdList.length > 0) {
+					let _allRelationList = this.allInspectionLocationIdList;
+					let relationId = parseInt(this.imo1ForAdd.inspection_location_id);
+					this.imo1ForAdd.inspection_location_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
 		}
 	};
 </script>

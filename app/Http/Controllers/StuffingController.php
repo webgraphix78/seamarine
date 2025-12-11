@@ -106,6 +106,9 @@ class StuffingController extends Controller{
 			// Wait
 			$stuffingList = $stuffingList->where('customer_id', $user->customer_id)->where('status', 1);
 		}
+		else if ($user->role_id == 4) {
+			$stuffingList = $stuffingList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if( isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0 ){
 			if( trim($input["sortOrder"]) == "desc" )
 				$stuffingList = $stuffingList->orderByDesc(trim($input["sortBy"]));

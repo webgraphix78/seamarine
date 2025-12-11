@@ -75,13 +75,7 @@
 								</div>
 								<div class="col-md-3 col-6">
 									<div>
-										<select class="form-select" v-model="dryboxForAdd.inspection_location_id" id="add_inspection_location_id">
-											<optgroup v-if="allInspectionLocationIdList" label="Choose Inspection Location">
-												<template v-for="inspectionLocationId in allInspectionLocationIdList" :key="inspectionLocationId.id">
-													<option :value="inspectionLocationId.id">{{ inspectionLocationId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="dryboxForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 									</div>
 									<template v-for="error of v$.dryboxForAdd.inspection_location_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -150,13 +144,7 @@
 								</div>
 								<div class="col-md-3 col-6">
 									<div>
-										<select class="form-select" v-model="dryboxForAdd.customer_id" id="add_customer_id">
-											<optgroup v-if="allCustomerIdList" label="Choose Customer">
-												<template v-for="customerId in allCustomerIdList" :key="customerId.id">
-													<option :value="customerId.id">{{ customerId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="dryboxForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 									</div>
 									<template v-for="error of v$.dryboxForAdd.customer_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -167,13 +155,7 @@
 								</div>
 								<div class="col-md-3 col-6">
 									<div>
-										<select class="form-select" v-model="dryboxForAdd.surveyor_id" id="add_surveyor_id">
-											<optgroup v-if="allSurveyorIdList" label="Choose Surveyor">
-												<template v-for="surveyorId in allSurveyorIdList" :key="surveyorId.id">
-													<option :value="surveyorId.id">{{ surveyorId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="dryboxForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 									</div>
 									<template v-for="error of v$.dryboxForAdd.surveyor_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -698,6 +680,15 @@
 						return;
 					}
 				}
+				if ( thisVar.dryboxForAdd.surveyor_id != 'null' && typeof thisVar.dryboxForAdd.surveyor_id === 'object' && thisVar.dryboxForAdd.surveyor_id.id) {
+					thisVar.dryboxForAdd.surveyor_id = thisVar.dryboxForAdd.surveyor_id.id;
+				}
+				if ( thisVar.dryboxForAdd.customer_id != 'null' && typeof thisVar.dryboxForAdd.customer_id === 'object' && thisVar.dryboxForAdd.customer_id.id) {
+					thisVar.dryboxForAdd.customer_id = thisVar.dryboxForAdd.customer_id.id;
+				}
+				if ( thisVar.dryboxForAdd.inspection_location_id != 'null' && typeof thisVar.dryboxForAdd.inspection_location_id === 'object' && thisVar.dryboxForAdd.inspection_location_id.id) {
+					thisVar.dryboxForAdd.inspection_location_id = thisVar.dryboxForAdd.inspection_location_id.id;
+				}
 				if (!this.dryboxForAdd.action || this.dryboxForAdd.action == "") this.dryboxForAdd.action = "details";
 				this.dryboxForAdd.created_by = this.current_user_id;
 				$("#addDryboxModal").modal("hide");
@@ -731,6 +722,27 @@
 				this.dryboxForAdd = Object.assign({}, drybox);
 				this.tankNoVerified = false;
 				this.addEditModal.show();
+				if (this.dryboxForAdd.surveyor_id) {
+					if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+						let _allRelationList = this.allSurveyorIdList;
+						let relationId = parseInt(this.dryboxForAdd.surveyor_id);
+						this.dryboxForAdd.surveyor_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.dryboxForAdd.customer_id) {
+					if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+						let _allRelationList = this.allCustomerIdList;
+						let relationId = parseInt(this.dryboxForAdd.customer_id);
+						this.dryboxForAdd.customer_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.dryboxForAdd.inspection_location_id) {
+					if (Array.isArray(this.allInspectionLocationIdList) && this.allInspectionLocationIdList.length > 0) {
+						let _allRelationList = this.allInspectionLocationIdList;
+						let relationId = parseInt(this.dryboxForAdd.inspection_location_id);
+						this.dryboxForAdd.inspection_location_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
 			},
 			viewDrybox(drybox) {
 				this.readDrybox = drybox;
@@ -759,6 +771,9 @@
 				this.showLoading("Loading images ...");
 				await this.refreshObject(drybox, "Drybox", 1);
 				this.closeSwal();
+			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
 			},
 		},
 		async mounted() {
@@ -790,9 +805,18 @@
 				this.$refs.readModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
 			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
-			this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
-			this.allCustomerIdList = await this.loadAllCustomer(true);
-			this.allSurveyorIdList = await this.loadAllSurveyor(true);
+			let _allSurveyorIdList = await this.loadAllSurveyor(true);
+			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
+				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allCustomerIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allCustomerIdList) && _allCustomerIdList.length > 0){
+				this.allCustomerIdList = _allCustomerIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
+				this.allInspectionLocationIdList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
+			}
 			this.allDryboxStatusList = [
 				{id: "0", title: "Empty"},
 				{id: "1", title: "Loaded"}

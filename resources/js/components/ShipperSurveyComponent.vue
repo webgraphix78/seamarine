@@ -109,13 +109,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<select class="form-select" v-model="shippersurveyForAdd.for_shipper_id" id="add_for_shipper_id">
-											<optgroup v-if="allForShipperIdList" label="Choose">
-												<template v-for="forShipperId in allForShipperIdList" :key="forShipperId.id">
-													<option :value="forShipperId.id">{{ forShipperId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="shippersurveyForAdd.for_shipper_id" :options="allForShipperIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 									</div>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
@@ -123,13 +117,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<select class="form-select" v-model="shippersurveyForAdd.surveyor_id" id="add_surveyor_id">
-											<optgroup v-if="allSurveyorIdList" label="Choose">
-												<template v-for="surveyorId in allSurveyorIdList" :key="surveyorId.id">
-													<option :value="surveyorId.id">{{ surveyorId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="shippersurveyForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 									</div>
 								</div>
 							</div>
@@ -148,13 +136,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<select class="form-select" v-model="shippersurveyForAdd.customer_id" id="add_customer_id">
-											<optgroup v-if="allCustomerIdList" label="Choose">
-												<template v-for="customerId in allCustomerIdList" :key="customerId.id">
-													<option :value="customerId.id">{{ customerId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="shippersurveyForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 									</div>
 								</div>
 							</div>
@@ -164,13 +146,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<select class="form-select" v-model="shippersurveyForAdd.inspection_location_id" id="add_inspection_location_id">
-											<optgroup v-if="allInspectionLocationIdList" label="Choose">
-												<template v-for="inspectionLocationId in allInspectionLocationIdList" :key="inspectionLocationId.id">
-													<option :value="inspectionLocationId.id">{{ inspectionLocationId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="shippersurveyForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 									</div>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
@@ -1253,6 +1229,20 @@
 						return;
 					}
 				}
+
+				if ( this.shippersurveyForAdd.surveyor_id != 'null' && typeof this.shippersurveyForAdd.surveyor_id === 'object' && this.shippersurveyForAdd.surveyor_id.id) {
+					this.shippersurveyForAdd.surveyor_id = this.shippersurveyForAdd.surveyor_id.id;
+				}
+				if ( this.shippersurveyForAdd.customer_id != 'null' && typeof this.shippersurveyForAdd.customer_id === 'object' && this.shippersurveyForAdd.customer_id.id) {
+					this.shippersurveyForAdd.customer_id = this.shippersurveyForAdd.customer_id.id;
+				}
+				if ( this.shippersurveyForAdd.for_shipper_id != 'null' && typeof this.shippersurveyForAdd.for_shipper_id === 'object' && this.shippersurveyForAdd.for_shipper_id.id) {
+					this.shippersurveyForAdd.for_shipper_id = this.shippersurveyForAdd.for_shipper_id.id;
+				}
+				if ( this.shippersurveyForAdd.inspection_location_id != 'null' && typeof this.shippersurveyForAdd.inspection_location_id === 'object' && this.shippersurveyForAdd.inspection_location_id.id) {
+					this.shippersurveyForAdd.inspection_location_id = this.shippersurveyForAdd.inspection_location_id.id;
+				}
+
 				if (!this.shippersurveyForAdd.action || this.shippersurveyForAdd.action == "") this.shippersurveyForAdd.action = "details";
 				this.shippersurveyForAdd.created_by = this.current_user_id;
 				$("#addShipperSurveyModal").modal("hide");
@@ -1286,6 +1276,34 @@
 				this.shippersurveyForAdd = Object.assign({}, shippersurvey);
 				this.tankNoVerified = false;
 				this.addEditModal.show();
+				if (this.shippersurveyForAdd.surveyor_id) {
+					if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+						let _allRelationList = this.allSurveyorIdList;
+						let relationId = parseInt(this.shippersurveyForAdd.surveyor_id);
+						this.shippersurveyForAdd.surveyor_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.shippersurveyForAdd.customer_id) {
+					if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+						let _allRelationList = this.allCustomerIdList;
+						let relationId = parseInt(this.shippersurveyForAdd.customer_id);
+						this.shippersurveyForAdd.customer_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.shippersurveyForAdd.for_shipper_id) {
+					if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+						let _allRelationList = this.allCustomerIdList;
+						let relationId = parseInt(this.shippersurveyForAdd.for_shipper_id);
+						this.shippersurveyForAdd.for_shipper_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.shippersurveyForAdd.inspection_location_id) {
+					if (Array.isArray(this.allInspectionLocationIdList) && this.allInspectionLocationIdList.length > 0) {
+						let _allRelationList = this.allInspectionLocationIdList;
+						let relationId = parseInt(this.shippersurveyForAdd.inspection_location_id);
+						this.shippersurveyForAdd.inspection_location_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
 			},
 			viewShipperSurvey(shippersurvey) {
 				this.readShipperSurvey = shippersurvey;
@@ -1335,6 +1353,9 @@
 				await this.refreshObject(shippersurvey, "ShipperSurvey", 1);
 				this.closeSwal();
 			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
+			},
 		},
 		async mounted() {
 			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
@@ -1365,10 +1386,23 @@
 				this.$refs.readModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
 			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
-			this.allSurveyorIdList = await this.loadAllSurveyor(true);
-			this.allForShipperIdList = await this.loadAllCustomer(true);
-			this.allCustomerIdList = await this.loadAllCustomer(true);
-			this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+
+			let _allSurveyorIdList = await this.loadAllSurveyor(true);
+			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
+				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allCustomerIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allCustomerIdList) && _allCustomerIdList.length > 0){
+				this.allCustomerIdList = _allCustomerIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allForShipperIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allForShipperIdList) && _allForShipperIdList.length > 0){
+				this.allForShipperIdList = _allForShipperIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
+				this.allInspectionLocationIdList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
+			}
 			this.arrYesNoNA = [
 				{id: "1", title: "Yes"},
 				{id: "0", title: "No"},

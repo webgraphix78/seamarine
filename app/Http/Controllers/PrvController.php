@@ -108,10 +108,12 @@ class PrvController extends Controller{
 		}
 		// Role condition - customer
 		$user = \App\Models\User::find($input['current_user_id']);
-		Log::info("message". $user);
 		if ($user->role_id == 2) {
 			// Wait
 			$prvList = $prvList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$prvList = $prvList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
 		}
 		if( isset($input["page"]) )
 			$prvList = $prvList->paginate(10);

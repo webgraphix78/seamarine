@@ -189,13 +189,7 @@
 							</div>
 							<div class="col-md-4 col-6">
 								<div>
-									<select class="form-select" v-model="jointsurveyForAdd.surveyor_id" id="add_surveyor_id">
-										<optgroup v-if="allSurveyorIdList" label="Choose Surveyor">
-											<template v-for="surveyorId in allSurveyorIdList" :key="surveyorId.id">
-												<option :value="surveyorId.id">{{ surveyorId.name }}</option>
-											</template>
-										</optgroup>
-									</select>
+									<multiselect v-model="jointsurveyForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 								</div>
 								<div v-if="v$.jointsurveyForAdd.surveyor_id.$error" class="mandatory ms-3">Mandatory</div>
 							</div>
@@ -357,7 +351,7 @@
 							<div class="col-md-4">
 								<label class="form-label text-uppercase fw-bold m-0">Surveyor</label>
 								<div>
-									<span v-if="readJointSurvey.surveyor?.title">{{ readJointSurvey.surveyor?.title }}</span
+									<span v-if="readJointSurvey.surveyor?.name">{{ readJointSurvey.surveyor?.name }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
@@ -518,6 +512,13 @@
 			prepareEditJointSurvey(jointsurvey) {
 				this.jointsurveyForAdd = Object.assign({}, jointsurvey);
 				this.addEditModal.show();
+				if (this.jointsurveyForAdd.surveyor_id) {
+					if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+						let _allRelationList = this.allSurveyorIdList;
+						let relationId = parseInt(this.jointsurveyForAdd.surveyor_id);
+						this.jointsurveyForAdd.surveyor_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
 			},
 			viewJointSurvey(jointsurvey) {
 				this.readJointSurvey = jointsurvey;
@@ -547,12 +548,18 @@
 				await this.refreshObject(cleaning, "Cleaning", 1);
 				this.closeSwal();
 			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
+			},
 		},
 		async mounted() {
 			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
 			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
 			this.allCompanyIdList = await this.loadAllCompany(true);
-			this.allSurveyorIdList = await this.loadAllSurveyor(true);
+			let _allSurveyorIdList = await this.loadAllSurveyor(true);
+			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
+				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
+			}
 		}
 	};
 </script>

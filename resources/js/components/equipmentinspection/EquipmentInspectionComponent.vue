@@ -6,11 +6,11 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">equipment inspection</h4>
-							<a id="add_equipmentinspection_btn" class="btn btn-success btn-sm" :href="this.docRoot+'/equipmentinspection/add'" role="button">Add</a>
+							<a id="add_equipmentinspection_btn" class="btn btn-success btn-sm" :href="this.docRoot+'/equipmentinspection/add'" role="button" v-if="['0101', '1111'].indexOf(all_permissions) >= 0">Add</a>
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewEquipmentInspection" @edit-object="prepareEditEquipmentInspection" @toggle-object-status="deleteEquipmentInspection"  @export-object="printEquipmentInspection"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewEquipmentInspection" @edit-object="prepareEditEquipmentInspection" @toggle-object-status="toggleObjectStatus"  @export-object="printEquipmentInspection"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 		
@@ -18,7 +18,6 @@
 	</div>
 </template>
 <script>
-import * as bootstrap from 'bootstrap';
 export default {
 	name: "EquipmentInspectionmaster",
 	props: ['current_user_id', 'all_permissions'],
@@ -136,7 +135,7 @@ export default {
 						},
 					]
 				},
-				search: "simple"
+				search: "simple",
 			},
 			addeditModal: null,
 			viewModal: null,
@@ -163,8 +162,31 @@ export default {
 		prepareAddModal(obj){
 			this.equipmentinspectionForAdd = Object.assign({});
 		},
-		saveEquipmentInspection(){
-			this.equipmentinspectionForAdd.reload = true;
+		saveEquipmentInspection(equipmentinspectionForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/equipmentinspection/save', { equipmentinspection: equipmentinspectionForAdd }).then(async function (response) {
+				console.log(response);
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.equipmentinspectionForAdd.id = response.data.id;
+					that.showToast('EquipmentInspection saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("EquipmentInspection could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("EquipmentInspection could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(equipmentinspection) {
 			let that = this;
@@ -190,27 +212,19 @@ export default {
 				}
 			});
 		},
-		deleteEquipmentInspection(equipmentinspection, status){
-			var thisVar = this;
+		toggleObjectStatus(equipmentinspection, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the Cleaning record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/equipmentinspection/delete', { id: equipmentinspection.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('EQUIPMENTINSPECTION updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("EQUIPMENTINSPECTION could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("EQUIPMENTINSPECTION could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.equipmentinspectionForAdd = equipmentinspection;
+					that.equipmentinspectionForAdd.status = status;
+					that.equipmentinspectionForAdd.action = "status";
+					that.equipmentinspectionForAdd.reload = true;
+					that.saveEquipmentInspection(that.equipmentinspectionForAdd);
 				}
 			});
 		},

@@ -6,11 +6,11 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">refer equipment</h4>
-							<a id="add_referequipment_btn" class="btn btn-success btn-sm" :href="this.docRoot+'/referequipment/add'" role="button">Add</a>
+							<a id="add_referequipment_btn" class="btn btn-success btn-sm" :href="this.docRoot+'/referequipment/add'" role="button" v-if="['0101', '1111'].indexOf(all_permissions) >= 0">Add</a>
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewReferEquipment" @edit-object="prepareEditReferEquipment" @toggle-object-status="deleteReferEquipment"  @export-object="printReferEquipment"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewReferEquipment" @edit-object="prepareEditReferEquipment" @toggle-object-status="toggleObjectStatus"  @export-object="printReferEquipment"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 	</div>
@@ -117,8 +117,31 @@ export default {
 		prepareAddModal(obj){
 			this.referequipmentForAdd = Object.assign({});
 		},
-		saveReferEquipment(){
-			this.referequipmentForAdd.reload = true;
+		saveReferEquipment(referequipmentForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/referequipment/save', { referequipment: referequipmentForAdd }).then(async function (response) {
+				console.log(response);
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.referequipmentForAdd.id = response.data.id;
+					that.showToast('Refer Equipment saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("Refer Equipment could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("Refer Equipment could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(referequipment) {
 			let that = this;
@@ -144,27 +167,19 @@ export default {
 				}
 			});
 		},
-		deleteReferEquipment(referequipment, status){
-			var thisVar = this;
+		toggleObjectStatus(referequipment, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the Cleaning record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/referequipment/delete', { id: referequipment.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('REFEREQUIPMENT updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("REFEREQUIPMENT could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("REFEREQUIPMENT could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.referequipmentForAdd = referequipment;
+					that.referequipmentForAdd.status = status;
+					that.referequipmentForAdd.action = "status";
+					that.referequipmentForAdd.reload = true;
+					that.saveReferEquipment(that.referequipmentForAdd);
 				}
 			});
 		},

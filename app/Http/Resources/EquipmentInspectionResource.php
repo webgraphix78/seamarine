@@ -23,7 +23,7 @@ class EquipmentInspectionResource extends JsonResource
 		
 		if (isset($input['current_user_id']) && $input['current_user_id'] > 0) {
 			$currentUser = \App\Models\User::find($input['current_user_id']);
-			$actions = ActionsService::generateActions(\App\Models\EquipmentInspection::class, $currentUser->role_id, $this->status);
+			$actions = ActionsService::generateActions('EquipmentInspection', $currentUser->role_id, $this->status);
 		};
 		return [
 			'id' => $this->id,

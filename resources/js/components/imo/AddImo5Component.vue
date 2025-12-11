@@ -106,13 +106,7 @@
 				</div>
 				<div class="col-md-3 col-6">
 					<div>
-						<select class="form-select" v-model="imo5conditionForAdd.cleaning_location_id" id="add_cleaning_location_id">
-							<optgroup v-if="allCleaningLocationIdList" label="Choose Cleaning Location">
-								<template v-for="cleaningLocationId in allCleaningLocationIdList" :key="cleaningLocationId.id">
-									<option :value="cleaningLocationId.id">{{ cleaningLocationId.name }}</option>
-								</template>
-							</optgroup>
-						</select>
+						<multiselect v-model="imo5conditionForAdd.cleaning_location_id" :options="allCleaningLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 					</div>
 				</div>
 			</div>
@@ -150,13 +144,7 @@
 				</div>
 				<div class="col-md-3 col-6">
 					<div>
-						<select class="form-select" v-model="imo5conditionForAdd.customer_id" id="add_customer_id">
-							<optgroup v-if="allCustomerIdList" label="Choose Customer">
-								<template v-for="customerId in allCustomerIdList" :key="customerId.id">
-									<option :value="customerId.id">{{ customerId.name }}</option>
-								</template>
-							</optgroup>
-						</select>
+						<multiselect v-model="imo5conditionForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 					</div>
 					<template v-for="error of v$.imo5conditionForAdd.customer_id.$errors" :key="error.$uid">
 						<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -212,13 +200,7 @@
 				</div>
 				<div class="col-md-3 col-6">
 					<div>
-						<select class="form-select" v-model="imo5conditionForAdd.inspection_location_id" id="add_inspection_location_id">
-							<optgroup v-if="allInspectionLocationIdList" label="Choose Inspection Location">
-								<template v-for="inspectionLocationId in allInspectionLocationIdList" :key="inspectionLocationId.id">
-									<option :value="inspectionLocationId.id">{{ inspectionLocationId.name }}</option>
-								</template>
-							</optgroup>
-						</select>
+						<multiselect v-model="imo5conditionForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 					</div>
 				</div>
 				<div class="col-md-2 text-md-end px-1">
@@ -1395,6 +1377,15 @@
 					console.log(this.v$.$errors);
 					return;
 				}
+				if ( this.imo5conditionForAdd.customer_id != 'null' && typeof this.imo5conditionForAdd.customer_id === 'object' && this.imo5conditionForAdd.customer_id.id) {
+					this.imo5conditionForAdd.customer_id = this.imo5conditionForAdd.customer_id.id;
+				}
+				if ( this.imo5conditionForAdd.cleaning_location_id != 'null' && typeof this.imo5conditionForAdd.cleaning_location_id === 'object' && this.imo5conditionForAdd.cleaning_location_id.id) {
+					this.imo5conditionForAdd.cleaning_location_id = this.imo5conditionForAdd.cleaning_location_id.id;
+				}
+				if ( this.imo5conditionForAdd.inspection_location_id != 'null' && typeof this.imo5conditionForAdd.inspection_location_id === 'object' && this.imo5conditionForAdd.inspection_location_id.id) {
+					this.imo5conditionForAdd.inspection_location_id = this.imo5conditionForAdd.inspection_location_id.id;
+				}
 				if (!this.imo5conditionForAdd.action || this.imo5conditionForAdd.action == "") this.imo5conditionForAdd.action = "details";
 				this.imo5conditionForAdd.created_by = this.current_user_id;
 				this.showLoading("Saving ...");
@@ -1444,7 +1435,10 @@
 							console.log(error);
 						});
 				}
-			}
+			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
+			},
 		},
 		async mounted() {
 			if (this.id > 0){
@@ -1457,7 +1451,18 @@
 			}
 			this.allTankTypeIdList = await this.loadAllTankType(true);
 			this.allTcodeIdList = await this.loadAllTcode(true);
-			this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+			let _allCustomerIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allCustomerIdList) && _allCustomerIdList.length > 0){
+				this.allCustomerIdList = _allCustomerIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
+				this.allInspectionLocationIdList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allCleaningLocationIdList = await this.loadAllCleaningLocation(true);
+			if(Array.isArray(_allCleaningLocationIdList) && _allCleaningLocationIdList.length > 0){
+				this.allCleaningLocationIdList = _allCleaningLocationIdList.map(x => {return { id: x.id, text: x.name }});
+			}
 			this.allImoStatusList = [
 				{id: "1", title: "Import"},
 				{id: "0", title: "Export"}
@@ -1466,8 +1471,6 @@
 				{id: "1", title: "Sealed"},
 				{id: "0", title: "Unsealed"}
 			];
-			this.allCleaningLocationIdList = await this.loadAllCleaningLocation(true);
-			this.allCustomerIdList = await this.loadAllCustomer(true);
 			this.arrYesNo = [
 				{id: "1", title: "Yes"},
 				{id: "0", title: "No"}
@@ -1481,6 +1484,27 @@
 				{id: "1", title: "Sealed"},
 				{id: "0", title: "Unsealed"}
 			];
+			if (this.imo5conditionForAdd.customer_id) {
+				if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+					let _allRelationList = this.allCustomerIdList;
+					let relationId = parseInt(this.imo5conditionForAdd.customer_id);
+					this.imo5conditionForAdd.customer_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
+			if (this.imo5conditionForAdd.inspection_location_id) {
+				if (Array.isArray(this.allInspectionLocationIdList) && this.allInspectionLocationIdList.length > 0) {
+					let _allRelationList = this.allInspectionLocationIdList;
+					let relationId = parseInt(this.imo5conditionForAdd.inspection_location_id);
+					this.imo5conditionForAdd.inspection_location_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
+			if (this.imo5conditionForAdd.cleaning_location_id) {
+				if (Array.isArray(this.allCleaningLocationIdList) && this.allCleaningLocationIdList.length > 0) {
+					let _allRelationList = this.allCleaningLocationIdList;
+					let relationId = parseInt(this.imo5conditionForAdd.cleaning_location_id);
+					this.imo5conditionForAdd.cleaning_location_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
 		}
 	};
 </script>

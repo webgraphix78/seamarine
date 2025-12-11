@@ -101,6 +101,10 @@ class DmccController extends Controller{
 				}
 			}
 		}
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 4) {
+			$dmccList = $dmccList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if( isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0 ){
 			if( trim($input["sortOrder"]) == "desc" )
 				$dmccList = $dmccList->orderByDesc(trim($input["sortBy"]));

@@ -107,6 +107,10 @@ class SmTestingFieldController extends Controller{
 			else
 				$smtestingfieldList = $smtestingfieldList->orderBy(trim($input["sortBy"]));
 		}
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 4) {
+			$smtestingfieldList = $smtestingfieldList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if( isset($input["page"]) )
 			$smtestingfieldList = $smtestingfieldList->paginate(10);
 		else{

@@ -113,6 +113,9 @@ class DepotConditionSurveyController extends Controller{
 			// Wait
 			$depotconditionsurveyList = $depotconditionsurveyList->where('customer_id', $user->customer_id)->where('status', 1);
 		}
+		else if ($user->role_id == 4) {
+			$depotconditionsurveyList = $depotconditionsurveyList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if( isset($input["page"]) )
 			$depotconditionsurveyList = $depotconditionsurveyList->paginate(10);
 		else{

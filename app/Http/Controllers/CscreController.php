@@ -92,6 +92,11 @@ class CscreController extends Controller
 				}
 			}
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 4) {
+			$cscreList = $cscreList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")
 				$cscreList = $cscreList->orderByDesc(trim($input["sortBy"]));
@@ -163,11 +168,8 @@ class CscreController extends Controller
 		if (isset($input["cscre"])) {
 			$cscre = $input["cscre"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if ($cscre["action"] == "status") {
 				$objectToSave["status"] = $cscre["status"];
-				if ($cscre["status"] <= 0)
-					$checkTitle = false;
 			}
 			if ($cscre["action"] == "details") {
 				$rules = [];
@@ -183,16 +185,13 @@ class CscreController extends Controller
 				} else
 					unset($objectToSave["created_by"]);
 			}
-			$cscreData = \App\Models\Cscre::updateOrCreate(["id" => $cscre["id"]], $objectToSave);
-			if ($objectToSave["id"] == 0) {
-				// Set ref_no to the newly generated id
-				$cscreData->ref_no = $cscreData->id;
-				$user = \App\Models\User::find(Auth::id());
-				if ($user->role_id == 4) {
-					$cscreData->status = 0;
-				}
-				$cscreData->save();
+			// Set ref_no to the newly generated id
+			$objectToSave['ref_no'] = $cscre['id'];
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$objectToSave['status'] = 0;
 			}
+			$cscreData = \App\Models\Cscre::updateOrCreate(["id" => $cscre["id"]], $objectToSave);
 			return response()->json(["status" => 1, "id" => $cscreData->id]);
 		} else {
 			return response()->json(["status" => -100, "messages" => ["Data for Cscre is missing."]]);

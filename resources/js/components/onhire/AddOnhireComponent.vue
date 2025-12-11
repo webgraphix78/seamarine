@@ -44,13 +44,7 @@
 			</div>
 			<div class="col-md-3 col-6">
 				<div>
-					<select class="form-select" v-model="onhireForAdd.customer_id" id="add_customer_id">
-						<optgroup v-if="allCustomerIdList" label="Choose Customer">
-							<template v-for="customerId in allCustomerIdList" :key="customerId.id">
-								<option :value="customerId.id">{{ customerId.name }}</option>
-							</template>
-						</optgroup>
-					</select>
+					<multiselect v-model="onhireForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 				</div>
 				<div v-if="v$.onhireForAdd.customer_id.$error" class="mandatory ms-3">Mandatory</div>
 			</div>
@@ -85,13 +79,7 @@
 			</div>
 			<div class="col-md-3 col-6">
 				<div>
-					<select class="form-select" v-model="onhireForAdd.inspection_location_id" id="add_inspection_location_id">
-						<optgroup v-if="allInspectionLocationIdList" label="Choose Inspection Location">
-							<template v-for="inspectionLocationId in allInspectionLocationIdList" :key="inspectionLocationId.id">
-								<option :value="inspectionLocationId.id">{{ inspectionLocationId.name }}</option>
-							</template>
-						</optgroup>
-					</select>
+					<multiselect v-model="onhireForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 				</div>
 			</div>
 		</div>
@@ -115,13 +103,7 @@
 			</div>
 			<div class="col-md-3 col-6">
 				<div>
-					<select class="form-select" v-model="onhireForAdd.surveyor_id" id="add_surveyor_id">
-						<optgroup v-if="allSurveyorIdList" label="Choose Surveyor">
-							<template v-for="surveyorId in allSurveyorIdList" :key="surveyorId.id">
-								<option :value="surveyorId.id">{{ surveyorId.name }}</option>
-							</template>
-						</optgroup>
-					</select>
+					<multiselect v-model="onhireForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
 				</div>
 			</div>
 		</div>
@@ -634,6 +616,15 @@
 					console.log(this.v$.$errors);
 					return;
 				}
+				if ( that.onhireForAdd.surveyor_id != 'null' && typeof that.onhireForAdd.surveyor_id === 'object' && that.onhireForAdd.surveyor_id.id) {
+					that.onhireForAdd.surveyor_id = that.onhireForAdd.surveyor_id.id;
+				}
+				if ( that.onhireForAdd.customer_id != 'null' && typeof that.onhireForAdd.customer_id === 'object' && that.onhireForAdd.customer_id.id) {
+					that.onhireForAdd.customer_id = that.onhireForAdd.customer_id.id;
+				}
+				if ( that.onhireForAdd.inspection_location_id != 'null' && typeof that.onhireForAdd.inspection_location_id === 'object' && that.onhireForAdd.inspection_location_id.id) {
+					that.onhireForAdd.inspection_location_id = that.onhireForAdd.inspection_location_id.id;
+				}
 				if (!this.onhireForAdd.action || this.onhireForAdd.action == "") this.onhireForAdd.action = "details";
 				this.onhireForAdd.created_by = this.current_user_id;
 				console.log(this.onhireForAdd);
@@ -861,7 +852,10 @@
 							console.log(error);
 						});
 				}
-			}
+			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
+			},
 		},
 		async mounted() {
 			if (this.id > 0){
@@ -873,21 +867,55 @@
 				this.unitnrObject.refresh = true;
 			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
-			this.allCustomerIdList = await this.loadAllCustomer(true);
+			// this.allCustomerIdList = await this.loadAllCustomer(true);
+
+			let _allSurveyorIdList = await this.loadAllSurveyor(true);
+			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
+				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allCustomerIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allCustomerIdList) && _allCustomerIdList.length > 0){
+				this.allCustomerIdList = _allCustomerIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
+				this.allInspectionLocationIdList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
+			}
 			this.allSurveyTypeList = [
 				{id: "1", title: "On-Hire"},
 				{id: "2", title: "Off-Hire"},
 				{id: "3", title: "Condition"}
 			];
-			this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+			// this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
 			this.allFormLiquidTanksList = [
 				{id: "1", title: "Food"},
 				{id: "2", title: "Chemicals"}
 			];
-			this.allSurveyorIdList = await this.loadAllSurveyor(true);
+			// this.allSurveyorIdList = await this.loadAllSurveyor(true);
 			this.allTankTypeIdList = await this.loadAllTankType(true);
 			this.allTcodeIdList = await this.loadAllTcode(true);
 			this.imageId = Math.round(Math.random() * 100);
+			if (this.onhireForAdd.surveyor_id) {
+				if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+					let _allRelationList = this.allSurveyorIdList;
+					let relationId = parseInt(this.onhireForAdd.surveyor_id);
+					this.onhireForAdd.surveyor_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
+			if (this.onhireForAdd.customer_id) {
+				if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+					let _allRelationList = this.allCustomerIdList;
+					let relationId = parseInt(this.onhireForAdd.customer_id);
+					this.onhireForAdd.customer_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
+			if (this.onhireForAdd.inspection_location_id) {
+				if (Array.isArray(this.allInspectionLocationIdList) && this.allInspectionLocationIdList.length > 0) {
+					let _allRelationList = this.allInspectionLocationIdList;
+					let relationId = parseInt(this.onhireForAdd.inspection_location_id);
+					this.onhireForAdd.inspection_location_id = _allRelationList.find(item => item.id === relationId);
+				}
+			}
 		}
 	};
 </script>
