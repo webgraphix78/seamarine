@@ -177,11 +177,8 @@ class SmTestingFieldController extends Controller{
 		if( isset($input["smtestingfield"]) ){
 			$smtestingfield = $input["smtestingfield"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if( $smtestingfield["action"] == "status" ){
 				$objectToSave["status"] = $smtestingfield["status"];
-				if( $smtestingfield["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $smtestingfield["action"] == "details" ){
 				$rules = [
@@ -201,6 +198,11 @@ class SmTestingFieldController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$smtestingfieldData =\App\Models\SmTestingField::updateOrCreate( [ "id" => $smtestingfield["id"] ], $objectToSave );
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$smtestingfieldData->status = 0;
+			}
+			$smtestingfieldData->save();
 			return response()->json(["status" => 1, "id" => $smtestingfieldData->id]);
 		}
 		else{

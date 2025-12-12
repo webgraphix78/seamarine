@@ -10,7 +10,7 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewSmTestingField" @edit-object="prepareEditSmTestingField" @toggle-object-status="deleteSmTestingField" @export-object="printSmTestingField"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewSmTestingField" @edit-object="prepareEditSmTestingField" @toggle-object-status="toggleObjectStatus" @export-object="printSmTestingField"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 		
@@ -103,8 +103,30 @@ export default {
 		prepareAddModal(obj){
 			this.smtestingfieldForAdd = Object.assign({});
 		},
-		saveSmTestingField(){
-			this.smtestingfieldForAdd.reload = true;
+		saveSmTestingField(smtestingfieldForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/smtestingfield/save', { smtestingfield: smtestingfieldForAdd }).then(async function (response) {
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.smtestingfieldForAdd.id = response.data.id;
+					that.showToast('SM Testing Field saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("SM Testing Field could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("SM Testing Field could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(smtestingfield) {
 			let that = this;
@@ -130,27 +152,18 @@ export default {
 				}
 			});
 		},
-		deleteSmTestingField(smtestingfield, status){
-			var thisVar = this;
+		toggleObjectStatus(smtestingfield, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the SM Testing Field record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/smtestingfield/delete', { id: smtestingfield.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('SMTESTINGFIELD updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("SMTESTINGFIELD could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("SMTESTINGFIELD could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.smtestingfieldForAdd = smtestingfield;
+					that.smtestingfieldForAdd.status = status;
+					that.smtestingfieldForAdd.action = "status";
+					that.saveSmTestingField(that.smtestingfieldForAdd);
 				}
 			});
 		},

@@ -216,7 +216,7 @@ export default {
 			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the Cleaning record?',
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the Equipment Inspection record?',
 				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {

@@ -182,16 +182,11 @@ class GasFreeReportController extends Controller{
 		if( isset($input["gasfreereport"]) ){
 			$gasfreereport = $input["gasfreereport"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if( $gasfreereport["action"] == "status" ){
 				$objectToSave["status"] = $gasfreereport["status"];
-				if( $gasfreereport["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $gasfreereport["action"] == "details" ){
-				$rules = [
-					
-				];
+				$rules = [ ];
 				$validator = Validator::make($gasfreereport, $rules);
 				if ($validator->fails()) {
 					return response()->json(["status" => -1, "messages" => array_merge(...array_values($validator->errors()->toArray())) ]);
@@ -206,15 +201,15 @@ class GasFreeReportController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$gasfreereportData =\App\Models\GasFreeReport::updateOrCreate( [ "id" => $gasfreereport["id"] ], $objectToSave );
-			if ($objectToSave["id"] == 0) {
+			if ($gasfreereport["id"] == 0) {
 				// Set ref_no to the newly generated id
 				$gasfreereportData->ref_no = $gasfreereportData->id;
-				$user = \App\Models\User::find(Auth::id());
-				if ($user->role_id == 4) {
-					$gasfreereportData->status = 0;
-				}
-				$gasfreereportData->save();
 			}
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$gasfreereportData->status = 0;
+			}
+			$gasfreereportData->save();
 			return response()->json(["status" => 1, "id" => $gasfreereportData->id]);
 		}
 		else{

@@ -389,7 +389,7 @@ function initialStateValidations() {
 	}
 }
 export default {
-	name: "Stuffingmaster",
+	name: "AddEditStuffingmaster",
 	props: ['current_user_id', 'all_permissions','id', 'isModal', 'stuffingForAdd', 'reload', 'closed'],
 	setup() {
 		return {

@@ -181,11 +181,8 @@ class StuffingController extends Controller{
 		if( isset($input["stuffing"]) ){
 			$stuffing = $input["stuffing"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if( $stuffing["action"] == "status" ){
 				$objectToSave["status"] = $stuffing["status"];
-				if( $stuffing["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $stuffing["action"] == "details" ){
 				$rules = [];
@@ -203,14 +200,14 @@ class StuffingController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$stuffingData =\App\Models\Stuffing::updateOrCreate( [ "id" => $stuffing["id"] ], $objectToSave );
-			if ($objectToSave["id"] == 0) {
+			if ($stuffing["id"] == 0) {
 				$stuffingData->ref_no = $stuffingData->id;
-				$user = \App\Models\User::find(Auth::id());
-				if ($user->role_id == 4) {
-					$stuffingData->status = 0;
-				}
-				$stuffingData->save();
 			}
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$stuffingData->status = 0;
+			}
+			$stuffingData->save();
 			return response()->json(["status" => 1, "id" => $stuffingData->id]);
 		}
 		else{

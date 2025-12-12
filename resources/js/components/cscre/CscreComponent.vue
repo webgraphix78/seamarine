@@ -112,7 +112,6 @@ export default {
 			var that = this;
 			that.showLoading("Saving ...");
 			axios.post(that.docRoot+'/cscre/save', { cscre: cscreForAdd }).then(async function (response) {
-				console.log(response);
 				that.closeSwal();
 				var status = response.data.status;
 				if( status > 0 ){
@@ -162,7 +161,7 @@ export default {
 			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the Cleaning record?',
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the CSCRE record?',
 				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {

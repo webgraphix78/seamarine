@@ -11,7 +11,7 @@ class Stuffing extends Model{
     protected $dates = ['deleted_at'];
     
     protected $table = "stuffing";
-    protected $fillable = ['id', 'ref_no', 'company_id', 'customer_id', 'issue_date', 'dispatch_date', 'cfs_receipt_date', 'product_name', 'quantity_kg', 'packages_received', 'preshipment_invoice', 'excise_invoice', 'vehicle_nos', 'goods_condition_check', 'unloading_datetime', 'unloading_photos', 'goods_condition_cfs', 'cfs_area_clean', 'action_taken', 'goods_storage_location', 'pallets_condition', 'palletization_done', 'shipping_marks_done', 'shrink_wrapping_done', 'labeling_done', 'packaging_photos', 'packaging_done_time', 'container_seal_no', 'fumigation_done', 'stuffing_photos', 'stuffing_done', 'lashing_done', 'sealing_done', 'container_done_time', 'surveyor_id'];
+    protected $fillable = ['id', 'ref_no', 'company_id', 'customer_id', 'issue_date', 'dispatch_date', 'cfs_receipt_date', 'product_name', 'quantity_kg', 'packages_received', 'preshipment_invoice', 'excise_invoice', 'vehicle_nos', 'goods_condition_check', 'unloading_datetime', 'unloading_photos', 'goods_condition_cfs', 'cfs_area_clean', 'action_taken', 'goods_storage_location', 'pallets_condition', 'palletization_done', 'shipping_marks_done', 'shrink_wrapping_done', 'labeling_done', 'packaging_photos', 'packaging_done_time', 'container_seal_no', 'fumigation_done', 'stuffing_photos', 'stuffing_done', 'lashing_done', 'sealing_done', 'container_done_time', 'surveyor_id','created_by', 'status'];
     public $timestamps = true;
 	
 	public function rel_company_id(){
@@ -25,6 +25,8 @@ public function rel_customer_id(){
 public function rel_surveyor_id(){
 	return $this->belongsTo('App\Models\Surveyor', 'surveyor_id', 'id');
 }
-
+public function creator(){
+		return $this->belongsTo('App\Models\User', 'created_by', 'id');
+	}
 
 }

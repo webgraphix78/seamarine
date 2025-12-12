@@ -181,11 +181,8 @@ class PrvController extends Controller{
 		if( isset($input["prv"]) ){
 			$prv = $input["prv"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if( $prv["action"] == "status" ){
 				$objectToSave["status"] = $prv["status"];
-				if( $prv["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $prv["action"] == "details" ){
 				$rules = [
@@ -208,14 +205,14 @@ class PrvController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$prvData =\App\Models\Prv::updateOrCreate( [ "id" => $prv["id"] ], $objectToSave );
-			if ($objectToSave["id"] == 0) {
+			if ($prv["id"] == 0) {
 				$prvData->ref = $prvData->id;
-				$user = \App\Models\User::find(Auth::id());
-				if ($user->role_id == 4) {
-					$prvData->status = 0;
-				}
-				$prvData->save();
 			}
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$prvData->status = 0;
+			}
+			$prvData->save();
 			return response()->json(["status" => 1, "id" => $prvData->id]);
 		}
 		else{

@@ -91,7 +91,7 @@ class DmccResource extends JsonResource
 			'deleted_at' => $this->deleted_at,
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,
-
+			'created_by' => $this->created_by,
 			'current_user_admin' => ( $currentUser->role_id ? 1 : 0 ),
 			'actions' => $actions
 		];

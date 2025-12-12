@@ -10,7 +10,7 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewPrv" @edit-object="prepareEditPrv"  @upload-Object="uploadImages" @toggle-object-status="deletePrv" @export-object="printPrv"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewPrv" @edit-object="prepareEditPrv"  @upload-Object="uploadImages" @toggle-object-status="toggleObjectStatus" @export-object="printPrv"  @duplicate-object="duplicateObject"></DataTableComponent>
 				<!-- Upload Images -->
 				<UploadImages :dataprops="uploadDataprops" @refresh-object="refreshObject"></UploadImages>
 				<!-- Upload Images -->
@@ -101,8 +101,30 @@ export default {
 		prepareAddModal(obj){
 			this.prvForAdd = Object.assign({});
 		},
-		savePrv(){
-			this.prvForAdd.reload = true;
+		savePrv(prvForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/prv/save', { prv: prvForAdd }).then(async function (response) {
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.prvForAdd.id = response.data.id;
+					that.showToast('PRV saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("PRV could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("PRV could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(prv) {
 			let that = this;
@@ -128,27 +150,18 @@ export default {
 				}
 			});
 		},
-		deletePrv(prv, status){
-			var thisVar = this;
+		toggleObjectStatus(prv, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the PRV record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/prv/delete', { id: prv.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('PRV updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("PRV could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("PRV could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.prvForAdd = prv;
+					that.prvForAdd.status = status;
+					that.prvForAdd.action = "status";
+					that.savePrv(that.prvForAdd);
 				}
 			});
 		},

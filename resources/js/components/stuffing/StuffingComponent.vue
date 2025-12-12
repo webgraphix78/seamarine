@@ -10,13 +10,12 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewStuffing" @edit-object="prepareEditStuffing" @toggle-object-status="deleteStuffing" @export-object="printStuffing"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewStuffing" @edit-object="prepareEditStuffing" @toggle-object-status="toggleObjectStatus" @export-object="printStuffing"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-import * as bootstrap from 'bootstrap';
 export default {
 	name: "Stuffingmaster",
 	props: ['current_user_id', 'all_permissions'],
@@ -93,8 +92,30 @@ export default {
 		prepareAddModal(obj){
 			this.stuffingForAdd = Object.assign({});
 		},
-		saveStuffing(){
-			this.stuffingForAdd.reload = true;
+		saveStuffing(stuffingForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/stuffing/save', { stuffing: stuffingForAdd }).then(async function (response) {
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.stuffingForAdd.id = response.data.id;
+					that.showToast('Stuffing saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("Stuffing could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("Stuffing could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(stuffing) {
 			let that = this;
@@ -120,27 +141,18 @@ export default {
 				}
 			});
 		},
-		deleteStuffing(stuffing, status){
-			var thisVar = this;
+		toggleObjectStatus(stuffing, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the stuffing record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/stuffing/delete', { id: stuffing.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('STUFFING updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("STUFFING could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("STUFFING could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.stuffingForAdd = stuffing;
+					that.stuffingForAdd.status = status;
+					that.stuffingForAdd.action = "status";
+					that.saveStuffing(that.stuffingForAdd);
 				}
 			});
 		},

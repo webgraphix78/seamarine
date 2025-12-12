@@ -10,13 +10,12 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewCscInspectionTank" @edit-object="prepareEditCscInspectionTank" @toggle-object-status="deleteCscInspectionTank" @export-object="printCscInspectionTank"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewCscInspectionTank" @edit-object="prepareEditCscInspectionTank" @toggle-object-status="toggleObjectStatus" @export-object="printCscInspectionTank"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-import * as bootstrap from 'bootstrap';
 export default {
 	name: "CscInspectionTankmaster",
 	props: ['current_user_id', 'all_permissions'],
@@ -27,11 +26,11 @@ export default {
 				class: 'a',
 				base_url: '/api/cscinspectiontank/',
 				columns: [
+					{ title: 'Tank No', property: 'tank_no', sortable: true, },
 					{ title: 'Company Name', property: 'rel_company_id.name', alt_value: 'Not Specified', sortable: true, },
 					{ title: 'Inspection Date', property: 'inspection_date', sortable: true, },
 					{ title: 'Inspection Location Name', property: 'rel_inspection_location_id.name', alt_value: 'Not Specified', sortable: true, },
 					{ title: 'Operator Lessor', property: 'operator_lessor', sortable: true, },
-					{ title: 'Tank No', property: 'tank_no', sortable: true, },
 				],
 				data_to_send: { current_user_id: this.current_user_id } ,
 				reload: false,
@@ -101,8 +100,30 @@ export default {
 		prepareAddModal(obj){
 			this.cscinspectiontankForAdd = Object.assign({});
 		},
-		saveCscInspectionTank(){
-			this.cscinspectiontankForAdd.reload = true;
+		saveCscInspectionTank(cscinspectiontankForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/cscinspectiontank/save', { cscinspectiontank: cscinspectiontankForAdd }).then(async function (response) {
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.cscinspectiontankForAdd.id = response.data.id;
+					that.showToast('CSC Inspection Tank saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("CSC Inspection Tank could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("CSC Inspection Tank could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(cscinspectiontank) {
 			let that = this;
@@ -128,27 +149,18 @@ export default {
 				}
 			});
 		},
-		deleteCscInspectionTank(cscinspectiontank, status){
-			var thisVar = this;
+		toggleObjectStatus(cscinspectiontank, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the CSC Inspection Tank record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/cscinspectiontank/delete', { id: cscinspectiontank.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('CSCINSPECTIONTANK updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("CSCINSPECTIONTANK could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("CSCINSPECTIONTANK could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.cscinspectiontankForAdd = cscinspectiontank;
+					that.cscinspectiontankForAdd.status = status;
+					that.cscinspectiontankForAdd.action = "status";
+					that.saveCscInspectionTank(that.cscinspectiontankForAdd);
 				}
 			});
 		},

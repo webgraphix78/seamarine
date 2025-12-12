@@ -10,7 +10,7 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewDepotConditionSurvey" @edit-object="prepareEditDepotConditionSurvey" @upload-Object="uploadImages" @toggle-object-status="deleteDepotConditionSurvey" @export-object="printDepotConditionSurvey"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewDepotConditionSurvey" @edit-object="prepareEditDepotConditionSurvey" @upload-Object="uploadImages" @toggle-object-status="toggleObjectStatus" @export-object="printDepotConditionSurvey"  @duplicate-object="duplicateObject"></DataTableComponent>
 				<!-- Upload Images -->
 				<UploadImages :dataprops="uploadDataprops" @refresh-object="refreshObject"></UploadImages>
 				<!-- Upload Images -->
@@ -30,8 +30,8 @@ export default {
 				class: 'a',
 				base_url: '/api/depotconditionsurvey/',
 				columns: [
-					{ title: 'Tank No', property: 'tank_no', sortable: true, },
 					{ title: 'Ref No', property: 'ref_no', sortable: true, },
+					{ title: 'Tank No', property: 'tank_no', sortable: true, },
 					{ title: 'Company Id', property: 'rel_company_id.name', alt_value: 'Not Specified', sortable: true, },
 					{ title: 'Inspection Date', property: 'inspection_date', sortable: true, },
 				],
@@ -392,8 +392,30 @@ export default {
 		prepareAddModal(obj){
 			this.depotconditionsurveyForAdd = Object.assign({});
 		},
-		saveDepotConditionSurvey(){
-			this.depotconditionsurveyForAdd.reload = true;
+		saveDepotConditionSurvey(depotconditionsurveyForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/depotconditionsurvey/save', { depotconditionsurvey: depotconditionsurveyForAdd }).then(async function (response) {
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.depotconditionsurveyForAdd.id = response.data.id;
+					that.showToast('Depot Condition Survey saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("Depot Condition Survey could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("Depot Condition Survey could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(depotconditionsurvey) {
 			let that = this;
@@ -419,27 +441,18 @@ export default {
 				}
 			});
 		},
-		deleteDepotConditionSurvey(depotconditionsurvey, status){
-			var thisVar = this;
+		toggleObjectStatus(depotconditionsurvey, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the Depot Condition Survey record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/depotconditionsurvey/delete', { id: depotconditionsurvey.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('DEPOTCONDITIONSURVEY updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("DEPOTCONDITIONSURVEY could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("DEPOTCONDITIONSURVEY could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.depotconditionsurveyForAdd = depotconditionsurvey;
+					that.depotconditionsurveyForAdd.status = status;
+					that.depotconditionsurveyForAdd.action = "status";
+					that.saveDepotConditionSurvey(that.depotconditionsurveyForAdd);
 				}
 			});
 		},

@@ -86,7 +86,8 @@ class ReferEquipmentResource extends JsonResource
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,
 
-			'current_user_admin' => 1,
+			'created_by' => $this->created_by,
+			'current_user_admin' => ( $currentUser->role_id ? 1 : 0 ),
 			'actions' => $actions
 		];
     }

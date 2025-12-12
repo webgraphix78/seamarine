@@ -50,6 +50,7 @@ class PrvResource extends JsonResource
 			'rel_surveyor_id' => $this->rel_surveyor_id,
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,
+			'created_by' => $this->created_by,
 			'status' => $this->status,
 			'current_user_admin' => ( $currentUser->role_id ? 1 : 0 ),
 			'actions' => $actions

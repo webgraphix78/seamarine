@@ -10,13 +10,12 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewGasFreeReport" @edit-object="prepareEditGasFreeReport" @toggle-object-status="deleteGasFreeReport" @export-object="printGasFreeReport"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewGasFreeReport" @edit-object="prepareEditGasFreeReport" @toggle-object-status="toggleObjectStatus" @export-object="printGasFreeReport"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
 	</div>
 </template>
 <script>
-import * as bootstrap from 'bootstrap';
 export default {
 	name: "GasFreeReportmaster",
 	props: ['current_user_id', 'all_permissions'],
@@ -27,9 +26,9 @@ export default {
 				class: 'a',
 				base_url: '/api/gasfreereport/',
 				columns: [
+					{ title: 'Ref No', property: 'ref_no', sortable: true, },
 					{ title: 'Tank No', property: 'tank_no', sortable: true, },
 					{ title: 'Type', property: 'type', sortable: true, },
-					{ title: 'Ref No', property: 'ref_no', sortable: true, },
 					{ title: 'Csc No', property: 'csc_no', sortable: true, },
 				],
 				data_to_send: { current_user_id: this.current_user_id } ,
@@ -124,8 +123,30 @@ export default {
 		prepareAddModal(obj){
 			this.gasfreereportForAdd = Object.assign({});
 		},
-		saveGasFreeReport(){
-			this.gasfreereportForAdd.reload = true;
+		saveGasFreeReport(gasfreereportForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/gasfreereport/save', { gasfreereport: gasfreereportForAdd }).then(async function (response) {
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.gasfreereportForAdd.id = response.data.id;
+					that.showToast('Gas Free Report saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("Gas Free Report could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("Gas Free Report could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(gasfreereport) {
 			let that = this;
@@ -151,27 +172,21 @@ export default {
 				}
 			});
 		},
-		deleteGasFreeReport(gasfreereport, status){
+		toggleObjectStatus(gasfreereport, status){
 			var thisVar = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "reactivate" : "deactivate") + ' the Gas Free Report - <br/>"' + gasfreereport.ref_no + '"?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/gasfreereport/delete', { id: gasfreereport.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('GASFREEREPORT updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("GASFREEREPORT could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("GASFREEREPORT could not be updated successfully", "error", "bottom", 3000);
-                        });
+					thisVar.gasfreereportForAdd = gasfreereport;
+					thisVar.gasfreereportForAdd.status = status;
+					thisVar.gasfreereportForAdd.action = "status";
+					thisVar.gasfreereportForAdd.reload = true;
+					console.log(thisVar.gasfreereportForAdd);
+					// return;
+					thisVar.saveGasFreeReport(thisVar.gasfreereportForAdd);
 				}
 			});
 		},
