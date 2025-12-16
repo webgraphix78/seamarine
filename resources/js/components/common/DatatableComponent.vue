@@ -7,7 +7,7 @@
 					<label class="col-form-label col-form-label-sm me-3">SEARCH</label>
 					<input type="text" class="form-control form-control-sm searchBox" v-model="searchString" :disabled="showAdvanceFilter">
 					<button class="btn btn-sm btn-dark px-3" type="button" @click="search(1)" :disabled="showAdvanceFilter"><i class="ph-magnifying-glass"></i></button>
-					<button class="btn btn-sm flex-shrink-0" type="button" @click="chooseActiveRecords()" :class="activeOnly == 1 ? 'btn-success' : 'btn-dark'">Show<span v-if="activeOnly == 1">ing</span> Active</button>
+					<button class="btn btn-sm flex-shrink-0 d-none d-md-inline-block" type="button" @click="chooseActiveRecords()" :class="activeOnly == 1 ? 'btn-success' : 'btn-dark'">Show<span v-if="activeOnly == 1">ing</span> Active</button>
 					<button class="btn btn-sm btn-outline-dark flex-shrink-0" type="button" @click="search(-1)" v-if="searchString.length > 0 || activeOnly == 1">Show All</button>
 				</template>
 				<button class="btn btn-sm btn-dark text-uppercase" type="button" v-if="dataprops.search == 'advanced'" @click="showAdvanceFilter = !showAdvanceFilter"><span v-if="!showAdvanceFilter">Show</span><span v-if="showAdvanceFilter">Hide</span> SEARCH Filters</button>
