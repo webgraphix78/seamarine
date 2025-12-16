@@ -237,7 +237,7 @@ class UserController extends Controller
 					'name' => $user->name,
 					'email' => $user->email,
 					'employee_code' => $user->employee_code,
-					'roles' => (($user->roles && !empty($user->roles)) ? $user->roles->name : ""),
+					// 'roles' => (($user->roles && !empty($user->roles)) ? $user->roles->name : ""),
 					'permitted_Object' => $permittedObjects
 				],
 			]);
@@ -268,7 +268,7 @@ class UserController extends Controller
 					'name' => $user->name,
 					'email' => $user->email,
 					'employee_code' => $user->employee_code,
-					'roles' => (($user->roles && !empty($user->roles))? $user->roles->name: "")
+					// 'roles' => (($user->roles && !empty($user->roles))? $user->roles->name: "")
 				],
 			]);
 		} else {
