@@ -19,6 +19,17 @@ class ReportsController extends Controller{
 		$shipperSurveyCount = 0;
 		$weightmentCount = 0;
 		$onhireCount = 0;
+		$jointSurveyCount = 0;
+		$cscreCount = 0;
+		$referEquipmentCount = 0;
+		$equipmentInspectionCount = 0;
+		$gasFreeReportCount = 0;
+		$stuffingCount = 0;
+		$dmccCount = 0;
+		$depotConditionSurveyCount = 0;
+		$smTestingFieldCount = 0;
+		$cscInspectionTankCount = 0;
+		$PrvCount = 0;
 		if (isset($input["duration"])) {
 			if( $input["duration"] == 0 ){
 				// All records
@@ -92,6 +103,17 @@ class ReportsController extends Controller{
 					$shipperSurveyCount = \App\Models\ShipperSurvey::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
 					$weightmentCount = \App\Models\Weightment::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
 					$onhireCount = \App\Models\Onhire::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$jointSurveyCount = \App\Models\JointSurvey::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$cscreCount = \App\Models\Cscre::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$referEquipmentCount = \App\Models\ReferEquipment::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$equipmentInspectionCount = \App\Models\EquipmentInspection::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$gasFreeReportCount = \App\Models\GasFreeReport::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$stuffingCount = \App\Models\Stuffing::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$dmccCount = \App\Models\Dmcc::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$depotConditionSurveyCount = \App\Models\DepotConditionSurvey::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$smTestingFieldCount = \App\Models\SmTestingField::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$cscInspectionTankCount = \App\Models\CscInspectionTank::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$PrvCount = \App\Models\Prv::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
 				}
 			}
 		}
@@ -136,6 +158,17 @@ class ReportsController extends Controller{
 					"shipperSurvey" => $shipperSurveyCount,
 					"weightment" => $weightmentCount,
 					"onhire" => $onhireCount,
+					"jointSurvey" => $jointSurveyCount,
+					"cscre" => $cscreCount,
+					"referEquipment" => $referEquipmentCount,
+					"equipmentInspection" => $equipmentInspectionCount,
+					"gasFreeReport" => $gasFreeReportCount,
+					"stuffing" => $stuffingCount,
+					"dmcc" => $dmccCount,
+					"depotConditionSurvey" => $depotConditionSurveyCount,
+					"smTestingField" => $smTestingFieldCount,
+					"cscInspection" => $cscInspectionTankCount,
+					"prv" => $PrvCount
 				],
 				"last_6_months" => [
 					"cleaning" => $cleaningLastSixMonthsCount,

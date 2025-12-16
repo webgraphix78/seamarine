@@ -208,7 +208,7 @@ class UserController extends Controller
 			]);
 		}
 
-		$user = User::with('role')->where('email', $request->username)->first();
+		$user = User::where('email', $request->username)->first();
 
 		if ($user && Hash::check($request->password, $user->password)) {
 			// Generate a random token
@@ -218,6 +218,17 @@ class UserController extends Controller
 			$user->current_token = $token;
 			$user->save();
 
+			// Get permitted objects if user has roles
+			$permittedObjects = null;
+			if ($user->roles && !empty($user->roles)) {
+				$roleIds = [$user->role_id];
+				$newRequest = new Request(['roles' => $roleIds]);
+				$roleController = new \App\Http\Controllers\RoleController();
+				$response = $roleController->getPermittedObjects($newRequest);
+				$data = $response->getData();
+				$permittedObjects = $data->permitted_objects ?? null;
+			}
+
 			return response()->json([
 				'status' => 1,
 				'token' => $token,
@@ -226,7 +237,8 @@ class UserController extends Controller
 					'name' => $user->name,
 					'email' => $user->email,
 					'employee_code' => $user->employee_code,
-					'role' => (($user->role && !empty($user->role))? $user->role->name: "")
+					'roles' => (($user->roles && !empty($user->roles)) ? $user->roles->name : ""),
+					'permitted_Object' => $permittedObjects
 				],
 			]);
 		} else {
@@ -256,7 +268,7 @@ class UserController extends Controller
 					'name' => $user->name,
 					'email' => $user->email,
 					'employee_code' => $user->employee_code,
-					'role' => (($user->role && !empty($user->role))? $user->role->name: "")
+					'roles' => (($user->roles && !empty($user->roles))? $user->roles->name: "")
 				],
 			]);
 		} else {
