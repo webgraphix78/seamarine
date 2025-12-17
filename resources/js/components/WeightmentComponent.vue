@@ -53,7 +53,7 @@
 							<div class="col-12 d-flex flex-row align-items-center gap-3">
 								<label for="add_weightment_customer_id" class="form-label text-uppercase fw-bold mb-0 flex-shrink-0">To Customer <span class="mandatory">*</span></label>
 								<div>
-									<multiselect v-model="weightmentForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+									<multiselect v-model="weightmentForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 								</div>
 								<div>
 									<label for="add_weightment_subject" class="form-label text-uppercase fw-bold mb-0 me-2">Subject</label
@@ -142,7 +142,7 @@
 							</div>
 							<div class="col-3">
 								<div>
-									<multiselect v-model="weightmentForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+									<multiselect v-model="weightmentForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 								</div>
 							</div>
 						</div>

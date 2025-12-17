@@ -106,7 +106,7 @@
 				</div>
 				<div class="col-md-3 col-6">
 					<div>
-						<multiselect v-model="imo5conditionForAdd.cleaning_location_id" :options="allCleaningLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="imo5conditionForAdd.cleaning_location_id" :options="allCleaningLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 				</div>
 			</div>
@@ -144,7 +144,7 @@
 				</div>
 				<div class="col-md-3 col-6">
 					<div>
-						<multiselect v-model="imo5conditionForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="imo5conditionForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<template v-for="error of v$.imo5conditionForAdd.customer_id.$errors" :key="error.$uid">
 						<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -200,7 +200,7 @@
 				</div>
 				<div class="col-md-3 col-6">
 					<div>
-						<multiselect v-model="imo5conditionForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="imo5conditionForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 				</div>
 				<div class="col-md-2 text-md-end px-1">

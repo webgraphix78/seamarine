@@ -26,7 +26,7 @@
 			</div>
 			<div class="col-md-4">
 				<div>
-					<multiselect v-model="referequipmentFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="referequipmentFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>
@@ -46,11 +46,11 @@
 		<div class='row mb-3  align-items-center'>
 			<label for="add_referequipment_inspection_location_id" class="form-label text-uppercase m-0 col-md-2">Place of Inspection</label>
 			<div class="col-md-4 mb-3 mb-md-0">
-				<multiselect v-model="referequipmentFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+				<multiselect v-model="referequipmentFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 			</div>
 			<label for="add_referequipment_customer_id" class="form-label text-uppercase m-0 col-md-2">On Behalf of</label>
 			<div class="col-md-4 mb-3 mb-md-0">
-				<multiselect v-model="referequipmentFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+				<multiselect v-model="referequipmentFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 			</div>
 		</div>
 		<!-- place of inspection & on behalf  -->
@@ -74,7 +74,7 @@
 		<div class='row mb-3  align-items-center'>
 			<label for="add_referequipment_container_type" class="form-label text-uppercase m-0 col-md-2">Container Type</label>
 			<div class="col-md-4 mb-3 mb-md-0">
-				<multiselect v-model="referequipmentFormObj.container_type" :options="allContainerTypeList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+				<multiselect v-model="referequipmentFormObj.container_type" :options="allContainerTypeList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 			</div>
 			<div class="col-md-2">
 				<label for="add_referequipment_booking_no" class="form-label text-uppercase m-0">Booking No</label>
@@ -460,7 +460,7 @@
 			<div class="col">
 				<label for="add_referequipment_surveyor_id" class="form-label fw-bold text-uppercase mb-2">Surveyor's Name:</label>
 				<div>
-					<multiselect v-model="referequipmentFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="referequipmentFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				
 			</div>

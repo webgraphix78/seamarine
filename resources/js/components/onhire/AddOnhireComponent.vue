@@ -44,7 +44,7 @@
 			</div>
 			<div class="col-md-3 col-6">
 				<div>
-					<multiselect v-model="onhireForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="onhireForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				<div v-if="v$.onhireForAdd.customer_id.$error" class="mandatory ms-3">Mandatory</div>
 			</div>
@@ -79,7 +79,7 @@
 			</div>
 			<div class="col-md-3 col-6">
 				<div>
-					<multiselect v-model="onhireForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="onhireForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>
@@ -103,7 +103,7 @@
 			</div>
 			<div class="col-md-3 col-6">
 				<div>
-					<multiselect v-model="onhireForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="onhireForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>

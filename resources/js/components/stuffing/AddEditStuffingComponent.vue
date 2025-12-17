@@ -22,14 +22,14 @@
 			<div class="col-md-6">
 				<label for="add_stuffing_company_id" class="form-label text-uppercase fw-bold me-3">Company Name</label>
 				<div>
-					<multiselect v-model="stuffingFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="stuffingFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				
 			</div>
 			<div class="col-md-6">
 				<label for="add_stuffing_customer_id" class="form-label text-uppercase fw-bold me-3">CUSTOMER NAME</label>
 				<div>
-					<multiselect v-model="stuffingFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="stuffingFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				
 			</div>
@@ -323,7 +323,7 @@
 			<div class="col-12">
 				<label for="add_stuffing_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Name</label>
 				<div>
-					<multiselect v-model="stuffingFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="stuffingFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>

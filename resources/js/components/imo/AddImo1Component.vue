@@ -173,7 +173,7 @@
 					<label for="add_imo1_for_client" class="form-label text-uppercase fw-bold m-0">For</label>
 				</div>
 				<div class="col-md-3 col-6 ">
-					<multiselect v-model="imo1ForAdd.for_client" :options="allForClientList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="imo1ForAdd.for_client" :options="allForClientList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 			<div class="row mb-2 align-items-center g-2 g-md-0">
@@ -202,7 +202,7 @@
 					<label for="add_imo1_surveyor_id" class="form-label text-uppercase fw-bold m-0">Surveyor</label>
 				</div>
 				<div class="col-md-3 col-6 ">
-					<multiselect v-model="imo1ForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="imo1ForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				<div class="col-md-2 col-6  text-md-end px-1">
 					<label for="add_imo1_country" class="form-label text-uppercase fw-bold m-0 me-3">Country</label><a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
@@ -223,7 +223,7 @@
 					<label for="add_imo1_inspection_location_id" class="form-label text-uppercase fw-bold m-0">Inspection Location</label>
 				</div>
 				<div class="col-md-3 col-6 ">
-					<multiselect v-model="imo1ForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="imo1ForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 			<div class="row mb-2 align-items-center g-2 g-md-0">
@@ -231,7 +231,7 @@
 					<label for="add_imo1_customer_id" class="form-label text-uppercase fw-bold m-0">Customer</label>
 				</div>
 				<div class="col-md-3 col-6 ">
-					<multiselect v-model="imo1ForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="imo1ForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				<div class="col-md-2 col-6  text-md-end px-1">
 					<label for="add_imo1_cha_client" class="form-label text-uppercase fw-bold m-0">CHA Client</label>

@@ -34,7 +34,7 @@
 				<div class="col-md-6">
 					<label for="add_gasfreereport_company_id" class="form-label text-uppercase fw-bold me-3">Company Id</label>
 					<div>
-						<multiselect v-model="gasfreereportFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="gasfreereportFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
@@ -126,14 +126,14 @@
 				<div class="col-md-6">
 					<label for="add_gasfreereport_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Inspection Location</label>
 					<div>
-						<multiselect v-model="gasfreereportFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="gasfreereportFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
 				<div class="col-md-6">
 					<label for="add_gasfreereport_customer_id" class="form-label text-uppercase fw-bold me-3">Customer Name</label>
 					<div>
-						<multiselect v-model="gasfreereportFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="gasfreereportFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
@@ -286,7 +286,7 @@
 				<div class="col-md-6">
 					<label for="add_gasfreereport_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Id</label>
 					<div>
-						<multiselect v-model="gasfreereportFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="gasfreereportFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>

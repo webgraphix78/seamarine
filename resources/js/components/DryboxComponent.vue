@@ -75,7 +75,7 @@
 								</div>
 								<div class="col-md-3 col-6">
 									<div>
-										<multiselect v-model="dryboxForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="dryboxForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.dryboxForAdd.inspection_location_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -144,7 +144,7 @@
 								</div>
 								<div class="col-md-3 col-6">
 									<div>
-										<multiselect v-model="dryboxForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="dryboxForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.dryboxForAdd.customer_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -155,7 +155,7 @@
 								</div>
 								<div class="col-md-3 col-6">
 									<div>
-										<multiselect v-model="dryboxForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="dryboxForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.dryboxForAdd.surveyor_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>

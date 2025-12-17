@@ -18,7 +18,7 @@
 			</div>
 			<label for="add_cscre_company_id" class="form-label col-md-2 m-0">Company Name:</label>
 			<div class="col-md-6">
-				<multiselect v-model="cscreFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+				<multiselect v-model="cscreFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 			</div>
 		</div>
 		<div class='row mb-4 gy-4 gy-md-0'>

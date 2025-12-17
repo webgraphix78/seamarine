@@ -109,7 +109,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<multiselect v-model="shippersurveyForAdd.for_shipper_id" :options="allForShipperIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="shippersurveyForAdd.for_shipper_id" :options="allForShipperIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
@@ -117,7 +117,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<multiselect v-model="shippersurveyForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="shippersurveyForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 								</div>
 							</div>
@@ -136,7 +136,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<multiselect v-model="shippersurveyForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="shippersurveyForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 								</div>
 							</div>
@@ -146,7 +146,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<multiselect v-model="shippersurveyForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="shippersurveyForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">

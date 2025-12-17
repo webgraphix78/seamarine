@@ -199,7 +199,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<multiselect v-model="cleaningForAdd.inspection_locn" :options="allInspectionLocnList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="cleaningForAdd.inspection_locn" :options="allInspectionLocnList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.cleaningForAdd.inspection_locn.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -229,7 +229,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<multiselect v-model="cleaningForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="cleaningForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.cleaningForAdd.customer_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -269,7 +269,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<multiselect v-model="cleaningForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+										<multiselect v-model="cleaningForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.cleaningForAdd.surveyor_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>

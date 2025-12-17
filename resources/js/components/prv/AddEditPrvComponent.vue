@@ -26,19 +26,19 @@
 			<div class="col-md-4">
 				<label for="add_prv_customer_id" class="form-label text-uppercase fw-bold me-3">Company name</label>
 				<div>
-					<multiselect v-model="prvFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="prvFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<label for="add_prv_customer_id" class="form-label text-uppercase fw-bold me-3">Customer Name</label>
 				<div>
-					<multiselect v-model="prvFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="prvFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 			<div class="col-md-4">
 				<label for="add_prv_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Inspection Location Id</label>
 				<div>
-					<multiselect v-model="prvFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="prvFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>
@@ -120,7 +120,7 @@
 			<div class="col-md-4">
 				<label for="add_prv_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Name</label>
 				<div>
-					<multiselect v-model="prvFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="prvFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>

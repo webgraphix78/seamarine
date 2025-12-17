@@ -34,7 +34,7 @@
 				<div class="col-md-6">
 					<label for="add_dmcc_company_id" class="form-label text-uppercase fw-bold me-3">Company Name</label>
 					<div>
-						<multiselect v-model="dmccFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="dmccFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
@@ -518,7 +518,7 @@
 				<div class="col-md-6">
 					<label for="add_dmcc_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Name</label>
 					<div>
-						<multiselect v-model="dmccFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="dmccFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>

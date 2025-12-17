@@ -12,7 +12,7 @@
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_company_id" class="form-label text-uppercase fw-bold me-3">Company Name</label>
 				<div>
-					<multiselect v-model="cscinspectiontankFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="cscinspectiontankFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				
 			</div>
@@ -27,7 +27,7 @@
 			<div class="col-md-4">
 				<label for="add_cscinspectiontank_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Place of Inspection</label>
 				<div>
-					<multiselect v-model="cscinspectiontankFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="cscinspectiontankFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				
 			</div>
@@ -799,7 +799,7 @@
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Id</label>
 				<div>
-					<multiselect v-model="cscinspectiontankFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="cscinspectiontankFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>

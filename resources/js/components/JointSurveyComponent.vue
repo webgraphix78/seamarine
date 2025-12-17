@@ -189,7 +189,7 @@
 							</div>
 							<div class="col-md-4 col-6">
 								<div>
-									<multiselect v-model="jointsurveyForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+									<multiselect v-model="jointsurveyForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 								</div>
 								<div v-if="v$.jointsurveyForAdd.surveyor_id.$error" class="mandatory ms-3">Mandatory</div>
 							</div>
