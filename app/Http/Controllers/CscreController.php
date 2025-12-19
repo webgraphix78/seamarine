@@ -186,12 +186,16 @@ class CscreController extends Controller
 					unset($objectToSave["created_by"]);
 			}
 			// Set ref_no to the newly generated id
-			$objectToSave['ref_no'] = $cscre['id'];
 			$user = \App\Models\User::find(Auth::id());
 			if ($user->role_id == 4) {
 				$objectToSave['status'] = 0;
 			}
 			$cscreData = \App\Models\Cscre::updateOrCreate(["id" => $cscre["id"]], $objectToSave);
+			// Set ref_no to the newly generated id and persist it
+			if ($cscreData->ref_no != $cscreData->id) {
+				$cscreData->ref_no = $cscreData->id;
+				$cscreData->save();
+			}
 			return response()->json(["status" => 1, "id" => $cscreData->id]);
 		} else {
 			return response()->json(["status" => -100, "messages" => ["Data for Cscre is missing."]]);

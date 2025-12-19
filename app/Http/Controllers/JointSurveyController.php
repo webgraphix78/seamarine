@@ -190,14 +190,14 @@ class JointSurveyController extends Controller
 					unset($objectToSave["created_by"]);
 			}
 			$jointsurveyObject = \App\Models\JointSurvey::updateOrCreate(["id" => $jointsurvey["id"]], $objectToSave);
-			// if ($jointsurvey["id"] == 0) {
-			// 	// Also check if the user is a surveyor, set the status to 0
-			// 	$user = \App\Models\User::find(Auth::id());
-			// 	if ($user->role_id == 4) {
-			// 		$jointsurveyObject->status = 0;
-			// 	}
-			// 	$jointsurveyObject->save();
-			// }
+			if ($jointsurvey["id"] == 0) {
+				// Also check if the user is a surveyor, set the status to 0
+				$user = \App\Models\User::find(Auth::id());
+				if ($user->role_id == 4) {
+					$jointsurveyObject->status = 0;
+				}
+				$jointsurveyObject->save();
+			}
 			return response()->json(["status" => 1]);
 		} else {
 			return response()->json(["status" => -100, "messages" => ["Data for Joint Survey is missing."]]);
