@@ -4,7 +4,7 @@
 		<div class="col-12 col-sm-9">
 			<div class="d-flex flex-row gap-2">
 				<template v-if="dataprops.search == 'simple'">
-					<label class="col-form-label col-form-label-sm me-3">SEARCH</label>
+					<label class="col-form-label col-form-label-sm me-3 d-none d-md-inline-block">SEARCH</label>
 					<input type="text" class="form-control form-control-sm searchBox" v-model="searchString" :disabled="showAdvanceFilter">
 					<button class="btn btn-sm btn-dark px-3" type="button" @click="search(1)" :disabled="showAdvanceFilter"><i class="ph-magnifying-glass"></i></button>
 					<button class="btn btn-sm flex-shrink-0 d-none d-md-inline-block" type="button" @click="chooseActiveRecords()" :class="activeOnly == 1 ? 'btn-success' : 'btn-dark'">Show<span v-if="activeOnly == 1">ing</span> Active</button>
