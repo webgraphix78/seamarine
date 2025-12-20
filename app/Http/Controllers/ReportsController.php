@@ -95,25 +95,27 @@ class ReportsController extends Controller{
 			}
 			else if($input["duration"] == 10){
 				if( isset($input["startDate"]) && isset($input["endDate"]) ){
-					// get data between startDate and endDate
-					$cleaningCount = \App\Models\Cleaning::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
-					$dryboxCount = \App\Models\Drybox::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
-					$imo1Count = \App\Models\Imo1::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
-					$imo5Count = \App\Models\Imo5Condition::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$shipperSurveyCount = \App\Models\ShipperSurvey::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
-					$weightmentCount = \App\Models\Weightment::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$onhireCount = \App\Models\Onhire::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$jointSurveyCount = \App\Models\JointSurvey::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$cscreCount = \App\Models\Cscre::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$referEquipmentCount = \App\Models\ReferEquipment::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$equipmentInspectionCount = \App\Models\EquipmentInspection::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$gasFreeReportCount = \App\Models\GasFreeReport::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$stuffingCount = \App\Models\Stuffing::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$dmccCount = \App\Models\Dmcc::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$depotConditionSurveyCount = \App\Models\DepotConditionSurvey::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$smTestingFieldCount = \App\Models\SmTestingField::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$cscInspectionTankCount = \App\Models\CscInspectionTank::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$PrvCount = \App\Models\Prv::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					// get data between startDate and endDate (inclusive)
+					$startDate = Carbon::parse($input['startDate'])->startOfDay();
+					$endDate = Carbon::parse($input['endDate'])->endOfDay();
+					$cleaningCount = \App\Models\Cleaning::whereBetween('dt_inspection_date', [$startDate, $endDate])->count();
+					$dryboxCount = \App\Models\Drybox::whereBetween('dt_inspection_date', [$startDate, $endDate])->count();
+					$imo1Count = \App\Models\Imo1::whereBetween('dt_inspection_date', [$startDate, $endDate])->count();
+					$imo5Count = \App\Models\Imo5Condition::whereBetween('created_at', [$startDate, $endDate])->count();
+					$shipperSurveyCount = \App\Models\ShipperSurvey::whereBetween('dt_inspection_date', [$startDate, $endDate])->count();
+					$weightmentCount = \App\Models\Weightment::whereBetween('created_at', [$startDate, $endDate])->count();
+					$onhireCount = \App\Models\Onhire::whereBetween('created_at', [$startDate, $endDate])->count();
+					$jointSurveyCount = \App\Models\JointSurvey::whereBetween('created_at', [$startDate, $endDate])->count();
+					$cscreCount = \App\Models\Cscre::whereBetween('created_at', [$startDate, $endDate])->count();
+					$referEquipmentCount = \App\Models\ReferEquipment::whereBetween('created_at', [$startDate, $endDate])->count();
+					$equipmentInspectionCount = \App\Models\EquipmentInspection::whereBetween('created_at', [$startDate, $endDate])->count();
+					$gasFreeReportCount = \App\Models\GasFreeReport::whereBetween('created_at', [$startDate, $endDate])->count();
+					$stuffingCount = \App\Models\Stuffing::whereBetween('created_at', [$startDate, $endDate])->count();
+					$dmccCount = \App\Models\Dmcc::whereBetween('created_at', [$startDate, $endDate])->count();
+					$depotConditionSurveyCount = \App\Models\DepotConditionSurvey::whereBetween('created_at', [$startDate, $endDate])->count();
+					$smTestingFieldCount = \App\Models\SmTestingField::whereBetween('created_at', [$startDate, $endDate])->count();
+					$cscInspectionTankCount = \App\Models\CscInspectionTank::whereBetween('created_at', [$startDate, $endDate])->count();
+					$PrvCount = \App\Models\Prv::whereBetween('created_at', [$startDate, $endDate])->count();
 				}
 			}
 		}

@@ -483,6 +483,9 @@
 					return;
 				}
 				if (!this.jointsurveyForAdd.action || this.jointsurveyForAdd.action == "") this.jointsurveyForAdd.action = "details";
+				if ( this.jointsurveyForAdd.surveyor_id != 'null' && typeof this.jointsurveyForAdd.surveyor_id === 'object' && this.jointsurveyForAdd.surveyor_id.id) {
+					this.jointsurveyForAdd.surveyor_id = this.jointsurveyForAdd.surveyor_id.id;
+				}
 				this.jointsurveyForAdd.created_by = this.current_user_id;
 				$("#addJointSurveyModal").modal("hide");
 				this.showLoading("Saving ...");
