@@ -337,7 +337,7 @@
 <script>
     export default{
         props: [ 'dataprops' ],
-		// emits: ['viewObject', 'editObject', 'toggleObjectStatus'],
+		emits: ['viewObject', 'uploadObject', 'duplicateObject', 'editObject', 'toggleObjectStatus', 'printObject'],
 		data(){
 			return{
 				allRows: [],

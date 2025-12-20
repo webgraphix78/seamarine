@@ -377,6 +377,10 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- Upload Images -->
+		<UploadImages :dataprops="uploadDataprops" @refresh-object="refreshObject"></UploadImages>
+		<!-- Upload Images -->
 	</div>
 </template>
 <script>
@@ -442,6 +446,10 @@
 					data_to_send: {current_user_id: this.current_user_id},
 					reload: false,
 					search: "simple"
+				},
+				uploadDataprops: {
+					relatedObject: null,
+					name: "JointSurvey",
 				},
 				addEditModal: null,
 				readModal: null,
