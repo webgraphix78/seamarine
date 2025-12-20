@@ -20,6 +20,8 @@
 	<!-- Hide navbar when opened inside in-app browsers -->
 	<style>
 		.in-app-browser .navbar { display: none !important; }
+		/* remove the top padding when navbar is hidden in in-app webviews */
+		.in-app-browser #app main { padding-top: 0 !important; }
 	</style>
 
 	<script src="https://unpkg.com/phosphor-icons"></script>
