@@ -151,7 +151,6 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-					{{ dmccFormObj.emergency_remote_checked_remark }}
 					<label for="add_emergency_remote_checked_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.emergency_remote_checked_remark" id="add_emergency_remote_checked_remark" placeholder="Enter Remark" >
