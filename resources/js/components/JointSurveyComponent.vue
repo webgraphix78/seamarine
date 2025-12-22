@@ -554,9 +554,9 @@
 				window.location = this.docRoot+'/jointsurvey/export-to-pdf/' + jointsurvey.id;
 				this.showToast("Printing. Please wait ...", "success", "bottom", 3000);
 			},
-			async uploadImages(cleaning) {
+			async uploadImages(jointsurvey) {
 				this.showLoading("Loading images ...");
-				await this.refreshObject(cleaning, "Cleaning", 1);
+				await this.refreshObject(jointsurvey, "JointSurvey", 1);
 				this.closeSwal();
 			},
 			displayLabelSetting ({id, text}) {

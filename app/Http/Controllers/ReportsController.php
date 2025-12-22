@@ -98,11 +98,11 @@ class ReportsController extends Controller{
 					// get data between startDate and endDate (inclusive)
 					$startDate = Carbon::parse($input['startDate'])->startOfDay();
 					$endDate = Carbon::parse($input['endDate'])->endOfDay();
-					$cleaningCount = \App\Models\Cleaning::whereBetween('dt_inspection_date', [$startDate, $endDate])->count();
-					$dryboxCount = \App\Models\Drybox::whereBetween('dt_inspection_date', [$startDate, $endDate])->count();
-					$imo1Count = \App\Models\Imo1::whereBetween('dt_inspection_date', [$startDate, $endDate])->count();
+					$cleaningCount = \App\Models\Cleaning::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
+					$dryboxCount = \App\Models\Drybox::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
+					$imo1Count = \App\Models\Imo1::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
 					$imo5Count = \App\Models\Imo5Condition::whereBetween('created_at', [$startDate, $endDate])->count();
-					$shipperSurveyCount = \App\Models\ShipperSurvey::whereBetween('dt_inspection_date', [$startDate, $endDate])->count();
+					$shipperSurveyCount = \App\Models\ShipperSurvey::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
 					$weightmentCount = \App\Models\Weightment::whereBetween('created_at', [$startDate, $endDate])->count();
 					$onhireCount = \App\Models\Onhire::whereBetween('created_at', [$startDate, $endDate])->count();
 					$jointSurveyCount = \App\Models\JointSurvey::whereBetween('created_at', [$startDate, $endDate])->count();
