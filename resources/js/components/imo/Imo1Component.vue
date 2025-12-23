@@ -79,6 +79,31 @@
 					}
 				});
 			},
+			saveImo1(imo1ForAdd){
+				var that = this;
+				that.showLoading("Saving ...");
+				axios.post(that.docRoot+'/imo1/save', { imo1: imo1ForAdd }).then(async function (response) {
+					that.closeSwal();
+					var status = response.data.status;
+					if( status > 0 ){
+						// Set the ID so that duplicate records will not be created
+						that.imo1ForAdd.id = response.data.id;
+						that.showToast('IMO 1 saved successfully', 'success', 'bottom', 3000);
+						setTimeout(() => {
+							that.dataprops.reload = true;
+							that.showLoading("Loading ...");
+						}, 1500);
+					}
+					else{
+						that.showErrors("IMO 1 could not be saved successfully.", response.data.messages, "bottom", 3000);
+					}
+				})
+				.catch(function (error) {
+					console.log(error);
+					that.closeSwal();
+					that.showToast("IMO 1 could not be saved successfully.", "error", "bottom", 3000);
+				});
+			},
 			toggleImo1(imo1, status) {
 				var thisVar = this;
 				Swal.fire({
@@ -90,7 +115,7 @@
 						thisVar.imo1ForAdd = imo1;
 						thisVar.imo1ForAdd.status = status;
 						thisVar.imo1ForAdd.action = "status";
-						thisVar.saveImo1();
+						thisVar.saveImo1(thisVar.imo1ForAdd);
 					}
 				});
 			},

@@ -49,38 +49,31 @@
 			};
 		},
 		methods: {
-			async saveOnhire(event) {
-				var thisVar = this;
-				const result = await this.v$.$validate();
-				if (!result) {
-					this.showToast("Form validation failed. Please check.", "error", "bottom", 2000);
-					console.log(this.v$.$errors);
-					return;
-				}
-				if (!this.onhireForAdd.action || this.onhireForAdd.action == "") this.onhireForAdd.action = "details";
-				this.onhireForAdd.created_by = this.current_user_id;
-				$("#addOnhireModal").modal("hide");
-				this.showLoading("Saving ...");
-				axios
-					.post(this.docRoot + "/onhire/save", {onhire: this.onhireForAdd})
-					.then(async function (response) {
-						thisVar.closeSwal();
-						var status = response.data.status;
-						if (status == 1) {
-							// Ajax to submit
-							thisVar.showToast("On Hire record saved successfully", "success", "bottom", 3000);
-							setTimeout(() => {
-								thisVar.dataprops.reload = true;
-							}, 1500);
-							thisVar.onhireForAdd = initialState();
-							thisVar.v$.$reset();
-						} else thisVar.showErrors("On Hire record could not be saved successfully", response.data.messages, "bottom", 3000);
-					})
-					.catch(function (error) {
-						console.log(error);
-						thisVar.closeSwal();
-						thisVar.showToast("On Hire record could not be saved successfully", "error", "bottom", 3000);
-					});
+			async saveOnhire(onhireForAdd) {
+				var that = this;
+				that.showLoading("Saving ...");
+				axios.post(that.docRoot+'/onhire/save', { onhire: onhireForAdd }).then(async function (response) {
+					console.log(response);
+					that.closeSwal();
+					var status = response.data.status;
+					if( status > 0 ){
+						// Set the ID so that duplicate records will not be created
+						that.onhireForAdd.id = response.data.id;
+						that.showToast('On Hire saved successfully', 'success', 'bottom', 3000);
+						setTimeout(() => {
+							that.dataprops.reload = true;
+							that.showLoading("Loading ...");
+						}, 1500);
+					}
+					else{
+						that.showErrors("On Hire could not be saved successfully.", response.data.messages, "bottom", 3000);
+					}
+				})
+				.catch(function (error) {
+					console.log(error);
+					that.closeSwal();
+					that.showToast("On Hire could not be saved successfully.", "error", "bottom", 3000);
+				});
 			},
 			prepareEditOnhire(onhire) {
 				window.location = this.docRoot + "/onhire/edit/" + onhire.id;
@@ -123,7 +116,7 @@
 						thisVar.onhireForAdd = onhire;
 						thisVar.onhireForAdd.status = status;
 						thisVar.onhireForAdd.action = "status";
-						thisVar.saveOnhire();
+						thisVar.saveOnhire(thisVar.onhireForAdd);
 					}
 				});
 			},
