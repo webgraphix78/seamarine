@@ -79,8 +79,8 @@ export default {
 			currentUser: siteUserObject,
 			readDmcc: {},
 			dmccForAdd: {},
-			allCompanyIdList: [],
-			allSurveyorIdList: [],
+			// allCompanyIdList: [],
+			// allSurveyorIdList: [],
 
 		}
 	},
@@ -167,8 +167,8 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
-		this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
+		// this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
+		// this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
 	}
 }
 </script>

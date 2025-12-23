@@ -50,13 +50,13 @@ class JointSurveyController extends Controller
 						->orWhere('customer_name', 'like', '%' . trim($input['q']) . '%')->orWhere('tank_no', 'like', '%' . trim($input['q']) . '%');
 				});
 				$jointsurveyList = $jointsurveyList->orWhereHas('company', function ($query) use ($input) {
-					$query = $query->where('title', 'like', '%' . trim($input['q']) . '%');
+					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');
 				});
 				$jointsurveyList = $jointsurveyList->orWhereHas('surveyor', function ($query) use ($input) {
-					$query = $query->where('title', 'like', '%' . trim($input['q']) . '%');
+					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');
 				});
 				$jointsurveyList = $jointsurveyList->orWhereHas('creator', function ($query) use ($input) {
-					$query = $query->where('title', 'like', '%' . trim($input['q']) . '%');
+					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');
 				});
 			}
 		} else {

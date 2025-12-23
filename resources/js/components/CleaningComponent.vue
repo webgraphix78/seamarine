@@ -1360,11 +1360,15 @@
 			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
 				this.allInspectionLocnList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
 			}
-			this.allCompanyIdList = await this.loadAllCompany(true);
-			this.allTankIdList = await this.loadAllTankType(true);
-			this.allTcodeIdList = await this.loadAllTcode(true);
-			this.allClientIdList = await this.loadAllCustomer(true);
-			this.allCleaningLocationIdList = await this.loadAllCleaningLocation(true);
+			setTimeout(async () =>{
+				this.allCompanyIdList = await this.loadAllCompany(true);
+				this.allTankIdList = await this.loadAllTankType(true);
+				this.allTcodeIdList = await this.loadAllTcode(true);
+				this.allClientIdList = await this.loadAllCustomer(true);
+				this.allCleaningLocationIdList = await this.loadAllCleaningLocation(true);
+				// console.log("Load^&@*((&YUIGHB))");
+				
+			}, 10000)
 			this.allFrameTankList = [
 				{id: "1", title: "Yes"},
 				{id: "-1", title: "No"},

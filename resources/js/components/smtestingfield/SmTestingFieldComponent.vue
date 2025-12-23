@@ -85,9 +85,9 @@ export default {
 			currentUser: siteUserObject,
 			readSmTestingField: {},
 			smtestingfieldForAdd: {},
-			allCompanyIdList: [],
-			allInspectionLocationIdList: [],
-			allSurveyorIdList: [],
+			// allCompanyIdList: [],
+			// allInspectionLocationIdList: [],
+			// allSurveyorIdList: [],
 		}
 	},
 	methods: {
@@ -173,9 +173,9 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
-		this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
-		this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
+		// this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
+		// this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
+		// this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
 
 	}
 }

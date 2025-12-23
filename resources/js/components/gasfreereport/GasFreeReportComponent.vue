@@ -104,10 +104,10 @@ export default {
 			currentUser: siteUserObject,
 			readGasFreeReport: {},
 			gasfreereportForAdd: {},
-			allCompanyIdList: [],
-			allInspectionLocationIdList: [],
-			allCustomerIdList: [],
-			allSurveyorIdList: [],
+			// allCompanyIdList: [],
+			// allInspectionLocationIdList: [],
+			// allCustomerIdList: [],
+			// allSurveyorIdList: [],
 		}
 	},
 	methods: {
@@ -196,10 +196,10 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
-		this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
-		this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
-		this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
+		// this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
+		// this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
+		// this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
+		// this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
 	}
 }
 </script>

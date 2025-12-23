@@ -566,7 +566,7 @@
 		async mounted() {
 			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
 			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
-			this.allCompanyIdList = await this.loadAllCompany(true);
+			// this.allCompanyIdList = await this.loadAllCompany(true);
 			let _allSurveyorIdList = await this.loadAllSurveyor(true);
 			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
 				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});

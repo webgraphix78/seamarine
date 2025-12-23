@@ -752,7 +752,7 @@
 				var thisVar = this;
 				Swal.fire({
 					icon: "question",
-					html: "Do you really want to " + (status == 1 ? "reactivate" : "deactivate") + ' the Drybox - <br/>"' + drybox.none + '"?',
+					html: "Do you really want to " + (status == 1 ? "reactivate" : "deactivate") + ' the Drybox - <br/>"' + drybox.ref + '"?',
 					showCancelButton: true
 				}).then((result) => {
 					if (result.isConfirmed) {

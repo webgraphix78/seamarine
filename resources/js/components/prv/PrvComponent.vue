@@ -83,9 +83,9 @@ export default {
 			currentUser: siteUserObject,
 			readPrv: {},
 			prvForAdd: {},
-			allCustomerIdList: [],
-			allInspectionLocationIdList: [],
-			allSurveyorIdList: [],
+			// allCustomerIdList: [],
+			// allInspectionLocationIdList: [],
+			// allSurveyorIdList: [],
 		}
 	},
 	methods: {
@@ -176,10 +176,10 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
-		this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
-		this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
-		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
+		// this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
+		// this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
+		// this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
+		// this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
 	}
 }
 </script>

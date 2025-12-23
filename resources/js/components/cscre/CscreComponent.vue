@@ -91,7 +91,7 @@ export default {
 			currentUser: siteUserObject,
 			readCscre: {},
 			cscreForAdd: {},
-			allCompanyIdList: [],
+			// allCompanyIdList: [],
 
 		}
 	},
@@ -180,7 +180,7 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/user',{});
+		// this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/user',{});
 	}
 }
 </script>
