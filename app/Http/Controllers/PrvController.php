@@ -105,6 +105,8 @@ class PrvController extends Controller{
 				$prvList = $prvList->orderByDesc(trim($input["sortBy"]));
 			else
 				$prvList = $prvList->orderBy(trim($input["sortBy"]));
+		}else{
+			$prvList = $prvList->orderByDesc("created_at");
 		}
 		// Role condition - customer
 		$user = \App\Models\User::find($input['current_user_id']);

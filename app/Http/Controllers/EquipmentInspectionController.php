@@ -118,6 +118,8 @@ class EquipmentInspectionController extends Controller{
 				$equipmentinspectionList = $equipmentinspectionList->orderByDesc(trim($input["sortBy"]));
 			else
 				$equipmentinspectionList = $equipmentinspectionList->orderBy(trim($input["sortBy"]));
+		}else{
+			$equipmentinspectionList = $equipmentinspectionList->orderByDesc("created_at");
 		}
 		if( isset($input["page"]) )
 			$equipmentinspectionList = $equipmentinspectionList->paginate(10);

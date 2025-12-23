@@ -106,6 +106,8 @@ class SmTestingFieldController extends Controller{
 				$smtestingfieldList = $smtestingfieldList->orderByDesc(trim($input["sortBy"]));
 			else
 				$smtestingfieldList = $smtestingfieldList->orderBy(trim($input["sortBy"]));
+		}else{
+			$smtestingfieldList = $smtestingfieldList->orderByDesc("created_at");
 		}
 		$user = \App\Models\User::find($input['current_user_id']);
 		if ($user->role_id == 4) {

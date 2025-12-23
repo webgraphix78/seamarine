@@ -102,6 +102,8 @@ class CscreController extends Controller
 				$cscreList = $cscreList->orderByDesc(trim($input["sortBy"]));
 			else
 				$cscreList = $cscreList->orderBy(trim($input["sortBy"]));
+		}else{
+			$cscreList = $cscreList->orderByDesc("created_at");
 		}
 		if (isset($input["page"]))
 			$cscreList = $cscreList->paginate(10);

@@ -110,6 +110,8 @@ class CscInspectionTankController extends Controller{
 				$cscinspectiontankList = $cscinspectiontankList->orderByDesc(trim($input["sortBy"]));
 			else
 				$cscinspectiontankList = $cscinspectiontankList->orderBy(trim($input["sortBy"]));
+		}else{
+			$cscinspectiontankList = $cscinspectiontankList->orderByDesc("created_at");
 		}
 		if( isset($input["page"]) )
 			$cscinspectiontankList = $cscinspectiontankList->paginate(10);

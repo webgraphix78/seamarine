@@ -114,6 +114,8 @@ class StuffingController extends Controller{
 				$stuffingList = $stuffingList->orderByDesc(trim($input["sortBy"]));
 			else
 				$stuffingList = $stuffingList->orderBy(trim($input["sortBy"]));
+		}else{
+			$stuffingList = $stuffingList->orderByDesc("created_at");
 		}
 		if( isset($input["page"]) )
 			$stuffingList = $stuffingList->paginate(10);

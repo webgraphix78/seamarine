@@ -106,6 +106,8 @@ class GasFreeReportController extends Controller{
 				$gasfreereportList = $gasfreereportList->orderByDesc(trim($input["sortBy"]));
 			else
 				$gasfreereportList = $gasfreereportList->orderBy(trim($input["sortBy"]));
+		}else{
+			$gasfreereportList = $gasfreereportList->orderByDesc("created_at");
 		}
 		// Role condition - customer
 		$user = \App\Models\User::find($input['current_user_id']);

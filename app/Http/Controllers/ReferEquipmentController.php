@@ -108,6 +108,8 @@ class ReferEquipmentController extends Controller
 				$referequipmentList = $referequipmentList->orderByDesc(trim($input["sortBy"]));
 			else
 				$referequipmentList = $referequipmentList->orderBy(trim($input["sortBy"]));
+		}else{
+			$referequipmentList = $referequipmentList->orderByDesc("created_at");
 		}
 		if (isset($input["page"]))
 			$referequipmentList = $referequipmentList->paginate(10);

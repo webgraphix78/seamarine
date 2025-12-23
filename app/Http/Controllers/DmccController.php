@@ -110,6 +110,8 @@ class DmccController extends Controller{
 				$dmccList = $dmccList->orderByDesc(trim($input["sortBy"]));
 			else
 				$dmccList = $dmccList->orderBy(trim($input["sortBy"]));
+		}else{
+			$dmccList = $dmccList->orderByDesc("created_at");
 		}
 		if( isset($input["page"]) )
 			$dmccList = $dmccList->paginate(10);

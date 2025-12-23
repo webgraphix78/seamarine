@@ -106,6 +106,8 @@ class DepotConditionSurveyController extends Controller{
 				$depotconditionsurveyList = $depotconditionsurveyList->orderByDesc(trim($input["sortBy"]));
 			else
 				$depotconditionsurveyList = $depotconditionsurveyList->orderBy(trim($input["sortBy"]));
+		}else{
+			$depotconditionsurveyList = $depotconditionsurveyList->orderByDesc("created_at");
 		}
 		// Role condition - customer
 		$user = \App\Models\User::find($input['current_user_id']);

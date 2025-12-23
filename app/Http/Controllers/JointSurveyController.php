@@ -132,6 +132,9 @@ class JointSurveyController extends Controller
 			else
 				$jointsurveyList = $jointsurveyList->orderBy(trim($input["sortBy"]));
 		}
+		else{
+			$jointsurveyList = $jointsurveyList->orderByDesc("created_at");
+		}
 		if (isset($input["page"]))
 			$jointsurveyList = $jointsurveyList->paginate(10);
 		else {
