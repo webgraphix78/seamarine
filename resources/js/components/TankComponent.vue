@@ -148,7 +148,8 @@
 				}
 				if (!this.tankForAdd.action || this.tankForAdd.action == "") this.tankForAdd.action = "details";
 				this.tankForAdd.created_by = this.current_user_id;
-				$("#addTankModal").modal("hide");
+				// $("#addTankModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addTankModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot + "/tanktype/save", {tanktype: this.tankForAdd})

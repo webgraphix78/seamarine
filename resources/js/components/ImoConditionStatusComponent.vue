@@ -169,7 +169,8 @@
 				}
 				if (!this.imoconditionstatusForAdd.action || this.imoconditionstatusForAdd.action == "") this.imoconditionstatusForAdd.action = "details";
 				this.imoconditionstatusForAdd.created_by = this.current_user_id;
-				$("#addImoConditionStatusModal").modal("hide");
+				// $("#addImoConditionStatusModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addImoConditionStatusModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot + "/imoconditionstatus/save", {imoconditionstatus: this.imoconditionstatusForAdd})

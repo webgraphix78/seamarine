@@ -202,7 +202,8 @@
 				}
 				if (!this.surveyorForAdd.action || this.surveyorForAdd.action == "") this.surveyorForAdd.action = "details";
 				this.surveyorForAdd.created_by = this.current_user_id;
-				$("#addSurveyorModal").modal("hide");
+				// $("#addSurveyorModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addSurveyorModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot + "/surveyor/save", {surveyor: this.surveyorForAdd})

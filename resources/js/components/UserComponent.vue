@@ -329,7 +329,8 @@ export default {
 			if (!this.userForAdd.action || this.userForAdd.action == "")
 				this.userForAdd.action = "details";
 			// return;
-			$("#addUserModal").modal('hide');
+			// $("#addUserModal").modal('hide');
+			bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
 			this.showLoading("Saving ...");
 			axios.post(this.docRoot+'/user/save', { user: that.userForAdd }).then(async function (response) {
 				that.closeSwal();
