@@ -495,7 +495,8 @@
 					this.jointsurveyForAdd.surveyor_id = this.jointsurveyForAdd.surveyor_id.id;
 				}
 				this.jointsurveyForAdd.created_by = this.current_user_id;
-				$("#addJointSurveyModal").modal("hide");
+				// $("#addJointSurveyModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addJointSurveyModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post("/jointsurvey/save", {jointsurvey: this.jointsurveyForAdd})

@@ -691,7 +691,8 @@
 				}
 				if (!this.dryboxForAdd.action || this.dryboxForAdd.action == "") this.dryboxForAdd.action = "details";
 				this.dryboxForAdd.created_by = this.current_user_id;
-				$("#addDryboxModal").modal("hide");
+				// $("#addDryboxModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addDryboxModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot+"/drybox/save", {drybox: this.dryboxForAdd})

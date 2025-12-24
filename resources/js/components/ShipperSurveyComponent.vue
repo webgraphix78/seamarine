@@ -1245,7 +1245,8 @@
 
 				if (!this.shippersurveyForAdd.action || this.shippersurveyForAdd.action == "") this.shippersurveyForAdd.action = "details";
 				this.shippersurveyForAdd.created_by = this.current_user_id;
-				$("#addShipperSurveyModal").modal("hide");
+				// $("#addShipperSurveyModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addShipperSurveyModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot+"/shippersurvey/save", {shippersurvey: this.shippersurveyForAdd})
