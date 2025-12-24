@@ -24,11 +24,11 @@
 		.in-app-browser #app main { padding-top: 0 !important; }
 	</style>
 
-	<script src="https://unpkg.com/phosphor-icons"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://unpkg.com/phosphor-icons" defer></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
 	<!-- VUEJS -->
-	<script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+	<script src="https://cdn.quilljs.com/1.3.6/quill.js" defer></script>
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-multiselect@2.1.6/dist/vue-multiselect.min.css">
 
