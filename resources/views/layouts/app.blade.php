@@ -15,8 +15,8 @@
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
     <script src="{{ mix('js/app.js') }}" defer></script>
 
-	<script src="https://unpkg.com/phosphor-icons"></script>
-	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<script src="https://unpkg.com/phosphor-icons" defer></script>
+	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-multiselect@2.1.6/dist/vue-multiselect.min.css">
 
