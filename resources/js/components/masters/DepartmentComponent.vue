@@ -146,7 +146,8 @@
 				}
 				if (!thisVar.departmentForAdd.action || thisVar.departmentForAdd.action == "") thisVar.departmentForAdd.action = "details";
 				thisVar.departmentForAdd.created_by = thisVar.current_user_id;
-				$("#addDepartmentModal").modal("hide");
+				// $("#addDepartmentModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addDepartmentModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot + "/department/save", {department: thisVar.departmentForAdd})

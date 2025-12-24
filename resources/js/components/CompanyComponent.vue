@@ -257,7 +257,8 @@
 				}
 				if (!this.companyForAdd.action || this.companyForAdd.action == "") this.companyForAdd.action = "details";
 				this.companyForAdd.created_by = this.current_user_id;
-				$("#addCompanyModal").modal("hide");
+				// $("#addCompanyModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addCompanyModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot + "/company/save", {company: this.companyForAdd})

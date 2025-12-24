@@ -148,7 +148,8 @@
 				}
 				if (!this.tcodeForAdd.action || this.tcodeForAdd.action == "") this.tcodeForAdd.action = "details";
 				this.tcodeForAdd.created_by = this.current_user_id;
-				$("#addTcodeModal").modal("hide");
+				// $("#addTcodeModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addTcodeModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot + "/tcode/save", {tcode: this.tcodeForAdd})

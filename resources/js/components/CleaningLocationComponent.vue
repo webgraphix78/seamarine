@@ -147,7 +147,8 @@
 				}
 				if (!this.cleaninglocationForAdd.action || this.cleaninglocationForAdd.action == "") this.cleaninglocationForAdd.action = "details";
 				this.cleaninglocationForAdd.created_by = this.current_user_id;
-				$("#addCleaningLocationModal").modal("hide");
+				// $("#addCleaningLocationModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addCleaningLocationModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot+"/cleaninglocation/save", {cleaninglocation: this.cleaninglocationForAdd})

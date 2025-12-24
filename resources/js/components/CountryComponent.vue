@@ -147,7 +147,8 @@
 				}
 				if (!this.countryForAdd.action || this.countryForAdd.action == "") this.countryForAdd.action = "details";
 				this.countryForAdd.created_by = this.current_user_id;
-				$("#addCountryModal").modal("hide");
+				// $("#addCountryModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addCountryModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot + "/country/save", {country: this.countryForAdd})

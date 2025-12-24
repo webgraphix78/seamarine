@@ -176,7 +176,8 @@
 				}
 				if (!this.inspectionlocationForAdd.action || this.inspectionlocationForAdd.action == "") this.inspectionlocationForAdd.action = "details";
 				this.inspectionlocationForAdd.created_by = this.current_user_id;
-				$("#addInspectionLocationModal").modal("hide");
+				// $("#addInspectionLocationModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addInspectionLocationModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot + "/inspectionlocation/save", {inspectionlocation: this.inspectionlocationForAdd})
