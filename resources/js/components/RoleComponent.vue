@@ -150,7 +150,8 @@ export default {
 			}
 			if (!thisVar.roleForAdd.action || thisVar.roleForAdd.action == "")
 				thisVar.roleForAdd.action = "details";
-			$("#addRoleModal").modal('hide');
+			// $("#addRoleModal").modal('hide');
+			bootstrap.Modal.getInstance(document.getElementById('addRoleModal')).hide();
 			this.showLoading("Saving ...");
 			axios.post(this.docRoot+'/role/save', { role: thisVar.roleForAdd }).then(async function (response) {
 				thisVar.closeSwal();

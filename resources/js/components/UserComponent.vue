@@ -329,7 +329,8 @@ export default {
 			if (!this.userForAdd.action || this.userForAdd.action == "")
 				this.userForAdd.action = "details";
 			// return;
-			$("#addUserModal").modal('hide');
+			// $("#addUserModal").modal('hide');
+			bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
 			this.showLoading("Saving ...");
 			if( this.userForAdd.role_id != null ){
 				that.userForAdd.roles = [that.userForAdd.role_id]
