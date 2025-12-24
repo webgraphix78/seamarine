@@ -13,7 +13,7 @@
 
     <!-- Scripts -->
     <link rel="stylesheet" href="{{ mix('css/app.css') }}">
-    <script src="{{ mix('js/app.js') }}"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
 	<script src="https://unpkg.com/phosphor-icons" defer></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
