@@ -17,7 +17,7 @@
 
 	<script src="https://unpkg.com/phosphor-icons" defer></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
-
+    <script scr="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" defer></script>
 	<!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-multiselect@2.1.6/dist/vue-multiselect.min.css"> -->
 
 </head>
