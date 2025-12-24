@@ -1228,7 +1228,8 @@
 				}
 				if (!this.cleaningForAdd.action || this.cleaningForAdd.action == "") this.cleaningForAdd.action = "details";
 				this.cleaningForAdd.created_by = this.current_user_id;
-				$("#addCleaningModal").modal("hide");
+				// $("#addCleaningModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addCleaningModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot+"/cleaning/save", {cleaning: this.cleaningForAdd})
@@ -1360,15 +1361,11 @@
 			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
 				this.allInspectionLocnList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
 			}
-			setTimeout(async () =>{
-				this.allCompanyIdList = await this.loadAllCompany(true);
-				this.allTankIdList = await this.loadAllTankType(true);
-				this.allTcodeIdList = await this.loadAllTcode(true);
-				this.allClientIdList = await this.loadAllCustomer(true);
-				this.allCleaningLocationIdList = await this.loadAllCleaningLocation(true);
-				// console.log("Load^&@*((&YUIGHB))");
-				
-			}, 10000)
+			this.allCompanyIdList = await this.loadAllCompany(true);
+			this.allTankIdList = await this.loadAllTankType(true);
+			this.allTcodeIdList = await this.loadAllTcode(true);
+			this.allClientIdList = await this.loadAllCustomer(true);
+			this.allCleaningLocationIdList = await this.loadAllCleaningLocation(true);
 			this.allFrameTankList = [
 				{id: "1", title: "Yes"},
 				{id: "-1", title: "No"},

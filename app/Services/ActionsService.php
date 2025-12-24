@@ -43,18 +43,21 @@ class ActionsService{
 		}
 		// Set actions
 		$actions = [ 'v' => ['title' => '<i class="ph ph-eye"></i>', 'action' => 'viewObject', 'class' => 'btn-dark'] ];
-		if( $canAddEditDuplicate === 1){
+		if( $canAddEditDuplicate === 1 ){
 			$actions['e'] = ['title' => '<i class="ph ph-pencil-simple"></i>', 'action' => 'editObject', 'class' => 'btn-outline-dark'];
-			$actions['dp'] = ['title' => '<i class="ph ph-copy"></i>', 'action' => 'duplicateObject', 'class' => 'btn-info'];
+			if( $roleIds != [4] ){
+				$actions['dp'] = ['title' => '<i class="ph ph-copy"></i>', 'action' => 'duplicateObject', 'class' => 'btn-info'];
+			}
 		}
-		if ($canExport === 1)
+		if ($canExport === 1 || $roleIds == [2])
 			$actions['ex'] = ['title' => '<i class="ph ph-printer"></i>', 'action' => 'exportObject', 'class' => 'btn-primary'];
 
-		if ($canDelete === 1 && $status == 1) {
-			$actions['d'] = ['title' => '<i class="ph ph-trash-simple"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-danger', 'additional_params' => [0], 'hint' => 'Delete'];
-		}
-		else{
-			$actions['d'] = ['title' => '<i class="ph ph-check"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-success', 'additional_params' => [1], 'hint' => 'Activate'];
+		if( $roleIds != [4] && $roleIds != [2] ){
+			if ($canDelete === 1 && $status == 1) {
+				$actions['d'] = ['title' => '<i class="ph ph-trash-simple"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-danger', 'additional_params' => [0], 'hint' => 'Delete'];
+			}else{
+				$actions['d'] = ['title' => '<i class="ph ph-check"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-success', 'additional_params' => [1], 'hint' => 'Activate'];
+			}
 		}
         return $actions;
 	}

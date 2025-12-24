@@ -74,9 +74,6 @@ export default {
 			currentUser: siteUserObject,
 			readStuffing: {},
 			stuffingForAdd: {},
-			// allCompanyIdList: [],
-			// allCustomerIdList: [],
-			// allSurveyorIdList: [],
 		}
 	},
 	methods: {
@@ -162,9 +159,6 @@ export default {
 		},
 	},
 	async mounted() {
-		// this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
-		// this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
-		// this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
 	}
 }
 </script>

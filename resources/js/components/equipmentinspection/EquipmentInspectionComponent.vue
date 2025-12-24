@@ -142,11 +142,6 @@ export default {
 			currentUser: siteUserObject,
 			readEquipmentInspection: {},
 			equipmentinspectionForAdd: {},
-			// allCompanyIdList: [],
-			// allSurveyorIdList: [],
-			// allForIdList: [],
-			// allInspectionLocationIdList: [],
-			// allCustomerIdList: [],
 		}
 	},
 	methods: {
@@ -234,18 +229,6 @@ export default {
 		},
 	},
 	async mounted() {
-		// this.allEmptyCleanList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, { id: '-1', title: 'NA'}, ];
-		// this.allEmptyDirtyList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, { id: '-1', title: 'NA'}, ];
-		// this.allLoadedList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, { id: '-1', title: 'NA'}, ];
-		// this.allEqInspectionStatusList = [{ id: '1', title: 'Import'}, { id: '2', title: 'Export'}, ];
-		// this.allEquipmentTypeList = [{ id: '1', title: 'Loaded'}, { id: '0', title: 'Unloaded'}, ];
-		// this.allTankTypeList = [{ id: '1', title: 'IMO 1'}, { id: '2', title: 'IMO 5'}, ];
-		// this.allCfsList = [{ id: '-1', title: 'NA'}, { id: '1', title: 'In'}, { id: '0', title: 'Out'}, ];
-		// this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
-		// this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
-		// this.allForIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
-		// this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
-		// this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
 	}
 }
 </script>

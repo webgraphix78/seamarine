@@ -372,11 +372,6 @@ export default {
 			currentUser: siteUserObject,
 			readDepotConditionSurvey: {},
 			depotconditionsurveyForAdd: {},
-			// allCompanyIdList: [],
-			// allCustomerIdList: [],
-			// allInspectionLocationIdList: [],
-			// allLiquidInspectionLocationIdList: [],
-			// allSurveyorIdList: [],
 		}
 	},
 	methods: {
@@ -466,51 +461,7 @@ export default {
 			this.closeSwal();
 		},
 	},
-	// async mounted() {
-	// 	this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
-	// 	this.allCustomerIdList = await this.loadAllCustomer(this.docRoot+'/customer',{});
-	// 	this.allInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
-	// 	this.allProtectionCoverList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allManholeCoverFasteningBoltsList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allTopSafetyValveList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allRuptureDiscSeriesList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allDippingPipeList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allAirValveList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allDipstickList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allManholeGasketList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allWalkwayList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allTopLoadingFlangeList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allHeatingPlugPipeList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allHeatingPipeCoversList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allBottomOutletValveList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allBottomValveCapList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allBottomValveBoltsNutsList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allBottomValveLeverList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allLadderList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allDocumentBoxList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allThermometerList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allRemoteShutOffList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allHandRailList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allRustList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allDiscolourationList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allSurfaceScoringList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allPittingSurfacePinList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allCorrosionMarkList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allOthersList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allFrameworkFrontEndList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allCladdingFrontEndList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allFrameworkRareEndList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allCladdingRareEndList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allFrameworkRightSideList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allCladdingRightSideList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allFrameworkLeftSideList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allCladdingLeftSideList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allFrameworkTopList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allCladdingTopList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allFrameworkBottomList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allCladdingBottomList = [{ id: '1', title: 'Yes'}, { id: '0', title: 'No'}, ];
-	// 	this.allLiquidInspectionLocationIdList = await this.loadAllInspectionLocation(this.docRoot+'/inspectionlocation',{});
-	// 	this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
-	// }
+	async mounted() {
+	}
 }
 </script>

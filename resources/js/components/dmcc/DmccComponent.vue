@@ -13,8 +13,6 @@
 				<DataTableComponent :dataprops="dataprops" @view-object="viewDmcc" @edit-object="prepareEditDmcc" @toggle-object-status="toggleObjectStatus" @export-object="printDmcc"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
-		
-		
 	</div>
 </template>
 <script>
@@ -79,9 +77,6 @@ export default {
 			currentUser: siteUserObject,
 			readDmcc: {},
 			dmccForAdd: {},
-			// allCompanyIdList: [],
-			// allSurveyorIdList: [],
-
 		}
 	},
 	methods: {
@@ -167,8 +162,6 @@ export default {
 		},
 	},
 	async mounted() {
-		// this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
-		// this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
 	}
 }
 </script>
