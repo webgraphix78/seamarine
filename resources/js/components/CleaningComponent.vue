@@ -1237,7 +1237,8 @@
 				}
 				if (!this.cleaningForAdd.action || this.cleaningForAdd.action == "") this.cleaningForAdd.action = "details";
 				this.cleaningForAdd.created_by = this.current_user_id;
-				$("#addCleaningModal").modal("hide");
+				// $("#addCleaningModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addCleaningModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot+"/cleaning/save", {cleaning: this.cleaningForAdd})

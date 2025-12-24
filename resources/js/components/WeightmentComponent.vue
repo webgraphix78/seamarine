@@ -480,7 +480,8 @@
 				}
 				if (!this.weightmentForAdd.action || this.weightmentForAdd.action == "") this.weightmentForAdd.action = "details";
 				this.weightmentForAdd.created_by = this.current_user_id;
-				$("#addWeightmentModal").modal("hide");
+				// $("#addWeightmentModal").modal("hide");
+				bootstrap.Modal.getInstance(document.getElementById('addWeightmentModal')).hide();
 				this.showLoading("Saving ...");
 				axios
 					.post(this.docRoot+"/weightment/save", {weightment: this.weightmentForAdd})
