@@ -30,7 +30,6 @@
 
 	<!-- VUEJS -->
 	<script src="https://cdn.quilljs.com/1.3.6/quill.js" defer></script>
-
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-multiselect@2.1.6/dist/vue-multiselect.min.css">
 
 </head>

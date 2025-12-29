@@ -152,7 +152,7 @@
 						document.upload_progress = 0;
 						document.file_name = document.file.name.length > 25 ? document.file.name.substring(0, 18) + " ... " + document.file.name.substring(document.file.name.length - 4) : document.file.name;
 						// Send the data
-						let URL = this.docRoot + "/api/media/add";
+						let URL = this.docRoot + "/media/add";
 						console.log(URL);
 						axios.post(URL, formData, {
 								headers: {
