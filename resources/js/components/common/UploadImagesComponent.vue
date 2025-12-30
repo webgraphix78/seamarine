@@ -153,7 +153,6 @@
 						document.file_name = document.file.name.length > 25 ? document.file.name.substring(0, 18) + " ... " + document.file.name.substring(document.file.name.length - 4) : document.file.name;
 						// Send the data
 						let URL = this.docRoot + "/media/add";
-						console.log(URL);
 						axios.post(URL, formData, {
 								headers: {
 									"Content-Type": "multipart/form-data"
@@ -202,7 +201,7 @@
 				let that = this;
 				this.showLoading("Deleting file ...");
 				axios
-					.post(this.docRoot + "/api/media/delete", {image_id: id, purpose: 'single'})
+					.post(this.docRoot + "/media/delete", {image_id: id})
 					.then(async function (response) {
 						that.closeSwal();
 						var status = response.data.status;
