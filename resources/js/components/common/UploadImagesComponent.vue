@@ -201,7 +201,7 @@
 				let that = this;
 				this.showLoading("Deleting file ...");
 				axios
-					.post(this.docRoot + "/media/delete", {image_id: id})
+					.post(this.docRoot + "/media/delete", {image_id: id, purpose: 'single'})
 					.then(async function (response) {
 						that.closeSwal();
 						var status = response.data.status;
