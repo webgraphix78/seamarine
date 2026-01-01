@@ -255,14 +255,14 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/selectdepotconditionsurvey', [App\Http\Controllers\DepotConditionSurveyController::class, 'loadForSelection'])->name('selectdepotconditionsurvey');
 	Route::get('/depotconditionsurvey/edit/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'edit'])->name('edit-depotconditionsurvey-page');
 	Route::post('/depotconditionsurvey/duplicate', [App\Http\Controllers\DepotConditionSurveyController::class, 'duplicateRecord'])->name('duplicate-depotconditionsurvey-page');
-	Route::get('/depotconditionsurvey/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\DepotConditionSurveyController::class, 'viewFile'])->name('view-depotconditionsurvey-file');
+	// Route::get('/depotconditionsurvey/view-file/{id}/{fieldName}/{size}/{randomId}', [App\Http\Controllers\DepotConditionSurveyController::class, 'viewFile'])->name('view-depotconditionsurvey-file');
 	Route::get('/depotconditionsurvey/export-to-pdf/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'exportToPDF'])->name('print-depotconditionsurvey');
 	Route::post('/depotconditionsurvey/upload-file', [App\Http\Controllers\DepotConditionSurveyController::class, 'uploadFile'])->name('upload-depotconditionsurvey-file');
 	Route::post('/depotconditionsurvey/clear-file/{id}/{randomId}', [App\Http\Controllers\DepotConditionSurveyController::class, 'clearFile'])->name('clear-depotconditionsurvey-file');
 	Route::post('/depotconditionsurvey/delete', [App\Http\Controllers\DepotConditionSurveyController::class, 'deleteRecord'])->name('deletedepotconditionsurvey');
 	Route::get('/depotconditionsurvey/add', [App\Http\Controllers\DepotConditionSurveyController::class, 'add'])->name('add-depotconditionsurvey-page');
 	Route::get('/depotconditionsurvey/view/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'view'])->name('view-depotconditionsurvey-page');
-	// Route::get('/depotconditionsurvey/view-file/{depotconditionsurveyId}/{randomId}', [App\Http\Controllers\DepotConditionSurveyController::class, 'viewFile'])->name('view-depotconditionsurvey-file');
+	Route::get('/depotconditionsurvey/view-file/{depotconditionsurveyId}/{id}', [App\Http\Controllers\DepotConditionSurveyController::class, 'viewFile'])->name('view-depotconditionsurvey-file');
 	Route::post('/depotconditionsurvey/verify-tank-number', [App\Http\Controllers\DepotConditionSurveyController::class, 'verifyTankNumber'])->name('verify-depotconditionsurvey-tank-number');
 
 	// CscInspectionTank

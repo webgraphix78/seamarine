@@ -576,7 +576,7 @@
 				<div class="col-md-7">
 					<div class="d-flex flex-row gap-3">
 						<div class="mb-2" v-if="depotconditionsurveyFormObj.liquid_img && depotconditionsurveyFormObj.liquid_img.length > 5">
-							<img :src="docRoot+'/depotconditionsurvey/view-file/' + depotconditionsurveyFormObj.id +'/123'" style="max-width: 200px" />
+							<img :src="docRoot+'/depotconditionsurvey/view-file/' + depotconditionsurveyFormObj.id +'/'+imageId" style="max-width: 200px" />
 							<p class="my-2 p-0"><a href="javascript:void(0)" class="text-danger" @click="clearImage()">Clear image</a></p>
 						</div>
 						<div v-else>
