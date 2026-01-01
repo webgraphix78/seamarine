@@ -332,6 +332,9 @@ export default {
 			// $("#addUserModal").modal('hide');
 			bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
 			this.showLoading("Saving ...");
+			if( this.userForAdd.role_id != null ){
+				that.userForAdd.roles = [that.userForAdd.role_id]
+			}
 			axios.post(this.docRoot+'/user/save', { user: that.userForAdd }).then(async function (response) {
 				that.closeSwal();
 				var status = response.data.status;

@@ -29,7 +29,6 @@ class ReferEquipmentController extends Controller
 
 	public function get(Request $request){
 		$input = $request->all();
-		log::info($input);
 		$referequipmentList = \App\Models\ReferEquipment::with('rel_company_id', 'rel_inspection_location_id', 'rel_customer_id', 'rel_surveyor_id',)->select("*");
 
 		if (isset($input['advfilters']) && is_array($input['advfilters']) && count($input['advfilters']) > 0) {
@@ -95,11 +94,22 @@ class ReferEquipmentController extends Controller
 				}
 			}
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 2) {
+			// Wait
+			$referequipmentList = $referequipmentList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$referequipmentList = $referequipmentList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")
 				$referequipmentList = $referequipmentList->orderByDesc(trim($input["sortBy"]));
 			else
 				$referequipmentList = $referequipmentList->orderBy(trim($input["sortBy"]));
+		}else{
+			$referequipmentList = $referequipmentList->orderByDesc("created_at");
 		}
 		if (isset($input["page"]))
 			$referequipmentList = $referequipmentList->paginate(10);
@@ -184,14 +194,14 @@ class ReferEquipmentController extends Controller
 					unset($objectToSave["created_by"]);
 			}
 			$referequipmentData = \App\Models\ReferEquipment::updateOrCreate(["id" => $referequipment["id"]], $objectToSave);
-			if ($objectToSave["id"] == 0) {
+			if ($referequipment["id"] == 0) {
 				$referequipmentData->ref_no = $referequipmentData->id;
-				$user = \App\Models\User::find(Auth::id());
-				if ($user->role_id == 4) {
-					$referequipmentData->status = 0;
-				}
-				$referequipmentData->save();
 			}
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$referequipmentData->status = 0;
+			}
+			$referequipmentData->save();
 			return response()->json(["status" => 1, "id" => $referequipmentData->id]);
 		} else {
 			return response()->json(["status" => -100, "messages" => ["Data for ReferEquipment is missing."]]);

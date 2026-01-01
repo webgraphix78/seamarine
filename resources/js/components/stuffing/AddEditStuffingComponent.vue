@@ -22,21 +22,22 @@
 			<div class="col-md-6">
 				<label for="add_stuffing_company_id" class="form-label text-uppercase fw-bold me-3">Company Name</label>
 				<div>
-					<multiselect v-model="stuffingFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="stuffingFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				
 			</div>
 			<div class="col-md-6">
 				<label for="add_stuffing_customer_id" class="form-label text-uppercase fw-bold me-3">CUSTOMER NAME</label>
 				<div>
-					<multiselect v-model="stuffingFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="stuffingFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 				
 			</div>
 			<div class="col-md-6">
 				<label for="add_stuffing_issue_date" class="form-label text-uppercase fw-bold me-3">Date of Issue</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="stuffingFormObj.issue_date" id="add_stuffing_issue_date" placeholder="Enter Date of Issue" >
+					<MaskInput v-model="stuffingFormObj.issue_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
+
 				</div>
 			</div>
 		</div>
@@ -322,7 +323,7 @@
 			<div class="col-12">
 				<label for="add_stuffing_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Name</label>
 				<div>
-					<multiselect v-model="stuffingFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="stuffingFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>
@@ -388,7 +389,7 @@ function initialStateValidations() {
 	}
 }
 export default {
-	name: "Stuffingmaster",
+	name: "AddEditStuffingmaster",
 	props: ['current_user_id', 'all_permissions','id', 'isModal', 'stuffingForAdd', 'reload', 'closed'],
 	setup() {
 		return {

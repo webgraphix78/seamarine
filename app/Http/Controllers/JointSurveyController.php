@@ -50,13 +50,13 @@ class JointSurveyController extends Controller
 						->orWhere('customer_name', 'like', '%' . trim($input['q']) . '%')->orWhere('tank_no', 'like', '%' . trim($input['q']) . '%');
 				});
 				$jointsurveyList = $jointsurveyList->orWhereHas('company', function ($query) use ($input) {
-					$query = $query->where('title', 'like', '%' . trim($input['q']) . '%');
+					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');
 				});
 				$jointsurveyList = $jointsurveyList->orWhereHas('surveyor', function ($query) use ($input) {
-					$query = $query->where('title', 'like', '%' . trim($input['q']) . '%');
+					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');
 				});
 				$jointsurveyList = $jointsurveyList->orWhereHas('creator', function ($query) use ($input) {
-					$query = $query->where('title', 'like', '%' . trim($input['q']) . '%');
+					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');
 				});
 			}
 		} else {
@@ -117,11 +117,23 @@ class JointSurveyController extends Controller
 		if (isset($input["active"]) && is_numeric($input["active"]) && $input["active"] == 1) {
 			$jointsurveyList = $jointsurveyList->where('status', 1);
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 2) {
+			// Wait
+			$jointsurveyList = $jointsurveyList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$jointsurveyList = $jointsurveyList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")
 				$jointsurveyList = $jointsurveyList->orderByDesc(trim($input["sortBy"]));
 			else
 				$jointsurveyList = $jointsurveyList->orderBy(trim($input["sortBy"]));
+		}
+		else{
+			$jointsurveyList = $jointsurveyList->orderByDesc("created_at");
 		}
 		if (isset($input["page"]))
 			$jointsurveyList = $jointsurveyList->paginate(10);
@@ -181,6 +193,14 @@ class JointSurveyController extends Controller
 					unset($objectToSave["created_by"]);
 			}
 			$jointsurveyObject = \App\Models\JointSurvey::updateOrCreate(["id" => $jointsurvey["id"]], $objectToSave);
+			if ($jointsurvey["id"] == 0) {
+				// Also check if the user is a surveyor, set the status to 0
+				$user = \App\Models\User::find(Auth::id());
+				if ($user->role_id == 4) {
+					$jointsurveyObject->status = 0;
+				}
+				$jointsurveyObject->save();
+			}
 			return response()->json(["status" => 1]);
 		} else {
 			return response()->json(["status" => -100, "messages" => ["Data for Joint Survey is missing."]]);

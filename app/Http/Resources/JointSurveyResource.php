@@ -26,18 +26,22 @@ class JointSurveyResource extends JsonResource
 		];
 		if (isset($input['current_user_id']) && $input['current_user_id'] > 0) {
 			$currentUser = \App\Models\User::find($input['current_user_id']);
-			if ($currentUser->role_id != 2) {
+			if ($currentUser->role_id != 2 ) {
 				$actions['e'] = ['title' => '<i class="ph ph-pencil-simple"></i>', 'action' => 'editObject', 'class' => 'btn-outline-dark', 'hint' => 'Edit'];
 				$actions['u'] = ['title' => '<i class="ph ph-image"></i>', 'action' => 'uploadObject', 'class' => 'btn-success', 'hint' => 'Upload Images'];
-				$actions['l'] = ['title' => '<i class="ph ph-copy"></i>', 'action' => 'duplicateObject', 'class' => 'btn-info', 'hint' => 'Duplicate'];
 				$isUserAdmin = true;
-				if ($this->status == 1) {
-					$actions['d'] = ['title' => '<i class="ph ph-trash-simple"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-danger', 'additional_params' => [0], 'hint' => 'Delete'];
-				} else {
-					$actions['d'] = ['title' => '<i class="ph ph-check"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-success', 'additional_params' => [1], 'hint' => 'Activate'];
+				if(in_array($currentUser->role_id, [1, 3], true)){
+					$actions['l'] = ['title' => '<i class="ph ph-copy"></i>', 'action' => 'duplicateObject', 'class' => 'btn-info', 'hint' => 'Duplicate'];
+					if ($this->status == 1) {
+						$actions['d'] = ['title' => '<i class="ph ph-trash-simple"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-danger', 'additional_params' => [0], 'hint' => 'Delete'];
+					}
+					else{
+						$actions['d'] = ['title' => '<i class="ph ph-check"></i>', 'action' => 'toggleObjectStatus', 'class' => 'btn-success', 'additional_params' => [1], 'hint' => 'Activate'];
+					}
 				}
 			}
-			$actions['p'] = ['title' => '<i class="ph ph-printer"></i>', 'action' => 'printObject', 'class' => 'btn-primary', 'hint' => 'Print'];
+			if(in_array($currentUser->role_id, [1, 2, 3], true))
+				$actions['p'] = ['title' => '<i class="ph ph-printer"></i>', 'action' => 'printObject', 'class' => 'btn-primary', 'hint' => 'Print'];
 		}
 		return [
 			'id' => $this->id,

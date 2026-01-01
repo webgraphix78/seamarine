@@ -8,191 +8,191 @@
 				</div>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Ref No</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.ref_no">{{ readImo1.ref_no }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Company Id</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.company_id">{{ readImo1.company?.name }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Date</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.inspection_date">{{ formatMySQLDate(readImo1.inspection_date, "MMM dd, yyyy") }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">C.S.C.</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.csc">{{ readImo1.csc }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Loaded At</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.loaded_at">{{ readImo1.loaded_at }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Tank Type</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.tanktype?.name">{{ readImo1.tanktype?.name }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Tank Number</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.tank_no">{{ readImo1.tank_no }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">T-Code</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.tcode?.name">{{ readImo1.tcode?.name }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Last Cargo Carried</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.last_cargo_carried">{{ readImo1.last_cargo_carried }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Mfgt Date</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.mfgt_date">{{ readImo1.mfgt_date }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Empty Clean</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.empty_clean == '1'">Yes</span>
 				<span v-if="readImo1.empty_clean == '0'">No</span>
 				<span v-if="readImo1.empty_clean == '-1'">NA</span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Empty Dirty</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.empty_dirty == '1'">Yes</span>
 				<span v-if="readImo1.empty_dirty == '0'">No</span>
 				<span v-if="readImo1.empty_dirty == '-1'">NA</span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">CFS</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.cfs == '1'">In</span>
 				<span v-if="readImo1.cfs == '0'">Out</span>
 				<span v-if="readImo1.cfs == '-1'">NA</span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">For</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.for_client?.name">{{ readImo1.for_client?.name }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Loaded</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.loaded == '1'">Yes</span>
 				<span v-if="readImo1.loaded == '0'">No</span>
 				<span v-if="readImo1.loaded == '-1'">NA</span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Next Date</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.next_date">{{ readImo1.next_date }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Surveyor</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.surveyor?.name">{{ readImo1.surveyor?.name }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Country</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.country">{{ readImo1.country }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Hazard Class</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.hazard_class">{{ readImo1.hazard_class }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Location</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.inspection_location?.name">{{ readImo1.inspection_location?.name }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
 		</div>
-		<div class="row mb-1 border-bottom">
-			<div class="col-2 text-end px-1">
+		<div class="row mb-1 border-bottom g-2">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Customer</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.customer?.name">{{ readImo1.customer?.name }}</span>
 				<span v-else><i>Not specified</i></span>
 			</div>
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">CHA Client</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.cha_client == '1'">Yes</span>
 				<span v-if="readImo1.cha_client == '0'">No</span>
 			</div>
 		</div>
 		<div class="row mb-4 border-bottom">
-			<div class="col-2 text-end px-1">
+			<div class="col-md-2 col-6 text-end px-1">
 				<label class="form-label text-uppercase fw-bold m-0">Status</label>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<span v-if="readImo1.imo1_status == '1'">Import</span>
 				<span v-if="readImo1.imo1_status == '0'">Export</span>
 			</div>
@@ -432,7 +432,7 @@
 			</div>
 		</div>
 		<div class="row mb-4">
-			<div class="col-6">
+			<div class="col-md-6">
 				<div class="row mb-1">
 					<div class="col-7 d-flex align-items-center">
 						<div class="number">1.</div>
@@ -706,7 +706,7 @@
 				</div>
 				<!--  -->
 			</div>
-			<div class="col-6">
+			<div class="col-md-6">
 				<div class="row mb-1">
 					<div class="col-7 d-flex align-items-center">
 						<div class="number">15.</div>
@@ -991,39 +991,39 @@
 		</div>
 		<!-- Till here -->
 		<div class="row mb-4">
-			<div class="col-3 text-end">
+			<div class="col-md-3 col-6 text-end">
 				<label class="form-label text-uppercase fw-bold m-0">Walkway Image</label>
 			</div>
-			<div class="col-3" v-if="readImo1.walkway_image && readImo1.walkway_image.length > 0">
+			<div class="col-md-3 col-6" v-if="readImo1.walkway_image && readImo1.walkway_image.length > 0">
 				<button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#mdlWalkwayImage">View</button>
 			</div>
-			<div class="col-3" v-else>
+			<div class="col-md-3 col-6" v-else>
 				<i>No image uploaded</i>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-3">
+		<div class="row mb-4 g-2">
+			<div class="col-md-3 col-6">
 				<label class="form-label text-uppercase fw-bold m-0">Last Test Date</label>
 				<div>
 					<span v-if="readImo1.last_test_date">{{ readImo1.last_test_date }}</span
 					><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<label class="form-label text-uppercase fw-bold m-0">Tare Weight</label>
 				<div>
 					<span v-if="readImo1.tare_wt">{{ readImo1.tare_wt }}</span
 					><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<label class="form-label text-uppercase fw-bold m-0">Capacity</label>
 				<div>
 					<span v-if="readImo1.capacity">{{ readImo1.capacity }}</span
 					><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3 col-6">
 				<label class="form-label text-uppercase fw-bold m-0">MGW</label>
 				<div>
 					<span v-if="readImo1.mgw">{{ readImo1.mgw }}</span
@@ -1031,15 +1031,15 @@
 				</div>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-6">
+		<div class="row mb-4 g-2">
+			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Comments</label>
 				<div>
 					<span v-if="readImo1.comments">{{ readImo1.comments }}</span
 					><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col-3">
+			<div class="col-md-3">
 				<label class="form-label text-uppercase fw-bold m-0">Created By</label>
 				<div>
 					<span v-if="readImo1.creator?.name">{{ readImo1.creator?.name }}</span

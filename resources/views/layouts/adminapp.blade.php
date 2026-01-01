@@ -17,13 +17,19 @@
 	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
 	<link href="{{ asset('css/style.css') }}" rel="stylesheet">
 
+	<!-- Hide navbar when opened inside in-app browsers -->
+	<style>
+		.in-app-browser .navbar { display: none !important; }
+		/* remove the top padding when navbar is hidden in in-app webviews */
+		.in-app-browser #app main { padding-top: 0 !important; }
+	</style>
+
 	<script src="https://unpkg.com/phosphor-icons" defer></script>
 	<script src="//cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
 	<!-- VUEJS -->
 	<script src="https://cdn.quilljs.com/1.3.6/quill.js" defer></script>
-
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vue-multiselect@2.1.6/dist/vue-multiselect.min.css">
 
 </head>
@@ -102,6 +108,8 @@
 		</div>
 	</div>
 	<script>
+	const urlParams = new URLSearchParams(window.location.search);
+	const mode = urlParams.get('mode');
 	// Assign the session variable to a JavaScript variable
 	let siteUserObject = null;
 	<?php if(\Illuminate\Support\Facades\Auth::check() ) :?>
@@ -118,6 +126,26 @@
 	@endif
 
 	const csrfToken = "{{ @csrf_token() }}";
+
+	// Detect common in-app browser user-agents or webviews and hide the navbar
+	(function(){
+		function isInAppBrowser(){
+			var ua = navigator.userAgent || '';
+			// common in-app browser markers
+			if (/FBAN|FBAV|Instagram|Line|Twitter|LinkedIn|WhatsApp|WeChat|wv|; wv/i.test(ua)) return true;
+			// React Native WebView
+			if (window.ReactNativeWebView) return true;
+			// iOS embedded webview heuristic
+			if (/iPhone|iPad|iPod/i.test(ua) && /AppleWebKit/i.test(ua) && !/Safari/i.test(ua)) return true;
+			return false;
+		}
+
+		if (isInAppBrowser() || mode === 'mobileapp') {
+			document.documentElement.classList.add('in-app-browser');
+			var nav = document.querySelector('nav.navbar');
+			if (nav) nav.classList.add('d-none');
+		}
+	})();
 	</script>
 	<!-- Scripts -->
 	<script src="{{ mix('js/app.js') }}" defer></script>

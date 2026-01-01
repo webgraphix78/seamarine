@@ -104,11 +104,22 @@ class EquipmentInspectionController extends Controller{
 				}
 			}
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 2) {
+			// Wait
+			$equipmentinspectionList = $equipmentinspectionList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$equipmentinspectionList = $equipmentinspectionList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if( isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0 ){
 			if( trim($input["sortOrder"]) == "desc" )
 				$equipmentinspectionList = $equipmentinspectionList->orderByDesc(trim($input["sortBy"]));
 			else
 				$equipmentinspectionList = $equipmentinspectionList->orderBy(trim($input["sortBy"]));
+		}else{
+			$equipmentinspectionList = $equipmentinspectionList->orderByDesc("created_at");
 		}
 		if( isset($input["page"]) )
 			$equipmentinspectionList = $equipmentinspectionList->paginate(10);
@@ -177,10 +188,8 @@ class EquipmentInspectionController extends Controller{
 			$equipmentinspection = $input["equipmentinspection"];
 			$objectToSave = [];
 			$checkTitle = true;
-			if( $equipmentinspection["action"] == "status" ){
+			if ($equipmentinspection["action"] == "status") {
 				$objectToSave["status"] = $equipmentinspection["status"];
-				if( $equipmentinspection["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $equipmentinspection["action"] == "details" ){
 				$rules = [
@@ -200,15 +209,15 @@ class EquipmentInspectionController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$equipmentinspectionData =\App\Models\EquipmentInspection::updateOrCreate( [ "id" => $equipmentinspection["id"] ], $objectToSave );
-			if ($objectToSave["id"] == 0) {
-				// Set ref_no to the newly generated id
+			if ($equipmentinspection["id"] == 0) {
+			// Set ref_no to the newly generated id
 				$equipmentinspectionData->ref_no = $equipmentinspectionData->id;
-				$user = \App\Models\User::find(Auth::id());
-				if ($user->role_id == 4) {
-					$equipmentinspectionData->status = 0;
-				}
-				$equipmentinspectionData->save();
 			}
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$equipmentinspectionData->status = 0;
+			}
+			$equipmentinspectionData->save();
 			return response()->json(["status" => 1, "id" => $equipmentinspectionData->id]);
 		}
 		else{

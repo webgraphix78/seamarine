@@ -31,12 +31,30 @@ class ShipperSurveyController extends Controller
 				break;
 			case 1:
 			case 3:
+			case 4:
 				$all_permissions = "111";
 				break;
 			default:
 				abort(403);
 		}
-		return view('common.index', compact('component', 'current_user_id', 'all_permissions'));
+		$mode = "";
+		$param1= "";
+		$objectId = "";
+		if( isset($_GET["mode"]) && strlen(trim($_GET["mode"])) > 0 ){
+			$mode = $_GET["mode"];
+			if(isset($_GET["addeditmode"]) && strlen(trim($_GET["addeditmode"])) > 0){
+				$param1 = $_GET["addeditmode"];
+			}
+			if(isset($_GET["id"]) && strlen(trim($_GET["id"])) > 0){
+				$objectId =$_GET["id"];
+			}
+		}
+		return view('common.index', compact('component', 'current_user_id', 'all_permissions', 'mode', 'param1','objectId'));
+	}
+
+	public function getRecord($shippersurveyId){
+		$shippersurveyRecord = \App\Models\ShipperSurvey::with('company', 'surveyor', 'for_shipper', 'customer', 'inspection_location', 'creator')->find($shippersurveyId);
+		return $shippersurveyRecord->toJson();
 	}
 
 	public function get(Request $request)
@@ -119,6 +137,9 @@ class ShipperSurveyController extends Controller
 		$user = \App\Models\User::find($input['current_user_id']);
 		if ($user->role_id == 2) {
 			$shippersurveyList = $shippersurveyList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$shippersurveyList = $shippersurveyList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
 		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")

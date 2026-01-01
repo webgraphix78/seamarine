@@ -53,13 +53,7 @@
 							<div class="col-12 d-flex flex-row align-items-center gap-3">
 								<label for="add_weightment_customer_id" class="form-label text-uppercase fw-bold mb-0 flex-shrink-0">To Customer <span class="mandatory">*</span></label>
 								<div>
-									<select class="form-select" v-model="weightmentForAdd.customer_id" id="add_customer_id">
-										<optgroup v-if="allCustomerIdList" label="Choose Customer">
-											<template v-for="customerId in allCustomerIdList" :key="customerId.id">
-												<option :value="customerId.id">{{ customerId.name }}</option>
-											</template>
-										</optgroup>
-									</select>
+									<multiselect v-model="weightmentForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 								</div>
 								<div>
 									<label for="add_weightment_subject" class="form-label text-uppercase fw-bold mb-0 me-2">Subject</label
@@ -148,13 +142,7 @@
 							</div>
 							<div class="col-3">
 								<div>
-									<select class="form-select" v-model="weightmentForAdd.surveyor_id" id="add_surveyor_id">
-										<optgroup v-if="allSurveyorIdList" label="Choose Surveyor">
-											<template v-for="surveyorId in allSurveyorIdList" :key="surveyorId.id">
-												<option :value="surveyorId.id">{{ surveyorId.name }}</option>
-											</template>
-										</optgroup>
-									</select>
+									<multiselect v-model="weightmentForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 								</div>
 							</div>
 						</div>
@@ -478,6 +466,12 @@
 					console.log(this.v$.$errors);
 					return;
 				}
+				if ( this.weightmentForAdd.surveyor_id != 'null' && typeof this.weightmentForAdd.surveyor_id === 'object' && this.weightmentForAdd.surveyor_id.id) {
+					this.weightmentForAdd.surveyor_id = this.weightmentForAdd.surveyor_id.id;
+				}
+				if ( this.weightmentForAdd.customer_id != 'null' && typeof this.weightmentForAdd.customer_id === 'object' && this.weightmentForAdd.customer_id.id) {
+					this.weightmentForAdd.customer_id = this.weightmentForAdd.customer_id.id;
+				}
 				if (!this.weightmentForAdd.action || this.weightmentForAdd.action == "") this.weightmentForAdd.action = "details";
 				this.weightmentForAdd.created_by = this.current_user_id;
 				// $("#addWeightmentModal").modal("hide");
@@ -507,6 +501,20 @@
 			prepareEditWeightment(weightment) {
 				this.weightmentForAdd = Object.assign({}, weightment);
 				this.addEditModal.show();
+				if (this.weightmentForAdd.surveyor_id) {
+					if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+						let _allRelationList = this.allSurveyorIdList;
+						let relationId = parseInt(this.weightmentForAdd.surveyor_id);
+						this.weightmentForAdd.surveyor_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.weightmentForAdd.customer_id) {
+					if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+						let _allRelationList = this.allCustomerIdList;
+						let relationId = parseInt(this.weightmentForAdd.customer_id);
+						this.weightmentForAdd.customer_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
 			},
 			viewWeightment(weightment) {
 				this.readWeightment = weightment;
@@ -535,14 +543,23 @@
 				this.showLoading("Loading images ...");
 				await this.refreshObject(imo1, "Weightment", 1);
 				this.closeSwal();
-			}
+			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
+			},
 		},
 		async mounted() {
 			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
 			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
 			this.allCompanyIdList = await this.loadAllCompany(true);
-			this.allCustomerIdList = await this.loadAllCustomer(true);
-			this.allSurveyorIdList = await this.loadAllSurveyor(true);
+			let _allSurveyorIdList = await this.loadAllSurveyor(true);
+			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
+				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allCustomerIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allCustomerIdList) && _allCustomerIdList.length > 0){
+				this.allCustomerIdList = _allCustomerIdList.map(x => {return { id: x.id, text: x.name }});
+			}
 		}
 	};
 </script>

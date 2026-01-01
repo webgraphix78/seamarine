@@ -10,11 +10,11 @@
 				<h5>Bottom Discharge</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhiremain.bd_x" id="add_onhiremain_bd_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhiremain.bd_x_value" id="add_bd_x_value">
 					<optgroup v-if="allBdXValueList" label="Choose Bd X Value">
 						<template v-for="bdXValue in allBdXValueList" :key="bdXValue.id">
@@ -23,10 +23,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhiremain.bd_other" id="add_onhiremain_bd_other" :disabled="onhiremain.bd_x_value != '0'" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<select class="form-select" v-model="onhiremain.bd_butterfly_ball" id="add_bd_butterfly_ball">
 					<optgroup v-if="allBdButterflyBallList" label="Choose Bd Butterfly Ball">
 						<template v-for="bdButterflyBall in allBdButterflyBallList" :key="bdButterflyBall.id">
@@ -35,15 +35,15 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-4">
 				<input type="text" class="form-control" v-model="onhiremain.bd_butterfly_ball_sn" id="add_onhiremain_bd_butterfly_ball_sn" />
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_bd_tir_strip" class="form-label text-uppercase fw-bold m-0">Tir Strips</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<div>
 					<select class="form-select" v-model="onhiremain.bd_tir_strip" id="add_bd_tir_strip">
 						<optgroup v-if="allBdTirStripList" label="Choose Bd Tir Strip">
@@ -54,10 +54,10 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_bd_spacers" class="form-label text-uppercase fw-bold m-0">Spacers</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<div>
 					<select class="form-select" v-model="onhiremain.bd_spacers" id="add_bd_spacers">
 						<optgroup v-if="allBdSpacersList" label="Choose Bd Spacers">
@@ -74,11 +74,11 @@
 				<h5>Footvalve</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.fv_x" id="add_onhiremain_fv_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.fv_x_value" id="add_fv_x_value">
 					<optgroup v-if="allFvXValueList" label="Choose Fv X Value">
 						<template v-for="fvXValue in allFvXValueList" :key="fvXValue.id">
@@ -87,10 +87,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.fv_other" id="add_onhiremain_fv_other" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.fv_option" id="add_fv_option">
 					<optgroup v-if="allFvOptionList" label="Choose Fv Option">
 						<template v-for="fvOption in allFvOptionList" :key="fvOption.id">
@@ -100,11 +100,11 @@
 				</select>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_fv_tir_strip" class="form-label text-uppercase fw-bold m-0">Tir Strip</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.fv_tir_strip" id="add_fv_tir_strip">
 					<optgroup v-if="allFvTirStripList" label="Choose Fv Tir Strip">
 						<template v-for="fvTirStrip in allFvTirStripList" :key="fvTirStrip.id">
@@ -119,11 +119,11 @@
 				<h5>Bottom Outlet Cap/Blank :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.bocp_x" id="add_onhiremain_bocp_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.bocp_x_value" id="add_bocp_x_value">
 					<optgroup v-if="allBocpXValueList" label="Choose Bocp X Value">
 						<template v-for="bocpXValue in allBocpXValueList" :key="bocpXValue.id">
@@ -132,18 +132,18 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_bocp_3_bsp" class="form-label text-uppercase fw-bold m-0">3" Bsp</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.bocp_3_bsp" id="add_onhiremain_bocp_3_bsp" />
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_bocp_cap" class="form-label text-uppercase fw-bold m-0">Cap</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<div>
 					<select class="form-select" v-model="onhiremain.bocp_cap" id="add_bocp_cap">
 						<optgroup v-if="allBocpCapList" label="Choose Bocp Cap">
@@ -160,11 +160,11 @@
 				<h5>Remote Trip :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.rt_x" id="add_onhiremain_rt_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.rt_type" id="add_rt_type">
 					<optgroup v-if="allRtTypeList" label="Choose Rt Type">
 						<template v-for="rtType in allRtTypeList" :key="rtType.id">
@@ -173,10 +173,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_rt_fusible_link" class="form-label text-uppercase fw-bold m-0">Fusible Link</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.rt_fusible_link" id="add_rt_fusible_link">
 					<optgroup v-if="allRtFusibleLinkList" label="Choose Rt Fusible Link">
 						<template v-for="rtFusibleLink in allRtFusibleLinkList" :key="rtFusibleLink.id">
@@ -191,14 +191,14 @@
 				<h5>Top Discharge :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.td_x" id="add_onhiremain_td_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.td_dn" id="add_onhiremain_td_dn" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.td_dn_value_1" id="add_td_dn_value_1">
 					<optgroup v-if="allTdDnValue1List" label="Choose Td Dn Value 1">
 						<template v-for="tdDnValue1 in allTdDnValue1List" :key="tdDnValue1.id">
@@ -207,7 +207,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.td_dn_value_2" id="add_td_dn_value_2">
 					<optgroup v-if="allTdDnValue2List" label="Choose Td Dn Value 2">
 						<template v-for="tdDnValue2 in allTdDnValue2List" :key="tdDnValue2.id">
@@ -216,10 +216,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.td_dn_other" id="add_onhiremain_td_dn_other" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.td_butterfly_ball" id="add_td_butterfly_ball">
 					<optgroup v-if="allTdButterflyBallList" label="Choose Td Butterfly Ball">
 						<template v-for="tdButterflyBall in allTdButterflyBallList" :key="tdButterflyBall.id">
@@ -229,11 +229,11 @@
 				</select>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_td_tir_strip" class="form-label text-uppercase fw-bold m-0">Tir Strip</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<div>
 					<select class="form-select" v-model="onhiremain.td_tir_strip" id="add_td_tir_strip">
 						<optgroup v-if="allTdTirStripList" label="Choose Td Tir Strip">
@@ -244,10 +244,10 @@
 					</select>
 				</div>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_td_siphon_tube" class="form-label text-uppercase fw-bold m-0">Siphon Tube</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<div>
 					<select class="form-select" v-model="onhiremain.td_siphon_tube" id="add_td_siphon_tube">
 						<optgroup v-if="allTdSiphonTubeList" label="Choose Td Siphon Tube">
@@ -264,14 +264,14 @@
 				<h5>Top Loading :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.tl_x" id="add_onhiremain_tl_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.tl_dn" id="add_onhiremain_tl_dn" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.tl_dn_value_1" id="add_tl_dn_value_1">
 					<optgroup v-if="allTlDnValue1List" label="Choose Tl Dn Value 1">
 						<template v-for="tlDnValue1 in allTlDnValue1List" :key="tlDnValue1.id">
@@ -280,7 +280,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.tl_dn_value_2" id="add_tl_dn_value_2">
 					<optgroup v-if="allTlDnValue2List" label="Choose Tl Dn Value 2">
 						<template v-for="tlDnValue2 in allTlDnValue2List" :key="tlDnValue2.id">
@@ -289,10 +289,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.tl_dn_other" id="add_onhiremain_tl_dn_other" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.tl_butterfly_ball" id="add_tl_butterfly_ball">
 					<optgroup v-if="allTlButterflyBallList" label="Choose Tl Butterfly Ball">
 						<template v-for="tlButterflyBall in allTlButterflyBallList" :key="tlButterflyBall.id">
@@ -302,11 +302,11 @@
 				</select>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_tl_tir_strip" class="form-label text-uppercase fw-bold m-0">Tir Strip</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<div>
 					<select class="form-select" v-model="onhiremain.tl_tir_strip" id="add_tl_tir_strip">
 						<optgroup v-if="allTlTirStripList" label="Choose Tl Tir Strip">
@@ -323,11 +323,11 @@
 				<h5>Air Vent :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.av_x" id="add_onhiremain_av_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.av_value_inch" id="add_av_value_inch">
 					<optgroup v-if="allAvValueInchList" label="Choose Av Value Inch">
 						<template v-for="avValueInch in allAvValueInchList" :key="avValueInch.id">
@@ -336,7 +336,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.av_value" id="add_av_value">
 					<optgroup v-if="allAvValueList" label="Choose Av Value">
 						<template v-for="avValue in allAvValueList" :key="avValue.id">
@@ -345,10 +345,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.av_other" id="add_onhiremain_av_other" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.av_butterfly_ball" id="add_av_butterfly_ball">
 					<optgroup v-if="allAvButterflyBallList" label="Choose Av Butterfly Ball">
 						<template v-for="avButterflyBall in allAvButterflyBallList" :key="avButterflyBall.id">
@@ -363,8 +363,8 @@
 				<h5>Air Vent Connection :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-12">
 				<select class="form-select" v-model="onhiremain.avc_type" id="add_avc_type">
 					<optgroup v-if="allAvcTypeList" label="Choose Avc Type">
 						<template v-for="avcType in allAvcTypeList" :key="avcType.id">
@@ -373,10 +373,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_avc_tir_strip" class="form-label text-uppercase fw-bold m-0">Tir Strip</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.avc_tir_strip" id="add_avc_tir_strip">
 					<optgroup v-if="allAvcTirStripList" label="Choose Avc Tir Strip">
 						<template v-for="avcTirStrip in allAvcTirStripList" :key="avcTirStrip.id">
@@ -386,11 +386,11 @@
 				</select>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_avc_cap_blank_v1" class="form-label text-uppercase fw-bold m-0">Air Vent</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.avc_cap_blank_v1" id="add_avc_cap_blank_v1">
 					<optgroup v-if="allAvcCapBlankV1List" label="Choose Avc Cap Blank V1">
 						<template v-for="avcCapBlankV1 in allAvcCapBlankV1List" :key="avcCapBlankV1.id">
@@ -399,7 +399,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.avc_cap_blank_v2" id="add_avc_cap_blank_v2">
 					<optgroup v-if="allAvcCapBlankV2List" label="Choose Avc Cap Blank V2">
 						<template v-for="avcCapBlankV2 in allAvcCapBlankV2List" :key="avcCapBlankV2.id">
@@ -408,7 +408,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.avc_cap_blank_v3" id="add_avc_cap_blank_v3">
 					<optgroup v-if="allAvcCapBlankV3List" label="Choose Avc Cap Blank V3">
 						<template v-for="avcCapBlankV3 in allAvcCapBlankV3List" :key="avcCapBlankV3.id">
@@ -417,10 +417,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_avc_air_pressure_gauge" class="form-label text-uppercase fw-bold m-0">Airline Pressure Gauge</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<div>
 					<input type="text" class="form-control" v-model="onhiremain.avc_air_pressure_gauge" id="add_onhiremain_avc_air_pressure_gauge" />
 				</div>
@@ -431,11 +431,11 @@
 				<h5>Srv 1 :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv1_x" id="add_onhiremain_srv1_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv1_value1" id="add_srv1_value1">
 					<optgroup v-if="allSrv1Value1List" label="Choose Srv1 Value1">
 						<template v-for="srv1Value1 in allSrv1Value1List" :key="srv1Value1.id">
@@ -444,10 +444,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv1_other" id="add_onhiremain_srv1_other" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv1_value2" id="add_srv1_value2">
 					<optgroup v-if="allSrv1Value2List" label="Choose Srv1 Value2">
 						<template v-for="srv1Value2 in allSrv1Value2List" :key="srv1Value2.id">
@@ -456,7 +456,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv1_value3" id="add_srv1_value3">
 					<optgroup v-if="allSrv1Value3List" label="Choose Srv1 Value3">
 						<template v-for="srv1Value3 in allSrv1Value3List" :key="srv1Value3.id">
@@ -466,16 +466,16 @@
 				</select>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center gap-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 d-flex justify-content-end align-items-center gap-2">
 				<label for="add_onhiremain_srv1_pressure" class="form-label text-uppercase fw-bold m-0">Pressure</label>
 				<input type="text" class="form-control" v-model="onhiremain.srv1_pressure" id="add_onhiremain_srv1_pressure" />
 				<label for="add_onhiremain_srv1_pressure" class="form-label text-uppercase fw-bold m-0">Bar</label>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv1_vac" class="form-label text-uppercase fw-bold m-0">Vac</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv1_vac" id="add_srv1_vac">
 					<optgroup v-if="allSrv1VacList" label="Choose Srv1 Vac">
 						<template v-for="srv1Vac in allSrv1VacList" :key="srv1Vac.id">
@@ -484,18 +484,18 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv1_serial" class="form-label text-uppercase fw-bold m-0">Serial</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv1_serial" id="add_onhiremain_srv1_serial" />
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv1_tir_strip" class="form-label text-uppercase fw-bold m-0">Tir Strip</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv1_tir_strip" id="add_srv1_tir_strip">
 					<optgroup v-if="allSrv1TirStripList" label="Choose Srv1 Tir Strip">
 						<template v-for="srv1TirStrip in allSrv1TirStripList" :key="srv1TirStrip.id">
@@ -504,10 +504,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv1_flame_screen" class="form-label text-uppercase fw-bold m-0">Flame Screen</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv1_flame_screen" id="add_srv1_flame_screen">
 					<optgroup v-if="allSrv1FlameScreenList" label="Choose Srv1 Flame Screen">
 						<template v-for="srv1FlameScreen in allSrv1FlameScreenList" :key="srv1FlameScreen.id">
@@ -522,11 +522,11 @@
 				<h5>Srv 2 :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv2_x" id="add_onhiremain_srv2_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv2_value1" id="add_srv2_value1">
 					<optgroup v-if="allSrv2Value1List" label="Choose Srv2 Value1">
 						<template v-for="srv2Value1 in allSrv2Value1List" :key="srv2Value1.id">
@@ -535,10 +535,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv2_other" id="add_onhiremain_srv2_other" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv2_value2" id="add_srv2_value2">
 					<optgroup v-if="allSrv2Value2List" label="Choose Srv2 Value2">
 						<template v-for="srv2Value2 in allSrv2Value2List" :key="srv2Value2.id">
@@ -547,7 +547,7 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv2_value3" id="add_srv2_value3">
 					<optgroup v-if="allSrv2Value3List" label="Choose Srv2 Value3">
 						<template v-for="srv2Value3 in allSrv2Value3List" :key="srv2Value3.id">
@@ -557,16 +557,16 @@
 				</select>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center gap-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 d-flex justify-content-end align-items-center gap-2">
 				<label for="add_onhiremain_srv2_pressure" class="form-label text-uppercase fw-bold m-0">Pressure</label>
 				<input type="text" class="form-control" v-model="onhiremain.srv2_pressure" id="add_onhiremain_srv2_pressure" />
 				<label for="add_onhiremain_srv2_pressure" class="form-label text-uppercase fw-bold m-0">Bar</label>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv2_vac" class="form-label text-uppercase fw-bold m-0">Vac</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv2_vac" id="add_srv2_vac">
 					<optgroup v-if="allSrv2VacList" label="Choose Srv2 Vac">
 						<template v-for="srv2Vac in allSrv2VacList" :key="srv2Vac.id">
@@ -575,18 +575,18 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv2_serial" class="form-label text-uppercase fw-bold m-0">Serial</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv2_serial" id="add_onhiremain_srv2_serial" />
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv2_tir_strip" class="form-label text-uppercase fw-bold m-0">Tir Strip</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv2_tir_strip" id="add_srv2_tir_strip">
 					<optgroup v-if="allSrv2TirStripList" label="Choose Srv2 Tir Strip">
 						<template v-for="srv2TirStrip in allSrv2TirStripList" :key="srv2TirStrip.id">
@@ -595,10 +595,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv2_flame_screen" class="form-label text-uppercase fw-bold m-0">Flame Screen</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.srv2_flame_screen" id="add_srv2_flame_screen">
 					<optgroup v-if="allSrv2FlameScreenList" label="Choose Srv2 Flame Screen">
 						<template v-for="srv2FlameScreen in allSrv2FlameScreenList" :key="srv2FlameScreen.id">
@@ -613,23 +613,23 @@
 				<h5>Rupture Disc 1 :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2">
 				<input type="text" class="form-control" v-model="onhiremain.rd1_x" id="add_onhiremain_rd1_x" />
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_rd1_manufacturer" class="form-label text-uppercase fw-bold m-0">Manufacturer</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.rd1_manufacturer" id="add_onhiremain_rd1_manufacturer" />
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_rd1_bar" class="form-label text-uppercase fw-bold m-0">Bar</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.rd1_bar" id="add_onhiremain_rd1_bar" />
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center gap-2">
+			<div class="col-12 d-flex justify-content-end align-items-center gap-2">
 				<label for="add_onhiremain_rd1_size" class="form-label text-uppercase fw-bold m-0">Size</label>
 				<div>
 					<input type="text" class="form-control" v-model="onhiremain.rd1_size" id="add_onhiremain_rd1_size" />
@@ -642,23 +642,23 @@
 				<h5>Rupture Disc 2 :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 ">
 				<input type="text" class="form-control" v-model="onhiremain.rd2_x" id="add_onhiremain_rd2_x" />
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_rd2_manufacturer" class="form-label text-uppercase fw-bold m-0">Manufacturer</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.rd2_manufacturer" id="add_onhiremain_rd2_manufacturer" />
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_rd2_bar" class="form-label text-uppercase fw-bold m-0">Bar</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.rd2_bar" id="add_onhiremain_rd2_bar" />
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center gap-2">
+			<div class="col-md-2 d-flex justify-content-end align-items-center gap-2">
 				<label for="add_onhiremain_rd2_size" class="form-label text-uppercase fw-bold m-0">Size</label>
 				<div>
 					<input type="text" class="form-control" v-model="onhiremain.rd2_size" id="add_onhiremain_rd2_size" />
@@ -671,17 +671,17 @@
 				<h5>Srv 1 Manometer :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv1_mano_x" id="add_onhiremain_srv1_mano_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv1_mano_value1" id="add_onhiremain_srv1_mano_value1" />
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv1_mano_bar" class="form-label text-uppercase fw-bold m-0">Bar</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv1_mano_bar" id="add_onhiremain_srv1_mano_bar" />
 			</div>
 		</div>
@@ -690,25 +690,25 @@
 				<h5>Srv 2 Manometer :</h5>
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv2_mano_x" id="add_onhiremain_srv2_mano_x" />
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv2_mano_value" id="add_onhiremain_srv2_mano_value" />
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_srv2_mano_bar" class="form-label text-uppercase fw-bold m-0">Bar</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<input type="text" class="form-control" v-model="onhiremain.srv2_mano_bar" id="add_onhiremain_srv2_mano_bar" />
 			</div>
 		</div>
-		<div class="row mb-4">
-			<div class="col-2 d-flex justify-content-end align-items-center">
+		<div class="row mb-4 g-3">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_gps" class="form-label text-uppercase fw-bold m-0">GPS</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.gps" id="add_gps">
 					<optgroup v-if="allGpsList" label="Choose Gps">
 						<template v-for="gps in allGpsList" :key="gps.id">
@@ -717,10 +717,10 @@
 					</optgroup>
 				</select>
 			</div>
-			<div class="col-2 d-flex justify-content-end align-items-center">
+			<div class="col-md-2 col-6 d-flex justify-content-end align-items-center">
 				<label for="add_onhiremain_camera" class="form-label text-uppercase fw-bold m-0">Camera</label>
 			</div>
-			<div class="col-2">
+			<div class="col-md-2 col-6">
 				<select class="form-select" v-model="onhiremain.camera" id="add_camera">
 					<optgroup v-if="allCameraList" label="Choose Camera">
 						<template v-for="camera in allCameraList" :key="camera.id">

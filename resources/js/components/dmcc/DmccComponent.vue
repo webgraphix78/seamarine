@@ -6,15 +6,13 @@
 					<div class="col-sm-7">
 						<div class="d-flex align-items-center mb-2">
 							<h4 class="m-0 me-4 text-capitalize">DMCC</h4>
-							<a id="add_dmcc_btn" class="btn btn-success border-dark btn-sm" :href="this.docRoot+'/dmcc/add'" role="button">Add</a>
+							<a id="add_dmcc_btn" class="btn btn-success border-dark btn-sm" :href="this.docRoot+'/dmcc/add'" role="button" v-if="['0101', '1111'].indexOf(all_permissions) >= 0">Add</a>
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewDmcc" @edit-object="prepareEditDmcc" @toggle-object-status="deleteDmcc" @export-object="printDmcc"  @duplicate-object="duplicateObject"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewDmcc" @edit-object="prepareEditDmcc" @toggle-object-status="toggleObjectStatus" @export-object="printDmcc"  @duplicate-object="duplicateObject"></DataTableComponent>
 			</div>
 		</div>
-		
-		
 	</div>
 </template>
 <script>
@@ -79,9 +77,6 @@ export default {
 			currentUser: siteUserObject,
 			readDmcc: {},
 			dmccForAdd: {},
-			allCompanyIdList: [],
-			allSurveyorIdList: [],
-
 		}
 	},
 	methods: {
@@ -97,8 +92,30 @@ export default {
 		prepareAddModal(obj){
 			this.dmccForAdd = Object.assign({});
 		},
-		saveDmcc(){
-			this.dmccForAdd.reload = true;
+		saveDmcc(dmccForAdd){
+			var that = this;
+			that.showLoading("Saving ...");
+			axios.post(that.docRoot+'/dmcc/save', { dmcc: dmccForAdd }).then(async function (response) {
+				that.closeSwal();
+				var status = response.data.status;
+				if( status > 0 ){
+					// Set the ID so that duplicate records will not be created
+					that.dmccForAdd.id = response.data.id;
+					that.showToast('DMCC saved successfully', 'success', 'bottom', 3000);
+					setTimeout(() => {
+						that.dataprops.reload = true;
+						that.showLoading("Loading ...");
+					}, 1500);
+				}
+				else{
+					that.showErrors("DMCC could not be saved successfully.", response.data.messages, "bottom", 3000);
+				}
+			})
+			.catch(function (error) {
+				console.log(error);
+				that.closeSwal();
+				that.showToast("DMCC could not be saved successfully.", "error", "bottom", 3000);
+			});
 		},
 		duplicateObject(dmcc) {
 			let that = this;
@@ -124,27 +141,18 @@ export default {
 				}
 			});
 		},
-		deleteDmcc(dmcc, status){
-			var thisVar = this;
+		toggleObjectStatus(dmcc, status){
+			var that = this;
 			Swal.fire({
 				icon: "question",
-				html: "Do you really want to delete?",
-				showCancelButton: true,
+				html: "Do you really want to " + (status == 1 ? "activate" : "deactivate") + ' the DMCC record?',
+				showCancelButton: true
 			}).then((result) => {
 				if (result.isConfirmed) {
-					axios.post('/dmcc/delete', { id: dmcc.id, status: status })
-                        .then(function (response) {
-                            if (response.data.status == 1) {
-                                thisVar.showToast('DMCC updated successfully', 'success', 'bottom', 3000);
-                                thisVar.dataprops.reload = true;
-                            } else {
-                                thisVar.showErrors("DMCC could not be updated successfully", response.data.messages, "bottom", 3000);
-                            }
-                        })
-                        .catch(function (error) {
-                            console.log(error);
-                            thisVar.showToast("DMCC could not be updated successfully", "error", "bottom", 3000);
-                        });
+					that.dmccForAdd = dmcc;
+					that.dmccForAdd.status = status;
+					that.dmccForAdd.action = "status";
+					that.saveDmcc(that.dmccForAdd);
 				}
 			});
 		},
@@ -154,8 +162,6 @@ export default {
 		},
 	},
 	async mounted() {
-		this.allCompanyIdList = await this.loadAllCompany(this.docRoot+'/company',{});
-		this.allSurveyorIdList = await this.loadAllSurveyor(this.docRoot+'/surveyor',{});
 	}
 }
 </script>

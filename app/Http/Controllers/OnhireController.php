@@ -30,6 +30,7 @@ class OnhireController extends Controller
 				break;
 			case 1:
 			case 3:
+			case 4:
 				$all_permissions = "111";
 				break;
 			default:
@@ -41,7 +42,11 @@ class OnhireController extends Controller
 	public function add()
 	{
 		$component = "onhire-add-component";
-		return view('common.index', compact("component"));
+		$param1 = "";
+		if( isset($_GET["mode"]) && strlen(trim($_GET["mode"])) > 0 ){
+			$param1 = $_GET["mode"];
+		}
+		return view('common.index', compact("component", "param1"));
 	}
 
 	public function edit($onhireId)
@@ -136,6 +141,9 @@ class OnhireController extends Controller
 		$user = \App\Models\User::find($input['current_user_id']);
 		if ($user->role_id == 2) {
 			$onhireList = $onhireList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$onhireList = $onhireList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
 		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")

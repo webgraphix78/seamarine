@@ -30,32 +30,32 @@
 			</div>
 		</div>
 		<template v-if="tankNoVerified">
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-6">
 					<label for="add_depotconditionsurvey_ref_no" class="form-label text-uppercase fw-bold me-3">Ref No</label>
 					<div class="input-group">
 						<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.ref_no" id="add_depotconditionsurvey_ref_no" placeholder="Enter Ref No" disabled>
 					</div>
 				</div>
-				<div class="col">
+				<div class="col-md-6">
 					<label for="add_depotconditionsurvey_company_id" class="form-label text-uppercase fw-bold me-3">Company Id</label>
 					<div>
-						<multiselect v-model="depotconditionsurveyFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="depotconditionsurveyFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_inspection_date" class="form-label text-uppercase fw-bold me-3">Inspection Date</label>
 					<div class="input-group">
 						
-						<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.inspection_date" id="add_depotconditionsurvey_inspection_date" placeholder="Enter Inspection Date" >
+						<MaskInput v-model="depotconditionsurveyFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 						
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_mfg_sr_no" class="form-label text-uppercase fw-bold me-3">Mfg Sr No</label>
 					<div class="input-group">
 						
@@ -64,7 +64,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_last_test_date" class="form-label text-uppercase fw-bold me-3">Last Test Date</label>
 					<div class="input-group">
 						
@@ -74,15 +74,15 @@
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_customer_id" class="form-label text-uppercase fw-bold me-3">Client Name</label>
 					<div>
-						<multiselect v-model="depotconditionsurveyFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="depotconditionsurveyFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_mgw" class="form-label text-uppercase fw-bold me-3">Mgw</label>
 					<div class="input-group">
 						
@@ -91,7 +91,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_tare_wt" class="form-label text-uppercase fw-bold me-3">Tare Wt</label>
 					<div class="input-group">
 						
@@ -101,8 +101,8 @@
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_iso_type" class="form-label text-uppercase fw-bold me-3">Iso Type</label>
 					<div class="input-group">
 						
@@ -111,7 +111,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_capacity" class="form-label text-uppercase fw-bold me-3">Capacity</label>
 					<div class="input-group">
 						
@@ -120,16 +120,16 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Inspection Location</label>
 					<div>
-						<multiselect v-model="depotconditionsurveyFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="depotconditionsurveyFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
-				<div class="col">
+			<div class='row mb-4 gy-3 gy-md-0'>
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_date_of_mfg" class="form-label text-uppercase fw-bold me-3">Date Of Mfg</label>
 					<div class="input-group">
 						
@@ -138,7 +138,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_mfg" class="form-label text-uppercase fw-bold me-3">Mfg</label>
 					<div class="input-group">
 						
@@ -147,11 +147,11 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_next_inspection_date" class="form-label text-uppercase fw-bold me-3">Next Inspection Date</label>
 					<div class="input-group">
 						
-						<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.next_inspection_date" id="add_depotconditionsurvey_next_inspection_date" placeholder="Enter Next Inspection Date" >
+						<MaskInput v-model="depotconditionsurveyFormObj.next_inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 						
 					</div>
 					
@@ -163,14 +163,14 @@
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_protection_cover" class="form-label text-uppercase fw-bold me-3">Protection Cover</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.protection_cover" :options="allProtectionCoverList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.protection_cover" :options="allProtectionCoverList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_manhole_cover_fastening_bolts" class="form-label text-uppercase fw-bold me-3">MANHOLE-PROTECTION COVER-FASTENING BOLTS</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.manhole_cover_fastening_bolts" :options="allManholeCoverFasteningBoltsList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.manhole_cover_fastening_bolts" :options="allManholeCoverFasteningBoltsList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -186,38 +186,38 @@
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_top_safety_valve" class="form-label text-uppercase fw-bold me-3">Top Safety Valve</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.top_safety_valve" :options="allTopSafetyValveList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.top_safety_valve" :options="allTopSafetyValveList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_rupture_disc_series" class="form-label text-uppercase fw-bold me-3">RUPTURE DISC (UNDER #3 WHEN IN SERIES)</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.rupture_disc_series" :options="allRuptureDiscSeriesList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.rupture_disc_series" :options="allRuptureDiscSeriesList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_dipping_pipe" class="form-label text-uppercase fw-bold me-3">Dipping Pipe</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.dipping_pipe" :options="allDippingPipeList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.dipping_pipe" :options="allDippingPipeList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<div class="d-flex flex-row gap-2 align-items-center mb-2">
 								<label for="add_depotconditionsurvey_air_valve" class="form-label text-uppercase fw-bold m-0">Label:</label>
-								<multiselect v-model="depotconditionsurveyFormObj.air_valve_label" :options="allAirValveLabelList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.air_valve_label" :options="allAirValveLabelList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.air_valve" :options="allAirValveList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.air_valve" :options="allAirValveList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_dipstick" class="form-label text-uppercase fw-bold me-3">Dipstick</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.dipstick" :options="allDipstickList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.dipstick" :options="allDipstickList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -233,21 +233,21 @@
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_manhole_gasket" class="form-label text-uppercase fw-bold me-3">Manhole Gasket</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.manhole_gasket" :options="allManholeGasketList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.manhole_gasket" :options="allManholeGasketList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_walkway" class="form-label text-uppercase fw-bold me-3">Walkway</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.walkway" :options="allWalkwayList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.walkway" :options="allWalkwayList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<div class="d-flex flex-row gap-2 align-items-center mb-2">
 								<label for="add_depotconditionsurvey_top_loading" class="form-label text-uppercase fw-bold m-0">Label:</label>
-								<multiselect v-model="depotconditionsurveyFormObj.top_loading_label" :options="allTopLoadingLabelList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.top_loading_label" :options="allTopLoadingLabelList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							<div class="input-group">
 								<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.top_loading" id="add_depotconditionsurvey_top_loading" placeholder="Enter Top Loading" >
@@ -256,7 +256,7 @@
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_top_loading_flange" class="form-label text-uppercase fw-bold me-3">Top Loading Flange</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.top_loading_flange" :options="allTopLoadingFlangeList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.top_loading_flange" :options="allTopLoadingFlangeList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 						</div>
 					</div>
@@ -266,56 +266,56 @@
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_heating_plug_pipe" class="form-label text-uppercase fw-bold me-3">INLET/OUTLET HEATING PLUG/PIPE</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.heating_plug_pipe" :options="allHeatingPlugPipeList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.heating_plug_pipe" :options="allHeatingPlugPipeList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_heating_pipe_covers" class="form-label text-uppercase fw-bold me-3">INLET/OUTLET HEATING PIPE COVERS</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.heating_pipe_covers" :options="allHeatingPipeCoversList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.heating_pipe_covers" :options="allHeatingPipeCoversList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_bottom_outlet_valve" class="form-label text-uppercase fw-bold me-3">Bottom Outlet Valve</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.bottom_outlet_valve" :options="allBottomOutletValveList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.bottom_outlet_valve" :options="allBottomOutletValveList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_bottom_valve_cap" class="form-label text-uppercase fw-bold me-3">BOTTOM OUTLET VALVE CAP/BLANK FLANGE</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.bottom_valve_cap" :options="allBottomValveCapList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.bottom_valve_cap" :options="allBottomValveCapList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_bottom_valve_bolts_nuts" class="form-label text-uppercase fw-bold me-3">BOTTOM OUTLET VALVE CAP BOLTS & NUTS</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.bottom_valve_bolts_nuts" :options="allBottomValveBoltsNutsList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.bottom_valve_bolts_nuts" :options="allBottomValveBoltsNutsList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_bottom_valve_lever" class="form-label text-uppercase fw-bold me-3">BOTTOM OUTLET VALVE LEVER</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.bottom_valve_lever" :options="allBottomValveLeverList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.bottom_valve_lever" :options="allBottomValveLeverList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_ladder" class="form-label text-uppercase fw-bold me-3">Ladder</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.ladder" :options="allLadderList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.ladder" :options="allLadderList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_document_box" class="form-label text-uppercase fw-bold me-3">Document Box</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.document_box" :options="allDocumentBoxList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.document_box" :options="allDocumentBoxList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -331,21 +331,21 @@
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_thermometer" class="form-label text-uppercase fw-bold me-3">Thermometer</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.thermometer" :options="allThermometerList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.thermometer" :options="allThermometerList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_remote_shut_off" class="form-label text-uppercase fw-bold me-3">Remote Shut Off</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.remote_shut_off" :options="allRemoteShutOffList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.remote_shut_off" :options="allRemoteShutOffList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_hand_rail" class="form-label text-uppercase fw-bold me-3">Hand Rail</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.hand_rail" :options="allHandRailList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.hand_rail" :options="allHandRailList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -361,42 +361,42 @@
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_rust" class="form-label text-uppercase fw-bold me-3">RUST [SURFACE/SCRATCHES]</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.rust" :options="allRustList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.rust" :options="allRustList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_discolouration" class="form-label text-uppercase fw-bold me-3">Discolouration</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.discolouration" :options="allDiscolourationList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.discolouration" :options="allDiscolourationList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_surface_scoring" class="form-label text-uppercase fw-bold me-3">SURFACE SCORING/GOUGE</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.surface_scoring" :options="allSurfaceScoringList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.surface_scoring" :options="allSurfaceScoringList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_pitting_surface_pin" class="form-label text-uppercase fw-bold me-3">PITTING/SURFACE/PIN HOLES</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.pitting_surface_pin" :options="allPittingSurfacePinList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.pitting_surface_pin" :options="allPittingSurfacePinList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_corrosion_mark" class="form-label text-uppercase fw-bold me-3">Corrosion Mark</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.corrosion_mark" :options="allCorrosionMarkList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.corrosion_mark" :options="allCorrosionMarkList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-12">
 							<label for="add_depotconditionsurvey_others" class="form-label text-uppercase fw-bold me-3">Others</label>
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.others" :options="allOthersList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.others" :options="allOthersList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -425,14 +425,14 @@
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_framework_front_end" class="form-label text-uppercase fw-bold me-3">Framework Front End</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.framework_front_end" :options="allFrameworkFrontEndList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.framework_front_end" :options="allFrameworkFrontEndList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_cladding_front_end" class="form-label text-uppercase fw-bold me-3">Cladding Front End</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.cladding_front_end" :options="allCladdingFrontEndList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.cladding_front_end" :options="allCladdingFrontEndList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -444,14 +444,14 @@
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_framework_rare_end" class="form-label text-uppercase fw-bold me-3">Framework Rare End</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.framework_rare_end" :options="allFrameworkRareEndList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.framework_rare_end" :options="allFrameworkRareEndList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_cladding_rare_end" class="form-label text-uppercase fw-bold me-3">Cladding Rare End</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.cladding_rare_end" :options="allCladdingRareEndList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.cladding_rare_end" :options="allCladdingRareEndList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -463,14 +463,14 @@
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_framework_right_side" class="form-label text-uppercase fw-bold me-3">Framework Right Side</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.framework_right_side" :options="allFrameworkRightSideList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.framework_right_side" :options="allFrameworkRightSideList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_cladding_right_side" class="form-label text-uppercase fw-bold me-3">Cladding Right Side</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.cladding_right_side" :options="allCladdingRightSideList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.cladding_right_side" :options="allCladdingRightSideList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -482,14 +482,14 @@
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_framework_left_side" class="form-label text-uppercase fw-bold me-3">Framework Left Side</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.framework_left_side" :options="allFrameworkLeftSideList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.framework_left_side" :options="allFrameworkLeftSideList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_cladding_left_side" class="form-label text-uppercase fw-bold me-3">Cladding Left Side</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.cladding_left_side" :options="allCladdingLeftSideList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.cladding_left_side" :options="allCladdingLeftSideList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -501,14 +501,14 @@
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_framework_top" class="form-label text-uppercase fw-bold me-3">Framework Top</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.framework_top" :options="allFrameworkTopList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.framework_top" :options="allFrameworkTopList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_cladding_top" class="form-label text-uppercase fw-bold me-3">Cladding Top</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.cladding_top" :options="allCladdingTopList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.cladding_top" :options="allCladdingTopList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
@@ -520,14 +520,14 @@
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_framework_bottom" class="form-label text-uppercase fw-bold me-3">Framework Bottom</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.framework_bottom" :options="allFrameworkBottomList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.framework_bottom" :options="allFrameworkBottomList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 							
 						</div>
 						<div class="col-md-3 col-6">
 							<!-- <label for="add_depotconditionsurvey_cladding_bottom" class="form-label text-uppercase fw-bold me-3">Cladding Bottom</label> -->
 							<div class="d-flex flex-row gap-3">
-								<multiselect v-model="depotconditionsurveyFormObj.cladding_bottom" :options="allCladdingBottomList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+								<multiselect v-model="depotconditionsurveyFormObj.cladding_bottom" :options="allCladdingBottomList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 							</div>
 						</div>
 					</div>
@@ -542,7 +542,7 @@
 					
 				</div>
 			</div>
-			<div class='row mb-4'>
+			<div class='row mb-4 gy-3 gy-md-0'>
 				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_liquid_tank_no" class="form-label text-uppercase fw-bold me-3">Liquid Tank No</label>
 					<div class="input-group">
@@ -556,7 +556,7 @@
 					<label for="add_depotconditionsurvey_liquid_inspection_date" class="form-label text-uppercase fw-bold me-3">Liquid Inspection Date</label>
 					<div class="input-group">
 						
-						<input type="text" class="form-control"  v-model="depotconditionsurveyFormObj.liquid_inspection_date" id="add_depotconditionsurvey_liquid_inspection_date" placeholder="Enter Liquid Inspection Date" >
+						<MaskInput v-model="depotconditionsurveyFormObj.liquid_inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 						
 					</div>
 					
@@ -564,7 +564,7 @@
 				<div class="col-md-4">
 					<label for="add_depotconditionsurvey_liquid_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Liquid Inspection Location Id</label>
 					<div>
-						<multiselect v-model="depotconditionsurveyFormObj.liquid_inspection_location_id" :options="allLiquidInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="depotconditionsurveyFormObj.liquid_inspection_location_id" :options="allLiquidInspectionLocationIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
@@ -610,7 +610,7 @@
 				<div class="col">
 					<label for="add_depotconditionsurvey_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Name</label>
 					<div>
-						<multiselect v-model="depotconditionsurveyFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="depotconditionsurveyFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>

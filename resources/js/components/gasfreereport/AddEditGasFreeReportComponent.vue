@@ -34,7 +34,7 @@
 				<div class="col-md-6">
 					<label for="add_gasfreereport_company_id" class="form-label text-uppercase fw-bold me-3">Company Id</label>
 					<div>
-						<multiselect v-model="gasfreereportFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="gasfreereportFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
@@ -67,7 +67,7 @@
 				</div>
 			</div>
 			<div class='row mb-4'>
-				<div class="col">
+				<div class="col-md-4 col-6">
 					<label for="add_gasfreereport_mfg" class="form-label text-uppercase fw-bold me-3">MFG</label>
 					<div class="input-group">
 						
@@ -76,7 +76,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4 col-6">
 					<label for="add_gasfreereport_ned" class="form-label text-uppercase fw-bold me-3">NED</label>
 					<div class="input-group">
 						
@@ -85,7 +85,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4 col-6">
 					<label for="add_gasfreereport_mgw" class="form-label text-uppercase fw-bold me-3">MGW</label>
 					<div class="input-group">
 						
@@ -96,7 +96,7 @@
 				</div>
 			</div>
 			<div class='row mb-4'>
-				<div class="col">
+				<div class="col-md-4 col-6">
 					<label for="add_gasfreereport_tare_wt" class="form-label text-uppercase fw-bold me-3">Tare Wt</label>
 					<div class="input-group">
 						
@@ -105,7 +105,7 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4 col-6">
 					<label for="add_gasfreereport_capacity" class="form-label text-uppercase fw-bold me-3">Capacity</label>
 					<div class="input-group">
 						
@@ -114,32 +114,30 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-4">
 					<label for="add_gasfreereport_inspection_date" class="form-label text-uppercase fw-bold me-3">Inspection Date</label>
 					<div class="input-group">
-						
-						<input type="text" class="form-control"  v-model="gasfreereportFormObj.inspection_date" id="add_gasfreereport_inspection_date" placeholder="Enter Inspection Date" >
-						
+						<MaskInput v-model="gasfreereportFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 					</div>
 					
 				</div>
 			</div>
 			<div class='row mb-4'>
-				<div class="col">
+				<div class="col-md-6">
 					<label for="add_gasfreereport_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Inspection Location</label>
 					<div>
-						<multiselect v-model="gasfreereportFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="gasfreereportFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-6">
 					<label for="add_gasfreereport_customer_id" class="form-label text-uppercase fw-bold me-3">Customer Name</label>
 					<div>
-						<multiselect v-model="gasfreereportFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="gasfreereportFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-6">
 					<label for="add_gasfreereport_last_cargo_carried" class="form-label text-uppercase fw-bold me-3">Last Cargo Carried</label>
 					<div class="input-group">
 						
@@ -276,7 +274,7 @@
 				</div>
 			</div>
 			<div class='row mb-4'>
-				<div class="col">
+				<div class="col-md-6">
 					<label for="add_gasfreereport_tank_is_gas_free" class="form-label text-uppercase fw-bold me-3">Tank Is Gas Free</label>
 					<div class="input-group">
 						
@@ -285,10 +283,10 @@
 					</div>
 					
 				</div>
-				<div class="col">
+				<div class="col-md-6">
 					<label for="add_gasfreereport_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Id</label>
 					<div>
-						<multiselect v-model="gasfreereportFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="gasfreereportFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>

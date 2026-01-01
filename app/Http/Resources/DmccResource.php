@@ -23,7 +23,7 @@ class DmccResource extends JsonResource
 		
 		if (isset($input['current_user_id']) && $input['current_user_id'] > 0) {
 			$currentUser = \App\Models\User::find($input['current_user_id']);
-			$actions = ActionsService::generateActions(\App\Models\Dmcc::class, $currentUser->role_id, $this->status);
+			$actions = ActionsService::generateActions(class_basename(Dmcc::class), $currentUser->role_id, $this->status);
 		};
 		return [
 			'id' => $this->id,
@@ -91,7 +91,7 @@ class DmccResource extends JsonResource
 			'deleted_at' => $this->deleted_at,
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,
-
+			'created_by' => $this->created_by,
 			'current_user_admin' => ( $currentUser->role_id ? 1 : 0 ),
 			'actions' => $actions
 		];

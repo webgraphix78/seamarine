@@ -106,6 +106,17 @@ class DepotConditionSurveyController extends Controller{
 				$depotconditionsurveyList = $depotconditionsurveyList->orderByDesc(trim($input["sortBy"]));
 			else
 				$depotconditionsurveyList = $depotconditionsurveyList->orderBy(trim($input["sortBy"]));
+		}else{
+			$depotconditionsurveyList = $depotconditionsurveyList->orderByDesc("created_at");
+		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 2) {
+			// Wait
+			$depotconditionsurveyList = $depotconditionsurveyList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$depotconditionsurveyList = $depotconditionsurveyList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
 		}
 		if( isset($input["page"]) )
 			$depotconditionsurveyList = $depotconditionsurveyList->paginate(10);
@@ -173,16 +184,12 @@ class DepotConditionSurveyController extends Controller{
 		if( isset($input["depotconditionsurvey"]) ){
 			$depotconditionsurvey = $input["depotconditionsurvey"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if( $depotconditionsurvey["action"] == "status" ){
 				$objectToSave["status"] = $depotconditionsurvey["status"];
-				if( $depotconditionsurvey["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $depotconditionsurvey["action"] == "details" ){
 				$rules = [
 					'tank_no' => ['required', 'string'],
-
 				];
 				$validator = Validator::make($depotconditionsurvey, $rules);
 				if ($validator->fails()) {
@@ -193,20 +200,19 @@ class DepotConditionSurveyController extends Controller{
 					if(!isset($objectToSave["created_by"]) ){
 						$objectToSave["created_by"] = Auth::id();
 					}
-					
 				}
 				else
 					unset($objectToSave["created_by"]);
 			}
 			$depotconditionsurveyData =\App\Models\DepotConditionSurvey::updateOrCreate( [ "id" => $depotconditionsurvey["id"] ], $objectToSave );
-			if ($objectToSave["id"] == 0) {
+			if ($depotconditionsurvey["id"] == 0) {
 				$depotconditionsurveyData->ref_no = $depotconditionsurveyData->id;
-				$user = \App\Models\User::find(Auth::id());
-				if ($user->role_id == 4) {
-					$depotconditionsurveyData->status = 0;
-				}
-				$depotconditionsurveyData->save();
 			}
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$depotconditionsurveyData->status = 0;
+			}
+			$depotconditionsurveyData->save();
 			return response()->json(["status" => 1, "id" => $depotconditionsurveyData->id]);
 		}
 		else{

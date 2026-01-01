@@ -30,18 +30,18 @@
 			</div>
 		</div>
 		<template v-if="tankNoVerified">
-			<div class='row mb-4'>
+			<div class='row mb-4 gy-3 gy-md-0'>
 				<div class="col-md-6">
 					<label for="add_dmcc_company_id" class="form-label text-uppercase fw-bold me-3">Company Name</label>
 					<div>
-						<multiselect v-model="dmccFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="dmccFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>
 				<div class="col-md-6">
 					<label for="add_dmcc_inspection_date" class="form-label text-uppercase fw-bold me-3">Date of Loading</label>
 					<div class="input-group">
-						<input type="text" class="form-control"  v-model="dmccFormObj.inspection_date" id="add_dmcc_inspection_date" placeholder="Enter Date of Loading" >
+						<MaskInput v-model="dmccFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 					</div>
 				</div>
 			</div>
@@ -151,7 +151,6 @@
 					</div>
 				</div>
 				<div class="col-md-6">
-					{{ dmccFormObj.emergency_remote_checked_remark }}
 					<label for="add_emergency_remote_checked_remark" class="form-label text-uppercase fw-bold me-3">Remark</label>
 					<div class="input-group">
 						<input type="text" class="form-control"  v-model="dmccFormObj.emergency_remote_checked_remark" id="add_emergency_remote_checked_remark" placeholder="Enter Remark" >
@@ -518,7 +517,7 @@
 				<div class="col-md-6">
 					<label for="add_dmcc_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Name</label>
 					<div>
-						<multiselect v-model="dmccFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="dmccFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					
 				</div>

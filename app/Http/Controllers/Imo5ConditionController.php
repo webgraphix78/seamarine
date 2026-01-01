@@ -32,6 +32,7 @@ class Imo5ConditionController extends Controller
 				break;
 			case 1:
 			case 3:
+			case 4:
 				$all_permissions = "111";
 				break;
 			default:
@@ -43,7 +44,11 @@ class Imo5ConditionController extends Controller
 	public function add()
 	{
 		$component = "imo5-add-component";
-		return view('common.index', compact("component"));
+		$param1 = "";
+		if( isset($_GET["mode"]) && strlen(trim($_GET["mode"])) > 0 ){
+			$param1 = $_GET["mode"];
+		}
+		return view('common.index', compact("component", "param1"));
 	}
 
 	public function edit($imo5Id)
@@ -148,6 +153,9 @@ class Imo5ConditionController extends Controller
 		if ($user->role_id == 2) {
 			// Wait
 			$imo5conditionList = $imo5conditionList->where('customer_id', $user->customer_id)->where('status', 1);
+		}
+		else if ($user->role_id == 4) {
+			$imo5conditionList = $imo5conditionList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
 		}
 		if (isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0) {
 			if (trim($input["sortOrder"]) == "desc")

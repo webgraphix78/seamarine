@@ -22,23 +22,23 @@
 				</div>
 			</div>
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-4">
 				<label for="add_prv_customer_id" class="form-label text-uppercase fw-bold me-3">Company name</label>
 				<div>
-					<multiselect v-model="prvFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="prvFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label for="add_prv_customer_id" class="form-label text-uppercase fw-bold me-3">Customer Name</label>
 				<div>
-					<multiselect v-model="prvFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="prvFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-4">
 				<label for="add_prv_inspection_location_id" class="form-label text-uppercase fw-bold me-3">Inspection Location Id</label>
 				<div>
-					<multiselect v-model="prvFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="prvFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>
@@ -51,17 +51,17 @@
 			</div>
 
 		</div>
-		<div class='row mb-4'>
-			<div class="col">
+		<div class='row mb-4 gy-3 gy-md-0'>
+			<div class="col-md-6">
 				<label for="add_prv_tank_no" class="form-label text-uppercase fw-bold me-3">Tank No</label>
 				<div class="input-group">
 					<input type="text" class="form-control"  v-model="prvFormObj.tank_no" id="add_prv_tank_no" placeholder="Enter Tank No" >
 				</div>
 			</div>
-			<div class="col">
+			<div class="col-md-6">
 				<label for="add_prv_inspection_date" class="form-label text-uppercase fw-bold me-3">Inspection Date</label>
 				<div class="input-group">
-					<input type="text" class="form-control"  v-model="prvFormObj.inspection_date" id="add_prv_inspection_date" placeholder="Enter Inspection Date" >
+					<MaskInput v-model="prvFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 				</div>
 			</div>
 		</div>
@@ -120,7 +120,7 @@
 			<div class="col-md-4">
 				<label for="add_prv_surveyor_id" class="form-label text-uppercase fw-bold me-3">Surveyor Name</label>
 				<div>
-					<multiselect v-model="prvFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+					<multiselect v-model="prvFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
 			</div>
 		</div>
@@ -227,7 +227,6 @@ export default {
 				that.showToast("Prv could not be saved successfully.", "error", "bottom", 3000);
 			});
 		},
-		
 		reloadEverything() {
 			if (this.id !== undefined && !isNaN(this.id)) {
 				this.mode = "edit";
@@ -247,10 +246,9 @@ export default {
 					});
 			}
 		},
-		
 		displayLabelSetting ({id, text}) {
-	return `${text}`;
-},
+			return `${text}`;
+		},
 	},
 	async mounted() {
 		if (this.id > 0){

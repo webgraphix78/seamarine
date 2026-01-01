@@ -23,7 +23,7 @@ class PrvResource extends JsonResource
 		
 		if (isset($input['current_user_id']) && $input['current_user_id'] > 0) {
 			$currentUser = \App\Models\User::find($input['current_user_id']);
-			$actions = ActionsService::generateActions(\App\Models\Prv::class, $currentUser->role_id, $this->status);
+			$actions = ActionsService::generateActions(class_basename(Prv::class), $currentUser->role_id, $this->status);
 			$actions['u'] = ['title' => '<i class="ph ph-image"></i>', 'action' => 'uploadObject', 'class' => 'btn-success'];
 		};
 		return [
@@ -50,6 +50,7 @@ class PrvResource extends JsonResource
 			'rel_surveyor_id' => $this->rel_surveyor_id,
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,
+			'created_by' => $this->created_by,
 			'status' => $this->status,
 			'current_user_admin' => ( $currentUser->role_id ? 1 : 0 ),
 			'actions' => $actions

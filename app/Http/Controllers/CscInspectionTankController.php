@@ -100,11 +100,18 @@ class CscInspectionTankController extends Controller{
 				}
 			}
 		}
+		// Role condition - customer
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 4) {
+			$cscinspectiontankList = $cscinspectiontankList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if( isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0 ){
 			if( trim($input["sortOrder"]) == "desc" )
 				$cscinspectiontankList = $cscinspectiontankList->orderByDesc(trim($input["sortBy"]));
 			else
 				$cscinspectiontankList = $cscinspectiontankList->orderBy(trim($input["sortBy"]));
+		}else{
+			$cscinspectiontankList = $cscinspectiontankList->orderByDesc("created_at");
 		}
 		if( isset($input["page"]) )
 			$cscinspectiontankList = $cscinspectiontankList->paginate(10);
@@ -172,11 +179,8 @@ class CscInspectionTankController extends Controller{
 		if( isset($input["cscinspectiontank"]) ){
 			$cscinspectiontank = $input["cscinspectiontank"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if( $cscinspectiontank["action"] == "status" ){
 				$objectToSave["status"] = $cscinspectiontank["status"];
-				if( $cscinspectiontank["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $cscinspectiontank["action"] == "details" ){
 				$rules = [];
@@ -194,6 +198,11 @@ class CscInspectionTankController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$cscinspectiontankData =\App\Models\CscInspectionTank::updateOrCreate( [ "id" => $cscinspectiontank["id"] ], $objectToSave );
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$cscinspectiontankData->status = 0;
+			}
+			$cscinspectiontankData->save();
 			return response()->json(["status" => 1, "id" => $cscinspectiontankData->id]);
 		}
 		else{

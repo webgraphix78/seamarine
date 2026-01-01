@@ -10,7 +10,7 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewCleaning"  @upload-object="uploadImages" @duplicate-object="duplicateObject" @print-object="printCleaning" @edit-object="prepareEditCleaning" @toggle-object-status="toggleCleaning"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewCleaning"  @upload-object="uploadImages" @duplicate-object="duplicateObject" @print-object="printCleaning" @edit-object="prepareEditCleaning" @toggle-object-status="toggleCleaning" v-if="mode != 'mobileapp'"></DataTableComponent>
 			</div>
 		</div>
 		<div class="modal fade" ref="addEditModal" id="addCleaningModal" tabindex="-1" aria-labelledby="addCleaningModalLabel" aria-hidden="true">
@@ -199,13 +199,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<select class="form-select" v-model="cleaningForAdd.inspection_locn" id="add_inspection_locn">
-											<optgroup v-if="allInspectionLocnList" label="Choose Inspection Location">
-												<template v-for="inspectionLocn in allInspectionLocnList" :key="inspectionLocn.id">
-													<option :value="inspectionLocn.id">{{ inspectionLocn.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="cleaningForAdd.inspection_locn" :options="allInspectionLocnList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.cleaningForAdd.inspection_locn.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -235,13 +229,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<select class="form-select" v-model="cleaningForAdd.customer_id" id="add_customer_id">
-											<optgroup v-if="allCustomerIdList" label="Choose Customer">
-												<template v-for="customerId in allCustomerIdList" :key="customerId.id">
-													<option :value="customerId.id">{{ customerId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="cleaningForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.cleaningForAdd.customer_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -281,13 +269,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0">
 									<div>
-										<select class="form-select" v-model="cleaningForAdd.surveyor_id" id="add_surveyor_id">
-											<optgroup v-if="allSurveyorIdList" label="Choose Surveyor">
-												<template v-for="surveyorId in allSurveyorIdList" :key="surveyorId.id">
-													<option :value="surveyorId.id">{{ surveyorId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="cleaningForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 									<template v-for="error of v$.cleaningForAdd.surveyor_id.$errors" :key="error.$uid">
 										<div class="mandatory mb-1">{{ error.$message }}</div>
@@ -1235,6 +1217,15 @@
 						return;
 					}
 				}
+				if ( that.cleaningForAdd.surveyor_id != 'null' && typeof that.cleaningForAdd.surveyor_id === 'object' && that.cleaningForAdd.surveyor_id.id) {
+					that.cleaningForAdd.surveyor_id = that.cleaningForAdd.surveyor_id.id;
+				}
+				if ( that.cleaningForAdd.customer_id != 'null' && typeof that.cleaningForAdd.customer_id === 'object' && that.cleaningForAdd.customer_id.id) {
+					that.cleaningForAdd.customer_id = that.cleaningForAdd.customer_id.id;
+				}
+				if ( that.cleaningForAdd.inspection_locn != 'null' && typeof that.cleaningForAdd.inspection_locn === 'object' && that.cleaningForAdd.inspection_locn.id) {
+					that.cleaningForAdd.inspection_locn = that.cleaningForAdd.inspection_locn.id;
+				}
 				if (!this.cleaningForAdd.action || this.cleaningForAdd.action == "") this.cleaningForAdd.action = "details";
 				this.cleaningForAdd.created_by = this.current_user_id;
 				// $("#addCleaningModal").modal("hide");
@@ -1248,6 +1239,9 @@
 						if (status > 0) {
 							// Ajax to submit
 							that.showToast("Cleaning saved successfully", "success", "bottom", 3000);
+							if(that.mode === "mobileapp") {
+								window.location = that.docRoot+"/operation-successful";
+							}
 							setTimeout(() => {
 								that.dataprops.reload = true;
 							}, 1500);
@@ -1273,6 +1267,27 @@
 				this.cleaningForAdd = Object.assign({}, cleaning);
 				this.tankNoVerified = false;
 				this.addEditModal.show();
+				if (this.cleaningForAdd.surveyor_id) {
+					if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+						let _allRelationList = this.allSurveyorIdList;
+						let relationId = parseInt(this.cleaningForAdd.surveyor_id);
+						this.cleaningForAdd.surveyor_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.cleaningForAdd.customer_id) {
+					if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+						let _allRelationList = this.allCustomerIdList;
+						let relationId = parseInt(this.cleaningForAdd.customer_id);
+						this.cleaningForAdd.customer_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.cleaningForAdd.inspection_locn) {
+					if (Array.isArray(this.allInspectionLocnList) && this.allInspectionLocnList.length > 0) {
+						let _allRelationList = this.allInspectionLocnList;
+						let relationId = parseInt(this.cleaningForAdd.inspection_locn);
+						this.cleaningForAdd.inspection_locn = _allRelationList.find(item => item.id === relationId);
+					}
+				}
 			},
 			viewCleaning(cleaning) {
 				this.readCleaning = cleaning;
@@ -1302,22 +1317,55 @@
 				await this.refreshObject(cleaning, "Cleaning", 1);
 				this.closeSwal();
 			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
+			},
 		},
 		async mounted() {
 			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
 			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
-
 			if (this.mode && this.mode == "mobileapp") {
-				this.addEditModal.show();
+				if(this.param1 && this.param1 != null && this.param1 != undefined) {
+					if (this.id !== undefined && !isNaN(this.id)) {
+						var URL = this.docRoot + "/api/cleaning/get-record/" + this.id;
+						var that = this;
+						this.showLoading("Loading ...");
+						axios.post(URL, {}).then(function (response) {
+							let cleaningObj = Object.assign({}, response.data);
+							if(that.param1 === "edit"){
+								that.prepareEditCleaning(cleaningObj);
+							}else{
+								that.viewCleaning(cleaningObj);
+							}
+							that.closeSwal();	
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+					}
+				}else{
+					this.addEditModal.show();
+				}
+				this.$refs.addEditModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
+				this.$refs.readModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
+			}
+			let _allSurveyorIdList = await this.loadAllSurveyor(true);
+			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
+				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allCustomerIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allCustomerIdList) && _allCustomerIdList.length > 0){
+				this.allCustomerIdList = _allCustomerIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
+				this.allInspectionLocnList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
 			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
 			this.allTankIdList = await this.loadAllTankType(true);
 			this.allTcodeIdList = await this.loadAllTcode(true);
-			this.allCustomerIdList = await this.loadAllCustomer(true);
-			this.allInspectionLocnList = await this.loadAllInspectionLocation(true);
 			this.allClientIdList = await this.loadAllCustomer(true);
 			this.allCleaningLocationIdList = await this.loadAllCleaningLocation(true);
-			this.allSurveyorIdList = await this.loadAllSurveyor(true);
 			this.allFrameTankList = [
 				{id: "1", title: "Yes"},
 				{id: "-1", title: "No"},

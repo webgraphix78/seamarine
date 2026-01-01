@@ -11,7 +11,7 @@ class Prv extends Model{
     protected $dates = ['deleted_at'];
     
     protected $table = "prv";
-    protected $fillable = ['id', 'ref', 'date_of_issue', 'company_id', 'customer_id', 'inspection_location_id', 'address', 'tank_no', 'inspection_date', 'address_2', 'mfg', 'serial_no', 'full_flow_rate', 'op', 'vaccum_set', 'bursting_disc', 'surveyor_id'];
+    protected $fillable = ['id', 'ref', 'date_of_issue', 'company_id', 'customer_id', 'inspection_location_id', 'address', 'tank_no', 'inspection_date', 'address_2', 'mfg', 'serial_no', 'full_flow_rate', 'op', 'vaccum_set', 'bursting_disc', 'surveyor_id', 'status', 'created_by'];
     public $timestamps = true;
     
     public function rel_company_id(){
@@ -30,5 +30,7 @@ class Prv extends Model{
         return $this->belongsTo('App\Models\Surveyor', 'surveyor_id', 'id');
     }
 
-
+    public function creator(){
+		return $this->belongsTo('App\Models\User', 'created_by', 'id');
+	}
 }

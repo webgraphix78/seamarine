@@ -23,7 +23,7 @@ class EquipmentInspectionResource extends JsonResource
 		
 		if (isset($input['current_user_id']) && $input['current_user_id'] > 0) {
 			$currentUser = \App\Models\User::find($input['current_user_id']);
-			$actions = ActionsService::generateActions(\App\Models\EquipmentInspection::class, $currentUser->role_id, $this->status);
+			$actions = ActionsService::generateActions('EquipmentInspection', $currentUser->role_id, $this->status);
 		};
 		return [
 			'id' => $this->id,
@@ -90,12 +90,12 @@ class EquipmentInspectionResource extends JsonResource
 			'afg_inspection_hatch_seal' => $this->afg_inspection_hatch_seal,
 			'afg_inspection_hatch_comments' => $this->afg_inspection_hatch_comments,
 			'comments' => $this->comments,
-			
+			'created_by' => $this->created_by,
 			'status' => $this->status,
 			'deleted_at' => $this->deleted_at,
 			'created_at' => $this->created_at,
 			'updated_at' => $this->updated_at,
-			'current_user_admin' => 1,
+			'current_user_admin' => ( $currentUser->role_id ? 1 : 0 ),
 			'actions' => $actions
 		];
     }

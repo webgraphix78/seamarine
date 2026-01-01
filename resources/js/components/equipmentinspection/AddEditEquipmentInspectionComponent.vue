@@ -25,13 +25,13 @@
 						<label for="add_equipmentinspection_company_id" class="form-label text-uppercase fw-bold m-0">Company Name</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_inspection_date" class="form-label text-uppercase fw-bold m-0">Inspection Date</label>
 					</div>
 					<div class="col-md-8">
-						<input type="text" class="form-control"  v-model="equipmentinspectionFormObj.inspection_date" id="add_equipmentinspection_inspection_date" placeholder="Enter Inspection Date" >
+						<MaskInput v-model="equipmentinspectionFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_tank_no" class="form-label text-uppercase fw-bold m-0">Tank Number</label>
@@ -49,25 +49,25 @@
 						<label for="add_equipmentinspection_empty_clean" class="form-label text-uppercase fw-bold m-0">Empty Clean</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.empty_clean" :options="allEmptyCleanList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.empty_clean" :options="allEmptyCleanList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_empty_dirty" class="form-label text-uppercase fw-bold m-0">Empty Dirty</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.empty_dirty" :options="allEmptyDirtyList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.empty_dirty" :options="allEmptyDirtyList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_loaded" class="form-label text-uppercase fw-bold m-0">Loaded</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.loaded" :options="allLoadedList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.loaded" :options="allLoadedList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_surveyor_id" class="form-label text-uppercase fw-bold m-0">Surveyor</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_hazard_class" class="form-label text-uppercase fw-bold m-0">Hazard Class</label>
@@ -79,7 +79,7 @@
 						<label for="add_equipmentinspection_eq_inspection_status" class="form-label text-uppercase fw-bold m-0">Status</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.eq_inspection_status" :options="allEqInspectionStatusList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.eq_inspection_status" :options="allEqInspectionStatusList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_last_test_date" class="form-label text-uppercase fw-bold m-0">Last Test Date</label>
@@ -101,7 +101,7 @@
 						<label for="add_equipmentinspection_equipment_type" class="form-label text-uppercase fw-bold m-0">Equipment Type</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.equipment_type" :options="allEquipmentTypeList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.equipment_type" :options="allEquipmentTypeList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_csc" class="form-label text-uppercase fw-bold m-0">C.S.C.</label>
@@ -119,7 +119,7 @@
 						<label for="add_equipmentinspection_tank_type" class="form-label text-uppercase fw-bold m-0">Tank Type</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.tank_type" :options="allTankTypeList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.tank_type" :options="allTankTypeList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_mfg_date" class="form-label text-uppercase fw-bold m-0">Mfgt. Date</label>
@@ -131,13 +131,13 @@
 						<label for="add_equipmentinspection_cfs" class="form-label text-uppercase fw-bold m-0">CFS</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.cfs" :options="allCfsList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.cfs" :options="allCfsList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_for_id" class="form-label text-uppercase fw-bold m-0">For</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.for_id" :options="allForIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.for_id" :options="allForIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_next_date" class="form-label text-uppercase fw-bold m-0">Next Date.</label>
@@ -155,13 +155,13 @@
 						<label for="add_equipmentinspection_inspection_location_id" class="form-label text-uppercase fw-bold m-0">Inspection Location</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_customer_id" class="form-label text-uppercase fw-bold m-0">Customer</label>
 					</div>
 					<div class="col-md-8">
-						<multiselect v-model="equipmentinspectionFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one"></multiselect>
+						<multiselect v-model="equipmentinspectionFormObj.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 					</div>
 					<div class="col-md-4 mt-3 mt-md-0">
 						<label for="add_equipmentinspection_cha_client" class="form-label text-uppercase fw-bold m-0">CHA Client</label>
@@ -193,7 +193,7 @@
 			<div class="col-4">Comments</div>
 		</div>
 		<!-- Bottom Discharge -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">01</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Bottom Discharge</label>
@@ -219,7 +219,7 @@
 		</div>
 		<!-- Bottom Discharge -->
 		<!-- Manlid -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">02</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Manlid</label>
@@ -245,7 +245,7 @@
 		</div>
 		<!-- Manlid -->
 		<!-- Airline Value -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">03</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Airline Value</label>
@@ -271,7 +271,7 @@
 		</div>
 		<!-- Airline Value -->
 		<!-- PRV -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">04</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Prv</label>
@@ -297,25 +297,25 @@
 		</div>
 		<!-- PRV -->
 		<!-- Top Discharge -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">05</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Top Discharge</label>
 			</div>
 			<div class="col-md-2 col-sm-6">
-				<label for="add_equipmentinspection_top_discharge_tir" class="form-label text-uppercase fw-bold d-none">Top Discharge Tir</label>
+				<label for="add_equipmentinspection_top_discharge_tir" class="form-label text-uppercase fw-bold d-md-none">Top Discharge Tir</label>
 				<div class="input-group">
 					<input type="text" class="form-control"  v-model="equipmentinspectionFormObj.top_discharge_tir" id="add_equipmentinspection_top_discharge_tir" placeholder="Enter Top Discharge Tir" >
 				</div>
 			</div>
 			<div class="col-md-3 col-sm-6">
-				<label for="add_equipmentinspection_top_discharge_seal" class="form-label text-uppercase fw-bold d-none">Top Discharge Seal</label>
+				<label for="add_equipmentinspection_top_discharge_seal" class="form-label text-uppercase fw-bold d-md-none">Top Discharge Seal</label>
 				<div class="input-group">
 					<input type="text" class="form-control"  v-model="equipmentinspectionFormObj.top_discharge_seal" id="add_equipmentinspection_top_discharge_seal" placeholder="Enter Top Discharge Seal" >
 				</div>
 			</div>
 			<div class="col-md-4">
-				<label for="add_equipmentinspection_top_discharge_comments" class="form-label text-uppercase fw-bold d-none">Top Discharge Comments</label>
+				<label for="add_equipmentinspection_top_discharge_comments" class="form-label text-uppercase fw-bold d-md-none">Top Discharge Comments</label>
 				<div class="input-group">
 					<input type="text" class="form-control"  v-model="equipmentinspectionFormObj.top_discharge_comments" id="add_equipmentinspection_top_discharge_comments" placeholder="Enter Top Discharge Comments" >
 				</div>
@@ -323,7 +323,7 @@
 		</div>
 		<!-- Top Discharge	 -->
 		<!-- To Dischage / Fill Flange -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">06</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">To Dischage/Fill Flange</label>
@@ -349,7 +349,7 @@
 		</div>
 		<!-- To Dischage / Fill Flange -->
 		<!-- Safety Provision -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">07</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Safety Provision</label>
@@ -375,7 +375,7 @@
 		</div>
 		<!-- Safety Provision -->
 		<!-- Vapour Return Provision -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">08</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Vapour Return Provision</label>
@@ -401,7 +401,7 @@
 		</div>
 		<!-- Vapour Return Provision -->
 		<!-- Fwd Inspection Hatch -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">09</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Fwd Inspection Hatch</label>
@@ -427,7 +427,7 @@
 		</div>
 		<!-- Fwd Inspection Hatch -->
 		<!-- Afg Inspection Hatch -->
-		<div class='row mb-2 align-items-center'>
+		<div class='row mb-2 gy-2 gy-md-0 align-items-center'>
 			<div class="col-1 d-none d-md-block">10</div>
 			<div class="col-md-2 d-none d-md-block">
 				<label class="form-label text-uppercase fw-bold d-none d-md-block m-0">Afg Inspection Hatch</label>
@@ -567,7 +567,6 @@ export default {
 			equipmentinspectionFormObj: initialState(),
 		}
 	},
-	
 	methods: {
 		canceladdedit(event){
 			window.location = this.docRoot + '/equipmentinspection';

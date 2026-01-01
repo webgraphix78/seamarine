@@ -101,11 +101,17 @@ class DmccController extends Controller{
 				}
 			}
 		}
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 4) {
+			$dmccList = $dmccList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
+		}
 		if( isset($input["sortBy"]) && strlen(trim($input["sortBy"])) > 0 ){
 			if( trim($input["sortOrder"]) == "desc" )
 				$dmccList = $dmccList->orderByDesc(trim($input["sortBy"]));
 			else
 				$dmccList = $dmccList->orderBy(trim($input["sortBy"]));
+		}else{
+			$dmccList = $dmccList->orderByDesc("created_at");
 		}
 		if( isset($input["page"]) )
 			$dmccList = $dmccList->paginate(10);
@@ -173,11 +179,8 @@ class DmccController extends Controller{
 		if( isset($input["dmcc"]) ){
 			$dmcc = $input["dmcc"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if( $dmcc["action"] == "status" ){
 				$objectToSave["status"] = $dmcc["status"];
-				if( $dmcc["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $dmcc["action"] == "details" ){
 				$rules = [ ];
@@ -195,6 +198,11 @@ class DmccController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$dmccData =\App\Models\Dmcc::updateOrCreate( [ "id" => $dmcc["id"] ], $objectToSave );
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$dmccData->status = 0;
+			}
+			$dmccData->save();
 			return response()->json(["status" => 1, "id" => $dmccData->id]);
 		}
 		else{

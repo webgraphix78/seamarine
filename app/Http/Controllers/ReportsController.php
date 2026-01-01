@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Maatwebsite\Excel\Facades\Excel;
+use Carbon\Carbon;
 
 class ReportsController extends Controller{
 
@@ -18,6 +19,17 @@ class ReportsController extends Controller{
 		$shipperSurveyCount = 0;
 		$weightmentCount = 0;
 		$onhireCount = 0;
+		$jointSurveyCount = 0;
+		$cscreCount = 0;
+		$referEquipmentCount = 0;
+		$equipmentInspectionCount = 0;
+		$gasFreeReportCount = 0;
+		$stuffingCount = 0;
+		$dmccCount = 0;
+		$depotConditionSurveyCount = 0;
+		$smTestingFieldCount = 0;
+		$cscInspectionTankCount = 0;
+		$PrvCount = 0;
 		if (isset($input["duration"])) {
 			if( $input["duration"] == 0 ){
 				// All records
@@ -58,7 +70,6 @@ class ReportsController extends Controller{
 			else if($input["duration"] == 2){
 				// get last month date
 				$lastMonth = strtotime('-1 month');
-				log::info("last month: ".date('Y-m-d', $lastMonth));
 				// last month
 				$cleaningCount = \App\Models\Cleaning::whereMonth('dt_inspection_date', date('m', $lastMonth))
 					->whereYear('dt_inspection_date', date('Y', $lastMonth))
@@ -84,14 +95,27 @@ class ReportsController extends Controller{
 			}
 			else if($input["duration"] == 10){
 				if( isset($input["startDate"]) && isset($input["endDate"]) ){
-					// get data between startDate and endDate
+					// get data between startDate and endDate (inclusive)
+					$startDate = Carbon::parse($input['startDate'])->startOfDay();
+					$endDate = Carbon::parse($input['endDate'])->endOfDay();
 					$cleaningCount = \App\Models\Cleaning::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
 					$dryboxCount = \App\Models\Drybox::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
 					$imo1Count = \App\Models\Imo1::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
-					$imo5Count = \App\Models\Imo5Condition::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$imo5Count = \App\Models\Imo5Condition::whereBetween('created_at', [$startDate, $endDate])->count();
 					$shipperSurveyCount = \App\Models\ShipperSurvey::whereBetween('dt_inspection_date', [$input['startDate'], $input['endDate']])->count();
-					$weightmentCount = \App\Models\Weightment::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
-					$onhireCount = \App\Models\Onhire::whereBetween('created_at', [$input['startDate'], $input['endDate']])->count();
+					$weightmentCount = \App\Models\Weightment::whereBetween('created_at', [$startDate, $endDate])->count();
+					$onhireCount = \App\Models\Onhire::whereBetween('created_at', [$startDate, $endDate])->count();
+					$jointSurveyCount = \App\Models\JointSurvey::whereBetween('created_at', [$startDate, $endDate])->count();
+					$cscreCount = \App\Models\Cscre::whereBetween('created_at', [$startDate, $endDate])->count();
+					$referEquipmentCount = \App\Models\ReferEquipment::whereBetween('created_at', [$startDate, $endDate])->count();
+					$equipmentInspectionCount = \App\Models\EquipmentInspection::whereBetween('created_at', [$startDate, $endDate])->count();
+					$gasFreeReportCount = \App\Models\GasFreeReport::whereBetween('created_at', [$startDate, $endDate])->count();
+					$stuffingCount = \App\Models\Stuffing::whereBetween('created_at', [$startDate, $endDate])->count();
+					$dmccCount = \App\Models\Dmcc::whereBetween('created_at', [$startDate, $endDate])->count();
+					$depotConditionSurveyCount = \App\Models\DepotConditionSurvey::whereBetween('created_at', [$startDate, $endDate])->count();
+					$smTestingFieldCount = \App\Models\SmTestingField::whereBetween('created_at', [$startDate, $endDate])->count();
+					$cscInspectionTankCount = \App\Models\CscInspectionTank::whereBetween('created_at', [$startDate, $endDate])->count();
+					$PrvCount = \App\Models\Prv::whereBetween('created_at', [$startDate, $endDate])->count();
 				}
 			}
 		}
@@ -136,6 +160,17 @@ class ReportsController extends Controller{
 					"shipperSurvey" => $shipperSurveyCount,
 					"weightment" => $weightmentCount,
 					"onhire" => $onhireCount,
+					"jointSurvey" => $jointSurveyCount,
+					"cscre" => $cscreCount,
+					"referEquipment" => $referEquipmentCount,
+					"equipmentInspection" => $equipmentInspectionCount,
+					"gasFreeReport" => $gasFreeReportCount,
+					"stuffing" => $stuffingCount,
+					"dmcc" => $dmccCount,
+					"depotConditionSurvey" => $depotConditionSurveyCount,
+					"smTestingField" => $smTestingFieldCount,
+					"cscInspection" => $cscInspectionTankCount,
+					"prv" => $PrvCount
 				],
 				"last_6_months" => [
 					"cleaning" => $cleaningLastSixMonthsCount,

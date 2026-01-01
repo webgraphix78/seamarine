@@ -106,6 +106,12 @@ class SmTestingFieldController extends Controller{
 				$smtestingfieldList = $smtestingfieldList->orderByDesc(trim($input["sortBy"]));
 			else
 				$smtestingfieldList = $smtestingfieldList->orderBy(trim($input["sortBy"]));
+		}else{
+			$smtestingfieldList = $smtestingfieldList->orderByDesc("created_at");
+		}
+		$user = \App\Models\User::find($input['current_user_id']);
+		if ($user->role_id == 4) {
+			$smtestingfieldList = $smtestingfieldList->where('created_by', $user->id)->where('created_at', '>=', \Carbon\Carbon::now()->subHours(24));
 		}
 		if( isset($input["page"]) )
 			$smtestingfieldList = $smtestingfieldList->paginate(10);
@@ -173,11 +179,8 @@ class SmTestingFieldController extends Controller{
 		if( isset($input["smtestingfield"]) ){
 			$smtestingfield = $input["smtestingfield"];
 			$objectToSave = [];
-			$checkTitle = true;
 			if( $smtestingfield["action"] == "status" ){
 				$objectToSave["status"] = $smtestingfield["status"];
-				if( $smtestingfield["status"] <= 0 )
-					$checkTitle = false;
 			}
 			if( $smtestingfield["action"] == "details" ){
 				$rules = [
@@ -197,6 +200,11 @@ class SmTestingFieldController extends Controller{
 					unset($objectToSave["created_by"]);
 			}
 			$smtestingfieldData =\App\Models\SmTestingField::updateOrCreate( [ "id" => $smtestingfield["id"] ], $objectToSave );
+			$user = \App\Models\User::find(Auth::id());
+			if ($user->role_id == 4) {
+				$smtestingfieldData->status = 0;
+			}
+			$smtestingfieldData->save();
 			return response()->json(["status" => 1, "id" => $smtestingfieldData->id]);
 		}
 		else{

@@ -10,7 +10,7 @@
 						</div>
 					</div>
 				</div>
-				<DataTableComponent :dataprops="dataprops" @view-object="viewShipperSurvey" @upload-object="uploadImages" @duplicate-object="duplicateObject" @print-object="printShippersurvey" @edit-object="prepareEditShipperSurvey" @toggle-object-status="toggleShipperSurvey"></DataTableComponent>
+				<DataTableComponent :dataprops="dataprops" @view-object="viewShipperSurvey" @upload-object="uploadImages" @duplicate-object="duplicateObject" @print-object="printShippersurvey" @edit-object="prepareEditShipperSurvey" @toggle-object-status="toggleShipperSurvey" v-if="mode != 'mobileapp'"></DataTableComponent>
 			</div>
 		</div>
 		<div class="modal fade" ref="addEditModal" id="addShipperSurveyModal" tabindex="-1" aria-labelledby="addShipperSurveyModalLabel" aria-hidden="true">
@@ -86,7 +86,7 @@
 							<div class="row mb-0 mb-sm-4">
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<label for="add_shippersurvey_last_cargo_carried" class="form-label text-uppercase fw-bold mb-0 mt-1 me-3">Last Cargo Carried</label>
-									<a href="#" class="cstooltip" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
+									<a href="#" class="cstooltip d-none d-md-inline-block" data-tooltip="Allowed characters are A-Z, 0-9 and space, comma, full stop, underscore, dash and single quote." tabindex="-1"><i class="ph ph-question"></i></a>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
@@ -109,13 +109,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<select class="form-select" v-model="shippersurveyForAdd.for_shipper_id" id="add_for_shipper_id">
-											<optgroup v-if="allForShipperIdList" label="Choose">
-												<template v-for="forShipperId in allForShipperIdList" :key="forShipperId.id">
-													<option :value="forShipperId.id">{{ forShipperId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="shippersurveyForAdd.for_shipper_id" :options="allForShipperIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
@@ -123,13 +117,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<select class="form-select" v-model="shippersurveyForAdd.surveyor_id" id="add_surveyor_id">
-											<optgroup v-if="allSurveyorIdList" label="Choose">
-												<template v-for="surveyorId in allSurveyorIdList" :key="surveyorId.id">
-													<option :value="surveyorId.id">{{ surveyorId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="shippersurveyForAdd.surveyor_id" :options="allSurveyorIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 								</div>
 							</div>
@@ -148,13 +136,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<select class="form-select" v-model="shippersurveyForAdd.customer_id" id="add_customer_id">
-											<optgroup v-if="allCustomerIdList" label="Choose">
-												<template v-for="customerId in allCustomerIdList" :key="customerId.id">
-													<option :value="customerId.id">{{ customerId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="shippersurveyForAdd.customer_id" :options="allCustomerIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 								</div>
 							</div>
@@ -164,13 +146,7 @@
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
 									<div>
-										<select class="form-select" v-model="shippersurveyForAdd.inspection_location_id" id="add_inspection_location_id">
-											<optgroup v-if="allInspectionLocationIdList" label="Choose">
-												<template v-for="inspectionLocationId in allInspectionLocationIdList" :key="inspectionLocationId.id">
-													<option :value="inspectionLocationId.id">{{ inspectionLocationId.name }}</option>
-												</template>
-											</optgroup>
-										</select>
+										<multiselect v-model="shippersurveyForAdd.inspection_location_id" :options="allInspectionLocationIdList" :custom-label="displayLabelSetting" placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 									</div>
 								</div>
 								<div class="col-6 col-sm-3 mb-2 mb-sm-0 text-end">
@@ -326,8 +302,8 @@
 									</div>
 								</div>
 							</div>
-							<div class="row mb-0 mb-sm-4">
-								<div class="col-7 d-flex flex-row align-items-center gap-2 text-end">
+							<div class="row mb-2 mb-sm-4">
+								<div class="col-md-9 d-flex flex-row flex-wrap flex-md-nowrap align-items-center gap-2 text-end">
 									<label for="add_shippersurvey_manlid_cover" class="form-label text-uppercase fw-bold mb-0 mt-1 flex-shrink-0 flex-grow-1">Unit having</label>
 									<select class="form-select w-auto" v-model="shippersurveyForAdd.gasket_type" id="add_gasket_type">
 										<optgroup v-if="allGasketTypeList" label="Choose">
@@ -337,8 +313,6 @@
 										</optgroup>
 									</select>
 									<label for="add_shippersurvey_manlid_cover" class="form-label text-uppercase fw-bold mb-0 mt-1 flex-shrink-0">gasket on manlid cover</label>
-								</div>
-								<div class="col-4 col-sm-2 mb-2 mb-sm-0 text-end">
 									<div>
 										<select class="form-select" v-model="shippersurveyForAdd.manlid_cover" id="add_manlid_cover">
 											<optgroup v-if="arrYesNoNA" label="Choose">
@@ -349,6 +323,8 @@
 										</select>
 									</div>
 								</div>
+								<!-- <div class="col-4 col-sm-2 mb-2 mb-sm-0 text-end">
+								</div> -->
 							</div>
 							<div class="row mb-0 mb-sm-4">
 								<div class="col-7 text-end">
@@ -805,11 +781,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Frame,Tank and walkways free of contamination and cargo</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.frame_tank == '1'">Yes</span>
 									<span v-if="readShipperSurvey.frame_tank == '0'">No</span>
@@ -817,11 +793,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Manlid and valve compartments free of contamination and cargo</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.manlid_valve == '1'">Yes</span>
 									<span v-if="readShipperSurvey.manlid_valve == '0'">No</span>
@@ -829,11 +805,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Serial numbers and statutory markings legible</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.serial_nos == '1'">Yes</span>
 									<span v-if="readShipperSurvey.serial_nos == '0'">No</span>
@@ -841,11 +817,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Unit having steam jacket</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.steam_jacket == '1'">Yes</span>
 									<span v-if="readShipperSurvey.steam_jacket == '0'">No</span>
@@ -853,11 +829,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Unit having bottom seal provision for bullet seal</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.bullet_seal == '1'">Yes</span>
 									<span v-if="readShipperSurvey.bullet_seal == '0'">No</span>
@@ -865,7 +841,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">
 									<span>Unit having&nbsp;</span>
@@ -876,7 +852,7 @@
 									<span>&nbsp;gasket on manlid cover</span>
 								</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.manlid_cover == '1'">Yes</span>
 									<span v-if="readShipperSurvey.manlid_cover == '0'">No</span>
@@ -884,11 +860,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Distick orginally fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.distick == '1'">Yes</span>
 									<span v-if="readShipperSurvey.distick == '0'">No</span>
@@ -896,11 +872,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Calibration chart fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.calibration == '1'">Yes</span>
 									<span v-if="readShipperSurvey.calibration == '0'">No</span>
@@ -908,11 +884,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Siphon Tube orginally fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.siphon_tube == '1'">Yes</span>
 									<span v-if="readShipperSurvey.siphon_tube == '0'">No</span>
@@ -920,11 +896,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Pressure Gauge fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.pressure_gauge == '1'">Yes</span>
 									<span v-if="readShipperSurvey.pressure_gauge == '0'">No</span>
@@ -932,11 +908,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Temperature Gauge fitted</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.temperature_gauge == '1'">Yes</span>
 									<span v-if="readShipperSurvey.temperature_gauge == '0'">No</span>
@@ -944,11 +920,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">PRV with poppet</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.prv_poppet == '1'">Yes</span>
 									<span v-if="readShipperSurvey.prv_poppet == '0'">No</span>
@@ -956,11 +932,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Top discharge Provision</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.top_provision == '1'">Yes</span>
 									<span v-if="readShipperSurvey.top_provision == '0'">No</span>
@@ -968,11 +944,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Interior Clean dry and odourless</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.interior_clean == '1'">Yes</span>
 									<span v-if="readShipperSurvey.interior_clean == '0'">No</span>
@@ -980,11 +956,11 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">VALVES/FITTINGS free from previous cargo</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.valves_free == '1'">Yes</span>
 									<span v-if="readShipperSurvey.valves_free == '0'">No</span>
@@ -992,82 +968,82 @@
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Non transferable cargo stains interior shell</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.non_transferable">{{ readShipperSurvey.non_transferable }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Polish/Buffing marks in interior</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.polish_buffing">{{ readShipperSurvey.polish_buffing }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-12 text-center">
 								1.0Kg/cm2air pressure/leak test carried out with Teflon/Rubber gasket.
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Remarks</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.note">{{ readShipperSurvey.note }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Manlid Seal No</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.manlid_seal_no">{{ readShipperSurvey.manlid_seal_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Airline Seal</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.airline_seal_no">{{ readShipperSurvey.airline_seal_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Bottom Seal No</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.bottom_seal_no">{{ readShipperSurvey.bottom_seal_no }}</span
 									><span v-else><i>Not specified</i></span>
 								</div>
 							</div>
 						</div>
-						<div class="row mb-0 mb-sm-4">
+						<div class="row mb-sm-4">
 							<div class="col-9 text-end">
 								<label class="form-label text-uppercase fw-bold m-0">Top Discharge Seal</label>
 							</div>
-							<div class="col-6 col-sm-3 mb-2 mb-sm-0">
+							<div class="col-3 mb-2 mb-sm-0">
 								<div>
 									<span v-if="readShipperSurvey.top_seal">{{ readShipperSurvey.top_seal }}</span
 									><span v-else><i>Not specified</i></span>
@@ -1163,7 +1139,7 @@
 	}
 	export default {
 		name: "ShipperSurveymaster",
-		props: ["current_user_id", "all_permissions"],
+		props: ["current_user_id", "all_permissions", "mode","param1","id"],
 		setup() {
 			return {
 				v$: useVuelidate()
@@ -1253,6 +1229,20 @@
 						return;
 					}
 				}
+
+				if ( this.shippersurveyForAdd.surveyor_id != 'null' && typeof this.shippersurveyForAdd.surveyor_id === 'object' && this.shippersurveyForAdd.surveyor_id.id) {
+					this.shippersurveyForAdd.surveyor_id = this.shippersurveyForAdd.surveyor_id.id;
+				}
+				if ( this.shippersurveyForAdd.customer_id != 'null' && typeof this.shippersurveyForAdd.customer_id === 'object' && this.shippersurveyForAdd.customer_id.id) {
+					this.shippersurveyForAdd.customer_id = this.shippersurveyForAdd.customer_id.id;
+				}
+				if ( this.shippersurveyForAdd.for_shipper_id != 'null' && typeof this.shippersurveyForAdd.for_shipper_id === 'object' && this.shippersurveyForAdd.for_shipper_id.id) {
+					this.shippersurveyForAdd.for_shipper_id = this.shippersurveyForAdd.for_shipper_id.id;
+				}
+				if ( this.shippersurveyForAdd.inspection_location_id != 'null' && typeof this.shippersurveyForAdd.inspection_location_id === 'object' && this.shippersurveyForAdd.inspection_location_id.id) {
+					this.shippersurveyForAdd.inspection_location_id = this.shippersurveyForAdd.inspection_location_id.id;
+				}
+
 				if (!this.shippersurveyForAdd.action || this.shippersurveyForAdd.action == "") this.shippersurveyForAdd.action = "details";
 				this.shippersurveyForAdd.created_by = this.current_user_id;
 				// $("#addShipperSurveyModal").modal("hide");
@@ -1266,6 +1256,9 @@
 						if (status == 1) {
 							// Ajax to submit
 							thisVar.showToast("Shipper Survey saved successfully", "success", "bottom", 3000);
+							if(thisVar.mode === "mobileapp") {
+								window.location = thisVar.docRoot + "/operation-successful";
+							}
 							setTimeout(() => {
 								thisVar.dataprops.reload = true;
 							}, 1500);
@@ -1284,6 +1277,34 @@
 				this.shippersurveyForAdd = Object.assign({}, shippersurvey);
 				this.tankNoVerified = false;
 				this.addEditModal.show();
+				if (this.shippersurveyForAdd.surveyor_id) {
+					if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+						let _allRelationList = this.allSurveyorIdList;
+						let relationId = parseInt(this.shippersurveyForAdd.surveyor_id);
+						this.shippersurveyForAdd.surveyor_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.shippersurveyForAdd.customer_id) {
+					if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+						let _allRelationList = this.allCustomerIdList;
+						let relationId = parseInt(this.shippersurveyForAdd.customer_id);
+						this.shippersurveyForAdd.customer_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.shippersurveyForAdd.for_shipper_id) {
+					if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+						let _allRelationList = this.allCustomerIdList;
+						let relationId = parseInt(this.shippersurveyForAdd.for_shipper_id);
+						this.shippersurveyForAdd.for_shipper_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
+				if (this.shippersurveyForAdd.inspection_location_id) {
+					if (Array.isArray(this.allInspectionLocationIdList) && this.allInspectionLocationIdList.length > 0) {
+						let _allRelationList = this.allInspectionLocationIdList;
+						let relationId = parseInt(this.shippersurveyForAdd.inspection_location_id);
+						this.shippersurveyForAdd.inspection_location_id = _allRelationList.find(item => item.id === relationId);
+					}
+				}
 			},
 			viewShipperSurvey(shippersurvey) {
 				this.readShipperSurvey = shippersurvey;
@@ -1333,15 +1354,56 @@
 				await this.refreshObject(shippersurvey, "ShipperSurvey", 1);
 				this.closeSwal();
 			},
+			displayLabelSetting ({id, text}) {
+				return `${text}`;
+			},
 		},
 		async mounted() {
 			this.addEditModal = new bootstrap.Modal(this.$refs.addEditModal, {backdrop: "static", keyboard: false});
 			this.readModal = new bootstrap.Modal(this.$refs.readModal, {backdrop: "static", keyboard: false});
+			if (this.mode && this.mode == "mobileapp") {
+				if(this.param1 && this.param1 != null && this.param1 != undefined) {
+					if (this.id !== undefined && !isNaN(this.id)) {
+						var URL = this.docRoot + "/api/shippersurvey/get-record/" + this.id;
+						var that = this;
+						this.showLoading("Loading ...");
+						axios.post(URL, {}).then(function (response) {
+							let shippersurveyObj = Object.assign({}, response.data);
+							if(that.param1 === "edit"){
+								that.prepareEditShipperSurvey(shippersurveyObj);
+							}else{
+								that.viewShipperSurvey(shippersurveyObj);
+							}
+							that.closeSwal();	
+						})
+						.catch(function (error) {
+							console.log(error);
+						});
+					}
+				}else{
+					this.addEditModal.show();
+				}
+				this.$refs.addEditModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
+				this.$refs.readModal.addEventListener('hidden.bs.modal', () => { window.location = this.docRoot + "/operation-canceled"; });
+			}
 			this.allCompanyIdList = await this.loadAllCompany(true);
-			this.allSurveyorIdList = await this.loadAllSurveyor(true);
-			this.allForShipperIdList = await this.loadAllCustomer(true);
-			this.allCustomerIdList = await this.loadAllCustomer(true);
-			this.allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+
+			let _allSurveyorIdList = await this.loadAllSurveyor(true);
+			if(Array.isArray(_allSurveyorIdList) && _allSurveyorIdList.length > 0){
+				this.allSurveyorIdList = _allSurveyorIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allCustomerIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allCustomerIdList) && _allCustomerIdList.length > 0){
+				this.allCustomerIdList = _allCustomerIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allForShipperIdList = await this.loadAllCustomer(true);
+			if(Array.isArray(_allForShipperIdList) && _allForShipperIdList.length > 0){
+				this.allForShipperIdList = _allForShipperIdList.map(x => {return { id: x.id, text: x.name }});
+			}
+			let _allInspectionLocationIdList = await this.loadAllInspectionLocation(true);
+			if(Array.isArray(_allInspectionLocationIdList) && _allInspectionLocationIdList.length > 0){
+				this.allInspectionLocationIdList = _allInspectionLocationIdList.map(x => {return { id: x.id, text: x.name }});
+			}
 			this.arrYesNoNA = [
 				{id: "1", title: "Yes"},
 				{id: "0", title: "No"},
