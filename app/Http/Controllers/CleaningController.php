@@ -272,10 +272,10 @@ class CleaningController extends Controller
 					try{
 						// Get the client email
 						$customer = \App\Models\Customer::find($cleaning["customer_id"]);
-						log::info("customer_id :: ".$cleaning["customer_id"]);
+						// log::info("customer_id :: ".$cleaning["customer_id"]);
 						if( $customer ){
 							$customerEmail = $customer->email;
-							log::info("customerEmail :: ".$customerEmail);
+							// log::info("customerEmail :: ".$customerEmail);
 							if( strlen($customerEmail) > 0 ){
 								$dataArray = [
 									"tank_number" => $cleaningObject->tank_no,
@@ -284,7 +284,7 @@ class CleaningController extends Controller
 									"inspection_location" => $cleaningObject->inspectionlocation->name,
 									"surveyor" => $cleaningObject->surveyor->name,
 								];
-								log::info(json_encode($dataArray));
+								// log::info(json_encode($dataArray));
 								// Send the email
 								MailService::notifyClientForCleaningReport($customerEmail, $dataArray);
 							}

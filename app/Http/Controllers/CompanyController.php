@@ -150,7 +150,7 @@ class CompanyController extends Controller
 				$objectToSave["status"] = $company["status"];
 				if ($company["id"] > 0) {
 					$company = \App\Models\Company::find($company["id"]);
-					log::info(json_encode($company));
+					// log::info(json_encode($company));
 					if( $company->header_url == null || strlen(trim($company->header_url)) == 0 || 
 						$company->signature_url == null || strlen(trim($company->signature_url)) == 0  ){
 							return response()->json(["status" => -1, "messages" => ["Please upload the header and signature images."] ]);
@@ -205,7 +205,7 @@ class CompanyController extends Controller
 	// Handle uploads
 	public function uploadFile(Request $request){
 		$input = $request->all();
-		log::info($input);
+		// log::info($input);
 		if( isset($input["company_id"]) && $input["purpose"]){
 			$company = Company::find($input["company_id"]);
 			// Clear the company header first
@@ -232,7 +232,7 @@ class CompanyController extends Controller
 			$filePath = $company->header_url;
 		else
 			$filePath = $company->signature_url;
-		log::info($filePath);
+		// log::info($filePath);
 		if( strlen($filePath) > 0 && Storage::exists($filePath) ){
 			return response()->file(Storage::path($filePath), ['Content-Type', 'image/jpg']);
 		}

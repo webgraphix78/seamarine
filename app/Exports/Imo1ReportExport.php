@@ -50,7 +50,7 @@ class Imo1ReportExport implements FromCollection, WithHeadings, WithMapping, Wit
 				$cfsValue = "NA";
 				break;
 		}
-		Log::info(json_encode($row));
+		// Log::info(json_encode($row));
 		return [
 			$row->ref_no,
 			$row->tank_no,

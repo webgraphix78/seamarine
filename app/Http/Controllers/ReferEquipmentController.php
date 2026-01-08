@@ -246,7 +246,6 @@ class ReferEquipmentController extends Controller
 		$data = [
 			'referequipment' => $referequipment,
 		];
-		log::info($company);
 		if (strlen($company["header_url"]) > 0 && storage_path('app/' . $company["header_url"]) && strlen($company["signature_url"]) > 0 && storage_path('app/' . $company["signature_url"])) {
 			// lets extract the invoice signature
 			$signPathInfo = pathinfo($company["signature_url"]);

@@ -1188,6 +1188,27 @@
 				let that = this;
 				this.showConfirm("Are you sure you want to create a duplicate of this record?", "Yes", "No").then((result) => {
 					if (result.isConfirmed) {
+						if (cleaning.surveyor_id) {
+							if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+								let _allRelationList = this.allSurveyorIdList;
+								let relationId = parseInt(cleaning.surveyor_id);
+								cleaning.surveyor_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
+						if (cleaning.customer_id) {
+							if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+								let _allRelationList = this.allCustomerIdList;
+								let relationId = parseInt(cleaning.customer_id);
+								cleaning.customer_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
+						if (cleaning.inspection_locn) {
+							if (Array.isArray(this.allInspectionLocnList) && this.allInspectionLocnList.length > 0) {
+								let _allRelationList = this.allInspectionLocnList;
+								let relationId = parseInt(cleaning.inspection_locn);
+								cleaning.inspection_locn = _allRelationList.find(item => item.id === relationId);
+							}
+						}
 						this.cleaningForAdd = Object.assign({}, cleaning);
 						this.cleaningForAdd.id = 0;
 						this.cleaningForAdd.ref_no = null;

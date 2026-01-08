@@ -329,15 +329,15 @@ class Imo1Controller extends Controller
 	// Handle uploads
 	public function uploadFile(Request $request){
 		$input = $request->all();
-		log::info($input);
+		// log::info($input);
 		if( isset($input["imo1_id"]) ){
-			log::info($input["imo1_id"]);
+			// log::info($input["imo1_id"]);
 			$imo1 = Imo1::find($input["imo1_id"]);
 			// Clear the imo1 image first
 			$this->clearUpload($imo1->walkway_image);
 			// Now upload the imo1 image
 			if ( $request->hasFile('uploaded_file') && $request->file('uploaded_file')->isValid()) {
-				log::info("hAS FILE");
+				// log::info("hAS FILE");
 				$path = $request->file('uploaded_file')->store('uploads');
 				$imo1->walkway_image = $path;
 				$imo1->save();

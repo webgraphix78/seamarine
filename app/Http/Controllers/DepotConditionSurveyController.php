@@ -256,15 +256,15 @@ class DepotConditionSurveyController extends Controller{
 	// Handle uploads
 	public function uploadFile(Request $request){
 		$input = $request->all();
-		log::info($input);
+		// log::info($input);
 		if( isset($input["depotconditionsurvey_id"]) ){
-			log::info($input["depotconditionsurvey_id"]);
+			// log::info($input["depotconditionsurvey_id"]);
 			$depotconditionsurvey = \App\Models\DepotConditionSurvey::find($input["depotconditionsurvey_id"]);
 			// Clear the depotconditionsurvey image first
 			$this->clearUpload($depotconditionsurvey->liquid_img);
 			// Now upload the depotconditionsurvey image
 			if ( $request->hasFile('uploaded_file') && $request->file('uploaded_file')->isValid()) {
-				log::info("hAS FILE");
+				// log::info("hAS FILE");
 				$path = $request->file('uploaded_file')->store('uploads');
 				$depotconditionsurvey->liquid_img = $path;
 				$depotconditionsurvey->save();
@@ -337,7 +337,6 @@ class DepotConditionSurveyController extends Controller{
 		$data = [
 			'depotconditionsurvey' => $depotconditionsurvey,
 		];
-		log::info($depotconditionsurvey);
 		if( strlen($company["header_url"]) > 0 && Storage::exists($company["header_url"]) && strlen($company["signature_url"]) > 0 && Storage::exists($company["signature_url"]) ){
 			// lets extract the invoice signature
 			$signPathInfo = pathinfo($company["signature_url"]);
