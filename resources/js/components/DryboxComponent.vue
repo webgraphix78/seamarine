@@ -646,11 +646,32 @@
 						}
 					});
 			},
-			duplicateObject(cleaning) {
+			duplicateObject(drybox) {
 				let that = this;
 				this.showConfirm("Are you sure you want to create a duplicate of this record?", "Yes", "No").then((result) => {
 					if (result.isConfirmed) {
-						this.dryboxForAdd = Object.assign({}, cleaning);
+						if (drybox.surveyor_id) {
+							if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+								let _allRelationList = this.allSurveyorIdList;
+								let relationId = parseInt(drybox.surveyor_id);
+								drybox.surveyor_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
+						if (drybox.customer_id) {
+							if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+								let _allRelationList = this.allCustomerIdList;
+								let relationId = parseInt(drybox.customer_id);
+								drybox.customer_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
+						if (drybox.inspection_location_id) {
+							if (Array.isArray(this.allInspectionLocationIdList) && this.allInspectionLocationIdList.length > 0) {
+								let _allRelationList = this.allInspectionLocationIdList;
+								let relationId = parseInt(drybox.inspection_location_id);
+								drybox.inspection_location_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
+						this.dryboxForAdd = Object.assign({}, drybox);
 						this.dryboxForAdd.id = 0;
 						this.dryboxForAdd.ref = null;
 						console.log(this.dryboxForAdd);

@@ -246,7 +246,6 @@ class CscInspectionTankController extends Controller{
 		$data = [
 			'cscinspectiontank' => $cscinspectiontank,
 		];
-		log::info($cscinspectiontank);
 		if( strlen($company["header_url"]) > 0 && Storage::exists($company["header_url"]) && strlen($company["signature_url"]) > 0 && Storage::exists($company["signature_url"]) ){
 			// lets extract the invoice signature
 			$signPathInfo = pathinfo($company["signature_url"]);

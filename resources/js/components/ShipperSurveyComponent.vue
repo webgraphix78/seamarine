@@ -1199,6 +1199,34 @@
 				let that = this;
 				this.showConfirm("Are you sure you want to create a duplicate of this record?", "Yes", "No").then((result) => {
 					if (result.isConfirmed) {
+						if (sSurvey.surveyor_id) {
+							if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+								let _allRelationList = this.allSurveyorIdList;
+								let relationId = parseInt(sSurvey.surveyor_id);
+								sSurvey.surveyor_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
+						if (sSurvey.customer_id) {
+							if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+								let _allRelationList = this.allCustomerIdList;
+								let relationId = parseInt(sSurvey.customer_id);
+								sSurvey.customer_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
+						if (sSurvey.for_shipper_id) {
+							if (Array.isArray(this.allCustomerIdList) && this.allCustomerIdList.length > 0) {
+								let _allRelationList = this.allCustomerIdList;
+								let relationId = parseInt(sSurvey.for_shipper_id);
+								sSurvey.for_shipper_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
+						if (sSurvey.inspection_location_id) {
+							if (Array.isArray(this.allInspectionLocationIdList) && this.allInspectionLocationIdList.length > 0) {
+								let _allRelationList = this.allInspectionLocationIdList;
+								let relationId = parseInt(sSurvey.inspection_location_id);
+								sSurvey.inspection_location_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
 						this.shippersurveyForAdd = Object.assign({}, sSurvey);
 						this.shippersurveyForAdd.id = 0;
 						this.shippersurveyForAdd.ref_no = null;

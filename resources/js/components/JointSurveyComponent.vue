@@ -474,6 +474,13 @@
 				let that = this;
 				this.showConfirm("Are you sure you want to create a duplicate of this record?", "Yes", "No").then((result) => {
 					if (result.isConfirmed) {
+						if (jointsurvey.surveyor_id) {
+							if (Array.isArray(this.allSurveyorIdList) && this.allSurveyorIdList.length > 0) {
+								let _allRelationList = this.allSurveyorIdList;
+								let relationId = parseInt(jointsurvey.surveyor_id);
+								jointsurvey.surveyor_id = _allRelationList.find(item => item.id === relationId);
+							}
+						}
 						this.jointsurveyForAdd = Object.assign({}, jointsurvey);
 						this.jointsurveyForAdd.id = 0;
 						this.jointsurveyForAdd.ref_no = null;

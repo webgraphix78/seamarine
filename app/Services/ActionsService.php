@@ -30,8 +30,8 @@ class ActionsService{
 					if (!is_array($permission) || !isset($permission['role_id'])) {
 						continue;
 					}
-					Log::info("message1  " . $roles);
-					Log::info("message 2 " . $permission['role_id']);
+					// Log::info("message1  " . $roles);
+					// Log::info("message 2 " . $permission['role_id']);
 					if( $permission['role_id'] == $roles){
 						$canExport = $permission['can_export'];
 						$canAddEditDuplicate = $permission['can_add_edit_duplicate'];
