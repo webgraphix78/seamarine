@@ -79,7 +79,14 @@ class OnhireController extends Controller
 		if ($searchType == "simple") {
 			if (isset($input["q"]) && strlen(trim($input["q"])) > 0) {
 				$onhireList = $onhireList->where(function ($query) use ($input) {
-					$query = $query->where('unit_nr', 'like', '%' . trim($input['q']) . '%')->orWhere('customer_id', 'like', '%' . trim($input['q']) . '%');
+					if( isset($input["current_user_id"]) && is_numeric($input["current_user_id"]) ){
+						$user = \App\Models\User::find($input['current_user_id']);
+						if ($user->role_id == 2) {
+							$query = $query->where('unit_nr', 'like', '%' . trim($input['q']) . '%')->orWhere('customer_id', 'like', '%' . trim($input['q']) . '%')->where('status', 1);
+						}else{
+							$query = $query->where('unit_nr', 'like', '%' . trim($input['q']) . '%')->orWhere('customer_id', 'like', '%' . trim($input['q']) . '%');
+						}
+					}
 				});
 			}
 		} else {

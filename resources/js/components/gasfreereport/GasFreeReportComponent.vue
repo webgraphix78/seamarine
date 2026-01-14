@@ -43,7 +43,7 @@ export default {
 						},                        
 						{
 							title: "Company Id",
-							property: "company_id",
+							property: "rel_company_id",
 							type: "relation",
 							source: { api: 'Company', id: 'id', value: 'name' } 
 						},                        
@@ -79,19 +79,19 @@ export default {
 						},                        
 						{
 							title: "Inspection Location Id",
-							property: "inspection_location_id",
+							property: "rel_inspection_location_id",
 							type: "relation",
 							source: { api: 'InspectionLocation', id: 'id', value: 'name' } 
 						},                        
 						{
 							title: "Customer Id",
-							property: "customer_id",
+							property: "rel_customer_id",
 							type: "relation",
 							source: { api: 'Customer', id: 'id', value: 'name' } 
 						},                        
 						{
 							title: "Surveyor Id",
-							property: "surveyor_id",
+							property: "rel_surveyor_id",
 							type: "relation",
 							source: { api: 'Surveyor', id: 'id', value: 'name' } 
 						},

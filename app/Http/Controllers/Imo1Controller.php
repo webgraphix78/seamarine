@@ -85,8 +85,14 @@ class Imo1Controller extends Controller
 		if ($searchType == "simple") {
 			if (isset($input["q"]) && strlen(trim($input["q"])) > 0) {
 				$imo1List = $imo1List->where(function ($query) use ($input) {
+					$user = \App\Models\User::find($input['current_user_id']);
+					if ($user->role_id == 2) {
 					$query = $query->where('ref_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')
+						->orWhere('tank_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')->where('status', 1);
+					}else{
+						$query = $query->where('ref_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')
 						->orWhere('tank_no', 'like', '%' . strtoupper(trim($input['q'])) . '%');
+					}
 				});
 				$imo1List = $imo1List->orWhereHas('for_client_rec', function ($query) use ($input) {
 					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');

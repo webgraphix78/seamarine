@@ -68,8 +68,16 @@ class ShipperSurveyController extends Controller
 		if ($searchType == "simple") {
 			if (isset($input["q"]) && strlen(trim($input["q"])) > 0) {
 				$shippersurveyList = $shippersurveyList->where(function ($query) use ($input) {
-					$query = $query->where('ref_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')
-						->orWhere('tank_container_no', 'like', '%' . strtoupper(trim($input['q'])) . '%');
+					if( isset($input["current_user_id"]) && is_numeric($input["current_user_id"]) ){
+						$user = \App\Models\User::find($input['current_user_id']);
+						if ($user->role_id == 2) {
+							$query = $query->where('ref_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')
+								->orWhere('tank_container_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')->where('status', 1);
+						}else{
+							$query = $query->where('ref_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')
+								->orWhere('tank_container_no', 'like', '%' . strtoupper(trim($input['q'])) . '%');
+						}
+					}
 				});
 				$shippersurveyList = $shippersurveyList->orWhereHas('customer', function ($query) use ($input) {
 					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');
