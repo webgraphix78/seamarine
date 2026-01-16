@@ -46,8 +46,16 @@ class JointSurveyController extends Controller
 		if ($searchType == "simple") {
 			if (isset($input["q"]) && strlen(trim($input["q"])) > 0) {
 				$jointsurveyList = $jointsurveyList->where(function ($query) use ($input) {
-					$query = $query->where('ref_no', 'like', '%' . trim($input['q']) . '%')
-						->orWhere('customer_name', 'like', '%' . trim($input['q']) . '%')->orWhere('tank_no', 'like', '%' . trim($input['q']) . '%');
+					if( isset($input["current_user_id"]) && is_numeric($input["current_user_id"]) ){
+						$user = \App\Models\User::find($input['current_user_id']);
+						if ($user->role_id == 2) {
+							$query = $query->where('ref_no', 'like', '%' . trim($input['q']) . '%')
+						->orWhere('customer_name', 'like', '%' . trim($input['q']) . '%')->orWhere('tank_no', 'like', '%' . trim($input['q']) . '%')->where('status', 1);
+						}else{
+							$query = $query->where('ref_no', 'like', '%' . trim($input['q']) . '%')
+								->orWhere('customer_name', 'like', '%' . trim($input['q']) . '%')->orWhere('tank_no', 'like', '%' . trim($input['q']) . '%');
+						}
+					}
 				});
 				$jointsurveyList = $jointsurveyList->orWhereHas('company', function ($query) use ($input) {
 					$query = $query->where('name', 'like', '%' . trim($input['q']) . '%');

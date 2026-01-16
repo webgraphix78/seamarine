@@ -29,6 +29,25 @@ class CscreController extends Controller
 	public function get(Request $request){
 		$input = $request->all();
 		$cscreList = \App\Models\Cscre::with('rel_company_id',)->select("*");
+		$searchType = "simple";
+		if (isset($input["search"]))
+			$searchType = $input["search"];
+		if ($searchType == "simple") {
+			if (isset($input["q"]) && strlen(trim($input["q"])) > 0) {
+				$cscreList = $cscreList->where(function ($query) use ($input) {
+					if( isset($input["current_user_id"]) && is_numeric($input["current_user_id"]) ){
+						$user = \App\Models\User::find($input['current_user_id']);
+						if ($user->role_id == 2) {
+							$query = $query->where('ref_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')
+								->orWhere('container_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')->where('status', 1);;
+						}else{
+							$query = $query->where('ref_no', 'like', '%' . strtoupper(trim($input['q'])) . '%')
+							->orWhere('container_no', 'like', '%' . strtoupper(trim($input['q'])) . '%');
+						}
+					}
+				});
+			}
+		}
 		if (isset($input['advfilters']) && is_array($input['advfilters']) && count($input['advfilters']) > 0) {
 			foreach ($input['advfilters'] as $filter) {
 				if ($filter['property'] == "__q") {
