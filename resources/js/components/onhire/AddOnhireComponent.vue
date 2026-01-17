@@ -679,7 +679,7 @@
 					try {
 						this.showToast("Compressing image...", "info", "bottom", 2000);
 						const originalSize = (file.size / 1024 / 1024).toFixed(2);
-						file = await this.compressImage(file, 1.5);
+						file = await this.compressImage(file, 1);
 						const compressedSize = (file.size / 1024 / 1024).toFixed(2);
 						this.showToast(`Image compressed from ${originalSize}MB to ${compressedSize}MB`, "success", "bottom", 2000);
 					} catch (error) {

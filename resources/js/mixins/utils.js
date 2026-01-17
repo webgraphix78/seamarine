@@ -50,7 +50,7 @@ export default {
 			})
 		},
 		// Compress image file size only, keeping original dimensions
-		async compressImage(file, maxSizeMB = 1.5) {
+		async compressImage(file, maxSizeMB = 1) {
 			return new Promise((resolve, reject) => {
 				const reader = new FileReader();
 				reader.readAsDataURL(file);
