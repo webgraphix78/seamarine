@@ -126,6 +126,8 @@
 				let that = this;
 				if (event.target.files && event.target.files.length > 0) {
 					this.documents = [];
+					// Show initial loading toast
+					this.showLoading("Uploading images...");
 					for (let index = 0; index < event.target.files.length; index++) {
 						let file = event.target.files[index];
 						if (file.type != "image/jpg" && file.type != "image/jpeg" && file.type != "image/png") {
@@ -163,6 +165,8 @@
 						document.upload_progress = 0;
 						document.file_name = document.file.name.length > 25 ? document.file.name.substring(0, 18) + " ... " + document.file.name.substring(document.file.name.length - 4) : document.file.name;
 						// Send the data
+						// Show initial loading toast
+						this.showLoading("Uploading images...");
 						let URL = this.docRoot + "/media/add";
 						axios.post(URL, formData, {
 								headers: {
