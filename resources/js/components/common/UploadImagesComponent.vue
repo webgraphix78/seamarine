@@ -122,20 +122,31 @@
 		methods: {
 			cancelUpload() {
 			},
-			handleUpload(event) {
+			async handleUpload(event) {
 				let that = this;
 				if (event.target.files && event.target.files.length > 0) {
 					this.documents = [];
 					for (let index = 0; index < event.target.files.length; index++) {
 						let file = event.target.files[index];
-						if (file.size > 2 * 1024 * 1024) {
-							this.showToast("File size cannot exceed 2MB", "error", "bottom", 3000);
-							return;
-						}
 						if (file.type != "image/jpg" && file.type != "image/jpeg" && file.type != "image/png") {
 							this.showToast("You can only upload JPG, JPEG and PNG images", "error", "bottom", 3000);
 							return;
 						}
+						// Compress if file is larger than 2MB
+                        if (file.size > 2 * 1024 * 1024) {
+                            try {
+                                this.showToast("Compressing image...", "info", "bottom", 2000);
+                                const originalSize = (file.size / 1024 / 1024).toFixed(2);
+                                file = await this.compressImage(file, 2);
+                                const compressedSize = (file.size / 1024 / 1024).toFixed(2);
+                                this.showToast(`Image compressed from ${originalSize}MB to ${compressedSize}MB`, "success", "bottom", 2000);
+                            } catch (error) {
+                                console.error("Compression error:", error);
+                                this.showToast("Failed to compress image", "error", "bottom", 3000);
+                                continue;
+                            }
+                        }
+						
 						this.documents.push({
 							upload_state: 0,
 							upload_progress: 0,

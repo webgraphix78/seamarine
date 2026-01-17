@@ -50,7 +50,7 @@ class JointSurveyController extends Controller
 						$user = \App\Models\User::find($input['current_user_id']);
 						if ($user->role_id == 2) {
 							$query = $query->where('ref_no', 'like', '%' . trim($input['q']) . '%')
-						->orWhere('customer_name', 'like', '%' . trim($input['q']) . '%')->orWhere('tank_no', 'like', '%' . trim($input['q']) . '%')->where('status', 1);;
+						->orWhere('customer_name', 'like', '%' . trim($input['q']) . '%')->orWhere('tank_no', 'like', '%' . trim($input['q']) . '%')->where('status', 1);
 						}else{
 							$query = $query->where('ref_no', 'like', '%' . trim($input['q']) . '%')
 								->orWhere('customer_name', 'like', '%' . trim($input['q']) . '%')->orWhere('tank_no', 'like', '%' . trim($input['q']) . '%');
