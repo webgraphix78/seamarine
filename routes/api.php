@@ -23,6 +23,7 @@ Route::post('/reports/get-counts', [App\Http\Controllers\ReportsController::clas
 
 // Mobile app auth
 // Define a route middleware for the mobile request authenticator
+Route::post('/user-environment-routes', [App\Http\Controllers\UserController::class, 'userEnvironmentCheck'])->name('user-environment-check');
 Route::post('/authenticate', [App\Http\Controllers\UserController::class, 'validateUser'])->name('validate-user');
 Route::post('/authenticate-token', [App\Http\Controllers\UserController::class, 'validateUserToken'])->name('validate-token');
 

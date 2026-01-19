@@ -192,6 +192,54 @@ class UserController extends Controller
 		}
 	}
 
+	public function userEnvironmentCheck(Request $request){
+		// Validate the request data
+		if (!$request->has('username') || !$request->has('password')) {
+			return response()->json([
+				'status' => 0,
+				'message' => 'Username and password are required.',
+			]);
+		}
+
+		if ($request->input('username') == '' || $request->input('password') == '') {
+			return response()->json([
+				'status' => 0,
+				'message' => 'Username and password cannot be empty.',
+			]);
+		}
+
+		// Step 1: Check if user exists in user_environment_routes table (UAT users)
+		$prodUser = User::where('email', $request->username)->first();
+		if ($prodUser) {
+			return response()->json([
+				'status' => 1,
+				'message' => 'Production user found.',
+				'mode' => 'production',
+				'link' => 'portal.seamarine.co',
+			]);
+		} elseif (!$prodUser) {
+			$uatUser = App\Models\UserEnvironmentRoute::where('username', $request->username)->first();
+			if ($uatUser) {
+				return response()->json([
+					'status' => 1,
+					'message' => 'UAT user found',
+					'mode' => 'uat',
+					'link' => 'uat.seamarine.co',
+				]);
+			} else {
+				return response()->json([
+					'status' => 0,
+					'message' => 'Invalid username or password.',
+				]);
+			}
+		} else {
+			return response()->json([
+				'status' => 0,
+				'message' => 'Invalid username or password.',
+			]);
+		}
+	}
+
 	public function validateUser(Request $request){
 		// Validate the request data
 		if (!$request->has('username') || !$request->has('password')) {
