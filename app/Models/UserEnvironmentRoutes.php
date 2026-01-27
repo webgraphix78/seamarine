@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class UserEnvironmentRoutes extends Model{
     protected $table = "user_environment_routes";
-    protected $fillable = ['email', 'created_by'];
+    protected $fillable = ['username', 'created_by'];
     public $timestamps = true;
 
 	//'pivot', 
