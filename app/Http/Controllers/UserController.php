@@ -218,7 +218,7 @@ class UserController extends Controller
 				'link' => 'portal.seamarine.co',
 			]);
 		} elseif (!$prodUser) {
-			$uatUser = App\Models\UserEnvironmentRoute::where('username', $request->username)->first();
+			$uatUser = App\Models\UserEnvironmentRoutes::where('username', $request->username)->first();
 			if ($uatUser) {
 				return response()->json([
 					'status' => 1,
