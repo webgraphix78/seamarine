@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\PlatformObject;
 use App\Models\User;
+use App\Models\UserEnvironmentRoutes;
 use App\Services\UserService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
@@ -218,7 +219,7 @@ class UserController extends Controller
 				'link' => 'portal.seamarine.co',
 			]);
 		} else if (!$prodUser) {
-			$uatUser = App\Models\UserEnvironmentRoutes::where('username', $request->username)->first();
+			$uatUser = UserEnvironmentRoutes::where('username', $request->username)->first();
 			if ($uatUser) {
 				return response()->json([
 					'status' => 1,
