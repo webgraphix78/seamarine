@@ -449,6 +449,8 @@ class OnhireController extends Controller
 
 			$view = View::make('pdfs.onhire', $data);
 			$html = $view->render();
+			ini_set('max_execution_time', 300);
+			ini_set('memory_limit', '1024M');
 			$pdf = new \App\Models\BotPDF;
 			$pdf->headerImage = $company["header_url"];
 			// set default header data
@@ -486,7 +488,7 @@ class OnhireController extends Controller
 						$pdf->Image(
 							$imageAbsolutePath, 
 							0, 0, $pageWidth, $pageHeight,
-							'', '', '', true, 300, '', false, false, 0, 'LT', false, false);
+							'', '', '', true, 96, '', false, false, 0, 'LT', false, false);
 					}
 				}
 			}
