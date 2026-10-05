@@ -150,7 +150,7 @@
 						<td width="50%">Witness:{{ $cscinspectiontank['insp_hydro_witness'] }} </td>
 					</tr>
 					<tr >
-						<td width="50%">Initial Hydro Test:{{ $cscinspectiontank['insp_last_hydro_date'] }} </td>
+						<td width="50%">Last Hydro Test:{{ $cscinspectiontank['insp_last_hydro_date'] }} </td>
 						<td width="50%">Witness:{{ $cscinspectiontank['insp_last_hydro_witness'] }} </td>
 					</tr>
 					<tr>

@@ -9,19 +9,23 @@
 			</div>
 		</div>
 		<div class='row mb-4 gy-3 gy-md-0'>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label for="add_cscinspectiontank_company_id" class="form-label text-uppercase fw-bold me-3">Company Name</label>
 				<div>
 					<multiselect v-model="smtestingfieldFormObj.company_id" :options="allCompanyIdList" :custom-label="displayLabelSetting"  placeholder="Select one" selectLabel="" deselectLabel=""></multiselect>
 				</div>
-				
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label for="add_cscinspectiontank_inspection_date" class="form-label text-uppercase fw-bold me-3">Inspection Date</label>
 				<div class="input-group">
 					<MaskInput v-model="smtestingfieldFormObj.inspection_date" mask="##-##-####" class="form-control" textmode="uppercase" placeholder="DD-MM-YYYY"/>
 				</div>
-				
+			</div>
+			<div class="col-md-4">
+				<label for="add_scope" class="form-label text-uppercase fw-bold me-3">Scope</label>
+				<div class="input-group">
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.scope" id="add_scope" placeholder="Enter scope" >
+				</div>
 			</div>
 		</div>
 		<div class='row mb-4 gy-3 gy-md-0'>
@@ -81,35 +85,31 @@
 				<label for="add_cscinspectiontank_csc" class="form-label text-uppercase fw-bold me-3">Csc</label>
 				<div class="d-flex flex-row gap-2">
 					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.csc" id="add_cscinspectiontank_csc" placeholder="Enter Csc" >
-					<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.csc_blank" id="add_cscinspectiontank_csc" >
+					<input type="text" class="form-control w-25"  v-model="smtestingfieldFormObj.csc_blank" id="add_cscinspectiontank_csc" >
 				</div>
 			</div>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_uk_dot" class="form-label text-uppercase fw-bold me-3">Uk Dot</label>
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.uk_dot" id="add_cscinspectiontank_uk_dot" placeholder="Enter Uk Dot" >
-					
+				<div class="d-flex flex-row gap-2">
+					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.uk_dot" id="add_cscinspectiontank_uk_dot" placeholder="Enter Uk Dot" >
+					<input type="text" class="form-control w-25"  v-model="smtestingfieldFormObj.uk_dot_blank" id="add_cscinspectiontank_uk_dot_blank">
 				</div>
-				
 			</div>
 		</div>
 		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_imdg" class="form-label text-uppercase fw-bold me-3">Imdg</label>
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.imdg" id="add_cscinspectiontank_imdg" placeholder="Enter Imdg" >
-					
+				<div class="d-flex flex-row gap-2">
+					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.imdg" id="add_cscinspectiontank_imdg" placeholder="Enter Imdg" >
+					<input type="text" class="form-control w-25"  v-model="smtestingfieldFormObj.imdg_blank" id="add_cscinspectiontank_imdg_blank">
 				</div>
 				
 			</div>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_us_dot" class="form-label text-uppercase fw-bold me-3">Us Dot</label>
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.us_dot" id="add_cscinspectiontank_us_dot" placeholder="Enter Us Dot" >
-					
+				<div class="d-flex flex-row gap-2">
+					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.us_dot" id="add_cscinspectiontank_us_dot" placeholder="Enter Us Dot" >
+					<input type="text" class="form-control w-25"  v-model="smtestingfieldFormObj.us_dot_blank" id="add_cscinspectiontank_us_dot_blank">
 				</div>
 				
 			</div>
@@ -117,19 +117,16 @@
 		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_rid" class="form-label text-uppercase fw-bold me-3">Rid</label>
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.rid" id="add_cscinspectiontank_rid" placeholder="Enter Rid" >
-					
+				<div class="d-flex flex-row gap-2">
+					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.rid" id="add_cscinspectiontank_rid" placeholder="Enter Rid" >
+					<input type="text" class="form-control w-25"  v-model="smtestingfieldFormObj.rid_blank" id="add_cscinspectiontank_rid_blank" >
 				</div>
-				
 			</div>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_aar" class="form-label text-uppercase fw-bold me-3">Aar</label>
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.aar" id="add_cscinspectiontank_aar" placeholder="Enter Aar" >
-					
+				<div class="d-flex flex-row gap-2">
+					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.aar" id="add_cscinspectiontank_aar" placeholder="Enter Aar" >
+					<input type="text" class="form-control w-25"  v-model="smtestingfieldFormObj.aar_blank" id="add_cscinspectiontank_aar_blank">
 				</div>
 				
 			</div>
@@ -137,21 +134,17 @@
 		<div class='row mb-4 gy-3 gy-md-0'>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_bam" class="form-label text-uppercase fw-bold me-3">Bam</label>
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.bam" id="add_cscinspectiontank_bam" placeholder="Enter Bam" >
-					
+				<div class="d-flex flex-row gap-2">
+					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.bam" id="add_cscinspectiontank_bam" placeholder="Enter Bam" >
+					<input type="text" class="form-control w-25"  v-model="smtestingfieldFormObj.bam_blank" id="add_cscinspectiontank_bam_blank">
 				</div>
-				
 			</div>
 			<div class="col-md-6">
 				<label for="add_cscinspectiontank_tc_impact" class="form-label text-uppercase fw-bold me-3">Tc Impact</label>
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.tc_impact" id="add_cscinspectiontank_tc_impact" placeholder="Enter Tc Impact" >
-					
+				<div class="d-flex flex-row gap-2">
+					<input type="text" class="form-control w-100"  v-model="smtestingfieldFormObj.tc_impact" id="add_cscinspectiontank_tc_impact" placeholder="Enter Tc Impact" >
+					<input type="text" class="form-control w-25"  v-model="smtestingfieldFormObj.tc_impact_blank" id="add_cscinspectiontank_tc_impact_blank">
 				</div>
-				
 			</div>
 		</div>
 		<div class='row mb-4 gy-3 gy-md-0'>
@@ -159,7 +152,7 @@
 				<label for="add_cscinspectiontank_tir" class="form-label text-uppercase fw-bold me-3">Tir</label>
 				<div class="d-flex flex-row gap-2">
 					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.tir" id="add_cscinspectiontank_tir" placeholder="Enter Tir" >
-					<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.tir_blank" id="add_cscinspectiontank_tir" >
+					<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.tir_blank" id="add_cscinspectiontank_tir_blank" >
 				</div>
 				
 			</div>
@@ -464,6 +457,36 @@
 		</div>
 		<div class='row mb-4'>
 			<div class="col-md-3 col-12 ">
+				<label class="form-label text-uppercase fw-bold">Post Hydro Leakproof Test</label>
+			</div>
+			<div class="col-md-3 col-4">
+				<div class="input-group">
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_post_hydro_test_na" id="add_cscinspectiontank_insp_post_hydro_test_na" placeholder="Enter post hydro Na" >
+					
+				</div>
+				
+			</div>
+			<div class="col-md-3 col-4">
+				<!-- <label for="add_cscinspectiontank_insp_ext_perfom_in" class="form-label text-uppercase fw-bold me-3">Insp Ext Perfom In</label> -->
+				<div class="input-group">
+					
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_post_hydro_test_in" id="add_cscinspectiontank_insp_post_hydro_test_in" placeholder="Enter post hydro In" >
+					
+				</div>
+				
+			</div>
+			<div class="col-md-3 col-4">
+				<!-- <label for="add_cscinspectiontank_insp_ext_perfom_remark" class="form-label text-uppercase fw-bold me-3">Insp Ext Perfom Remark</label> -->
+				<div class="input-group">
+					
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_post_hydro_test_remark" id="add_cscinspectiontank_insp_post_hydro_test_remark" placeholder="Enter post hydro Remark" >
+					
+				</div>
+				
+			</div>
+		</div>
+		<div class='row mb-4'>
+			<div class="col-md-3 col-12 ">
 				<label class="form-label text-uppercase fw-bold">Date</label>
 			</div>
 			<div class="col-md-3 col-4">
@@ -495,8 +518,9 @@
 			</div>
 		</div>
 		<div class='row mb-4'>
-			<div class="col-md-3 col-12 ">
-				<label class="form-label text-uppercase fw-bold">Pressure (Bar)</label>
+			<div class="col-md-3 col-12 d-flex flex-row gap-2 align-items-center">
+				<label class="form-label text-uppercase fw-bold mb-0">Pressure (Bar)</label>
+				<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.pressure_bar" id="add_pressure_bar">
 			</div>
 			<div class="col-md-3 col-4">
 				<!-- <label for="add_cscinspectiontank_insp_perfom_pressure_bar_na" class="form-label text-uppercase fw-bold me-3">Insp Perfom Pressure Bar Na</label> -->
@@ -623,8 +647,9 @@
 			</div>
 		</div>
 		<div class='row mb-4'>
-			<div class="col-md-3 col-12 ">
+			<div class="col-md-3 col-12 d-flex flex-row gap-2 align-items-center">
 				<label class="form-label text-uppercase fw-bold">Steam Coils Test Pressure (Bar):</label>
+				<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.steam_coils" id="add_steam_coils">
 			</div>
 			<div class="col-md-3 col-4">
 				<!-- <label for="add_cscinspectiontank_insp_perfom_steam_na" class="form-label text-uppercase fw-bold me-3">Steam Coils Test Pressure (Bar):</label> -->
@@ -818,6 +843,7 @@ function initialState(){
 		id:0,
 		company_id:'',
 		inspection_date:'',
+		scope:'',
 		inspection_location_id:'',
 		operator_lessor:'',
 		tank_no:'',
@@ -826,12 +852,19 @@ function initialState(){
 		csc:'',
 		csc_blank: '',
 		uk_dot:'',
+		uk_dot_blank:'',
 		imdg:'',
+		imdg_blank:'',
 		us_dot:'',
+		us_dot_blank:'',
 		rid:'',
+		rid_blank:'',
 		aar:'',
+		aar_blank:'',
 		bam:'',
+		bam_blank:'',
 		tc_impact:'',
+		tc_impact_blank:'',
 		tir:'',
 		tir_blank: '',
 		uic:'',
@@ -863,9 +896,13 @@ function initialState(){
 		insp_ext_perfom_na:'',
 		insp_ext_perfom_in:'',
 		insp_ext_perfom_remark:'',
+		insp_post_hydro_test_na: '',
+		insp_post_hydro_test_in: '',
+		insp_post_hydro_test_remark: '',
 		insp_perfom_date_na:'',
 		insp_perfom_date_in:'',
 		insp_perfom_date_remark:'',
+		pressure_bar: '',
 		insp_perfom_pressure_bar_na:'',
 		insp_perfom_pressure_bar_in:'',
 		insp_perfom_pressure_bar_remark:'',
@@ -878,6 +915,7 @@ function initialState(){
 		insp_perfom_decals_na:'',
 		insp_perfom_decals_in:'',
 		insp_perfom_decals_remark:'',
+		steam_coils: '',		
 		insp_perfom_steam_na:'',
 		insp_perfom_steam_in:'',
 		insp_perfom_steam_remark:'',

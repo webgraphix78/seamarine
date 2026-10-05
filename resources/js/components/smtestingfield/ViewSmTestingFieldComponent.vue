@@ -9,16 +9,22 @@
 			</div>
 		</div>
 		<div class='row mb-4 gy-3 gy-md-0'>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Company Id</label>
 				<div>
 					<span v-if='readSmTestingField.rel_company_id?.name'>{{ readSmTestingField.rel_company_id.name }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-md-4">
 				<label class="form-label text-uppercase fw-bold m-0">Inspection Date</label>
 				<div>
 					<span v-if='readSmTestingField.inspection_date'>{{ readSmTestingField.inspection_date }}</span><span v-else><i>Not specified</i></span>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<label class="form-label text-uppercase fw-bold m-0">Scope</label>
+				<div>
+					<span v-if='readSmTestingField.scope'>{{ readSmTestingField.scope }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
@@ -71,50 +77,57 @@
 			</div>
 			<div class="col-md-6">
 				<label class="form-label text-uppercase fw-bold m-0">Uk Dot</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.uk_dot'>{{ readSmTestingField.uk_dot }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.uk_dot_blank'>{{ readSmTestingField.uk_dot_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
 		<div class='row mb-4'>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Imdg</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.imdg'>{{ readSmTestingField.imdg }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.imdg_blank'>{{ readSmTestingField.imdg_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Us Dot</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.us_dot'>{{ readSmTestingField.us_dot }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.us_dot_blank'>{{ readSmTestingField.us_dot_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
 		<div class='row mb-4'>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Rid</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.rid'>{{ readSmTestingField.rid }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.rid_blank'>{{ readSmTestingField.rid_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Aar</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.aar'>{{ readSmTestingField.aar }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.aar_blank'>{{ readSmTestingField.aar_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
 		<div class='row mb-4'>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Bam</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.bam'>{{ readSmTestingField.bam }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.bam_blank'>{{ readSmTestingField.bam_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Tc Impact</label>
-				<div>
+				<div class="d-flex flex-row gap-4">
 					<span v-if='readSmTestingField.tc_impact'>{{ readSmTestingField.tc_impact }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.tc_impact_blank'>{{ readSmTestingField.tc_impact_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
@@ -303,19 +316,19 @@
 					<div class="col-md-3 col-12 ">
 						<label class="form-label text-uppercase fw-bold">Internal Inspection</label>
 					</div>
-					<div class="col-md-3 col-4">
+					<div class="col-md-3 col-4 text-center">
 						<!-- <label class="form-label text-uppercase fw-bold m-0">Insp Inter Perfom Na</label> -->
 						<div>
 							<span v-if='readSmTestingField.insp_inter_perfom_na'>{{ readSmTestingField.insp_inter_perfom_na }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
+					<div class="col-md-3 col-4 text-center">
 						<!-- <label class="form-label text-uppercase fw-bold m-0">Insp Inter Perfom In</label> -->
 						<div>
 							<span v-if='readSmTestingField.insp_inter_perfom_in'>{{ readSmTestingField.insp_inter_perfom_in }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
+					<div class="col-md-3 col-4 text-center">
 						<!-- <label class="form-label text-uppercase fw-bold m-0">Insp Inter Perfom Remark</label> -->
 						<div>
 							<span v-if='readSmTestingField.insp_inter_perfom_remark'>{{ readSmTestingField.insp_inter_perfom_remark }}</span><span v-else><i>Not specified</i></span>
@@ -326,19 +339,19 @@
 					<div class="col-md-3 col-12 ">
 						<label class="form-label text-uppercase fw-bold">External Inspection</label>
 					</div>
-					<div class="col-md-3 col-4">
+					<div class="col-md-3 col-4 text-center">
 						<!-- <label class="form-label text-uppercase fw-bold m-0">Insp Ext Perfom Na</label> -->
 						<div>
 							<span v-if='readSmTestingField.insp_ext_perfom_na'>{{ readSmTestingField.insp_ext_perfom_na }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
+					<div class="col-md-3 col-4 text-center">
 						<!-- <label class="form-label text-uppercase fw-bold m-0">Insp Ext Perfom In</label> -->
 						<div>
 							<span v-if='readSmTestingField.insp_ext_perfom_in'>{{ readSmTestingField.insp_ext_perfom_in }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
+					<div class="col-md-3 col-4 text-center">
 						<!-- <label class="form-label text-uppercase fw-bold m-0">Insp Ext Perfom Remark</label> -->
 						<div>
 							<span v-if='readSmTestingField.insp_ext_perfom_remark'>{{ readSmTestingField.insp_ext_perfom_remark }}</span><span v-else><i>Not specified</i></span>
@@ -347,22 +360,39 @@
 				</div>
 				<div class='row mb-4'>
 					<div class="col-md-3 col-12 ">
+						<label class="form-label text-uppercase fw-bold">Post Hydro Leakproof Test</label>
+					</div>
+					<div class="col-md-3 col-4 text-center">
+						<div>
+							<span v-if='readSmTestingField.insp_post_hydro_test_na'>{{ readSmTestingField.insp_post_hydro_test_na }}</span><span v-else><i>Not specified</i></span>
+						</div>
+					</div>
+					<div class="col-md-3 col-4 text-center">
+						<div>
+							<span v-if='readSmTestingField.insp_post_hydro_test_in'>{{ readSmTestingField.insp_post_hydro_test_in }}</span><span v-else><i>Not specified</i></span>
+						</div>
+					</div>
+					<div class="col-md-3 col-4 text-center">
+						<div>
+							<span v-if='readSmTestingField.insp_post_hydro_test_remark'>{{ readSmTestingField.insp_post_hydro_test_remark }}</span><span v-else><i>Not specified</i></span>
+						</div>
+					</div>
+				</div>
+				<div class='row mb-4'>
+					<div class="col-md-3 col-12 ">
 						<label class="form-label text-uppercase fw-bold">Date</label>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Date Na</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_date_na'>{{ readSmTestingField.insp_perfom_date_na }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Date In</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_date_in'>{{ readSmTestingField.insp_perfom_date_in }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Date Remark</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_date_remark'>{{ readSmTestingField.insp_perfom_date_remark }}</span><span v-else><i>Not specified</i></span>
 						</div>
@@ -370,22 +400,19 @@
 				</div>
 				<div class='row mb-4'>
 					<div class="col-md-3 col-12 ">
-						<label class="form-label text-uppercase fw-bold">Pressure (Bar)</label>
+						<label class="form-label text-uppercase fw-bold">Pressure (Bar) {{ readSmTestingField.pressure_bar }}</label>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Pressure Bar Na</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_pressure_bar_na'>{{ readSmTestingField.insp_perfom_pressure_bar_na }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Pressure Bar In</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_pressure_bar_in'>{{ readSmTestingField.insp_perfom_pressure_bar_in }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Pressure Bar Remark</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_pressure_bar_remark'>{{ readSmTestingField.insp_perfom_pressure_bar_remark }}</span><span v-else><i>Not specified</i></span>
 						</div>
@@ -395,20 +422,17 @@
 					<div class="col-md-3 col-12 ">
 						<label class="form-label text-uppercase fw-bold">Fitting Inspection</label>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Fittin Na</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_fittin_na'>{{ readSmTestingField.insp_perfom_fittin_na }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Fittin In</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_fittin_in'>{{ readSmTestingField.insp_perfom_fittin_in }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Fittin Remark</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_fittin_remark'>{{ readSmTestingField.insp_perfom_fittin_remark }}</span><span v-else><i>Not specified</i></span>
 						</div>
@@ -418,20 +442,17 @@
 					<div class="col-md-3 col-12 ">
 						<label class="form-label text-uppercase fw-bold">Frame Inspection</label>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Frame Na</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_frame_na'>{{ readSmTestingField.insp_perfom_frame_na }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Frame In</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_frame_in'>{{ readSmTestingField.insp_perfom_frame_in }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-					<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Frame Remark</label>
+					<div class="col-md-3 col-4 text-center">
 					<div>
 						<span v-if='readSmTestingField.insp_perfom_frame_remark'>{{ readSmTestingField.insp_perfom_frame_remark }}</span><span v-else><i>Not specified</i></span>
 					</div>
@@ -441,20 +462,17 @@
 					<div class="col-md-3 col-12 ">
 						<label class="form-label text-uppercase fw-bold">Decals Inspection</label>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Decals Na</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_decals_na'>{{ readSmTestingField.insp_perfom_decals_na }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Decals In</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_decals_in'>{{ readSmTestingField.insp_perfom_decals_in }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Decals Remark</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_decals_remark'>{{ readSmTestingField.insp_perfom_decals_remark }}</span><span v-else><i>Not specified</i></span>
 						</div>
@@ -462,22 +480,19 @@
 				</div>
 				<div class='row mb-4'>
 					<div class="col-md-3 col-12 ">
-						<label class="form-label text-uppercase fw-bold">Steam Coils Test Pressure (Bar):</label>
+						<label class="form-label text-uppercase fw-bold">Steam Coils Test Pressure (Bar): {{ readSmTestingField.steam_coils }}</label>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Steam Na</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_steam_na'>{{ readSmTestingField.insp_perfom_steam_na }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Steam In</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_steam_in'>{{ readSmTestingField.insp_perfom_steam_in }}</span><span v-else><i>Not specified</i></span>
 						</div>
 					</div>
-					<div class="col-md-3 col-4">
-						<label class="form-label text-uppercase fw-bold m-0">Insp Perfom Steam Remark</label>
+					<div class="col-md-3 col-4 text-center">
 						<div>
 							<span v-if='readSmTestingField.insp_perfom_steam_remark'>{{ readSmTestingField.insp_perfom_steam_remark }}</span><span v-else><i>Not specified</i></span>
 						</div>

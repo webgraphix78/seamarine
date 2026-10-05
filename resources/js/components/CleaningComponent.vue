@@ -1041,7 +1041,7 @@
 			manlid_seal: 1,
 			gas_free: 1,
 			siphon: 1,
-			remarks: "LEAK TEST DONE AT 1 BAR.",
+			remarks: "",
 			interior: "",
 			exterior: "",
 			sealno: "",
@@ -1111,6 +1111,7 @@
 						{ title: "Customer", property: "customer.name", alt_value: "Not Specified" },
 						{ title: "Survey Date", property: "inspection_date", alt_value: "Not Specified" },
 						{title: "Remarks", property: "remarks"},
+						{title: "NED", property: "next_date"},
 						{title: "Created By", property: "creator.name", alt_value: "Not Specified"}
 					],
 					data_to_send: {current_user_id: this.current_user_id},
