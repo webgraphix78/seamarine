@@ -168,7 +168,9 @@
 						<td width="100%">Next CSC Due: {{ $smtestingfield['next_insp_date'] }}</td>
 					</tr>
 				</table>
-				<p></p>
+				<table>
+					<tr><td>&nbsp;</td></tr>
+				</table>
 				<table border="1" cellspacing="0" cellpadding="2" style="border-collapse: collapse;">
 					<tr>
 						<td width="40%" align="center"><b>Inspections Performed</b></td>
@@ -227,6 +229,9 @@
 				</table>
 			</td>
 		</tr>
+	</table>
+	<table>
+		<tr><td>&nbsp;</td></tr>
 	</table>
 	<table border="0" cellspacing="5" cellpadding="2">
 		<tr>
