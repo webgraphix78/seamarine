@@ -7,6 +7,7 @@
 	<style>
 		td{
 			font-size: 8px;
+			line-height: 1.1;
 		}
 	</style>
 </head>
@@ -168,9 +169,7 @@
 						<td width="100%">Next CSC Due: {{ $smtestingfield['next_insp_date'] }}</td>
 					</tr>
 				</table>
-				<table>
-					<tr><td>&nbsp;</td></tr>
-				</table>
+				<table><tr><td>&nbsp;</td></tr></table>
 				<table border="1" cellspacing="0" cellpadding="2" style="border-collapse: collapse;">
 					<tr>
 						<td width="40%" align="center"><b>Inspections Performed</b></td>
@@ -230,10 +229,7 @@
 			</td>
 		</tr>
 	</table>
-	<table>
-		<tr><td>&nbsp;</td></tr>
-	</table>
-	<table border="0" cellspacing="5" cellpadding="2">
+	<table border="0" cellspacing="4" cellpadding="2">
 		<tr>
 			<td width="50%">
 				<table border="1" cellspacing="0" cellpadding="2" style="border-collapse: collapse;">
