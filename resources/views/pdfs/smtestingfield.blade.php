@@ -190,7 +190,7 @@
 						<td width="25%" align="center">{{ $smtestingfield['insp_ext_perfom_remark'] }} </td>
 					</tr>
 					<tr >
-						<td width="40%">Post Hydro Leakproof Test</td>
+						<td width="40%">Post Hydro Leakproof Test {{ $smtestingfield['post_hydro'] }}</td>
 						<td width="10%" align="center">{{ $smtestingfield['insp_post_hydro_test_na'] }}</td>
 						<td width="25%" align="center">{{ $smtestingfield['insp_post_hydro_test_in'] }}</td>
 						<td width="25%" align="center">{{ $smtestingfield['insp_post_hydro_test_remark'] }}</td>

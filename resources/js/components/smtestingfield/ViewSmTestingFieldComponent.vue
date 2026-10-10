@@ -360,7 +360,7 @@
 				</div>
 				<div class='row mb-4'>
 					<div class="col-md-3 col-12 ">
-						<label class="form-label text-uppercase fw-bold">Post Hydro Leakproof Test</label>
+						<label class="form-label text-uppercase fw-bold">Post Hydro Leakproof Test {{ readSmTestingField.post_hydro }}</label>
 					</div>
 					<div class="col-md-3 col-4 text-center">
 						<div>

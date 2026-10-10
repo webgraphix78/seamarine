@@ -456,8 +456,10 @@
 			</div>
 		</div>
 		<div class='row mb-4'>
-			<div class="col-md-3 col-12 ">
+			<div class="col-md-3 col-12 d-flex flex-row gap-2 align-items-center">
 				<label class="form-label text-uppercase fw-bold">Post Hydro Leakproof Test</label>
+				<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.post_hydro" id="add_post_hydro">
+
 			</div>
 			<div class="col-md-3 col-4">
 				<div class="input-group">
@@ -896,6 +898,7 @@ function initialState(){
 		insp_ext_perfom_na:'',
 		insp_ext_perfom_in:'',
 		insp_ext_perfom_remark:'',
+		post_hydro:'',
 		insp_post_hydro_test_na: '',
 		insp_post_hydro_test_in: '',
 		insp_post_hydro_test_remark: '',

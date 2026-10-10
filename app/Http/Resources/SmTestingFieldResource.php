@@ -84,6 +84,7 @@ class SmTestingFieldResource extends JsonResource
 			'insp_ext_perfom_na' => $this->insp_ext_perfom_na,
 			'insp_ext_perfom_in' => $this->insp_ext_perfom_in,
 			'insp_ext_perfom_remark' => $this->insp_ext_perfom_remark,
+			'post_hydro' => $this->post_hydro,
 			'insp_post_hydro_test_na' => $this->insp_post_hydro_test_na,
 			'insp_post_hydro_test_in' => $this->insp_post_hydro_test_in,
 			'insp_post_hydro_test_remark' => $this->insp_post_hydro_test_remark,
