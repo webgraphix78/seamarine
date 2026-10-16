@@ -143,12 +143,14 @@
 				<label class="form-label text-uppercase fw-bold m-0">Uic</label>
 				<div>
 					<span v-if='readSmTestingField.uic'>{{ readSmTestingField.uic }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.uic_blank'>{{ readSmTestingField.uic_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 			<div class="col">
 				<label class="form-label text-uppercase fw-bold m-0">Fra</label>
 				<div>
 					<span v-if='readSmTestingField.fra'>{{ readSmTestingField.fra }}</span><span v-else><i>Not specified</i></span>
+					<span v-if='readSmTestingField.fra_blank'>{{ readSmTestingField.fra_blank }}</span><span v-else><i>Not specified</i></span>
 				</div>
 			</div>
 		</div>
@@ -380,7 +382,7 @@
 				</div>
 				<div class='row mb-4'>
 					<div class="col-md-3 col-12 ">
-						<label class="form-label text-uppercase fw-bold">Date</label>
+						<label class="form-label text-uppercase fw-bold">Date {{ readSmTestingField.date }}</label>
 					</div>
 					<div class="col-md-3 col-4 text-center">
 						<div>

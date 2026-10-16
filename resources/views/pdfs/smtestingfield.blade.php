@@ -76,8 +76,10 @@
 		<tr>
 			<td width="4%" style="border:1px solid #000;text-align:center;">{{ $smtestingfield['tir_blank'] }}</td>
 			<td width="48%">TIR: {{ $smtestingfield['tir'] }}</td>
-			<td width="24%">UIC: {{ $smtestingfield['uic'] }}</td>
-			<td width="24%">FRA: {{ $smtestingfield['fra'] }}</td>
+			<td width="4%" style="border:1px solid #000;text-align:center;">{{ $smtestingfield['uic_blank'] }}</td>
+			<td width="20%">UIC: {{ $smtestingfield['uic'] }}</td>
+			<td width="4%" style="border:1px solid #000;text-align:center;">{{ $smtestingfield['fra_blank'] }}</td>
+			<td width="20%">FRA: {{ $smtestingfield['fra'] }}</td>
 		</tr>
 	</table>
 	<table border="0" cellspacing="5" cellpadding="2">
@@ -190,16 +192,16 @@
 						<td width="25%" align="center">{{ $smtestingfield['insp_ext_perfom_remark'] }} </td>
 					</tr>
 					<tr >
+						<td width="40%">Date {{ $smtestingfield['date'] }}<br>Pressure (Bar) {{ $smtestingfield['pressure_bar'] }}</td>
+						<td width="10%" align="center">{{ $smtestingfield['insp_perfom_date_na'] }}<br>{{ $smtestingfield['insp_perfom_pressure_bar_na'] }}</td>
+						<td width="25%" align="center">{{ $smtestingfield['insp_perfom_date_in'] }}<br>{{ $smtestingfield['insp_perfom_pressure_bar_in'] }}</td>
+						<td width="25%" align="center">{{ $smtestingfield['insp_perfom_date_remark'] }}<br>{{ $smtestingfield['insp_perfom_pressure_bar_remark'] }}</td>
+					</tr>
+					<tr >
 						<td width="40%">Post Hydro Leakproof Test {{ $smtestingfield['post_hydro'] }}</td>
 						<td width="10%" align="center">{{ $smtestingfield['insp_post_hydro_test_na'] }}</td>
 						<td width="25%" align="center">{{ $smtestingfield['insp_post_hydro_test_in'] }}</td>
 						<td width="25%" align="center">{{ $smtestingfield['insp_post_hydro_test_remark'] }}</td>
-					</tr>
-					<tr >
-						<td width="40%">Date<br>Pressure (Bar) {{ $smtestingfield['pressure_bar'] }}</td>
-						<td width="10%" align="center">{{ $smtestingfield['insp_perfom_date_na'] }}<br>{{ $smtestingfield['insp_perfom_pressure_bar_na'] }}</td>
-						<td width="25%" align="center">{{ $smtestingfield['insp_perfom_date_in'] }}<br>{{ $smtestingfield['insp_perfom_pressure_bar_in'] }}</td>
-						<td width="25%" align="center">{{ $smtestingfield['insp_perfom_date_remark'] }}<br>{{ $smtestingfield['insp_perfom_pressure_bar_remark'] }}</td>
 					</tr>
 					<tr >
 						<td width="40%">Fittings Inspection</td>

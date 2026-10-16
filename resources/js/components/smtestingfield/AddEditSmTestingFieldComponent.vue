@@ -158,21 +158,17 @@
 			</div>
 			<div class="col-md-4">
 				<label for="add_cscinspectiontank_uic" class="form-label text-uppercase fw-bold me-3">Uic</label>
-				<div class="input-group">
-					
+				<div class="d-flex flex-row gap-2">
 					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.uic" id="add_cscinspectiontank_uic" placeholder="Enter Uic" >
-					
+					<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.uic_blank" id="add_cscinspectiontank_uic_blank" >
 				</div>
-				
 			</div>
 			<div class="col-md-4">
 				<label for="add_cscinspectiontank_fra" class="form-label text-uppercase fw-bold me-3">Fra</label>
-				<div class="input-group">
-					
+				<div class="d-flex flex-row gap-2">
 					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.fra" id="add_cscinspectiontank_fra" placeholder="Enter Fra" >
-					
+					<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.fra_blank" id="add_cscinspectiontank_fra_blank" >
 				</div>
-				
 			</div>
 		</div>
 		<div class="row mb-4 gy-3 gy-md-0">
@@ -457,6 +453,52 @@
 		</div>
 		<div class='row mb-4'>
 			<div class="col-md-3 col-12 d-flex flex-row gap-2 align-items-center">
+				<label class="form-label text-uppercase fw-bold">Date</label>
+				<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.date" id="add_date">
+			</div>
+			<div class="col-md-3 col-4">
+				<!-- <label for="add_cscinspectiontank_insp_perfom_date_na" class="form-label text-uppercase fw-bold me-3">Insp Perfom Date Na</label> -->
+				<div class="input-group">
+					
+					<!-- <input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_date_na" id="add_cscinspectiontank_insp_perfom_date_na" placeholder="Enter Insp Perfom Date" > -->
+					
+				</div>
+				
+			</div>
+			<!-- <div class="col-md-3 col-4">
+				<div class="input-group">
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_date_in" id="add_cscinspectiontank_insp_perfom_date_in" placeholder="Enter Insp Perfom Date In" >
+				</div>
+			</div>
+			<div class="col-md-3 col-4">
+				<div class="input-group">
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_date_remark" id="add_cscinspectiontank_insp_perfom_date_remark" placeholder="Enter Insp Perfom Date Remark" >
+				</div>
+			</div> -->
+		</div>
+		<div class='row mb-4'>
+			<div class="col-md-3 col-12 d-flex flex-row gap-2 align-items-center">
+				<label class="form-label text-uppercase fw-bold mb-0">Pressure (Bar)</label>
+				<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.pressure_bar" id="add_pressure_bar">
+			</div>
+			<!-- <div class="col-md-3 col-4">
+				<div class="input-group">
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_pressure_bar_na" id="add_cscinspectiontank_insp_perfom_pressure_bar_na" placeholder="Enter Insp Perfom Pressure Bar Na" >
+				</div>
+			</div>
+			<div class="col-md-3 col-4">
+				<div class="input-group">
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_pressure_bar_in" id="add_cscinspectiontank_insp_perfom_pressure_bar_in" placeholder="Enter Insp Perfom Pressure Bar In" >
+				</div>
+			</div>
+			<div class="col-md-3 col-4">
+				<div class="input-group">
+					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_pressure_bar_remark" id="add_cscinspectiontank_insp_perfom_pressure_bar_remark" placeholder="Enter Insp Perfom Pressure Bar Remark" >
+				</div>
+			</div> -->
+		</div>
+		<div class='row mb-4'>
+			<div class="col-md-3 col-12 d-flex flex-row gap-2 align-items-center">
 				<label class="form-label text-uppercase fw-bold">Post Hydro Leakproof Test</label>
 				<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.post_hydro" id="add_post_hydro">
 
@@ -482,71 +524,6 @@
 				<div class="input-group">
 					
 					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_post_hydro_test_remark" id="add_cscinspectiontank_insp_post_hydro_test_remark" placeholder="Enter post hydro Remark" >
-					
-				</div>
-				
-			</div>
-		</div>
-		<div class='row mb-4'>
-			<div class="col-md-3 col-12 ">
-				<label class="form-label text-uppercase fw-bold">Date</label>
-			</div>
-			<div class="col-md-3 col-4">
-				<!-- <label for="add_cscinspectiontank_insp_perfom_date_na" class="form-label text-uppercase fw-bold me-3">Insp Perfom Date Na</label> -->
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_date_na" id="add_cscinspectiontank_insp_perfom_date_na" placeholder="Enter Insp Perfom Date Na" >
-					
-				</div>
-				
-			</div>
-			<div class="col-md-3 col-4">
-				<!-- <label for="add_cscinspectiontank_insp_perfom_date_in" class="form-label text-uppercase fw-bold me-3">Insp Perfom Date In</label> -->
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_date_in" id="add_cscinspectiontank_insp_perfom_date_in" placeholder="Enter Insp Perfom Date In" >
-					
-				</div>
-				
-			</div>
-			<div class="col-md-3 col-4">
-				<!-- <label for="add_cscinspectiontank_insp_perfom_date_remark" class="form-label text-uppercase fw-bold me-3">Insp Perfom Date Remark</label> -->
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_date_remark" id="add_cscinspectiontank_insp_perfom_date_remark" placeholder="Enter Insp Perfom Date Remark" >
-					
-				</div>
-				
-			</div>
-		</div>
-		<div class='row mb-4'>
-			<div class="col-md-3 col-12 d-flex flex-row gap-2 align-items-center">
-				<label class="form-label text-uppercase fw-bold mb-0">Pressure (Bar)</label>
-				<input type="text" class="form-control w-50"  v-model="smtestingfieldFormObj.pressure_bar" id="add_pressure_bar">
-			</div>
-			<div class="col-md-3 col-4">
-				<!-- <label for="add_cscinspectiontank_insp_perfom_pressure_bar_na" class="form-label text-uppercase fw-bold me-3">Insp Perfom Pressure Bar Na</label> -->
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_pressure_bar_na" id="add_cscinspectiontank_insp_perfom_pressure_bar_na" placeholder="Enter Insp Perfom Pressure Bar Na" >
-					
-				</div>
-				
-			</div>
-			<div class="col-md-3 col-4">
-				<!-- <label for="add_cscinspectiontank_insp_perfom_pressure_bar_in" class="form-label text-uppercase fw-bold me-3">Insp Perfom Pressure Bar In</label> -->
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_pressure_bar_in" id="add_cscinspectiontank_insp_perfom_pressure_bar_in" placeholder="Enter Insp Perfom Pressure Bar In" >
-					
-				</div>
-				
-			</div>
-			<div class="col-md-3 col-4">
-				<!-- <label for="add_cscinspectiontank_insp_perfom_pressure_bar_remark" class="form-label text-uppercase fw-bold me-3">Insp Perfom Pressure Bar Remark</label> -->
-				<div class="input-group">
-					
-					<input type="text" class="form-control"  v-model="smtestingfieldFormObj.insp_perfom_pressure_bar_remark" id="add_cscinspectiontank_insp_perfom_pressure_bar_remark" placeholder="Enter Insp Perfom Pressure Bar Remark" >
 					
 				</div>
 				
@@ -870,7 +847,9 @@ function initialState(){
 		tir:'',
 		tir_blank: '',
 		uic:'',
+		uic_blank:'',
 		fra:'',
+		fra_blank:'',
 		tank_mfg_year:'',
 		tank_max_g_wt:'',
 		tank_tare_wt:'',
@@ -902,6 +881,7 @@ function initialState(){
 		insp_post_hydro_test_na: '',
 		insp_post_hydro_test_in: '',
 		insp_post_hydro_test_remark: '',
+		date:'',
 		insp_perfom_date_na:'',
 		insp_perfom_date_in:'',
 		insp_perfom_date_remark:'',
